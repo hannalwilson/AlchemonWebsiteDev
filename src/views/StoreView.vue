@@ -15,7 +15,7 @@
 
 <style lang="scss" scoped>
 .background {
-    background-color: #007bff;
+    background-image: linear-gradient(to right, #007bff, #2A78F8, #4287F9, #89B4FB);
     padding: 5%;
 }
 .shop {
@@ -45,11 +45,11 @@ const storeItems = {
 export default {
   setup () {
     const token = { 'X-API-key': 'sxwIKIENYg9Es5rsmoanF5WAYXBBHDQ70vGvhI4g' }
-    const server = 'https://testnet-algorand.api.purestake.io/ps2'
+    const server = 'https://mainnet-algorand.api.purestake.io/ps2'
     const port = ''
     // eslint-disable-next-line no-undef
     const client = new algosdk.Algodv2(token, server, port)
-    const sellingAddress = 'GVX33TKM6W6K367PEMHP4UZOF4JAHQUJJ2TTO7S2UHNJ4HRCN6LVQKBMRU'
+    const sellingAddress = 'YGTG4E777WMPA63GKOOQWR27PJWS65WK4MCTND7ITTMKTDPI2RWRSVT4HU'
     const sellingAssets = reactive({})
     client.accountInformation(sellingAddress).do().then(response => {
       for (const a of response.assets) {

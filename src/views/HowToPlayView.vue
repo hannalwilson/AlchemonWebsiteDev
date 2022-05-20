@@ -90,7 +90,7 @@
     <div class="eggs">
         <p class="orangeHeader spreadText">EGGS</p>
         <p>So you got an Egg, nice job!<br><br>It can be traded in for a new Set Common that you will get to own before the Set Pack Opening!<br><br>Eggs may contain different rarities.</p>
-        <img id="loader_text" src="../assets/egg.png" width="25%" alt="Egg">
+        <img id="loader_text" src="../assets/Egg.png" width="25%" alt="Egg">
     </div>
     <div class="distribution">
         <p class="yellowHeader spreadText">DISTRIBUTION</p>
