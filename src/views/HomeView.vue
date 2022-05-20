@@ -55,7 +55,6 @@ export default {
     letter-spacing: 5px;
     position: relative;
     right: 35vw;
-    top: -8vw;
 }
 @media only screen and (max-width: 300px) {
   .downloadButton {
