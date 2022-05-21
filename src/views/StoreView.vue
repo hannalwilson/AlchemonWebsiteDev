@@ -4,7 +4,6 @@
         <h1 class="spreadText">ALCHESHOP</h1>
     </div>
     <div class="forSale">
-      <p v-if="sellingAssets[0] === undefined" class="soldOut">SOLD OUT</p>
         <div v-for="(index, a) in sellingAssets" :key="a" class="shop">
         <store-card :name="storeItems[a]" :id="a" :amount="index"></store-card>
         </div>
@@ -67,14 +66,12 @@ export default {
     const sellingAssets = reactive({})
     client.accountInformation(sellingAddress).do().then(response => {
       for (const a of response.assets) {
-        if (a.amount > 0) {
-          for (const b in storeItems) {
-            // eslint-disable-next-line eqeqeq
-            if (a['asset-id'] == b) {
-              const amount = a.amount
-              const id = b
-              sellingAssets[id] = amount
-            }
+        for (const b in storeItems) {
+          // eslint-disable-next-line eqeqeq
+          if (a['asset-id'] == b) {
+            const amount = a.amount
+            const id = b
+            sellingAssets[id] = amount
           }
         }
       }
