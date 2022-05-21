@@ -4,6 +4,7 @@
         <h1 class="spreadText">ALCHESHOP</h1>
     </div>
     <div class="forSale">
+      <p v-if="sellingAssets[0] === undefined" class="soldOut">SOLD OUT</p>
         <div v-for="(index, a) in sellingAssets" :key="a" class="shop">
         <store-card :name="storeItems[a]" :id="a" :amount="index"></store-card>
         </div>
@@ -42,6 +43,10 @@ h1 {
   color: #e6ad10;
   -webkit-text-stroke:1px rgb(22, 22, 54);
 }
+.soldOut {
+  padding: 5%;
+  font-size: 8vw;
+}
 </style>
 
 <script>
@@ -50,6 +55,7 @@ import StoreCard from '../components/StoreCard.vue'
 const storeItems = {
   318280942: 'Egg'
 }
+
 export default {
   setup () {
     const token = { 'X-API-key': 'sxwIKIENYg9Es5rsmoanF5WAYXBBHDQ70vGvhI4g' }
