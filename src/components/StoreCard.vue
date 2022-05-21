@@ -70,12 +70,14 @@ export default {
       } else {
         signedTxn = Buffer.from(signedTxns.blob).toString('base64')
       }
-      const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
-        txn: signedTxn
-      })
-      if (sendTxnResponse.status === 200) {
-        window.alert('Transaction Successful!')
-      } else {
+      try {
+        const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
+          txn: signedTxn
+        })
+        if (sendTxnResponse.status === 200) {
+          window.alert('Transaction Successful!')
+        }
+      } catch {
         window.alert('Transaction Failed!')
       }
     },
@@ -95,12 +97,14 @@ export default {
       } else {
         signedTxn = Buffer.from(signedTxns.blob).toString('base64')
       }
-      const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
-        txn: signedTxn
-      })
-      if (sendTxnResponse.status === 200) {
-        window.alert('Transaction Successful!')
-      } else {
+      try {
+        const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
+          txn: signedTxn
+        })
+        if (sendTxnResponse.status === 200) {
+          window.alert('Transaction Successful!')
+        }
+      } catch {
         window.alert('Transaction Failed!')
       }
     },
