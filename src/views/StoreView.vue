@@ -1,9 +1,7 @@
 <template>
 <div>
     <div class="background">
-        <img src="../assets/alcheshop_coin.png" alt="torr">
-        <p class="yellowHeader spreadText">ALCHESHOP</p>
-        <p class="whiteText">Purchase Eggs with Algo or Alchecoin</p>
+        <h1 class="spreadText">ALCHESHOP</h1>
     </div>
     <div class="forSale">
         <div v-for="(index, a) in sellingAssets" :key="a" class="shop">
@@ -15,8 +13,12 @@
 
 <style lang="scss" scoped>
 .background {
-    background-image: linear-gradient(to right, #007bff, #2A78F8, #4287F9, #89B4FB);
-    padding: 5%;
+  background-image: url("../assets/alcheshop_coin.png") ,linear-gradient(to right, #007bff, #2A78F8, #4287F9, #89B4FB);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 15% 0%;
+
 }
 .shop {
     display: inline-block;
@@ -29,10 +31,16 @@ p {
 .forSale {
     background-color: white;
     background-image: linear-gradient(to left, #D8D8D8, #DEDEDE, #E5E5E5, #EBEBEB, #F2F2F2, #F8F8F8, #FFFFFF);
-    margin-top: 0%;
 }
 img {
-  width: 50%;
+  width: 100%;
+  margin: 0%;
+  padding: 0%;
+}
+h1 {
+  font-size: 10vw;
+  color: #e6ad10;
+  -webkit-text-stroke:1px rgb(22, 22, 54);
 }
 </style>
 
