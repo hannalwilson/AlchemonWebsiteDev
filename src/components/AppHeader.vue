@@ -110,6 +110,7 @@ li:hover, a:hover, span:hover {
     background-color: orange;
     color: #00006f;
     transition: 0.3s;
+    color: white;
 }
 
 img {
@@ -170,7 +171,8 @@ ul.dropdown-menu {
   display: none;
   top: 100%;
   padding: 0%;
-  min-width: 120px;
+  min-width: 150px;
+  right: 0%;
 }
 li {
   text-align: center;
@@ -227,5 +229,9 @@ ul.dropdown-menu a {
   img {
       height: 5vw;
   }
+
+  ul.dropdown-menu a {
+  padding: 1% ;
+}
 }
 </style>
