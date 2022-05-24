@@ -78,7 +78,7 @@ export default {
           window.alert('Transaction Successful!')
         }
       } catch {
-        window.alert('Transaction Failed!')
+        window.alert('Transaction Failed.')
       }
     },
     async buyWithAlch () {

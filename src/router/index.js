@@ -14,6 +14,8 @@ import TermsAndConditionsView from '../views/TermsAndConditionsView.vue'
 import BetaView from '../views/BetaView.vue'
 import InstructionsView from '../views/InstructionsView.vue'
 import StakingView from '../views/StakingView.vue'
+// import CraftingView from '../views/CraftingView.vue'
+// import EvolveView from '../views/EvolveView.vue'
 
 const routes = [
   {
@@ -91,6 +93,16 @@ const routes = [
     name: 'staking',
     component: StakingView
   }
+  // {
+  //   path: '/crafting',
+  //   name: 'crafting',
+  //   component: CraftingView
+  // },
+  // {
+  //   path: '/evolving',
+  //   name: 'evolving',
+  //   component: EvolveView
+  // }
 ]
 
 const router = createRouter({
