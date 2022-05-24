@@ -22,6 +22,12 @@
         <li>
             <router-link to="/alchedex">ALCHEDEX</router-link>
         </li>
+        <!-- <li>
+            <router-link to="/crafting">CRAFT</router-link>
+        </li>
+        <li>
+            <router-link to="/evolving">EVOLVE</router-link>
+        </li> -->
         <li class="dropdown-link">
                 <span>STORE&nbsp;&#x2193;</span>
           <ul class="dropdown-menu">
