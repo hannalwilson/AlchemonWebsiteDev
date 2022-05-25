@@ -52,8 +52,17 @@ h1 {
 import { reactive } from 'vue'
 import StoreCard from '../components/StoreCard.vue'
 const storeItems = {
-  318280942: 'Egg'
+  490139078: 'Zip',
+  490146814: 'Lika',
+  490141855: 'Puff',
+  493271743: 'Dagz'
 }
+const addresses = [
+  '7OVSLHCECWQZ7R4DVV64VWCPG4AL6JTDBLQZZX6FPG22JCIIVFOSTC6GBQ',
+  'I3QBOS6X6IWOY7S65CRRU47RAS2IK3TPLXAF3HYVY5JIEP7IXWARBWMJYQ',
+  '5BSQOOEXICBRFBWBAQKFDUF4YFQN67OQFAH5NFHE2FUHTNHEHNGXJ6MPJU',
+  '5HPPE2OE6L3UDVG2LOU3LKD56TS6AQAMRY37FGRN45B7UG5ZJAQCZ2TWAM'
+]
 
 export default {
   setup () {
@@ -62,20 +71,21 @@ export default {
     const port = ''
     // eslint-disable-next-line no-undef
     const client = new algosdk.Algodv2(token, server, port)
-    const sellingAddress = 'YGTG4E777WMPA63GKOOQWR27PJWS65WK4MCTND7ITTMKTDPI2RWRSVT4HU'
     const sellingAssets = reactive({})
-    client.accountInformation(sellingAddress).do().then(response => {
-      for (const a of response.assets) {
-        for (const b in storeItems) {
-          // eslint-disable-next-line eqeqeq
-          if (a['asset-id'] == b) {
-            const amount = a.amount
-            const id = b
-            sellingAssets[id] = amount
+    for (const index in addresses) {
+      client.accountInformation(addresses[index]).do().then(response => {
+        for (const a of response.assets) {
+          for (const b in storeItems) {
+            // eslint-disable-next-line eqeqeq
+            if (a['asset-id'] == b) {
+              const amount = a.amount
+              const id = b
+              sellingAssets[id] = amount
+            }
           }
         }
-      }
-    })
+      })
+    }
     return { sellingAssets }
   },
   mounted () {

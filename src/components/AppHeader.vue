@@ -32,13 +32,13 @@
                 <span>STORE&nbsp;&#x2193;</span>
           <ul class="dropdown-menu">
             <li>
-              <a href="https://www.randgallery.com/algo-collection/?address=ALCHY5SJXOXZXADZPD73KO6CYNZXDUWFYANTSXU6RIO3EZACIIXUCS3YDM" target="_blank">NFTs</a>
-            </li>
-            <li>
-            <a href="https://shop.alchemon.net" target="_blank">MERCH</a>
+              <a href="https://shop.alchemon.net" target="_blank">MERCH</a>
             </li>
              <li>
-            <router-link to="/store">EGGS</router-link>
+               <router-link to="/store">ALCHESHOP</router-link>
+            </li>
+            <li>
+              <a href="https://www.randgallery.com/algo-collection/?address=ALCHY5SJXOXZXADZPD73KO6CYNZXDUWFYANTSXU6RIO3EZACIIXUCS3YDM" target="_blank">RANDGALLERY</a>
             </li>
           </ul>
       </li>
@@ -177,7 +177,7 @@ ul.dropdown-menu {
   display: none;
   top: 100%;
   padding: 0%;
-  min-width: 150px;
+  min-width: 200px;
   right: 0%;
 }
 li {
@@ -186,7 +186,6 @@ li {
 
 ul.dropdown-menu li {
   margin: 0%;
-  width: 100%;
   background-color: rgb(0, 0, 80);
   padding: 0%;
 }
