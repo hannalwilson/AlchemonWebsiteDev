@@ -61,10 +61,22 @@
           >#46-54</a
         >
         <a
-          href="https://www.randgallery.com/algo-collection/?address=490146814%2C509850827%2C527481591%2C527483715%2C527485015%2C527486409"
+          href="https://www.randgallery.com/algo-collection/?address=490146814%2C509850827%2C527481591%2C527483715%2C527485015%2C527486409%2C744527019%2C744527932%2C744528583"
           target="_blank"
           role="button"
-          >#55-60</a
+          >#55-63</a
+        >
+        <a
+          href="https://www.randgallery.com/algo-collection/?address=744551347%2C744530060%2C744530969%2C744531764%2C744532520%2C744533302%2C744534630%2C744535776%2C744536686"
+          target="_blank"
+          role="button"
+          >#64-72</a
+        >
+        <a
+          href="https://www.randgallery.com/algo-collection/?address=744538073%2C744539419%2C744540333"
+          target="_blank"
+          role="button"
+          >#63-75</a
         >
       </p>
       <p class="whiteText marginFix_2">

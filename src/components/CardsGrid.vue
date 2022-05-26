@@ -22,6 +22,96 @@ export default {
     return {
       cards: [
         {
+          image: '75_araknadevil.png',
+          id: '744540333',
+          type: 'Bug, Earth, Water, Flying',
+          minted: '2000'
+        },
+        {
+          image: '74_torcydious.png',
+          id: '744539419',
+          type: 'Earth, Water',
+          minted: '3000'
+        },
+        {
+          image: '73_araknolyth.png',
+          id: '744538073',
+          type: 'Insect, Flying',
+          minted: '3000'
+        },
+        {
+          image: '72_incydious.png',
+          id: '744536686',
+          type: 'Earth',
+          minted: '5000'
+        },
+        {
+          image: '71_cydevil.png',
+          id: '744535776',
+          type: 'Earth',
+          minted: '6500'
+        },
+        {
+          image: '70_cyd.png',
+          id: '744534630',
+          type: 'Earth',
+          minted: '8000'
+        },
+        {
+          image: '69_torrment.png',
+          id: '744533302',
+          type: 'Water',
+          minted: '5000'
+        },
+        {
+          image: '68_torrden.png',
+          id: '744532520',
+          type: 'Water',
+          minted: '6500'
+        },
+        {
+          image: '67_torr.png',
+          id: '744531764',
+          type: 'Water',
+          minted: '8000'
+        },
+        {
+          image: '66_arakumo.png',
+          id: '744530969',
+          type: 'Insect',
+          minted: '5000'
+        },
+        {
+          image: '65_araku.png',
+          id: '744530060',
+          type: 'Insect',
+          minted: '6500'
+        },
+        {
+          image: '64_kumo.png',
+          id: '744551347',
+          type: 'Insect',
+          minted: '8000'
+        },
+        {
+          image: '63_monolyth.png',
+          id: '744528583',
+          type: 'Flying',
+          minted: '5000'
+        },
+        {
+          image: '62_golyth.png',
+          id: '744527932',
+          type: 'Flying',
+          minted: '6500'
+        },
+        {
+          image: '61_lyth.png',
+          id: '744527019',
+          type: 'Flying',
+          minted: '8000'
+        },
+        {
           image: '60_cyclostorm.png',
           id: '527486409',
           type: 'Earth, Electric, Ice, Plant',
