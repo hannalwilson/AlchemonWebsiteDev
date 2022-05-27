@@ -24,7 +24,7 @@ export default {
         {
           image: '75_araknadevil.png',
           id: '744540333',
-          type: 'Bug, Earth, Water, Flying',
+          type: 'Insect, Earth, Water, Flying',
           minted: '2000'
         },
         {
