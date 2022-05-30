@@ -51,6 +51,7 @@ h1 {
 <script>
 import { reactive } from 'vue'
 import StoreCard from '../components/StoreCard.vue'
+import algosdk from 'algosdk'
 const storeItems = {
   490139078: 'Zip',
   490146814: 'Lika',
@@ -66,16 +67,14 @@ const addresses = [
 
 export default {
   setup () {
-    const token = ''
-    const server = 'https://algoindexer.algoexplorerapi.io'
+    const token = { 'X-API-key': 'sxwIKIENYg9Es5rsmoanF5WAYXBBHDQ70vGvhI4g' }
+    const server = 'https://mainnet-algorand.api.purestake.io/ps2'
     const port = ''
-    // eslint-disable-next-line no-undef
     const client = new algosdk.Algodv2(token, server, port)
     const sellingAssets = reactive({})
     for (const index in addresses) {
       client.accountInformation(addresses[index]).do().then(response => {
-        console.log(response.account.assets)
-        for (const a of response.account.assets) {
+        for (const a of response.assets) {
           for (const b in storeItems) {
             // eslint-disable-next-line eqeqeq
             if (a['asset-id'] == b) {

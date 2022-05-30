@@ -1,16 +1,10 @@
-import { defineConfig } from '@vue/cli-service'
-import NodePolyfillPlugin from 'node-polyfill-webpack-plugin'
-export default defineConfig({
+const { defineConfig } = require('@vue/cli-service')
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
+module.exports = defineConfig({
   runtimeCompiler: true,
   transpileDependencies: true,
   configureWebpack: {
     plugins: [new NodePolyfillPlugin()],
-    devServer: {
-      proxy: 'https://alchemon.net',
-      headers: {
-        'Access-Control-Allow-Origin': '*'
-      }
-    },
     optimization: {
       splitChunks: {
         chunks: 'all'
