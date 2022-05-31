@@ -76,7 +76,7 @@
           href="https://www.randgallery.com/algo-collection/?address=744538073%2C744539419%2C744540333"
           target="_blank"
           role="button"
-          >#63-75</a
+          >#73-75</a
         >
       </p>
       <p class="whiteText marginFix_2">
