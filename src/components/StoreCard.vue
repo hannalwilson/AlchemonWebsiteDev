@@ -91,6 +91,7 @@ export default {
     },
     async purchaseItem () {
       if (address === undefined) {
+        window.open('/wallet', 'popUpWindow')
         const account = await myAlgoConnect.connect()
         address = account[0].address
         this.buyWithAlgo()
