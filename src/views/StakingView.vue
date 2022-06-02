@@ -117,9 +117,43 @@ export default {
       744531764: '744532520', // torr to torrden
       744532520: '744533302', // torrden to torrment
       744534630: '744535776', // cyd to cydevil
-      744535776: '744536686' // cydevil to incydious
+      744535776: '744536686', // cydevil to incydious
+      490146814: '509850827', // lika to chomp
+      509850827: '527481591', // chomp to likachomp
+      493271743: '509848775', // dagz to daggerz
+      509848775: '527479654', // daggerz to daggerpult
+      490141855: '509844088', // puff to hailpuff
+      509844088: '527477069', // hailpuff to hailstorm
+      490139078: '509842608', // zip to zipadol
+      509842608: '527475282' // zipadol to zipacute
     }
 
+    const alchemonName = {
+      744527019: 'Lyth',
+      744527932: 'Golyth',
+      744528583: 'Monolyth',
+      744551347: 'Kumo',
+      744530060: 'Araku',
+      744530969: 'Arakumo',
+      744531764: 'Torr',
+      744532520: 'Torrden',
+      744533302: 'Torrment',
+      744534630: 'Cyd',
+      744535776: 'Cydevil',
+      744536686: 'Incydious',
+      490146814: 'Lika',
+      509850827: 'Chomp',
+      527481591: 'Likachomp',
+      493271743: 'Dagz',
+      509848775: 'Daggerz',
+      527479654: 'Daggerpult',
+      490141855: 'Puff',
+      509844088: 'Hailpuff',
+      527477069: 'Hailstorm',
+      490139078: 'Zip',
+      509842608: 'Zipadol',
+      527475282: 'Zipacute'
+    }
     client.accountInformation(alchemonAddress).do().then(response => {
       for (const a of response.assets) {
         const amount = a.amount

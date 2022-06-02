@@ -58,10 +58,10 @@
     <div class="craftswap">
         <p class="darkBlueHeader spreadText">CRAFT // SWAP</p>
         <p>All available crafts are contained in the <a class="blueLinks" href="https://www.randgallery.com/algo-collection/?address=ALCHY5SJXOXZXADZPD73KO6CYNZXDUWFYANTSXU6RIO3EZACIIXUCS3YDM" target="_blank">Store</a>. The Craft links below:</p>
-        <p>
+        <!-- <p>
             <br>&#9830; <a class="blueLinks" href="https://www.randgallery.com/recipe/craft-a-voltstorm-alchemon/" target="_blank">Craft a <b>Voltstorm</b> from 2 Hailstorm and 2 Zipacute</a> SOLD OUT! More coming in the future...
             <br>&#9830; <a class="blueLinks" href="https://www.randgallery.com/recipe/craft-a-chomperz-alchemon/" target="_blank">Craft a <b>Chomperz</b> from 2 Daggerpult and 2 Likachomp</a> SOLD OUT! More coming in the future...
-            <br>&#9830; <a class="blueLinks" href="https://www.randgallery.com/recipe/craft-a-cyclostorm-alchemon/" target="_blank">Craft a <b>Cyclostorm</b> from a Chomperz and a Voltstorm</a> SOLD OUT! More coming in the future...</p>
+            <br>&#9830; <a class="blueLinks" href="https://www.randgallery.com/recipe/craft-a-cyclostorm-alchemon/" target="_blank">Craft a <b>Cyclostorm</b> from a Chomperz and a Voltstorm</a> SOLD OUT! More coming in the future...</p> -->
         <div>
             <img class="zoomIn_1" src="../assets/craft.jpg" width="15%" alt="Crafting Icon">
             <img class="zoomIn_1" src="../assets/transfer.png" width="15%" alt="Trading Icon">
@@ -98,7 +98,8 @@
         <img src="../assets/distributionTable1.png" width="90%" alt="Distribution Table 1" class="zoomIn_1">
         <img src="../assets/distributionTable2.png" width="90%" alt="Distribution Table 2" class="zoomIn_1">
         <img src="../assets/distributionTable3.png" width="90%" alt="Distribution Table 3" class="zoomIn_1">
-        <img src="../assets/distributionTable4.png" width="90%" alt="Distribution Table 3" class="zoomIn_1">
+        <img src="../assets/distributionTable4.png" width="90%" alt="Distribution Table 4" class="zoomIn_1">
+        <img src="../assets/distributionTable5.png" width="90%" alt="Distribution Table 5" class="zoomIn_1">
     </div>
 </div>
 </template>
