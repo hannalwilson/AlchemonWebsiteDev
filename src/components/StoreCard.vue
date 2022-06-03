@@ -7,7 +7,7 @@
         <p> {{ name }}</p>
         <p> {{ id }}</p>
         <p> Available: {{ amount}} </p>
-        <button @click="purchaseItem('pera')" class="boxShadow nftButton">5 ALGO</button>
+        <button @click="purchaseItem('myalgo')" class="boxShadow nftButton">5 ALGO</button>
         </div>
     </div>
 </template>
@@ -87,11 +87,13 @@ export default {
       switch (wallet) {
         case 'myalgo':
           signedTxns = await myAlgoConnect.signTransaction(serializedTxns)
+          console.log(signedTxns)
           if (Array.isArray(signedTxns)) {
             signedTxn = signedTxns.map((txn) => (Buffer.from(txn.blob).toString('base64')))
           } else {
             signedTxn = Buffer.from(signedTxns.blob).toString('base64')
           }
+          console.log(signedTxn)
           break
         case 'pera':
           // eslint-disable-next-line no-case-declarations
@@ -106,19 +108,21 @@ export default {
           const requestParams = [txnsToSign]
           // eslint-disable-next-line no-case-declarations
           const request = formatJsonRpcRequest('algo_signTxn', requestParams)
+          console.log(request)
           signedTxn = await walletConnector.sendCustomRequest(request)
           console.log(signedTxn)
+          break
       }
-      try {
-        const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
-          txn: signedTxns
-        })
-        if (sendTxnResponse.status === 200) {
-          window.alert('Transaction Successful!')
-        }
-      } catch {
-        window.alert('Transaction Failed.')
-      }
+      // try {
+      //   const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
+      //     txn: signedTxn
+      //   })
+      //   if (sendTxnResponse.status === 200) {
+      //     window.alert('Transaction Successful!')
+      //   }
+      // } catch {
+      //   window.alert('Transaction Failed.')
+      // }
     },
     async purchaseItem (wallet) {
       if (address === undefined) {
@@ -131,7 +135,7 @@ export default {
           // Check if connection is already established
             if (!walletConnector.connected) {
             // create new session
-              walletConnector.createSession()
+              await walletConnector.createSession()
             }
 
             // Subscribe to connection events
