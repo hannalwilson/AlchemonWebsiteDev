@@ -7,7 +7,7 @@
         <p> {{ name }}</p>
         <p> {{ id }}</p>
         <p> Available: {{ amount}} </p>
-        <button @click="purchaseItem()" class="boxShadow nftButton">5 ALGO</button>
+        <button @click="purchaseItem('pera')" class="boxShadow nftButton">5 ALGO</button>
         </div>
     </div>
 </template>
@@ -49,11 +49,21 @@
 
 <script>
 import MyAlgoConnect from '@randlabs/myalgo-connect'
+import WalletConnect from '@walletconnect/client'
+import QRCodeModal from 'algorand-walletconnect-qrcode-modal'
 import axios from 'axios'
+import { formatJsonRpcRequest } from '@json-rpc-tools/utils'
 const apiURL = 'https://avk5m0z0nc.execute-api.us-east-1.amazonaws.com'
 let signedTxn
 let address
+let account
 const myAlgoConnect = new MyAlgoConnect()
+const walletConnector = new WalletConnect(
+  {
+    bridge: 'https://bridge.walletconnect.org', // Required
+    qrcodeModal: QRCodeModal
+  }
+)
 const alchemonIds = {
   490139078: 753855088,
   490146814: 753855200,
@@ -63,7 +73,7 @@ const alchemonIds = {
 export default {
   props: ['name', 'id', 'amount'],
   methods: {
-    async buyWithAlgo () {
+    async buyWithAlgo (wallet) {
       const payWithAlgoResponse = await axios.post(`${apiURL}/payWithAlgo`, {
         customerAddress: address,
         itemShopAppId: alchemonIds[this.id],
@@ -72,15 +82,36 @@ export default {
         microalgoAmount: 5000000
       })
       const serializedTxns = payWithAlgoResponse.data.txns
-      const signedTxns = await myAlgoConnect.signTransaction(serializedTxns)
-      if (Array.isArray(signedTxns)) {
-        signedTxn = signedTxns.map((txn) => (Buffer.from(txn.blob).toString('base64')))
-      } else {
-        signedTxn = Buffer.from(signedTxns.blob).toString('base64')
+      console.log(serializedTxns)
+      let signedTxns
+      switch (wallet) {
+        case 'myalgo':
+          signedTxns = await myAlgoConnect.signTransaction(serializedTxns)
+          if (Array.isArray(signedTxns)) {
+            signedTxn = signedTxns.map((txn) => (Buffer.from(txn.blob).toString('base64')))
+          } else {
+            signedTxn = Buffer.from(signedTxns.blob).toString('base64')
+          }
+          break
+        case 'pera':
+          // eslint-disable-next-line no-case-declarations
+          const txnsToSign = serializedTxns.map(txn => {
+            const encodedTxn = txn
+            return {
+              txn: encodedTxn
+            }
+          })
+          console.log(txnsToSign)
+          // eslint-disable-next-line no-case-declarations
+          const requestParams = [txnsToSign]
+          // eslint-disable-next-line no-case-declarations
+          const request = formatJsonRpcRequest('algo_signTxn', requestParams)
+          signedTxn = await walletConnector.sendCustomRequest(request)
+          console.log(signedTxn)
       }
       try {
         const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
-          txn: signedTxn
+          txn: signedTxns
         })
         if (sendTxnResponse.status === 200) {
           window.alert('Transaction Successful!')
@@ -89,14 +120,44 @@ export default {
         window.alert('Transaction Failed.')
       }
     },
-    async purchaseItem () {
+    async purchaseItem (wallet) {
       if (address === undefined) {
-        window.open('/wallet', 'popUpWindow')
-        const account = await myAlgoConnect.connect()
-        address = account[0].address
-        this.buyWithAlgo()
-      } else {
-        this.buyWithAlgo()
+        switch (wallet) {
+          case 'myalgo':
+            account = await myAlgoConnect.connect()
+            address = account[0].address
+            break
+          case 'pera':
+          // Check if connection is already established
+            if (!walletConnector.connected) {
+            // create new session
+              walletConnector.createSession()
+            }
+
+            // Subscribe to connection events
+            walletConnector.on('connect', (error, payload) => {
+              if (error) {
+                throw error
+              }
+            })
+
+            walletConnector.on('session_update', (error, payload) => {
+              if (error) {
+                throw error
+              }
+            })
+
+            walletConnector.on('disconnect', (error, payload) => {
+              if (error) {
+                throw error
+              }
+            })
+
+            address = walletConnector.accounts[0]
+            console.log(address)
+            break
+        }
+        this.buyWithAlgo(wallet)
       }
     }
   }

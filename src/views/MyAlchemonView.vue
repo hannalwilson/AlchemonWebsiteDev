@@ -1,33 +1,31 @@
 <template>
   <div>
     <div class="cards">
-        <p class="whiteText">
-        View your Alchemon NFT Cards by entering your wallet address below!
-      </p>
         <input
           type="text"
           id="text"
           class="darkGrayText_1 boxShadow"
           placeholder="  Enter wallet address"
           v-model="userAddress"
-      />
+      /><br>
       <button
         class="submitButton boxShadow"
         id="btn"
         @click="showNFTS"
-      >Submit</button>
-      <p class="whiteText marginFix_2">
-        {{ userAddress }} Cards
-      </p>
-      <div v-if="showCards">
-      <p>show</p>
-      </div>
+      >My Alchemon</button>
+      <button
+        class="submitButton boxShadow"
+        id="btn"
+        @click="showRewards"
+      >My Staking Rewards</button>
     </div>
+    <cards-grid></cards-grid>
   </div>
 </template>
 
 <script>
 import algosdk from 'algosdk'
+import CardsGrid from '@/components/CardsGrid.vue'
 const alchemonIds = [
   744527019,
   744527932,
@@ -52,6 +50,9 @@ export default {
       userAddress: ''
     }
   },
+  components: {
+    CardsGrid
+  },
   mounted () {
     window.scrollTo(0, 0)
   },
@@ -62,7 +63,7 @@ export default {
       const port = ''
       const client = new algosdk.Algodv2(token, server, port)
 
-      client.accountInformation(this.$refs.address.value).do().then(response => {
+      client.accountInformation(this.userAddress).do().then(response => {
         for (const a of response.assets) {
           if (a.amount > 0 && alchemonIds.includes(a['asset-id'])) {
             console.log(a)
@@ -81,6 +82,7 @@ export default {
 }
 .cards {
   padding: 1%;
+  padding-top: 10%;
   background-image: linear-gradient(to right, #007bff, #00bbff, #8ad1ff);
 }
 a {
