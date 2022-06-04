@@ -7,9 +7,13 @@
         <p> {{ name }}</p>
         <p> {{ id }}</p>
         <p> Available: {{ amount}} </p>
-        <button @click="purchaseItem('myalgo')" class="boxShadow nftButton">5 ALGO</button>
+        <button @click="TogglePopup('buttonTrigger')" class="boxShadow nftButton">5 ALGO</button>
         </div>
     </div>
+<popup-window
+v-if="popupTriggers.buttonTrigger" @wallet="purchaseItem">
+<h2>Connect Your Wallet</h2>
+</popup-window>
 </template>
 
 <style lang="scss" scoped>
@@ -33,12 +37,17 @@
     font-family: poppins;
     text-align: center;
     background-color: orange;
-    border: none;
+    border: 2px solid orange;
     color: white;
     cursor: pointer;
     border-radius: 8px;
     padding: 0 5%;
     margin: 1% 4%;
+}
+.nftButton:hover {
+  background-color:darkblue;
+  border: 2px solid orange;
+  color: orange;
 }
 // @media (max-width: 1100px) {
 //   .nftContainer {
@@ -53,6 +62,10 @@ import WalletConnect from '@walletconnect/client'
 import QRCodeModal from 'algorand-walletconnect-qrcode-modal'
 import axios from 'axios'
 import { formatJsonRpcRequest } from '@json-rpc-tools/utils'
+
+import { ref } from 'vue'
+import PopupWindow from './PopupWindow.vue'
+
 const apiURL = 'https://avk5m0z0nc.execute-api.us-east-1.amazonaws.com'
 let signedTxn
 let address
@@ -70,9 +83,40 @@ const alchemonIds = {
   490141855: 753859901,
   493271743: 753859975
 }
+const popupTriggers = ref({
+  buttonTrigger: false
+})
 export default {
+  components: { PopupWindow },
   props: ['name', 'id', 'amount'],
+  data () {
+    return {
+      PopupWindow,
+      popupTriggers
+    }
+  },
   methods: {
+    TogglePopup (trigger) {
+      if (address === undefined) {
+        if (myAlgoConnect.connected) {
+          address = account[0].address
+          this.purchaseItem('myalgo')
+        } else if (walletConnector.connected) {
+          address = walletConnector.accounts[0]
+          this.purchaseItem('pera')
+        } else {
+          popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+        }
+      } else if (myAlgoConnect.connected) {
+        address = account[0].address
+        this.purchaseItem('myalgo')
+      } else if (walletConnector.connected) {
+        address = walletConnector.accounts[0]
+        this.purchaseItem('pera')
+      } else {
+        window.alert('Error. Please try again.')
+      }
+    },
     async buyWithAlgo (wallet) {
       const payWithAlgoResponse = await axios.post(`${apiURL}/payWithAlgo`, {
         customerAddress: address,
@@ -125,6 +169,10 @@ export default {
       // }
     },
     async purchaseItem (wallet) {
+      // eslint-disable-next-line dot-notation
+      if (popupTriggers.value['buttonTrigger'] === true) {
+        this.TogglePopup('buttonTrigger')
+      }
       if (address === undefined) {
         switch (wallet) {
           case 'myalgo':
@@ -135,31 +183,29 @@ export default {
           // Check if connection is already established
             if (!walletConnector.connected) {
             // create new session
-              await walletConnector.createSession()
+              // eslint-disable-next-line no-undef
+              walletConnector.createSession()
+              // Subscribe to connection events
+              walletConnector.on('connect', (error, payload) => {
+                if (error) {
+                  throw error
+                }
+                address = walletConnector.accounts[0]
+              })
+
+              walletConnector.on('session_update', (error, payload) => {
+                if (error) {
+                  throw error
+                }
+                address = walletConnector.accounts[0]
+              })
+
+              walletConnector.on('disconnect', (error, payload) => {
+                if (error) {
+                  throw error
+                }
+              })
             }
-
-            // Subscribe to connection events
-            walletConnector.on('connect', (error, payload) => {
-              if (error) {
-                throw error
-              }
-            })
-
-            walletConnector.on('session_update', (error, payload) => {
-              if (error) {
-                throw error
-              }
-            })
-
-            walletConnector.on('disconnect', (error, payload) => {
-              if (error) {
-                throw error
-              }
-            })
-
-            address = walletConnector.accounts[0]
-            console.log(address)
-            break
         }
         this.buyWithAlgo(wallet)
       }

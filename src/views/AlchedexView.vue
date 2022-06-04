@@ -122,7 +122,7 @@ a {
   font-family: poppins;
   text-align: center;
   background-color: orange;
-  border: none;
+  border: 2px solid orange;
   color: white;
   cursor: pointer;
   border-radius: 8px;
