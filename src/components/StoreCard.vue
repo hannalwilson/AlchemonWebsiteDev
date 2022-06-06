@@ -1,19 +1,34 @@
 <template>
-    <div class="nftContainer boxShadow">
-      <div class="imgContainer">
-        <img :src= "require(`@/assets/cards/${name}.png`)" class="nftImage">
-      </div>
-    <div class="buttonContainer">
-        <p> {{ name }}</p>
-        <p> {{ id }}</p>
-        <p> Available: {{ amount}} </p>
-        <button @click="TogglePopup('buttonTrigger')" class="boxShadow nftButton">5 ALGO</button>
-        </div>
+  <div class="nftContainer boxShadow">
+    <div class="imgContainer">
+      <img :src="require(`@/assets/cards/${name}.png`)" class="nftImage">
     </div>
-<popup-window
-v-if="popupTriggers.buttonTrigger" @wallet="purchaseItem">
-<h2>Connect Your Wallet</h2>
-</popup-window>
+    <div class="buttonContainer">
+      <p> {{ name }}</p>
+      <p> {{ id }}</p>
+      <p> Available: {{ amount}} </p>
+      <button @click="TogglePopup('chooseWallet')" class="boxShadow nftButton">5 ALGO</button>
+    </div>
+  </div>
+  <popup-window v-if="popupTriggers.chooseWallet">
+    <h2>Connect Your Wallet</h2>
+    <button class="boxShadow" @click="purchaseItem('myalgo')">
+      MyAlgo
+    </button>
+    <button class="boxShadow" @click="purchaseItem('walletconnect')">
+      WalletConnect
+    </button>
+    <button class="boxShadow" @click="TogglePopup('makePurchase')">Cancel</button>
+  </popup-window>
+  <popup-window v-if="popupTriggers.makePurchase">
+    <h2>Confirm Purchase</h2>
+    <button class="boxShadow" @click="buyWithAlgo">Buy NFT</button>
+    <button class="boxShadow" @click="TogglePopup('makePurchase')">Cancel</button>
+  </popup-window>
+  <popup-window v-if="popupTriggers.signTransaction">
+    <h2>Please open your wallet app to sign the transaction!</h2>
+    <button class="boxShadow" @click="TogglePopup('signTransaction')">Close</button>
+  </popup-window>
 </template>
 
 <style lang="scss" scoped>
@@ -33,7 +48,7 @@ v-if="popupTriggers.buttonTrigger" @wallet="purchaseItem">
     margin: 3%;
     margin-bottom: 5%;
 }
-.nftButton {
+button {
     font-family: poppins;
     text-align: center;
     background-color: orange;
@@ -44,7 +59,7 @@ v-if="popupTriggers.buttonTrigger" @wallet="purchaseItem">
     padding: 0 5%;
     margin: 1% 4%;
 }
-.nftButton:hover {
+button:hover {
   background-color:darkblue;
   border: 2px solid orange;
   color: orange;
@@ -70,6 +85,7 @@ const apiURL = 'https://avk5m0z0nc.execute-api.us-east-1.amazonaws.com'
 let signedTxn
 let address
 let account
+let userWallet
 const myAlgoConnect = new MyAlgoConnect()
 const walletConnector = new WalletConnect(
   {
@@ -84,7 +100,9 @@ const alchemonIds = {
   493271743: 753859975
 }
 const popupTriggers = ref({
-  buttonTrigger: false
+  chooseWallet: false,
+  makePurchase: false,
+  signTransaction: false
 })
 export default {
   components: { PopupWindow },
@@ -97,27 +115,14 @@ export default {
   },
   methods: {
     TogglePopup (trigger) {
-      if (address === undefined) {
-        if (myAlgoConnect.connected) {
-          address = account[0].address
-          this.purchaseItem('myalgo')
-        } else if (walletConnector.connected) {
-          address = walletConnector.accounts[0]
-          this.purchaseItem('pera')
-        } else {
-          popupTriggers.value[trigger] = !popupTriggers.value[trigger]
-        }
-      } else if (myAlgoConnect.connected) {
-        address = account[0].address
-        this.purchaseItem('myalgo')
-      } else if (walletConnector.connected) {
-        address = walletConnector.accounts[0]
-        this.purchaseItem('pera')
-      } else {
-        window.alert('Error. Please try again.')
-      }
+      popupTriggers.value[trigger] = !popupTriggers.value[trigger]
     },
-    async buyWithAlgo (wallet) {
+    async buyWithAlgo () {
+      this.TogglePopup('makePurchase')
+      if (address === undefined && walletConnector.connected) {
+        address = walletConnector.accounts[0]
+      }
+      console.log(address)
       const payWithAlgoResponse = await axios.post(`${apiURL}/payWithAlgo`, {
         customerAddress: address,
         itemShopAppId: alchemonIds[this.id],
@@ -128,7 +133,7 @@ export default {
       const serializedTxns = payWithAlgoResponse.data.txns
       console.log(serializedTxns)
       let signedTxns
-      switch (wallet) {
+      switch (userWallet) {
         case 'myalgo':
           signedTxns = await myAlgoConnect.signTransaction(serializedTxns)
           console.log(signedTxns)
@@ -139,7 +144,8 @@ export default {
           }
           console.log(signedTxn)
           break
-        case 'pera':
+        case 'walletconnect':
+          this.TogglePopup('signTransaction')
           // eslint-disable-next-line no-case-declarations
           const txnsToSign = serializedTxns.map(txn => {
             const encodedTxn = txn
@@ -170,45 +176,45 @@ export default {
     },
     async purchaseItem (wallet) {
       // eslint-disable-next-line dot-notation
-      if (popupTriggers.value['buttonTrigger'] === true) {
-        this.TogglePopup('buttonTrigger')
+      if (popupTriggers.value['chooseWallet'] === true) {
+        this.TogglePopup('chooseWallet')
       }
-      if (address === undefined) {
-        switch (wallet) {
-          case 'myalgo':
-            account = await myAlgoConnect.connect()
-            address = account[0].address
-            break
-          case 'pera':
+      userWallet = wallet
+      switch (wallet) {
+        case 'myalgo':
+          account = await myAlgoConnect.connect()
+          address = account[0].address
+          break
+        case 'walletconnect':
           // Check if connection is already established
-            if (!walletConnector.connected) {
+          if (!walletConnector.connected) {
             // create new session
-              // eslint-disable-next-line no-undef
-              walletConnector.createSession()
-              // Subscribe to connection events
-              walletConnector.on('connect', (error, payload) => {
-                if (error) {
-                  throw error
-                }
-                address = walletConnector.accounts[0]
-              })
-
-              walletConnector.on('session_update', (error, payload) => {
-                if (error) {
-                  throw error
-                }
-                address = walletConnector.accounts[0]
-              })
-
-              walletConnector.on('disconnect', (error, payload) => {
-                if (error) {
-                  throw error
-                }
-              })
+            // eslint-disable-next-line no-undef
+            walletConnector.createSession()
+          }
+          // Subscribe to connection events
+          walletConnector.on('connect', (error, payload) => {
+            if (error) {
+              throw error
             }
-        }
-        this.buyWithAlgo(wallet)
+            address = walletConnector.accounts[0]
+          })
+
+          walletConnector.on('session_update', (error, payload) => {
+            if (error) {
+              throw error
+            }
+            address = walletConnector.accounts[0]
+          })
+
+          walletConnector.on('disconnect', (error, payload) => {
+            if (error) {
+              throw error
+            }
+            address = undefined
+          })
       }
+      this.TogglePopup('makePurchase')
     }
   }
 }

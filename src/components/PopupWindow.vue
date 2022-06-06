@@ -1,14 +1,8 @@
 <template>
     <div class="popup">
-    <div class="popup-inner">
-        <slot />
-        <button class="boxShadow" @click="$emit('wallet', 'myalgo')">
-        MyAlgo
-        </button>
-         <button class="boxShadow" @click="$emit('wallet', 'pera')">
-        WalletConnect
-        </button>
-    </div>
+        <div class="popup-inner">
+            <slot />
+        </div>
     </div>
 </template>
 

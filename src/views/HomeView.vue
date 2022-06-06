@@ -41,7 +41,6 @@ export default {
 <style lang="scss" scoped>
 #backgroundVideo {
   width: 100%;
-  margin-bottom: -6%;
 }
 .downloadButton {
     background-color: orange; /* Sets the background color of the button to white */

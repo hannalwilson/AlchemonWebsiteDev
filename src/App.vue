@@ -26,6 +26,7 @@ export default {
 </script>
 
 <style lang="scss">
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 #app {
@@ -41,6 +42,7 @@ export default {
     margin: 0;
     display: grid;
     grid-template-rows: 1fr auto;
+    overflow-wrap: break-word;
 }
 p{
   text-align: justify;
