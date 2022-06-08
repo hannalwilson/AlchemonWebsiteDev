@@ -467,7 +467,7 @@ export default {
         },
         {
           image: '1_gheist.png',
-          id: '306729637',
+          id: '306180273',
           type: 'Psychic',
           minted: '80'
         }
