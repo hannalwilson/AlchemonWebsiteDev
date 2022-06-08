@@ -15,6 +15,7 @@ import BetaView from '../views/BetaView.vue'
 import InstructionsView from '../views/InstructionsView.vue'
 import StakingView from '../views/StakingView.vue'
 import MyAlchemonView from '../views/MyAlchemon.vue'
+import WalletView from '../views/WalletView.vue'
 // import CraftingView from '../views/CraftingView.vue'
 // import EvolveView from '../views/EvolveView.vue'
 
@@ -98,6 +99,11 @@ const routes = [
     path: '/myalchemon',
     name: 'myalchemon',
     component: MyAlchemonView
+  },
+  {
+    path: '/wallet',
+    name: 'wallet',
+    component: WalletView
   }
   // {
   //   path: '/crafting',

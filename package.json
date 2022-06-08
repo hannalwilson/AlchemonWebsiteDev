@@ -10,8 +10,12 @@
     "deploy": "aws --region us-west-2 --profile websiteAdmin s3 sync ./dist s3://alchemon.net --delete"
   },
   "dependencies": {
+    "@json-rpc-tools/utils": "^1.7.6",
     "@randlabs/myalgo-connect": "^1.1.3",
-    "algosdk": "^1.15.0",
+    "@walletconnect/client": "^1.7.8",
+    "@walletconnect/node": "^1.0.0",
+    "@walletconnect/qrcode-modal": "^1.7.8",
+    "algorand-walletconnect-qrcode-modal": "^1.7.4",
     "axios": "^0.26.1",
     "buffer": "^6.0.3",
     "core-js": "^3.8.3",
@@ -32,7 +36,7 @@
     "@vue/cli-plugin-vuex": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "@vue/eslint-config-standard": "^6.1.0",
-    "algosdk": "^1.15.0",
+    "algosdk": "^1.16.0",
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-node": "^11.1.0",
