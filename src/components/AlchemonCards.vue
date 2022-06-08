@@ -1,6 +1,6 @@
 <template>
     <div class='cardContainer boxShadow'>
-        <img :src= "require(`../assets/cards/${image}`)" class="cardImage">
+        <img :src= "require(`../assets/cards/${name}.png`)" class="cardImage">
         <p class="cardText"> {{id}}<br>
         Type(s): {{ type }}<br>
         Minted: {{ minted }}</p>
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  props: ['image', 'id', 'type', 'minted']
+  props: ['name', 'id', 'type', 'minted']
 }
 </script>
 

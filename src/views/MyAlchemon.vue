@@ -1,18 +1,43 @@
 <template>
-<div>
-    <alchemon-cards v-for="card in cards"
-    :key="card.assetId"
-    :name="card.name"
-    :id="card.id"
-    :type="card.type"
-    :minted="card.minted"
-    >
-    </alchemon-cards>
-</div>
+    <div>
+        <div class="whiteGrayBackground">
+            <img src="../assets/alchedex.png" class="alchedex" />
+            <p class="darkBlueHeader spreadText">ALCHEDEX</p>
+        </div>
+
+        <!-- Bar containing all sort inputs -->
+        <div class="cards">
+            <div id="sort-bar">
+                <select name="sortBy" id="select" v-model="sortBy" class="boxShadow">
+                    <option value="alphabetically">Alphabetically</option>
+                    <option value="number">Number</option>
+                    <option value="set">Set</option>
+                    <option value="rarity">Rarity</option>
+                    <option value="type">Type</option>
+                </select>
+                <button @click="ascending = !ascending" class="sort-button boxShadow">
+                    <i v-if="ascending">▲</i>
+                    <i v-else>▼</i>
+                </button>
+                <input type="text" v-model="searchValue" placeholder="Search Alchemon" id="search-input"
+                    class="boxShadow" />
+                <i class="fa fa-search"></i>
+            </div>
+
+            <!-- Where the array of Cards get rendered as cards -->
+            <div>
+                <alchemon-cards v-for="card in filteredCards" :key="card.assetId" :name="card.name" :id="card.id"
+                    :type="card.type" :minted="card.minted">
+                </alchemon-cards>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
-import AlchemonCards from './AlchemonCards.vue'
+import AlchemonCards from '../components/AlchemonCards.vue'
+
+let tempCards
 
 export default {
   components: {
@@ -20,6 +45,9 @@ export default {
   },
   data () {
     return {
+      ascending: false,
+      sortBy: 'number',
+      searchValue: '',
       cards: [
         {
           name: 'Araknadevil',
@@ -27,7 +55,8 @@ export default {
           type: 'Insect, Earth, Water, Flying',
           minted: '2000',
           set: 5,
-          rarity: 'Legendary'
+          rarity: 1,
+          number: 75
         },
         {
           name: 'Torcydious',
@@ -35,7 +64,8 @@ export default {
           type: 'Earth, Water',
           minted: '3000',
           set: 5,
-          rarity: 'Epic'
+          rarity: 2,
+          number: 74
         },
         {
           name: 'Araknolyth',
@@ -43,7 +73,8 @@ export default {
           type: 'Insect, Flying',
           minted: '3000',
           set: 5,
-          rarity: 'Epic'
+          rarity: 2,
+          number: 73
         },
         {
           name: 'Incydious',
@@ -51,7 +82,8 @@ export default {
           type: 'Earth',
           minted: '5000',
           set: 5,
-          rarity: 'Rare'
+          rarity: 3,
+          number: 72
         },
         {
           name: 'Cydevil',
@@ -59,7 +91,8 @@ export default {
           type: 'Earth',
           minted: '6500',
           set: 5,
-          rarity: 'Uncommon'
+          rarity: 4,
+          number: 71
         },
         {
           name: 'Cyd',
@@ -67,7 +100,8 @@ export default {
           type: 'Earth',
           minted: '8000',
           set: 5,
-          rarity: 'Common'
+          rarity: 5,
+          number: 70
         },
         {
           name: 'Torrment',
@@ -75,7 +109,8 @@ export default {
           type: 'Water',
           minted: '5000',
           set: 5,
-          rarity: 'Rare'
+          rarity: 3,
+          number: 69
         },
         {
           name: 'Torrden',
@@ -83,7 +118,8 @@ export default {
           type: 'Water',
           minted: '6500',
           set: 5,
-          rarity: 'Uncommon'
+          rarity: 4,
+          number: 68
         },
         {
           name: 'Torr',
@@ -91,7 +127,8 @@ export default {
           type: 'Water',
           minted: '8000',
           set: 5,
-          rarity: 'Common'
+          rarity: 5,
+          number: 67
         },
         {
           name: 'Arakumo',
@@ -99,7 +136,8 @@ export default {
           type: 'Insect',
           minted: '5000',
           set: 5,
-          rarity: 'Rare'
+          rarity: 3,
+          number: 66
         },
         {
           name: 'Araku',
@@ -107,7 +145,8 @@ export default {
           type: 'Insect',
           minted: '6500',
           set: 5,
-          rarity: 'Uncommon'
+          rarity: 4,
+          number: 65
         },
         {
           name: 'Kumo',
@@ -115,7 +154,8 @@ export default {
           type: 'Insect',
           minted: '8000',
           set: 5,
-          rarity: 'Common'
+          rarity: 5,
+          number: 64
         },
         {
           name: 'Monolyth',
@@ -123,7 +163,8 @@ export default {
           type: 'Flying',
           minted: '5000',
           set: 5,
-          rarity: 'Rare'
+          rarity: 3,
+          number: 63
         },
         {
           name: 'Golyth',
@@ -131,7 +172,8 @@ export default {
           type: 'Flying',
           minted: '6500',
           set: 5,
-          rarity: 'Uncommon'
+          rarity: 4,
+          number: 62
         },
         {
           name: 'Lyth',
@@ -139,7 +181,8 @@ export default {
           type: 'Flying',
           minted: '8000',
           set: 5,
-          rarity: 'Common'
+          rarity: 5,
+          number: 61
         },
         {
           name: 'Cyclostorm',
@@ -147,7 +190,8 @@ export default {
           type: 'Earth, Electric, Ice, Plant',
           minted: '2000',
           set: 4,
-          rarity: 'Legendary'
+          rarity: 1,
+          number: 60
         },
         {
           name: 'Chomperz',
@@ -155,7 +199,8 @@ export default {
           type: 'Earth, Plant',
           minted: '3000',
           set: 4,
-          rarity: 'Epic'
+          rarity: 2,
+          number: 59
         },
         {
           name: 'Voltstorm',
@@ -163,7 +208,8 @@ export default {
           type: 'Electric, Ice',
           minted: '3000',
           set: 4,
-          rarity: 'Epic'
+          rarity: 2,
+          number: 58
         },
         {
           name: 'Likachomp',
@@ -171,7 +217,8 @@ export default {
           type: 'Plant',
           minted: '5000',
           set: 4,
-          rarity: 'Rare'
+          rarity: 3,
+          number: 57
         },
         {
           name: 'Chomp',
@@ -179,7 +226,8 @@ export default {
           type: 'Plant',
           minted: '6500',
           set: 4,
-          rarity: 'Uncommon'
+          rarity: 4,
+          number: 56
         },
         {
           name: 'Lika',
@@ -187,7 +235,8 @@ export default {
           type: 'Plant',
           minted: '8000',
           set: 4,
-          rarity: 'Common'
+          rarity: 5,
+          number: 55
         },
         {
           name: 'Daggerpult',
@@ -195,7 +244,8 @@ export default {
           type: 'Earth',
           minted: '5000',
           set: 4,
-          rarity: 'Rare'
+          rarity: 3,
+          number: 54
         },
         {
           name: 'Daggerz',
@@ -203,7 +253,8 @@ export default {
           type: 'Earth',
           minted: '6500',
           set: 4,
-          rarity: 'Uncommon'
+          rarity: 4,
+          number: 53
         },
         {
           name: 'Dagz',
@@ -211,7 +262,8 @@ export default {
           type: 'Earth',
           minted: '8000',
           set: 4,
-          rarity: 'Common'
+          rarity: 5,
+          number: 52
         },
         {
           name: 'Hailstorm',
@@ -219,7 +271,8 @@ export default {
           type: 'Ice',
           minted: '5000',
           set: 4,
-          rarity: 'Rare'
+          rarity: 3,
+          number: 51
         },
         {
           name: 'Hailpuff',
@@ -227,7 +280,8 @@ export default {
           type: 'Ice',
           minted: '6500',
           set: 4,
-          rarity: 'Uncommon'
+          rarity: 4,
+          number: 50
         },
         {
           name: 'Puff',
@@ -235,7 +289,8 @@ export default {
           type: 'Ice',
           minted: '8000',
           set: 4,
-          rarity: 'Common'
+          rarity: 5,
+          number: 49
         },
         {
           name: 'Zipacute',
@@ -243,7 +298,8 @@ export default {
           type: 'Electric',
           minted: '5000',
           set: 4,
-          rarity: 'Rare'
+          rarity: 3,
+          number: 48
         },
         {
           name: 'Zipadol',
@@ -251,7 +307,8 @@ export default {
           type: 'Electric',
           minted: '6500',
           set: 4,
-          rarity: 'Uncommon'
+          rarity: 4,
+          number: 47
         },
         {
           name: 'Zip',
@@ -259,7 +316,8 @@ export default {
           type: 'Electric',
           minted: '8000',
           set: 4,
-          rarity: 'Common'
+          rarity: 5,
+          number: 46
         },
         {
           name: 'Venoreaper',
@@ -267,7 +325,8 @@ export default {
           type: 'Earth, Ice, Insect, Psychic',
           minted: '150',
           set: 3,
-          rarity: 'Legendary'
+          rarity: 1,
+          number: 45
         },
         {
           name: 'Demoreaper',
@@ -275,7 +334,8 @@ export default {
           type: 'Earth, Insect',
           minted: '250',
           set: 3,
-          rarity: 'Epic'
+          rarity: 2,
+          number: 44
         },
         {
           name: 'Venafrost',
@@ -283,7 +343,8 @@ export default {
           type: 'Ice, Psychic',
           minted: '250',
           set: 3,
-          rarity: 'Epic'
+          rarity: 2,
+          number: 43
         },
         {
           name: 'Demolisher',
@@ -291,7 +352,8 @@ export default {
           type: 'Earth',
           minted: '400',
           set: 3,
-          rarity: 'Rare'
+          rarity: 3,
+          number: 42
         },
         {
           name: 'Demolite',
@@ -299,7 +361,8 @@ export default {
           type: 'Earth',
           minted: '500',
           set: 3,
-          rarity: 'Uncommon'
+          rarity: 4,
+          number: 41
         },
         {
           name: 'Demo',
@@ -307,7 +370,8 @@ export default {
           type: 'Earth',
           minted: '600',
           set: 3,
-          rarity: 'Common'
+          rarity: 5,
+          number: 40
         },
         {
           name: 'Mantireaper',
@@ -315,7 +379,8 @@ export default {
           type: 'Insect',
           minted: '400',
           set: 3,
-          rarity: 'Rare'
+          rarity: 3,
+          number: 39
         },
         {
           name: 'Mantigrip',
@@ -323,7 +388,8 @@ export default {
           type: 'Insect',
           minted: '500',
           set: 3,
-          rarity: 'Uncommon'
+          rarity: 4,
+          number: 38
         },
         {
           name: 'Manti',
@@ -331,7 +397,8 @@ export default {
           type: 'Insect',
           minted: '600',
           set: 3,
-          rarity: 'Common'
+          rarity: 5,
+          number: 37
         },
         {
           name: 'Frostbite',
@@ -339,7 +406,8 @@ export default {
           type: 'Ice',
           minted: '400',
           set: 3,
-          rarity: 'Rare'
+          rarity: 3,
+          number: 36
         },
         {
           name: 'Icesaber',
@@ -347,7 +415,8 @@ export default {
           type: 'Ice',
           minted: '500',
           set: 3,
-          rarity: 'Uncommon'
+          rarity: 4,
+          number: 35
         },
         {
           name: 'Sable',
@@ -355,7 +424,8 @@ export default {
           type: 'Ice',
           minted: '600',
           set: 3,
-          rarity: 'Common'
+          rarity: 5,
+          number: 34
         },
         {
           name: 'Venatrix',
@@ -363,7 +433,8 @@ export default {
           type: 'Psychic',
           minted: '400',
           set: 3,
-          rarity: 'Rare'
+          rarity: 3,
+          number: 33
         },
         {
           name: 'Ventar',
@@ -371,7 +442,8 @@ export default {
           type: 'Psychic',
           minted: '500',
           set: 3,
-          rarity: 'Uncommon'
+          rarity: 4,
+          number: 32
         },
         {
           name: 'Vena',
@@ -379,7 +451,8 @@ export default {
           type: 'Psychic',
           minted: '600',
           set: 3,
-          rarity: 'Common'
+          rarity: 5,
+          number: 31
         },
         {
           name: 'Shred-X',
@@ -387,7 +460,8 @@ export default {
           type: 'Fire, Flying, Martial Arts, Water',
           minted: '25',
           set: 2,
-          rarity: 'Legendary'
+          rarity: 1,
+          number: 30
         },
         {
           name: 'Lavaslayer',
@@ -395,7 +469,8 @@ export default {
           type: 'Fire, Flying',
           minted: '45',
           set: 2,
-          rarity: 'Epic'
+          rarity: 2,
+          number: 29
         },
         {
           name: 'Slugginslash',
@@ -403,7 +478,8 @@ export default {
           type: 'Martial Arts, Water',
           minted: '45',
           set: 2,
-          rarity: 'Epic'
+          rarity: 2,
+          number: 28
         },
         {
           name: 'Lavatrix',
@@ -411,7 +487,8 @@ export default {
           type: 'Fire',
           minted: '60',
           set: 2,
-          rarity: 'Rare'
+          rarity: 3,
+          number: 27
         },
         {
           name: 'Igniter',
@@ -419,7 +496,8 @@ export default {
           type: 'Fire',
           minted: '90',
           set: 2,
-          rarity: 'Uncommon'
+          rarity: 4,
+          number: 26
         },
         {
           name: 'Iggy',
@@ -427,7 +505,8 @@ export default {
           type: 'Fire',
           minted: '120',
           set: 2,
-          rarity: 'Common'
+          rarity: 5,
+          number: 25
         },
         {
           name: 'Drathslayer',
@@ -435,7 +514,8 @@ export default {
           type: 'Flying',
           minted: '60',
           set: 2,
-          rarity: 'Rare'
+          rarity: 3,
+          number: 24
         },
         {
           name: 'Drathula',
@@ -443,7 +523,8 @@ export default {
           type: 'Flying',
           minted: '90',
           set: 2,
-          rarity: 'Uncommon'
+          rarity: 4,
+          number: 23
         },
         {
           name: 'Drath',
@@ -451,7 +532,8 @@ export default {
           type: 'Flying',
           minted: '120',
           set: 2,
-          rarity: 'Common'
+          rarity: 5,
+          number: 22
         },
         {
           name: 'Sluggernaut',
@@ -459,7 +541,8 @@ export default {
           type: 'Martial Arts',
           minted: '60',
           set: 2,
-          rarity: 'Rare'
+          rarity: 3,
+          number: 21
         },
         {
           name: 'Slugger',
@@ -467,7 +550,8 @@ export default {
           type: 'Martial Arts',
           minted: '90',
           set: 2,
-          rarity: 'Uncommon'
+          rarity: 4,
+          number: 20
         },
         {
           name: 'Slug',
@@ -475,7 +559,8 @@ export default {
           type: 'Martial Arts',
           minted: '120',
           set: 2,
-          rarity: 'Common'
+          rarity: 5,
+          number: 19
         },
         {
           name: 'Archislash',
@@ -483,7 +568,8 @@ export default {
           type: 'Water',
           minted: '60',
           set: 2,
-          rarity: 'Rare'
+          rarity: 3,
+          number: 18
         },
         {
           name: 'Archicut',
@@ -491,7 +577,8 @@ export default {
           type: 'Water',
           minted: '90',
           set: 2,
-          rarity: 'Uncommon'
+          rarity: 4,
+          number: 17
         },
         {
           name: 'Arch',
@@ -499,15 +586,17 @@ export default {
           type: 'Water',
           minted: '120',
           set: 2,
-          rarity: 'Common'
+          rarity: 5,
+          number: 16
         },
         {
           name: 'Psychosaurus',
           id: '315166675',
           type: 'Electric, Martial Arts, Psychic, Water',
-          minted: '5',
+          minted: 5,
           set: 1,
-          rarity: 'Legendary'
+          rarity: 1,
+          number: 15
         },
         {
           name: 'Shoctosaur',
@@ -515,7 +604,8 @@ export default {
           type: 'Electric, Water',
           minted: '10',
           set: 1,
-          rarity: 'Epic'
+          rarity: 2,
+          number: 14
         },
         {
           name: 'Psychomenice',
@@ -523,7 +613,8 @@ export default {
           type: 'Martial Arts, Psychic',
           minted: '10',
           set: 1,
-          rarity: 'Epic'
+          rarity: 2,
+          number: 13
         },
         {
           name: 'Flightning',
@@ -531,7 +622,8 @@ export default {
           type: 'Electric',
           minted: '20',
           set: 1,
-          rarity: 'Rare'
+          rarity: 3,
+          number: 12
         },
         {
           name: 'Shockner',
@@ -539,7 +631,8 @@ export default {
           type: 'Electric',
           minted: '40',
           set: 1,
-          rarity: 'Uncommon'
+          rarity: 4,
+          number: 11
         },
         {
           name: 'Bolt',
@@ -547,7 +640,8 @@ export default {
           type: 'Electric',
           minted: '80',
           set: 1,
-          rarity: 'Common'
+          rarity: 5,
+          number: 10
         },
         {
           name: 'Troctosaur',
@@ -555,7 +649,8 @@ export default {
           type: 'Water',
           minted: '20',
           set: 1,
-          rarity: 'Rare'
+          rarity: 3,
+          number: 9
         },
         {
           name: 'Troctor',
@@ -563,7 +658,8 @@ export default {
           type: 'Water',
           minted: '40',
           set: 1,
-          rarity: 'Uncommon'
+          rarity: 4,
+          number: 8
         },
         {
           name: 'Troc',
@@ -571,7 +667,8 @@ export default {
           type: 'Water',
           minted: '80',
           set: 1,
-          rarity: 'Common'
+          rarity: 5,
+          number: 7
         },
         {
           name: 'Miyamenice',
@@ -579,7 +676,8 @@ export default {
           type: 'Martial Arts',
           minted: '20',
           set: 1,
-          rarity: 'Rare'
+          rarity: 3,
+          number: 6
         },
         {
           name: 'Miyachu',
@@ -587,7 +685,8 @@ export default {
           type: 'Martial Arts',
           minted: '40',
           set: 1,
-          rarity: 'Uncommon'
+          rarity: 4,
+          number: 5
         },
         {
           name: 'Miya',
@@ -595,7 +694,8 @@ export default {
           type: 'Martial Arts',
           minted: '80',
           set: 1,
-          rarity: 'Common'
+          rarity: 5,
+          number: 4
         },
         {
           name: 'Psychgeist',
@@ -603,7 +703,8 @@ export default {
           type: 'Psychic',
           minted: '20',
           set: 1,
-          rarity: 'Rare'
+          rarity: 3,
+          number: 3
         },
         {
           name: 'Gheistly',
@@ -611,7 +712,8 @@ export default {
           type: 'Psychic',
           minted: '40',
           set: 1,
-          rarity: 'Uncommon'
+          rarity: 4,
+          number: 2
         },
         {
           name: 'Gheist',
@@ -619,19 +721,151 @@ export default {
           type: 'Psychic',
           minted: '80',
           set: 1,
-          rarity: 'Common'
+          rarity: 5,
+          number: 1
         }
       ]
+    }
+  },
+  computed: {
+    filteredCards () {
+      tempCards = this.cards
+
+      // Process search input
+      if (this.searchValue !== '' && this.searchValue) {
+        tempCards = tempCards.filter((item) => {
+          return item.name
+            .toUpperCase()
+            .includes(this.searchValue.toUpperCase())
+        })
+      }
+
+      // Sort by alphabetical order
+      // eslint-disable-next-line array-callback-return
+      tempCards = tempCards.sort((a, b) => {
+        if (this.sortBy === 'alphabetically') {
+          const fa = a.name.toLowerCase()
+          const fb = b.name.toLowerCase()
+
+          if (fa < fb) {
+            return -1
+          }
+          if (fa > fb) {
+            return 1
+          }
+          return 0
+
+          // Sort by set
+        } else if (this.sortBy === 'set') {
+          const fa = a.set
+          const fb = b.set
+
+          if (fa < fb) {
+            return -1
+          }
+          if (fa > fb) {
+            return 1
+          }
+          return 0
+        // Sort by set
+        } else if (this.sortBy === 'number') {
+          const fa = a.number
+          const fb = b.number
+
+          if (fa < fb) {
+            return -1
+          }
+          if (fa > fb) {
+            return 1
+          }
+          return 0
+          // Sort by rarity
+        } else if (this.sortBy === 'rarity') {
+          const fa = a.rarity
+          const fb = b.rarity
+
+          if (fa < fb) {
+            return -1
+          }
+          if (fa > fb) {
+            return 1
+          }
+          return 0
+        }
+      })
+
+      // Show sorted array in descending or ascending order
+      if (!this.ascending) {
+        tempCards.reverse()
+      }
+
+      return tempCards
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-div {
-  align-items: stretch;
+
+.alchedex {
+    width: 35%;
+    margin-bottom: 0%;
 }
+
 alchemon-cards {
-  width: 100vw;
+    width: 100vw;
+}
+
+#sort-bar {
+  margin-left: 10px;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+#ascending-icon {
+  height: 30px;
+  height: 100%;
+  width: 30px;
+}
+
+#select, .sort-button {
+    font-family: poppins;
+    text-align: center;
+    background-color: orange;
+    border: 2px solid orange;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    margin: 1%;
+    font-size: inherit;
+    padding: 2%;
+
+    &:hover{
+          background-color:darkblue;
+          color: orange;
+    }
+}
+
+#search-input {
+  width: 50%;
+    font-family: poppins;
+    border: none;
+    padding: 2%;
+    font-weight: bold;
+    margin-left: 2%;
+}
+
+.cards {
+    padding: 1%;
+    background-image: linear-gradient(to right, #007bff, #00bbff, #8ad1ff);
+}
+
+.sortAscending {
+    background-image: url('../assets/up-arrow.png');
+    width: 100em;
+}
+
+.sortDescending {
+    background-image: url('../assets/up-arrow.png');
 }
 </style>
