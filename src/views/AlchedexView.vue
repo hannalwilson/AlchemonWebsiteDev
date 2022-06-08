@@ -894,15 +894,15 @@ a {
   margin: 1%;
 }
 .submitButton {
-  width: 20%;
   font-family: poppins;
   text-align: center;
   background-color: orange;
-  border: none;
+  border: 2px solid orange;
   color: white;
   cursor: pointer;
   border-radius: 8px;
   margin: 1%;
+  padding: .5%;
 }
 .submitButton:hover {
   background-color:darkblue;
@@ -913,7 +913,7 @@ a {
   width: 50%;
   font-family: poppins;
   border: none;
-  padding: 2%;
+  padding: 1%;
   font-weight: bold;
 }
 #sort-bar {
