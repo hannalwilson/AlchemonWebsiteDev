@@ -1,6 +1,6 @@
 <template>
-<div class="available">
-  <p class="orangeHeader spreadText">EVOLUTIONS AVAILABLE</p>
+  <div class="available">
+    <p class="orangeHeader spreadText">EVOLUTIONS AVAILABLE</p>
     <table class="boxShadow">
       <tr class="tableTitle">
         <td>Alchemon</td>
@@ -12,24 +12,19 @@
       </tr>
     </table>
     <p class="whiteText">
-        View your staked Alchemon NFT Card by entering your wallet address below!
-      </p>
-        <input
-          type="text"
-          id="text"
-          class="darkGrayText_1 boxShadow"
-          placeholder="  Enter wallet address"
-          ref="address"
-      />
-      <button
-        class="submitButton boxShadow"
-        id="btn"
-        @click="getStaked"
-      >Submit</button>
-</div>
+      Check what Alchemon you are staking by entering your wallet address below!
+    </p>
+    <input type="text" id="text" class="darkGrayText_1 boxShadow" placeholder="  Enter wallet address" ref="address" />
+    <button class="boxShadow" id="btn" @click="getStaked">Submit</button>
+  </div>
+  <popup-window v-if="popupTriggers.stakedAlchemon">
+    <h2>You have a(n) {{ userStakedCard }} staked!</h2>
+    <button class="boxShadow" @click="TogglePopup('stakedAlchemon')">Close</button>
+  </popup-window>
 </template>
 
 <style lang="scss" scoped>
+
 div {
     padding: 2%;
 }
@@ -50,18 +45,17 @@ tr {
 .tableTitle {
   background: darkorange;
 }
-.submitButton {
-  width: 20%;
+button {
   font-family: poppins;
   text-align: center;
   background-color: orange;
-  border: none;
+  border: 2px solid orange;
   color: white;
   cursor: pointer;
   border-radius: 8px;
   margin: 1%;
 }
-.submitButton:hover {
+button:hover {
   background-color:darkblue;
   border: 2px solid orange;
   color: orange;
@@ -70,13 +64,15 @@ tr {
   width: 50%;
   font-family: poppins;
   border: none;
-  padding: 2%;
+  padding: 1%;
   font-weight: bold;
 }
 </style>
 
 <script>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
+
+import PopupWindow from '../components/PopupWindow.vue'
 
 const alchemonName = {
   744527019: 'Lyth',
@@ -92,7 +88,22 @@ const alchemonName = {
   744535776: 'Cydevil',
   744536686: 'Incydious'
 }
+
+const popupTriggers = ref({
+  stakedAlchemon: false
+})
+
+let userStakedCard
+
 export default {
+  data () {
+    return {
+      PopupWindow,
+      popupTriggers,
+      userStakedCard
+    }
+  },
+  components: { PopupWindow },
   mounted () {
     window.scrollTo(0, 0)
   },
@@ -184,6 +195,9 @@ export default {
     return { rewardsAvailable }
   },
   methods: {
+    TogglePopup (trigger) {
+      popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+    },
     getStaked () {
       const algosdk = require('algosdk')
       const token = ''
@@ -192,7 +206,7 @@ export default {
       const client = new algosdk.Indexer(token, server, port)
       const stakingAddress = '5Q2PRQDMH7JNT76EYFXBB4UBFVBL6WI37GTJC7HELNPZ4EL5BE6WKQXP4Y'
       let cardFound = false
-      let userStakedCard
+      let userStakedCardId
       // const userTransactions = reactive({})
       client.lookupAccountTransactions(this.$refs.address.value).do().then(response => {
         try {
@@ -200,9 +214,10 @@ export default {
             const userTransaction = response.transactions[i]
             if (userTransaction['asset-transfer-transaction'] !== undefined) {
               if (userTransaction['asset-transfer-transaction'].receiver === stakingAddress) {
-                userStakedCard = userTransaction['asset-transfer-transaction']['asset-id']
-                if (alchemonName[userStakedCard] !== undefined) {
-                  window.alert('You have a(n) ' + alchemonName[userStakedCard] + ' staked!')
+                userStakedCardId = userTransaction['asset-transfer-transaction']['asset-id']
+                if (alchemonName[userStakedCardId] !== undefined) {
+                  this.userStakedCard = alchemonName[userStakedCardId]
+                  this.TogglePopup('stakedAlchemon')
                   cardFound = true
                 } else {
                   window.alert('No card staked!')

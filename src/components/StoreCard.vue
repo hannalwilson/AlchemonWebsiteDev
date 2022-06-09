@@ -18,7 +18,7 @@
     <button class="boxShadow" @click="purchaseItem('walletconnect')">
       WalletConnect
     </button>
-    <button class="boxShadow" @click="TogglePopup('makePurchase')">Cancel</button>
+    <button class="boxShadow" @click="TogglePopup('chooseWallet')">Cancel</button>
   </popup-window>
   <popup-window v-if="popupTriggers.makePurchase">
     <h2>Confirm Purchase</h2>

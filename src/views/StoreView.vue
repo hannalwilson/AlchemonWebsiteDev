@@ -1,17 +1,23 @@
 <template>
-<div>
+  <div>
     <div class="background">
-        <h1 class="spreadText">ALCHESHOP</h1>
+      <h1 class="spreadText">ALCHESHOP</h1>
     </div>
     <div class="forSale">
-        <div v-for="(index, a) in sellingAssets" :key="a" class="shop">
+      <div>
+        <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'alchemon'">Alchemon</button>
+        <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'art'">Art</button>
+        <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'all'">View All</button>
+      </div>
+      <div v-for="(index, a) in filteredItems" :key="a" class="shop">
         <store-card :name="storeItems[a]" :id="a" :amount="index"></store-card>
-        </div>
+      </div>
     </div>
-</div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
+
 .background {
   background-image: url("../assets/alcheshop_coin.png") ,linear-gradient(to right, #007bff, #2A78F8, #4287F9, #89B4FB);
   background-position: center;
@@ -42,9 +48,22 @@ h1 {
   color: #e6ad10;
   -webkit-text-stroke:1px rgb(22, 22, 54);
 }
-.soldOut {
-  padding: 5%;
-  font-size: 8vw;
+button {
+  font-family: poppins;
+  text-align: center;
+  background-color: orange;
+  border: 2px solid orange;
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 1%;
+  padding: .5%;
+}
+
+button:hover {
+  background-color: darkblue;
+  border: 2px solid orange;
+  color: orange;
 }
 </style>
 
@@ -71,6 +90,21 @@ const addresses = [
   'O3BY3EN4SA75TBYKE6OTOCWIYK4CT7EY47HMYJGKET2PICWLNVCO4P2P6E',
   '4CBGCW7NNKN6YQRODCTQ5TDWYK5HGP7N6QLAYIV2ZG6JER3A7GUENNKYN4',
   'BLBMPJ2T2R34STSEIMR2M3ONWRUQKDVERCJA6FYSK563KBNCWWDKKXXPLM'
+]
+
+const storeAlchemon = [
+  // 490139078,
+  // 490146814,
+  // 490141855,
+  // 493271743,
+  744534630,
+  744531764,
+  744551347,
+  744527019
+]
+
+const storeArt = [
+  490139078
 ]
 
 export default {
@@ -104,7 +138,37 @@ export default {
   },
   data () {
     return {
-      storeItems
+      storeItems,
+      viewOnly: 'all'
+    }
+  },
+  computed: {
+    // eslint-disable-next-line vue/return-in-computed-property
+    filteredItems () {
+      let tempItems = this.sellingAssets
+
+      if (this.viewOnly === 'alchemon') {
+        tempItems = this.tempItems.forEach(item => {
+          if (storeAlchemon.includes(item)) {
+            return item
+          }
+        })
+      }
+      if (this.viewOnly === 'art') {
+        // eslint-disable-next-line array-callback-return
+        tempItems = tempItems.keys.filter((item) => {
+          for (const asset in this.sellingAssets) {
+            if (storeArt.includes(asset)) {
+              return item
+            }
+          }
+        })
+      }
+      if (this.viewOnly === 'all') {
+        tempItems = this.sellingAssets
+      }
+
+      return tempItems
     }
   }
 }

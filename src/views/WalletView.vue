@@ -14,7 +14,6 @@ div {
     background-image: linear-gradient(to left, #007bff, #2A78F8, #4287F9, #89B4FB);
 }
 button {
-  width: 20%;
   font-family: poppins;
   text-align: center;
   background-color: orange;

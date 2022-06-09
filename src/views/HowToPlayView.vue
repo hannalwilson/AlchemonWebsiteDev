@@ -36,12 +36,7 @@
         <p>The first and second Rares of each set combine to make an Epic level Alchemon. The third and fourth combine to make another Epic level Alchemon. Combine both unique Epics to craft the rumored Legendary Alchemon. Remember you are combining these 2 Alchemon to make a stronger one, so the original 2 get sent back to the Trading & Staking Wallets. Getting to the top will not be easy. This is also done through RandSwap and will have a higher fee than Trading.</p>
         <img class="zoomIn_1" src="../assets/craft.jpg" width="25%" alt="Crafting">
     </div>
-    <div class="stakinginfo">
-        <p class="yellowHeader spreadText">STAKING HOURS:<br>SUNDAYS 1PM-MONDAYS 1PM PST<br><br>
-        <span class="orangeHeader">EARN ALCHECOIN // WALLET STAKING</span></p><p class="whiteText" style="text-align:center;">AlcheCoin Asset: <b>310014962</b> // Stake Flag Asset: <b>320570576</b></p>
-        <p class="whiteText marginFix_2">Get paid AlcheCoin just by holding Alchemon in your wallet! You must add the AlcheCoin and Stake Flag Assets. This means you get to stake all your Alchemon in your own wallet! The chart below shows how much you will be paid out for each card in your wallet. Payouts will be Saturday evenings. Please ensure you have AlcheCoin and the Stake Flag approved in your wallet so our bot can find your wallet and send you your AlcheCoin, otherwise you will not receive your rewards:</p>
-        <img src="../assets/rewards_table.jpg" width="90%" alt="Staking Rewards Table" class="zoomIn_2">
-    </div>
+    <staking-rewards></staking-rewards>
     <div class="evolveswap">
         <p class="yellowHeader spreadText">EVOLVE // SWAP</p>
         <p class="whiteText">All available evolutions are contained in the <a class="blueLinks" href="https://www.randgallery.com/algo-collection/?address=ALCHY5SJXOXZXADZPD73KO6CYNZXDUWFYANTSXU6RIO3EZACIIXUCS3YDM" target="_blank">Store</a>. The Quick-Evolve links below:</p>
@@ -220,9 +215,11 @@ animation-iteration-count:infinite;
 
 <script>
 import StakingView from './StakingView.vue'
+import StakingRewards from './StakingRewards.vue'
 export default {
   components: {
-    StakingView
+    StakingView,
+    StakingRewards
   },
   mounted () {
     window.scrollTo(0, 0)
