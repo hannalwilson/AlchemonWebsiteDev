@@ -1,10 +1,10 @@
 <template>
-<div>
+<div class="videoContainer">
   <video autoplay muted loop playsinline id="backgroundVideo">
     <source src="../assets/game_video.mp4" type="video/mp4">Your browser does not support HTML5 videos.
   </video>
-  <router-link to="/beta" class="navlinks"><button class="downloadButton boxShadow">DOWNLOAD GAME</button></router-link>
   </div>
+  <router-link to="/beta" class="navlinks"><button class="downloadButton boxShadow">DOWNLOAD GAME</button></router-link>
   <div id="about" class="whiteGrayBackground">
     <img class="centerImage zoomIn_1 sable" src="../assets/34_sable.gif" width="50%" alt="Sable">
     <p class="orangeHeader spreadText">ALCHEMON = ALGO+ALCHEMY+MONSTER<br><br>
@@ -42,13 +42,13 @@ export default {
 #backgroundVideo {
   width: 100%;
 }
+.videoContainer {
+  margin-bottom: -10%;
+}
 .downloadButton {
-    background-color: orange; /* Sets the background color of the button to white */
     color: #000080; /* Sets the color of the button text to black */
     border: solid #000080; /* This makes a solid black border around the button */
-    cursor: pointer;
     border-radius: 2vw;
-    font-family: 'Poppins', sans-serif;
     font-weight: bold;
     padding: 1% 3%;
     letter-spacing: 5px;
@@ -69,9 +69,6 @@ export default {
 @media only screen and (max-width: 1100px) {
   .downloadButton {
     right: 30vw;
-    }
-    #backgroundVideo {
-      margin-bottom: -10%;
     }
 }
 

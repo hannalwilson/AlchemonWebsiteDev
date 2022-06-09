@@ -45,21 +45,6 @@ tr {
 .tableTitle {
   background: darkorange;
 }
-button {
-  font-family: poppins;
-  text-align: center;
-  background-color: orange;
-  border: 2px solid orange;
-  color: white;
-  cursor: pointer;
-  border-radius: 8px;
-  margin: 1%;
-}
-button:hover {
-  background-color:darkblue;
-  border: 2px solid orange;
-  color: orange;
-}
 #text {
   width: 50%;
   font-family: poppins;

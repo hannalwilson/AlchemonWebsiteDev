@@ -113,15 +113,10 @@
 .linkButton {
     margin: 3% 20%;
     width:60%;
-    font-family: poppins;
     font-size: 2vw;
     font-weight: bold;
     letter-spacing: .25vw;
-    background-color: orange;
-    border: none;
-    color: white;
-    cursor: pointer;
-    border-radius: 8px;
+    padding: 0;
 }
 .rules {
     background-image: linear-gradient(to right, #007bff, #2A78F8, #4287F9, #89B4FB);

@@ -32,22 +32,6 @@
     padding-top: 5%;
     background-image: linear-gradient(to left, #007bff, #2A78F8, #4287F9, #89B4FB);
 }
-button {
-  font-family: poppins;
-  text-align: center;
-  background-color: orange;
-  border: 2px solid orange;
-  color: white;
-  cursor: pointer;
-  border-radius: 8px;
-  margin: 1%;
-  padding: 1%;
-}
-button:hover {
-  background-color:darkblue;
-  border: 2px solid orange;
-  color: orange;
-}
 #text {
     width: 50%;
     font-family: poppins;

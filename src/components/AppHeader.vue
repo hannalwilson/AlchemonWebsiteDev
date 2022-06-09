@@ -22,9 +22,6 @@
         <li>
             <router-link to="/alchedex">ALCHEDEX</router-link>
         </li>
-        <li>
-            <router-link to="/myalchemon">USER</router-link>
-        </li>
         <!-- <li>
             <router-link to="/crafting">CRAFT</router-link>
         </li>

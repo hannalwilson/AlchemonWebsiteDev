@@ -9,8 +9,8 @@
         <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'art'">Art</button>
         <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'all'">View All</button>
       </div>
-      <div v-for="(index, a) in filteredItems" :key="a" class="shop">
-        <store-card :name="storeItems[a]" :id="a" :amount="index"></store-card>
+      <div v-for="id in filteredItems" :key="id" class="shop">
+        <store-card :name="storeItems[id]" :id="id" :amount="sellingAssets[id]"></store-card>
       </div>
     </div>
   </div>
@@ -71,6 +71,7 @@ button:hover {
 import { reactive } from 'vue'
 import StoreCard from '../components/StoreCard.vue'
 import algosdk from 'algosdk'
+
 const storeItems = {
   490139078: 'Zip',
   490146814: 'Lika',
@@ -107,6 +108,8 @@ const storeArt = [
   490139078
 ]
 
+const sellingIds = ([])
+
 export default {
   setup () {
     const token = { 'X-API-key': 'sxwIKIENYg9Es5rsmoanF5WAYXBBHDQ70vGvhI4g' }
@@ -123,6 +126,7 @@ export default {
               const amount = a.amount
               const id = b
               sellingAssets[id] = amount
+              sellingIds.push(id)
             }
           }
         }
@@ -145,7 +149,7 @@ export default {
   computed: {
     // eslint-disable-next-line vue/return-in-computed-property
     filteredItems () {
-      let tempItems = this.sellingAssets
+      let tempItems = this.sellingIds
 
       if (this.viewOnly === 'alchemon') {
         tempItems = this.tempItems.forEach(item => {
@@ -167,6 +171,7 @@ export default {
       if (this.viewOnly === 'all') {
         tempItems = this.sellingAssets
       }
+      console.log(tempItems)
 
       return tempItems
     }

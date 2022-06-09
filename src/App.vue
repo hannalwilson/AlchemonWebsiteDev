@@ -130,4 +130,20 @@ body, button, input { font-size: 1.25vw; }
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
+button {
+  font-family: poppins;
+  text-align: center;
+  background-color: orange;
+  border: 2px solid orange;
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 1%;
+  padding: .5%;
+}
+button:hover {
+  background-color:darkblue;
+  border: 2px solid orange;
+  color: orange;
+}
 </style>

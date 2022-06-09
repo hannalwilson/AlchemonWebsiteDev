@@ -266,22 +266,6 @@ alchemon-cards {
 a {
   margin: 1%;
 }
-.submitButton {
-  font-family: poppins;
-  text-align: center;
-  background-color: orange;
-  border: 2px solid orange;
-  color: white;
-  cursor: pointer;
-  border-radius: 8px;
-  margin: 1%;
-  padding: .5%;
-}
-.submitButton:hover {
-  background-color:darkblue;
-  border: 2px solid orange;
-  color: orange;
-}
 #text {
   width: 50%;
   font-family: poppins;
@@ -296,8 +280,7 @@ a {
   text-align: right;
 }
 
-#select,
-.sort-button {
+#select {
   font-family: poppins;
   text-align: left;
   background-color: orange;
