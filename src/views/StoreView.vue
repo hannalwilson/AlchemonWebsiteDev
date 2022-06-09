@@ -65,8 +65,12 @@ button:hover {
 </style>
 
 <script>
-import algosdk from 'algosdk'
 import items from '../data/storeItems.json'
+import algosdk from 'algosdk'
+import { reactive } from 'vue'
+import StoreCard from '../components/StoreCard.vue'
+
+const storeItems = reactive([])
 
 const addresses = [
   '7OVSLHCECWQZ7R4DVV64VWCPG4AL6JTDBLQZZX6FPG22JCIIVFOSTC6GBQ',
@@ -79,24 +83,18 @@ const addresses = [
   'BLBMPJ2T2R34STSEIMR2M3ONWRUQKDVERCJA6FYSK563KBNCWWDKKXXPLM'
 ]
 
-// const itemIds = [
-//   490139078,
-//   490146814,
-//   490141855,
-//   493271743,
-//   744534630,
-//   744531764,
-//   744551347,
-//   744527019
-// ]
-
 export default {
   setup () {
     const token = { 'X-API-key': 'sxwIKIENYg9Es5rsmoanF5WAYXBBHDQ70vGvhI4g' }
     const server = 'https://mainnet-algorand.api.purestake.io/ps2'
     const port = ''
     const client = new algosdk.Algodv2(token, server, port)
-    const storeItems = items
+
+    if (storeItems.length === 0) {
+      for (const item of items) {
+        storeItems.push(item)
+      }
+    }
 
     for (const index in addresses) {
       client.accountInformation(addresses[index]).do().then(response => {
@@ -109,14 +107,12 @@ export default {
         }
       })
     }
-    return { storeItems }
   },
   mounted () {
     window.scrollTo(0, 0)
-    this.viewOnly = 'all'
-    console.log('mounted')
   },
   components: {
+    StoreCard
   },
   data () {
     return {
@@ -125,7 +121,7 @@ export default {
   },
   computed: {
     filteredItems () {
-      let tempItems = this.storeItems
+      let tempItems = storeItems
 
       if (this.viewOnly === 'alchemon') {
         tempItems = tempItems.filter(item => {
