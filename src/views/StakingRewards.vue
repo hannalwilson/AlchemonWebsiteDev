@@ -100,7 +100,7 @@ export default {
         for (const userAsset of response.assets) {
           for (const alchemon of alchemons) {
             if (userAsset['asset-id'] === alchemon.id && userAsset.amount > 0) {
-              this.userRewards += alchemon.reward
+              this.userRewards += (alchemon.reward * userAsset.amount)
             }
           }
         }
