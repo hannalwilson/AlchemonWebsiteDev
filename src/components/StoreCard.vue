@@ -168,16 +168,16 @@ export default {
           console.log(signedTxn)
           break
       }
-      // try {
-      //   const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
-      //     txn: signedTxn
-      //   })
-      //   if (sendTxnResponse.status === 200) {
-      //     window.alert('Transaction Successful!')
-      //   }
-      // } catch {
-      //   window.alert('Transaction Failed.')
-      // }
+      try {
+        const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
+          txn: signedTxn
+        })
+        if (sendTxnResponse.status === 200) {
+          window.alert('Transaction Successful!')
+        }
+      } catch {
+        window.alert('Transaction Failed.')
+      }
     },
     async purchaseItem (wallet) {
       // eslint-disable-next-line dot-notation
