@@ -9,8 +9,9 @@
         <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'art'">Art</button>
         <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'all'">View All</button>
       </div>
-      <div v-for="id in filteredItems" :key="id" class="shop">
-        <store-card :name="storeItems[id]" :id="id" :amount="sellingAssets[id]"></store-card>
+      <div>
+        <store-card v-for="item in filteredItems" :key="item.id" :name="item.name" :id="item.id" :amount="item.amount">
+        </store-card>
       </div>
     </div>
   </div>
@@ -25,10 +26,6 @@
   background-size: cover;
   padding: 15% 0%;
 
-}
-.shop {
-    display: inline-block;
-    padding: 2%;
 }
 p {
     text-align: center;
@@ -68,20 +65,9 @@ button:hover {
 </style>
 
 <script>
-import { reactive } from 'vue'
-import StoreCard from '../components/StoreCard.vue'
 import algosdk from 'algosdk'
+import items from '../data/storeItems.json'
 
-const storeItems = {
-  490139078: 'Zip',
-  490146814: 'Lika',
-  490141855: 'Puff',
-  493271743: 'Dagz',
-  744534630: 'Cyd',
-  744531764: 'Torr',
-  744551347: 'Kumo',
-  744527019: 'Lyth'
-}
 const addresses = [
   '7OVSLHCECWQZ7R4DVV64VWCPG4AL6JTDBLQZZX6FPG22JCIIVFOSTC6GBQ',
   'I3QBOS6X6IWOY7S65CRRU47RAS2IK3TPLXAF3HYVY5JIEP7IXWARBWMJYQ',
@@ -93,22 +79,16 @@ const addresses = [
   'BLBMPJ2T2R34STSEIMR2M3ONWRUQKDVERCJA6FYSK563KBNCWWDKKXXPLM'
 ]
 
-const storeAlchemon = [
-  // 490139078,
-  // 490146814,
-  // 490141855,
-  // 493271743,
-  744534630,
-  744531764,
-  744551347,
-  744527019
-]
-
-const storeArt = [
-  490139078
-]
-
-const sellingIds = ([])
+// const itemIds = [
+//   490139078,
+//   490146814,
+//   490141855,
+//   493271743,
+//   744534630,
+//   744531764,
+//   744551347,
+//   744527019
+// ]
 
 export default {
   setup () {
@@ -116,63 +96,53 @@ export default {
     const server = 'https://mainnet-algorand.api.purestake.io/ps2'
     const port = ''
     const client = new algosdk.Algodv2(token, server, port)
-    const sellingAssets = reactive({})
+    const storeItems = items
+
     for (const index in addresses) {
       client.accountInformation(addresses[index]).do().then(response => {
-        for (const a of response.assets) {
-          for (const b in storeItems) {
-            // eslint-disable-next-line eqeqeq
-            if (a['asset-id'] == b) {
-              const amount = a.amount
-              const id = b
-              sellingAssets[id] = amount
-              sellingIds.push(id)
+        for (const asset of response.assets) {
+          storeItems.forEach(item => {
+            if (item.id === asset['asset-id']) {
+              item.amount = asset.amount
             }
-          }
+          })
         }
       })
     }
-    return { sellingAssets }
+    return { storeItems }
   },
   mounted () {
     window.scrollTo(0, 0)
+    this.viewOnly = 'all'
+    console.log('mounted')
   },
   components: {
-    StoreCard
   },
   data () {
     return {
-      storeItems,
-      viewOnly: 'all'
+      viewOnly: 'alchemon'
     }
   },
   computed: {
-    // eslint-disable-next-line vue/return-in-computed-property
     filteredItems () {
-      let tempItems = this.sellingIds
+      let tempItems = this.storeItems
 
       if (this.viewOnly === 'alchemon') {
-        tempItems = this.tempItems.forEach(item => {
-          if (storeAlchemon.includes(item)) {
-            return item
-          }
+        tempItems = tempItems.filter(item => {
+          return item.type.includes('alchemon')
         })
       }
       if (this.viewOnly === 'art') {
-        // eslint-disable-next-line array-callback-return
-        tempItems = tempItems.keys.filter((item) => {
-          for (const asset in this.sellingAssets) {
-            if (storeArt.includes(asset)) {
-              return item
-            }
-          }
+        tempItems = tempItems.filter(item => {
+          return item.type.includes('art')
         })
       }
       if (this.viewOnly === 'all') {
-        tempItems = this.sellingAssets
+        tempItems = tempItems.filter(item => {
+          return item.type.includes('alchemon')
+        })
       }
       console.log(tempItems)
-
       return tempItems
     }
   }

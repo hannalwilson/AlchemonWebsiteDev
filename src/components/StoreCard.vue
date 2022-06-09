@@ -36,6 +36,7 @@
     border-radius: 1%;
     display: inline-block;
     background-color: lightgray;
+    margin: 2%;
 }
 .imgContainer {
   border-radius: 1% 1% 0% 0%;
