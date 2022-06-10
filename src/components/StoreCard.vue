@@ -9,9 +9,9 @@
       <p> {{ name }}</p>
       <p> {{ id }}</p>
       <p> Available: {{ amount }} </p>
-      <button @click="TogglePopup('chooseWallet'); setAlchemonId(id, cost, type)" class="boxShadow nftButton"
+      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
         v-if="type === 'alchemon'">{{ cost }} ALGO</button>
-      <button @click="TogglePopup('chooseWallet'); setAlchemonId(id, cost, type)" class="boxShadow nftButton"
+      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
         v-if="type === 'art'">{{ cost }} ALCH</button>
     </div>
   </div>
@@ -158,8 +158,17 @@ export default {
       alchemonId = id
       alchemonCost = cost
       alchemonType = type
+      console.log(address)
+      if (address !== undefined) {
+        this.TogglePopup('makePurchase')
+      } else {
+        this.TogglePopup('chooseWallet')
+      }
     },
     TogglePopup (trigger) {
+      if (address !== undefined && trigger === 'chooseWallet') {
+        popupTriggers.value.makePurchase = !popupTriggers.value.makePurchase
+      }
       popupTriggers.value[trigger] = !popupTriggers.value[trigger]
     },
     async buyWithAlgo () {
