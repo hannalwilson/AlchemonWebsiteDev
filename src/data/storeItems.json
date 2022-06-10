@@ -3,49 +3,163 @@
     "name": "Zip",
     "id": 490139078,
     "type": "alchemon",
-    "amount": 0
+    "amount": 0,
+    "cost": 5
 
 },
 {
     "name": "Lika",
     "id": 490146814,
     "type": "alchemon",
-    "amount": 0
+    "amount": 0,
+    "cost": 5
 },
 {
     "name": "Puff",
     "id": 490141855,
     "type": "alchemon",
-    "amount": 0
+    "amount": 0,
+    "cost": 5
 },
 {
     "name": "Dagz",
     "id": 493271743,
     "type": "alchemon",
-    "amount": 0
+    "amount": 0,
+    "cost": 5
 },
 {
     "name": "Cyd",
     "id": 744534630,
     "type": "alchemon",
-    "amount": 0
+    "amount": 0,
+    "cost": 5
 },
 {
     "name": "Torr",
     "id": 744531764,
     "type": "alchemon",
-    "amount": 0
+    "amount": 0,
+    "cost": 5
 },
 {
     "name": "Kumo",
     "id": 744551347,
     "type": "alchemon",
-    "amount": 0
+    "amount": 0,
+    "cost": 5
 },
 {
     "name": "Lyth",
     "id": 744527019,
     "type": "alchemon",
-    "amount": 0
+    "amount": 0,
+    "cost": 5
+},
+{
+    "name": "TOYZ-Gheist",
+    "id": 773003623,
+    "type": "art",
+    "amount": 0,
+    "cost": 2000
+},
+{
+    "name": "TOYZ-Gheistly",
+    "id": 773007053,
+    "type": "art",
+    "amount": 0,
+    "cost": 3000
+},
+{
+    "name": "TOYZ-Psychgeist",
+    "id": 773009639,
+    "type": "art",
+    "amount": 0,
+    "cost": 4000
+},
+{
+    "name": "TOYZ-Miya",
+    "id": 773012590,
+    "type": "art",
+    "amount": 0,
+    "cost": 2000
+},
+{
+    "name": "TOYZ-Miyachu",
+    "id": 773014307,
+    "type": "art",
+    "amount": 0,
+    "cost": 3000
+},
+{
+    "name": "TOYZ-Miyamenice",
+    "id": 773017551,
+    "type": "art",
+    "amount": 0,
+    "cost": 4000
+},
+{
+    "name": "TOYZ-Troc",
+    "id": 773019831,
+    "type": "art",
+    "amount": 0,
+    "cost": 2000
+},
+{
+    "name": "TOYZ-Troctor",
+    "id": 773021991,
+    "type": "art",
+    "amount": 0,
+    "cost": 3000
+},
+{
+    "name": "TOYZ-Troctosaur",
+    "id": 773024860,
+    "type": "art",
+    "amount": 0,
+    "cost": 4000
+},
+{
+    "name": "TOYZ-Bolt",
+    "id": 773028133,
+    "type": "art",
+    "amount": 0,
+    "cost": 2000
+},
+{
+    "name": "TOYZ-Shockner",
+    "id": 773029596,
+    "type": "art",
+    "amount": 0,
+    "cost": 3000
+},
+{
+    "name": "TOYZ-Flightning",
+    "id": 773031968,
+    "type": "art",
+    "amount": 0,
+    "cost": 4000
+},
+{
+    "name": "TOYZ-Psychomenice",
+    "id": 773060393,
+    "type": "art",
+    "amount": 0,
+    "cost": 7500
+},
+{
+    "name": "TOYZ-Shocktosaur",
+    "id": 773062744,
+    "type": "art",
+    "amount": 0,
+    "cost": 7500
+},
+{
+    "name": "TOYZ-Psychosaurus",
+    "id": 773065518,
+    "type": "art",
+    "amount": 0,
+    "cost": 10000
 }
+
 ]

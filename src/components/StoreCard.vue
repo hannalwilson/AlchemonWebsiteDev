@@ -1,13 +1,18 @@
 <template>
   <div class="nftContainer boxShadow">
     <div class="imgContainer">
-      <img :src="require(`@/assets/cards/${name}.png`)" class="nftImage">
+      <img :src="require(`@/assets/alchemon/${name}.png`)" v-if="type === 'alchemon'" class="nftImage">
+      <video :src="require(`@/assets/art/${name}.mp4`)" v-if="type === 'art'" class="nftImage" autoplay muted loop
+        playsinline></video>
     </div>
     <div class="buttonContainer">
       <p> {{ name }}</p>
       <p> {{ id }}</p>
       <p> Available: {{ amount }} </p>
-      <button @click="TogglePopup('chooseWallet'); setAlchemonId(id)" class="boxShadow nftButton">5 ALGO</button>
+      <button @click="TogglePopup('chooseWallet'); setAlchemonId(id, cost, type)" class="boxShadow nftButton"
+        v-if="type === 'alchemon'">{{ cost }} ALGO</button>
+      <button @click="TogglePopup('chooseWallet'); setAlchemonId(id, cost, type)" class="boxShadow nftButton"
+        v-if="type === 'art'">{{ cost }} ALCH</button>
     </div>
   </div>
   <popup-window v-if="popupTriggers.chooseWallet">
@@ -97,6 +102,9 @@ let address
 let account
 let userWallet
 let alchemonId
+let alchemonCost
+let alchemonType
+let payWithAlgoResponse
 const myAlgoConnect = new MyAlgoConnect()
 const walletConnector = new WalletConnect(
   {
@@ -104,7 +112,7 @@ const walletConnector = new WalletConnect(
     qrcodeModal: QRCodeModal
   }
 )
-const alchemonIds = {
+const itemIds = {
   490139078: 753855088,
   490146814: 753855200,
   490141855: 753859901,
@@ -112,7 +120,22 @@ const alchemonIds = {
   744534630: 768104426,
   744531764: 768104851,
   744551347: 768104739,
-  744527019: 768104603
+  744527019: 768104603,
+  773003623: 773118898,
+  773007053: 773119117,
+  773009639: 773119235,
+  773012590: 773119381,
+  773014307: 773119511,
+  773017551: 773119670,
+  773019831: 773119807,
+  773021991: 773119937,
+  773024860: 773120073,
+  773028133: 773120220,
+  773029596: 773120315,
+  773031968: 773120532,
+  773060393: 773120705,
+  773062744: 773120833,
+  773065518: 773120982
 }
 const popupTriggers = ref({
   chooseWallet: false,
@@ -123,7 +146,7 @@ const popupTriggers = ref({
 })
 export default {
   components: { PopupWindow },
-  props: ['name', 'id', 'amount'],
+  props: ['name', 'id', 'amount', 'type', 'cost'],
   data () {
     return {
       PopupWindow,
@@ -131,25 +154,41 @@ export default {
     }
   },
   methods: {
-    setAlchemonId (id) {
+    setAlchemonId (id, cost, type) {
       alchemonId = id
+      alchemonCost = cost
+      alchemonType = type
     },
     TogglePopup (trigger) {
       popupTriggers.value[trigger] = !popupTriggers.value[trigger]
     },
     async buyWithAlgo () {
-      console.log(alchemonId)
       this.TogglePopup('makePurchase')
       if (address === undefined && walletConnector.connected) {
         address = walletConnector.accounts[0]
       }
-      const payWithAlgoResponse = await axios.post(`${apiURL}/payWithAlgo`, {
-        customerAddress: address,
-        itemShopAppId: alchemonIds[alchemonId],
-        forSale: parseInt(alchemonId),
-        requestedAmount: 1,
-        microalgoAmount: 5000000
-      })
+      switch (alchemonType) {
+        case 'alchemon':
+          payWithAlgoResponse = await axios.post(`${apiURL}/payWithAlgo`, {
+            customerAddress: address,
+            itemShopAppId: itemIds[alchemonId],
+            forSale: parseInt(alchemonId),
+            requestedAmount: 1,
+            microalgoAmount: (1000000 * alchemonCost)
+          })
+          break
+        case 'art':
+          payWithAlgoResponse = await axios.post(`${apiURL}/payWithToken`, {
+            customerAddress: address,
+            itemShopAppId: itemIds[alchemonId],
+            paymentToken: 310014962,
+            forSale: parseInt(alchemonId),
+            requestedAmount: 1,
+            paymentTokenAmount: alchemonCost
+          })
+          break
+      }
+
       const serializedTxns = payWithAlgoResponse.data.txns
       let signedTxns
       switch (userWallet) {
