@@ -193,12 +193,13 @@ export default {
       let cardFound = false
       let userStakedCardId
       // const userTransactions = reactive({})
-      client.lookupAccountTransactions(this.$refs.address.value).do().then(response => {
+      client.lookupAccountTransactions(this.$refs.address.value).afterTime().do().then(response => {
         try {
           for (let i = 0; !cardFound; i++) {
             const userTransaction = response.transactions[i]
             if (userTransaction['asset-transfer-transaction'] !== undefined) {
               if (userTransaction['asset-transfer-transaction'].receiver === stakingAddress) {
+                console.log(userTransaction)
                 userStakedCardId = userTransaction['asset-transfer-transaction']['asset-id']
                 if (alchemonName[userStakedCardId] !== undefined) {
                   this.userStakedCard = alchemonName[userStakedCardId]

@@ -29,6 +29,14 @@
     <h2>Please open your wallet app to sign the transaction!</h2>
     <button class="boxShadow" @click="TogglePopup('signTransaction')">Close</button>
   </popup-window>
+  <popup-window v-if="popupTriggers.transactionSuccessful">
+    <h2>Transaction successful!</h2>
+    <button class="boxShadow" @click="TogglePopup('transactionSuccessful')">Close</button>
+  </popup-window>
+  <popup-window v-if="popupTriggers.transactionFailed">
+    <h2>Transaction failed</h2>
+    <button class="boxShadow" @click="TogglePopup('transactionFailed')">Close</button>
+  </popup-window>
 </template>
 
 <style lang="scss" scoped>
@@ -109,7 +117,9 @@ const alchemonIds = {
 const popupTriggers = ref({
   chooseWallet: false,
   makePurchase: false,
-  signTransaction: false
+  signTransaction: false,
+  transactionSuccessful: false,
+  transactionFailed: false
 })
 export default {
   components: { PopupWindow },
@@ -172,10 +182,10 @@ export default {
           txn: signedTxn
         })
         if (sendTxnResponse.status === 200) {
-          window.alert('Transaction Successful!')
+          this.TogglePopup('transactionSuccessful')
         }
       } catch {
-        window.alert('Transaction Failed.')
+        this.TogglePopup('transactionFailed')
       }
     },
     async purchaseItem (wallet) {
