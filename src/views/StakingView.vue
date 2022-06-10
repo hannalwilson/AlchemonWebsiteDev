@@ -28,7 +28,6 @@
 </template>
 
 <style lang="scss" scoped>
-
 div {
     padding: 2%;
 }

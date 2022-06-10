@@ -217,7 +217,7 @@ export default {
           return 0
 
         // Sort by set
-        } else if (this.sortBy === 'number') {
+        } else if (this.sortBy === 'number' || this.sortBy === 'Sort By') {
           const fa = a.number
           const fb = b.number
 
