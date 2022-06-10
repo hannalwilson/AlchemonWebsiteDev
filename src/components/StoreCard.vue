@@ -45,39 +45,76 @@
 </template>
 
 <style lang="scss" scoped>
+
 .nftContainer {
     border-radius: 1%;
     display: inline-block;
     background-color: lightgray;
     margin: 2%;
+    vertical-align: top;
 }
-.imgContainer {
-  border-radius: 1% 1% 0% 0%;
-}
+
 .nftImage {
     width: 20vw;
     margin: 0%;
 }
-.buttonContainer {
-    margin: 3%;
-    margin-bottom: 5%;
-}
 button {
-    font-family: poppins;
-    text-align: center;
-    background-color: orange;
-    border: 2px solid orange;
-    color: white;
-    cursor: pointer;
-    border-radius: 8px;
-    padding: 0 5%;
-    margin: 1% 4%;
+  padding: 1% 5%;
 }
-button:hover {
-  background-color:darkblue;
-  border: 2px solid orange;
-  color: orange;
+.buttonContainer {
+    margin-top: 3%;
+    margin-bottom: 5%;
+    width: 20vw;
 }
+@media (max-width: 1100px) {
+  .buttonContainer {
+    width: 25vw
+  }
+  .nftImage {
+      width: 25vw;
+    }
+}
+
+@media (max-width: 800px) {
+  .buttonContainer {
+    height: 25vw;
+    width: 35vw;
+  }
+    .nftImage {
+      width: 35vw;
+    }
+}
+
+@media (max-width: 650px) {
+  .buttonContainer {
+    height: 30vw;
+    width: 45vw;
+  }
+    .nftImage {
+      width: 45vw;
+    }
+}
+
+@media (max-width: 500px) {
+  .buttonContainer {
+    height: 35vw;
+    width: 70vw;
+  }
+    .nftImage {
+      width: 70vw;
+    }
+}
+
+@media (max-width: 350px) {
+  .buttonContainer {
+      height: 40vw;
+      width: 90vw;
+    }
+    .nftImage {
+      width: 90vw;
+    }
+}
+
 // @media (max-width: 1100px) {
 //   .nftContainer {
 //     height: 485px;
