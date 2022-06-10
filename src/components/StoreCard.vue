@@ -6,8 +6,8 @@
     <div class="buttonContainer">
       <p> {{ name }}</p>
       <p> {{ id }}</p>
-      <p> Available: {{ amount}} </p>
-      <button @click="TogglePopup('chooseWallet')" class="boxShadow nftButton">5 ALGO</button>
+      <p> Available: {{ amount }} </p>
+      <button @click="TogglePopup('chooseWallet'); setAlchemonId(id)" class="boxShadow nftButton">5 ALGO</button>
     </div>
   </div>
   <popup-window v-if="popupTriggers.chooseWallet">
@@ -28,6 +28,14 @@
   <popup-window v-if="popupTriggers.signTransaction">
     <h2>Please open your wallet app to sign the transaction!</h2>
     <button class="boxShadow" @click="TogglePopup('signTransaction')">Close</button>
+  </popup-window>
+  <popup-window v-if="popupTriggers.transactionSuccessful">
+    <h2>Transaction successful!</h2>
+    <button class="boxShadow" @click="TogglePopup('transactionSuccessful')">Close</button>
+  </popup-window>
+  <popup-window v-if="popupTriggers.transactionFailed">
+    <h2>Transaction failed</h2>
+    <button class="boxShadow" @click="TogglePopup('transactionFailed')">Close</button>
   </popup-window>
 </template>
 
@@ -83,10 +91,12 @@ import { ref } from 'vue'
 import PopupWindow from './PopupWindow.vue'
 
 const apiURL = 'https://avk5m0z0nc.execute-api.us-east-1.amazonaws.com'
+// eslint-disable-next-line no-unused-vars
 let signedTxn
 let address
 let account
 let userWallet
+let alchemonId
 const myAlgoConnect = new MyAlgoConnect()
 const walletConnector = new WalletConnect(
   {
@@ -107,7 +117,9 @@ const alchemonIds = {
 const popupTriggers = ref({
   chooseWallet: false,
   makePurchase: false,
-  signTransaction: false
+  signTransaction: false,
+  transactionSuccessful: false,
+  transactionFailed: false
 })
 export default {
   components: { PopupWindow },
@@ -119,35 +131,35 @@ export default {
     }
   },
   methods: {
+    setAlchemonId (id) {
+      alchemonId = id
+    },
     TogglePopup (trigger) {
       popupTriggers.value[trigger] = !popupTriggers.value[trigger]
     },
     async buyWithAlgo () {
+      console.log(alchemonId)
       this.TogglePopup('makePurchase')
       if (address === undefined && walletConnector.connected) {
         address = walletConnector.accounts[0]
       }
-      console.log(address)
       const payWithAlgoResponse = await axios.post(`${apiURL}/payWithAlgo`, {
         customerAddress: address,
-        itemShopAppId: alchemonIds[this.id],
-        forSale: parseInt(this.id),
+        itemShopAppId: alchemonIds[alchemonId],
+        forSale: parseInt(alchemonId),
         requestedAmount: 1,
         microalgoAmount: 5000000
       })
       const serializedTxns = payWithAlgoResponse.data.txns
-      console.log(serializedTxns)
       let signedTxns
       switch (userWallet) {
         case 'myalgo':
           signedTxns = await myAlgoConnect.signTransaction(serializedTxns)
-          console.log(signedTxns)
           if (Array.isArray(signedTxns)) {
             signedTxn = signedTxns.map((txn) => (Buffer.from(txn.blob).toString('base64')))
           } else {
             signedTxn = Buffer.from(signedTxns.blob).toString('base64')
           }
-          console.log(signedTxn)
           break
         case 'walletconnect':
           this.TogglePopup('signTransaction')
@@ -158,14 +170,11 @@ export default {
               txn: encodedTxn
             }
           })
-          console.log(txnsToSign)
           // eslint-disable-next-line no-case-declarations
           const requestParams = [txnsToSign]
           // eslint-disable-next-line no-case-declarations
           const request = formatJsonRpcRequest('algo_signTxn', requestParams)
-          console.log(request)
           signedTxn = await walletConnector.sendCustomRequest(request)
-          console.log(signedTxn)
           break
       }
       try {
@@ -173,10 +182,10 @@ export default {
           txn: signedTxn
         })
         if (sendTxnResponse.status === 200) {
-          window.alert('Transaction Successful!')
+          this.TogglePopup('transactionSuccessful')
         }
       } catch {
-        window.alert('Transaction Failed.')
+        this.TogglePopup('transactionFailed')
       }
     },
     async purchaseItem (wallet) {

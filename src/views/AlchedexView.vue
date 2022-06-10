@@ -8,11 +8,13 @@
       <p class="whiteText">
         View your Alchemon NFT Cards by entering your wallet address below!
       </p>
+      <select name="filterBy" id="select" v-model="showAll" class="boxShadow">
+        <option value="all">View All</option>
+        <option value="mine">View Mine</option>
+      </select>
       <input type="text" id="text" class="darkGrayText_1 boxShadow" placeholder="  Enter wallet address"
         ref="address" />
       <button class="submitButton boxShadow" id="btn" @click="getUserAlchemon">Submit</button>
-      <button class="submitButton boxShadow" v-show="showAll" @click="showAll = !showAll">View Owned</button>
-      <button class="submitButton boxShadow" v-show="!showAll" @click="showAll = !showAll">View All</button>
       <p class="whiteText">
         Add Alchemon NFT Card Assets to your wallet via Rand Gallery. Click the
         button then click "Add ASAs" in Rand Gallery & sign the transaction with
@@ -90,6 +92,8 @@ const userAlchemon = reactive([])
 export default {
   mounted () {
     window.scrollTo(0, 0)
+    this.showAll = 'all'
+    this.gotUserAlchemon = false
   },
   components: {
     AlchemonCards
@@ -103,7 +107,7 @@ export default {
       searchValue: '',
       cards: alchemons,
       gotUserAlchemon: false,
-      showAll: true
+      showAll: 'all'
     }
   },
   methods: {
@@ -132,7 +136,7 @@ export default {
     filteredCards () {
       let tempCards = this.cards
 
-      if (this.gotUserAlchemon && this.showAll) {
+      if (this.gotUserAlchemon && this.showAll === 'all') {
         tempCards = tempCards.filter((item) => {
           if (userAlchemon.includes(item.id)) {
             item.isOwned = true
@@ -141,7 +145,7 @@ export default {
           }
           return item
         })
-      } else if (this.gotUserAlchemon && !this.showAll) {
+      } else if (this.gotUserAlchemon && this.showAll === 'mine') {
         // eslint-disable-next-line array-callback-return
         tempCards = tempCards.filter((item) => {
           if (userAlchemon.includes(item.id)) {
@@ -213,7 +217,7 @@ export default {
           return 0
 
         // Sort by set
-        } else if (this.sortBy === 'number') {
+        } else if (this.sortBy === 'number' || this.sortBy === 'Sort By') {
           const fa = a.number
           const fb = b.number
 
