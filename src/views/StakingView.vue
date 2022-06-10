@@ -21,6 +21,10 @@
     <h2>You have a(n) {{ userStakedCard }} staked!</h2>
     <button class="boxShadow" @click="TogglePopup('stakedAlchemon')">Close</button>
   </popup-window>
+  <popup-window v-if="popupTriggers.noStakedAlchemon">
+    <h2>You do not have an Alchemon staked. Scan the QR code above to send one to the Training Grounds!</h2>
+    <button class="boxShadow" @click="TogglePopup('noStakedAlchemon')">Close</button>
+  </popup-window>
 </template>
 
 <style lang="scss" scoped>
@@ -75,7 +79,8 @@ const alchemonName = {
 }
 
 const popupTriggers = ref({
-  stakedAlchemon: false
+  stakedAlchemon: false,
+  noStakedAlchemon: false
 })
 
 let userStakedCard
@@ -209,13 +214,13 @@ export default {
                   this.TogglePopup('stakedAlchemon')
                   cardFound = true
                 } else {
-                  window.alert('No card staked!')
+                  this.TogglePopup('noStakedAlchemon')
                 }
               }
             }
           }
         } catch {
-          window.alert('No card staked!')
+          this.TogglePopup('noStakedAlchemon')
         }
       }
       )
