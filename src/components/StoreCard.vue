@@ -83,6 +83,9 @@ button {
     .nftImage {
       width: 35vw;
     }
+    button {
+      padding: 2% 20%;
+    }
 }
 
 @media (max-width: 650px) {
@@ -103,6 +106,9 @@ button {
     .nftImage {
       width: 70vw;
     }
+        button {
+          padding: 2% 30%;
+        }
 }
 
 @media (max-width: 350px) {
@@ -113,6 +119,13 @@ button {
     .nftImage {
       width: 90vw;
     }
+}
+
+@media (max-width: 350px) {
+  .buttonContainer {
+      height: 50vw;
+    }
+
 }
 
 // @media (max-width: 1100px) {
