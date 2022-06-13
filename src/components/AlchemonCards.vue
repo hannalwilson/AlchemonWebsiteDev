@@ -1,6 +1,6 @@
 <template>
     <div class='cardContainer boxShadow'>
-        <img :src= "require(`../assets/cards/${name}.png`)" class="cardImage">
+        <img :src= "require(`../assets/alchemon/${name}.png`)" class="cardImage">
         <p class="cardText"> {{id}}<br>
         Type(s): {{ type }}<br>
         Minted: {{ minted }}</p>
