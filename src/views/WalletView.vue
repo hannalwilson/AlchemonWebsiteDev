@@ -1,14 +1,20 @@
 <template>
-<div>
-    <img src="../assets/algorand.png"/><br>
-      <button class="boxShadow" @click="connectAccount('pera')">Connect With Pera</button>
-      <button class="boxShadow" @click="connectAccount('myalgo')">Connect with MyAlgo</button>
-      <p>Connected Address: {{ address }}</p>
-</div>
+  <div class="connectWallet">
+    <img src="../assets/algorand.png" /><br>
+    <button v-show="!gotAddress" class="boxShadow" @click="connectAccount('pera')">Connect With Pera</button>
+    <button v-show="!gotAddress" class="boxShadow" @click="connectAccount('myalgo')">Connect with MyAlgo</button>
+    <p>Connected Address: {{ userAddress }}</p>
+  </div>
+  <div v-show="gotAddress">
+    <button class="boxShadow" @click="toggleComponent('showAlchedex')">My Alchedex</button>
+    <button class="boxShadow" @click="toggleComponent('showStaking')">Staking</button>
+  </div>
+  <alchedex-component :address="userAddress" v-show="this.showAlchedex"></alchedex-component>
+  <staking-view :address="userAddress" v-show="this.showStaking"></staking-view>
 </template>
 
 <style lang="scss" scoped>
-div {
+.connectWallet {
     padding: 2%;
     padding-top: 10%;
     background-image: linear-gradient(to left, #007bff, #2A78F8, #4287F9, #89B4FB);
@@ -43,9 +49,10 @@ img {
 import MyAlgoConnect from '@randlabs/myalgo-connect'
 import NodeWalletConnect from '@walletconnect/node'
 import WalletConnectQRCodeModal from '@walletconnect/qrcode-modal'
+import AlchedexComponent from '../components/AlchedexComponent.vue'
+import StakingView from './StakingView.vue'
 
 let account
-let address
 const myAlgoConnect = new MyAlgoConnect()
 const walletConnector = new NodeWalletConnect(
   {
@@ -60,16 +67,42 @@ const walletConnector = new NodeWalletConnect(
     }
   }
 )
+
 export default {
+  components: {
+    AlchedexComponent,
+    StakingView
+  },
   mounted () {
     window.scrollTo(0, 0)
   },
+  data () {
+    return {
+      // eslint-disable-next-line vue/no-computed-properties-in-data
+      address: this.userAddress,
+      gotAddress: false,
+      showAlchedex: false,
+      showStaking: false
+    }
+  },
+  computed: {
+    // eslint-disable-next-line vue/return-in-computed-property
+    userAddress () {
+      if (this.address !== undefined) {
+        return this.address
+      }
+    }
+
+  },
   methods: {
+    toggleComponent (component) {
+      component = !component
+    },
     async connectAccount (wallet) {
       switch (wallet) {
         case 'myalgo':
           account = await myAlgoConnect.connect()
-          address = account[0].address
+          this.address = account[0].address
           break
         case 'pera':
           // Check if connection is already established
@@ -99,6 +132,7 @@ export default {
             WalletConnectQRCodeModal.close(
               true // isNode = true
             )
+            this.address = walletConnector.accounts[0]
 
             // Get provided accounts and chainId
             // eslint-disable-next-line no-unused-vars
@@ -109,6 +143,7 @@ export default {
             if (error) {
               throw error
             }
+            this.address = walletConnector.accounts[0]
 
             // Get updated accounts and chainId
             // eslint-disable-next-line no-unused-vars
@@ -119,13 +154,14 @@ export default {
             if (error) {
               throw error
             }
+            this.address = undefined
 
             // Delete walletConnector
           })
 
-          address = walletConnector.accounts[0]
-          console.log(address)
+          this.address = walletConnector.accounts[0]
       }
+      this.gotAddress = true
     }
   }
 }
