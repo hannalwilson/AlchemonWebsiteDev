@@ -75,8 +75,8 @@ export default {
     calculateRewards () {
       this.userRewards = 0
       const algosdk = require('algosdk')
-      const token = { 'X-API-key': 'sxwIKIENYg9Es5rsmoanF5WAYXBBHDQ70vGvhI4g' }
-      const server = 'https://mainnet-algorand.api.purestake.io/ps2'
+      const token = ''
+      const server = 'https://mainnet-api.algonode.cloud'
       const port = ''
       const client = new algosdk.Algodv2(token, server, port)
 
