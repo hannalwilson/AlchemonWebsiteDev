@@ -65,7 +65,6 @@
             <img class="zoomIn_1" src="../assets/craft.jpg" width="25%" alt="Crafting">
         </div>
         <staking-rewards></staking-rewards>
-        <evolve-view></evolve-view>
         <div class="evolvestake">
             <p class="yellowHeader spreadText">EVOLVE // STAKE</p>
             <p class="whiteHeader">Wallet address: <b>5Q2PRQDMH7JNT76EYFXBB4UBFVBL6WI37GTJC7HELNPZ4EL5BE6WKQXP4Y</b></p>
@@ -237,12 +236,10 @@ animation-iteration-count:infinite;
 <script>
 import StakingView from './StakingView.vue'
 import StakingRewards from './StakingRewards.vue'
-import EvolveView from './EvolveView.vue'
 export default {
   components: {
     StakingView,
-    StakingRewards,
-    EvolveView
+    StakingRewards
   },
   mounted () {
     window.scrollTo(0, 0)
