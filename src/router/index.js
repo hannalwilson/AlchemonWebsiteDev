@@ -17,7 +17,7 @@ import StakingView from '../views/StakingView.vue'
 import WalletView from '../views/WalletView.vue'
 import StakingRewardsView from '../views/StakingRewards.vue'
 // import CraftingView from '../views/CraftingView.vue'
-// import EvolveView from '../views/EvolveView.vue'
+import EvolveView from '../views/EvolveView.vue'
 
 const routes = [
   {
@@ -104,17 +104,17 @@ const routes = [
     path: '/stakingrewards',
     name: 'stakingrewards',
     component: StakingRewardsView
-  }
+  },
   // {
   //   path: '/crafting',
   //   name: 'crafting',
   //   component: CraftingView
   // },
-  // {
-  //   path: '/evolving',
-  //   name: 'evolving',
-  //   component: EvolveView
-  // }
+  {
+    path: '/craftandevolve',
+    name: 'craftandevolve',
+    component: EvolveView
+  }
 ]
 
 const router = createRouter({

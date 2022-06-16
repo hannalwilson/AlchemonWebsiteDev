@@ -7,6 +7,7 @@
     <div class="buttonContainer">
       <p> Craft a {{ name }}</p>
       <p> {{ amount }} {{ tradedCardOne }} + {{ amount }} {{ tradedCardTwo }} + 250 Alch</p>
+      <p>Available: </p>
       <button @click="craftAlchemon(`${name}`)" class="boxShadow nftButton">250 ALCH</button>
     </div>
   </div>
@@ -30,13 +31,14 @@
   </popup-window>
   <popup-window v-if="popupTriggers.transactionFailed">
     <h2>Failed. Please try again.</h2>
-        <p>Make sure you have the right Alchemon and enough ALCH to craft.</p>
     <button class="boxShadow" @click="TogglePopup('transactionFailed')">Close</button>
   </popup-window>
 </template>
 
 <style lang="scss" scoped>
-
+p {
+  text-align: center;
+}
 .nftContainer {
     border-radius: 1%;
     display: inline-block;
@@ -201,7 +203,7 @@ const smartContractInfo = {
 }
 export default {
   components: { PopupWindow },
-  props: ['name', 'tradedCardOne', 'tradedCardTwo', 'amount'],
+  props: ['name', 'tradedCardOne', 'tradedCardTwo', 'amount', 'available', 'address'],
   data () {
     return {
       PopupWindow,

@@ -6,7 +6,8 @@
     <div class="buttonContainer">
       <p> Evolve a {{ name }}</p>
       <p> 2 {{ tradedCard }} + 100 Alch</p>
-      <button @click="setAlchemon(`${name}`)" class="boxShadow nftButton">100 ALCH</button>
+      <p>Available: {{ available }}</p>
+      <button @click="setAlchemon(`${name}`, this.address, this.wallet)" class="boxShadow nftButton">100 ALCH</button>
     </div>
   </div>
   <popup-window v-if="popupTriggers.chooseWallet">
@@ -35,7 +36,9 @@
   </template>
 
 <style lang="scss" scoped>
-
+p {
+  text-align: center;
+}
 .nftContainer {
     border-radius: 1%;
     display: inline-block;
@@ -138,9 +141,6 @@ import PopupWindow from './PopupWindow.vue'
 const apiURL = 'https://avk5m0z0nc.execute-api.us-east-1.amazonaws.com'
 // eslint-disable-next-line no-unused-vars
 let signedTxn
-let address
-let account
-let userWallet
 const myAlgoConnect = new MyAlgoConnect()
 const walletConnector = new WalletConnect(
   {
@@ -220,7 +220,7 @@ const popupTriggers = ref({
 })
 export default {
   components: { PopupWindow },
-  props: ['name', 'tradedCard'],
+  props: ['name', 'tradedCard', 'available', 'address', 'wallet'],
   data () {
     return {
       PopupWindow,
@@ -228,18 +228,17 @@ export default {
     }
   },
   methods: {
-    setAlchemon (name) {
+    setAlchemon (name, userAddress, userWallet) {
       const id = smartContractInfo[name].appID
       const evolved = smartContractInfo[name].evolved
       const traded = smartContractInfo[name].traded
-      if (address !== undefined) {
-        this.evolveAlchemon(id, evolved, traded)
-      } else {
-        this.TogglePopup('chooseWallet')
-      }
+      const address = userAddress
+      const wallet = userWallet
+      this.evolveAlchemon(id, evolved, traded, address, wallet)
     },
-    async evolveAlchemon (appID, evolvedAlchemon, tradedAlchemon) {
-      if (userWallet === 'walletconnect') {
+    async evolveAlchemon (appID, evolvedAlchemon, tradedAlchemon, address, wallet) {
+      console.log(address)
+      if (wallet === 'walletconnect') {
         this.TogglePopup('signTransaction')
       }
       let quickEvolveOneResponse = await axios.post(`${apiURL}/quickEvolveAlchOne`, {
@@ -254,7 +253,7 @@ export default {
       })
       const serializedTxns = quickEvolveOneResponse.data.txns
       let signedTxns
-      switch (userWallet) {
+      switch (wallet) {
         case 'myalgo':
           signedTxns = await myAlgoConnect.signTransaction(serializedTxns)
           if (Array.isArray(signedTxns)) {
@@ -264,7 +263,6 @@ export default {
           }
           break
         case 'walletconnect':
-          this.TogglePopup('signTransaction')
           // eslint-disable-next-line no-case-declarations
           const txnsToSign = serializedTxns.map(txn => {
             const encodedTxn = txn
@@ -290,46 +288,6 @@ export default {
         this.TogglePopup('transactionFailed')
         quickEvolveOneResponse = null
       }
-    },
-    async connectWallet (wallet) {
-      userWallet = wallet
-      switch (wallet) {
-        case 'myalgo':
-          account = await myAlgoConnect.connect()
-          address = account[0].address
-          break
-        case 'walletconnect':
-        // Check if connection is already established
-          if (!walletConnector.connected) {
-          // create new session
-          // eslint-disable-next-line no-undef
-            walletConnector.createSession()
-          } else {
-            address = walletConnector.accounts[0]
-          }
-          // Subscribe to connection events
-          walletConnector.on('connect', (error, payload) => {
-            if (error) {
-              throw error
-            }
-            address = walletConnector.accounts[0]
-          })
-
-          walletConnector.on('session_update', (error, payload) => {
-            if (error) {
-              throw error
-            }
-            address = walletConnector.accounts[0]
-          })
-
-          walletConnector.on('disconnect', (error, payload) => {
-            if (error) {
-              throw error
-            }
-            address = undefined
-          })
-      }
-      this.TogglePopup('chooseWallet')
     },
     TogglePopup (trigger) {
       popupTriggers.value[trigger] = !popupTriggers.value[trigger]

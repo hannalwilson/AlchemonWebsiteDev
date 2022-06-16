@@ -38,6 +38,9 @@
                <router-link to="/store">ALCHESHOP</router-link>
             </li>
             <li>
+               <router-link to="/craftandevolve">CRAFT & EVOLVE</router-link>
+            </li>
+            <li>
               <a href="https://www.randgallery.com/algo-collection/?address=ALCHY5SJXOXZXADZPD73KO6CYNZXDUWFYANTSXU6RIO3EZACIIXUCS3YDM" target="_blank">RANDGALLERY</a>
             </li>
           </ul>

@@ -1,31 +1,23 @@
 <template>
-    <div class="evolveswap">
-        <p class="yellowHeader spreadText">EVOLVE // SWAP</p>
-        <p class="whiteText">All available evolutions are contained in the <a class="blueLinks" href="https://www.randgallery.com/algo-collection/?address=ALCHY5SJXOXZXADZPD73KO6CYNZXDUWFYANTSXU6RIO3EZACIIXUCS3YDM">Store</a>. The Quick-Evolve links below:</p>
-        <p><br>&#9830; <a class="blueLinks" @click="evolveAlchemon(778975194, 509842608, 490139078)">Evolve a <b>Zipadol</b> from 2 Zip</a>
-        <br>&#9830; <a class="blueLinks" @click="craftAlchemon(778987467, 527475282, 509850827, 509850827, 1, 100)">Evolve a <b>Zipacute</b> from 2 Zipadol</a>
-        <br>&#9830; <a class="blueLinks" @click="evolveAlchemon(778975387, 509844088, 490141855)">Evolve a <b>Hailpuff</b> from 2 Puff</a>
-        <br>&#9830; <a class="blueLinks" @click="craftAlchemon(778988202, 527477069, 509848775, 509848775, 1, 100)">Evolve a <b>Hailstorm</b> from 2 Hailpuff</a>
-        <br>&#9830; <a class="blueLinks" @click="evolveAlchemon(778975506, 509848775, 493271743)">Evolve a <b>Daggerz</b> from 2 Dagz</a>
-        <br>&#9830; <a class="blueLinks" @click="craftAlchemon(778989153, 527479654, 509844088, 509844088, 1, 100)">Evolve a <b>Daggerpult</b> from 2 Daggerz</a>
-        <br>&#9830; <a class="blueLinks" @click="evolveAlchemon(778975613, 509850827, 490146814)">Evolve a <b>Chomp</b> from 2 Lika</a>
-        <br>&#9830; <a class="blueLinks" @click="craftAlchemon(778989735, 527481591, 509842608, 509842608, 1, 100)">Evolve a <b>Likachomp</b> from 2 Chomp</a></p>
-        <img class="zoomIn_1 evolutions" src="../assets/evolutions.png" alt="Evolutions">
+  <div>
+    <div class="background">
+      <h1 class="spreadText">CRAFT & EVOLVE</h1>
+      <button v-if="!foundAddress" @click="TogglePopup('chooseWallet')">CONNECT WALLET</button>
+      <p v-if="foundAddress" class="connectedWallet">Connected wallet: {{ this.address }}</p>
     </div>
-    <div class="craftswap">
-        <p class="darkBlueHeader spreadText">CRAFT // SWAP</p>
-        <p>All available crafts are contained in the <a class="blueLinks" href="https://www.randgallery.com/algo-collection/?address=ALCHY5SJXOXZXADZPD73KO6CYNZXDUWFYANTSXU6RIO3EZACIIXUCS3YDM">Store</a>. The Craft links below:</p>
-        <p>
-            <br>&#9830; <a @click="craftAlchemon(779190087, 527483715, 527475282, 527477069, 2, 250)" class="blueLinks">Craft a <b>Voltstorm</b> from 2 Hailstorm and 2 Zipacute</a>
-            <br>&#9830; <a @click="craftAlchemon(779191097, 527485015, 527479654, 527481591, 2, 250)" class="blueLinks">Craft a <b>Chomperz</b> from 2 Likachomp and 2 Daggerpult</a>
-            <br>&#9830; <a @click="craftAlchemon(779192250, 527486409, 527483715, 527485015, 1, 250)" class="blueLinks">Craft a <b>Cyclostorm</b> from an Chomperz and a Voltstorm</a></p>
-        <div>
-            <img class="zoomIn_1" src="../assets/craft.jpg" alt="Crafting Icon">
-            <img class="zoomIn_1" src="../assets/transfer.png" alt="Trading Icon">
-        </div>
+    <div class="forSale">
+      <div v-if="foundAddress">
+      <craft-card v-for="card in craftFive" :key="card.name" :name="card.name" :tradedCardOne="card.tradedCardOne" :tradedCardTwo="card.tradedCardTwo" :amount="card.amount" :address="this.address" :available="card.available" :wallet="wallet"></craft-card>
+        <evolve-card-two v-for="card in rareFive" :key="card.name" :name="card.name" :tradedCard="card.tradedCard" :address="address" :available="card.available"></evolve-card-two>
+        <evolve-card v-for="card in uncommonFive" :key="card.name" :name="card.name" :tradedCard="card.tradedCard" :address="address" :available="card.available" :wallet="wallet"></evolve-card>
+        <craft-card v-for="card in craft" :key="card.name" :name="card.name" :tradedCardOne="card.tradedCardOne" :tradedCardTwo="card.tradedCardTwo" :amount="card.amount" :address="this.address" :available="card.available" :wallet="wallet"></craft-card>
+        <evolve-card-two v-for="card in rare" :key="card.name" :name="card.name" :tradedCard="card.tradedCard" :address="address" :available="card.available"></evolve-card-two>
+        <evolve-card v-for="card in uncommon" :key="card.name" :name="card.name" :tradedCard="card.tradedCard" :address="address" :available="card.available" :wallet="wallet"></evolve-card>
+      </div>
     </div>
-    <popup-window v-if="popupTriggers.chooseWallet">
-    <h2>Connect Your Wallet</h2>
+  </div>
+  <popup-window v-if="popupTriggers.chooseWallet">
+    <h3>Connect Your Wallet</h3>
     <button class="boxShadow" @click="connectWallet('myalgo')">
       MyAlgo
     </button><br>
@@ -34,48 +26,74 @@
     </button><br>
     <button class="boxShadow" @click="TogglePopup('chooseWallet')">Cancel</button>
   </popup-window>
-  <popup-window v-if="popupTriggers.signTransaction">
-    <h2>Please open your wallet app to sign the transaction!</h2>
-    <button class="boxShadow" @click="TogglePopup('signTransaction')">Close</button>
-  </popup-window>
-  <popup-window v-if="popupTriggers.transactionSuccessful">
-    <h2>Successful! Go check out your new Alchemon!</h2>
-    <button class="boxShadow" @click="TogglePopup('transactionSuccessful')">Close</button>
-  </popup-window>
-  <popup-window v-if="popupTriggers.transactionFailed">
-    <h2>Failed. Please try again.</h2>
-    <button class="boxShadow" @click="TogglePopup('transactionFailed')">Close</button>
-  </popup-window>
 </template>
 
 <style lang="scss" scoped>
-.evolveswap {
-    background-image: linear-gradient(to right, #ffa500, #ffb327);
+
+.background {
+  background-image: url("../assets/alcheshop_coin.png") ,linear-gradient(to right, #007bff, #2A78F8, #4287F9, #89B4FB);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 5% 0% 2%;
+
 }
-.evolutions {
-    width: 60%;
+p {
+    text-align: center;
+    margin: 0;
+}
+h1 {
+  padding: 0%;
+}
+.connectedWallet {
+    background-color: #fff9e8;
+    padding: 1%;
+    border: 4px black solid;
+    border-radius: 15px;
+    width: 80%;
+    margin: auto;
 }
 img {
-    width: 15%;
+  width: 100%;
+  margin: 0%;
+  padding: 0%;
 }
-.blueLinks {
-    cursor: pointer;
-    text-decoration: underline;
-    color: blue;
+h1 {
+  font-size: 10vw;
+  color: #e6ad10;
+  -webkit-text-stroke:1px rgb(22, 22, 54);
 }
-.blueLinks:hover {
-    color: darkblue;
+button {
+  font-family: poppins;
+  text-align: center;
+  background-color: orange;
+  border: 2px solid orange;
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 1%;
+  padding: .5%;
+}
+
+button:hover {
+  background-color: darkblue;
+  border: 2px solid orange;
+  color: orange;
 }
 </style>
 
 <script>
-import MyAlgoConnect from '@randlabs/myalgo-connect'
-import axios from 'axios'
-import PopupWindow from '@/components/PopupWindow.vue'
 import { ref } from 'vue'
+import EvolveCard from '@/components/EvolveCard.vue'
+import EvolveCardTwo from '@/components/EvolveCardTwo.vue'
+import CraftCard from '@/components/CraftCard.vue'
+import PopupWindow from '../components/PopupWindow.vue'
+import MyAlgoConnect from '@randlabs/myalgo-connect'
 import WalletConnect from '@walletconnect/client'
 import QRCodeModal from 'algorand-walletconnect-qrcode-modal'
-import { formatJsonRpcRequest } from '@json-rpc-tools/utils'
+import algosdk from 'algosdk'
+// import alchemon from '../data/alchemon.json'
+
 const myAlgoConnect = new MyAlgoConnect()
 const walletConnector = new WalletConnect(
   {
@@ -83,169 +101,203 @@ const walletConnector = new WalletConnect(
     qrcodeModal: QRCodeModal
   }
 )
-const apiURL = 'https://avk5m0z0nc.execute-api.us-east-1.amazonaws.com'
-let address
-let signedTxn
-let account
-let userWallet
-
-const tradeInAddresses = {
-  490139078: '7OVSLHCECWQZ7R4DVV64VWCPG4AL6JTDBLQZZX6FPG22JCIIVFOSTC6GBQ', // zip
-  509842608: 'DWGPVTDCFM3DADFBHTE7S4DX7QL4HUJHGHC6DFGJXUPD5P5HPSII4MRGQ4', // zipadol
-  527475282: 'TE3Y35D3L6P7Q5STTXQBHGNCOI3PR5FGQIARLTN7AHDCY47KJURHP3CXSY', // zipacute
-  490141855: '5BSQOOEXICBRFBWBAQKFDUF4YFQN67OQFAH5NFHE2FUHTNHEHNGXJ6MPJU', // puff
-  509844088: 'SAWCR4D342HOKTHK7EDNE6UONGHGRVYGYKTCCHVMJD4BPX4KLMAF5JNK6Y', // hailpuff
-  527477069: 'P7OM32HZHSV3VIF7NVNQH5Z5QOTU4PK7NO222XKSATTEB2IWJOZ5P2G44E', // hailstorm
-  493271743: '5HPPE2OE6L3UDVG2LOU3LKD56TS6AQAMRY37FGRN45B7UG5ZJAQCZ2TWAM', // dagz
-  509848775: 'DORWEXHUPVXMLELBTGAGGG4PGPRB6GB77YZ5WHHTT3TFASE5A25LBMQIWY', // daggerz
-  527479654: '2NEKVJVM5PEK6TBH45DM37SVEO5IT24M3JKM6TI237UWOKFW3JJUYMMXEE', // daggerpult
-  490146814: 'I3QBOS6X6IWOY7S65CRRU47RAS2IK3TPLXAF3HYVY5JIEP7IXWARBWMJYQ', // lika
-  509850827: 'HFIAQTXJC5QJKXNY5TQ7GRUPXDI46DWQQNH4WLONANCX6WLGGAQYOIUFDU', // chomp
-  527481591: 'NZDAY727QMQKHZGY3HZMN2Z5P647YFEFS3P6ZVIWJ3AGVEVQFPGTLSDNGA', // likachomp
-  527483715: 'OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA', // voltstorm
-  527485015: 'OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA' // chomperz
-}
 
 const popupTriggers = ref({
-  chooseWallet: false,
-  signTransaction: false,
-  transactionSuccessful: false,
-  transactionFailed: false
+  chooseWallet: false
 })
-export default {
-  components: {
-    PopupWindow
+const uncommon = [
+  {
+    name: 'Chomp',
+    id: 509850827,
+    tradedCard: 'Lika',
+    available: 0
   },
-  data () {
-    return {
-      PopupWindow,
-      popupTriggers
+  {
+    name: 'Daggerz',
+    id: 509848775,
+    tradedCard: 'Dagz',
+    available: 0
+  },
+  {
+    name: 'Hailpuff',
+    id: 509844088,
+    tradedCard: 'Puff',
+    available: 0
+  },
+  {
+    name: 'Zipadol',
+    id: 509842608,
+    tradedCard: 'Zip',
+    available: 0
+  }
+]
+
+const rare = [
+  {
+    name: 'Likachomp',
+    id: 527481591,
+    tradedCard: 'Chomp',
+    available: 0
+  },
+  {
+    name: 'Daggerpult',
+    id: 527479654,
+    tradedCard: 'Daggerz',
+    available: 0
+  },
+  {
+    name: 'Hailstorm',
+    id: 527477069,
+    tradedCard: 'Hailpuff',
+    available: 0
+  },
+  {
+    name: 'Zipacute',
+    id: 527475282,
+    tradedCard: 'Zipadol',
+    available: 0
+  }
+]
+
+const craftFive = [
+  {
+    name: 'Araknadevil',
+    id: 744540333,
+    tradedCardOne: 'Araknolyth',
+    tradedCardTwo: 'Torcydious',
+    amount: 1,
+    available: 0
+  },
+  {
+    name: 'Torcydious',
+    id: 744539419,
+    tradedCardOne: 'Torrden',
+    tradedCardTwo: 'Incydious',
+    amount: 2,
+    available: 0
+  },
+  {
+    name: 'Araknolyth',
+    id: 744538073,
+    tradedCardOne: 'Monolyth',
+    tradedCardTwo: 'Araukmo',
+    amount: 2,
+    available: 0
+  }
+]
+
+const uncommonFive = [
+  {
+    name: 'Cydevil',
+    id: 744535776,
+    tradedCard: 'Cyd',
+    available: 0
+  },
+  {
+    name: 'Torrden',
+    id: 744532520,
+    tradedCard: 'Torr',
+    available: 0
+  },
+  {
+    name: 'Araku',
+    id: 744530060,
+    tradedCard: 'Kumo',
+    available: 0
+  },
+  {
+    name: 'Golyth',
+    id: 744527932,
+    tradedCard: 'Lyth',
+    available: 0
+  }
+]
+
+const rareFive = [
+  {
+    name: 'Incydious',
+    id: 744536686,
+    tradedCard: 'Cydevil',
+    available: 0
+  },
+  {
+    name: 'Torrment',
+    id: 744533302,
+    tradedCard: 'Torrden',
+    available: 0
+  },
+  {
+    name: 'Arakumo',
+    id: 744530969,
+    tradedCard: 'Araku',
+    available: 0
+  },
+  {
+    name: 'Monolyth',
+    id: 744528583,
+    tradedCard: 'Golyth',
+    available: 0
+  }
+]
+
+const addresses = [
+  'DWGPVTDCFM3DADFBHTE7S4DX7QL4HUJHGHC6DFGJXUPD5P5HPSII4MRGQ4',
+  'SAWCR4D342HOKTHK7EDNE6UONGHGRVYGYKTCCHVMJD4BPX4KLMAF5JNK6Y',
+  'DORWEXHUPVXMLELBTGAGGG4PGPRB6GB77YZ5WHHTT3TFASE5A25LBMQIWY',
+  'HFIAQTXJC5QJKXNY5TQ7GRUPXDI46DWQQNH4WLONANCX6WLGGAQYOIUFDU',
+  '6N5FSXFNNIQIW6HQNGNYIK7GNATKTEP6CPB6MLXTWMUPGCXPTTYGXQ2H64',
+  'SMCMVU2C2BST7ULL3EJQCNHQT55UAA2JYBN22SSQYDAOC4FATROIJJXZRQ',
+  'EQGB3XI46J6NQ6MAP6PWDUZZGRHAOHDOL5MZ5FGKBMWHOW2KXXKDN5VYQU',
+  'VYMXJKQSQBBIBSGNFDPI3T33YYOVVPD4EJXRYRBKCIFK6WB5DDHME77VY4',
+  'L6G7FT6UOC5B4OJ37GVN37HD2RMTSXIXAAGNMFW2IKSTPQWQ4S56ZTAH5I',
+  'XGE7HBT3ORNSIF2V5TLE4BN4T3LK2UZKAZJFZIFV7H3FFO4WAJ5SDXZHFQ',
+  'SNWYQ7QUL6DLZZ5YZ24PNHKVXOKYN6PLRRHVZ4CFGLFKPG5LOHET5JGGUQ'
+]
+
+let account
+// eslint-disable-next-line no-unused-vars
+let address
+let wallet
+export default {
+  setup () {
+    const token = ''
+    const server = 'https://mainnet-api.algonode.cloud'
+    const port = ''
+    const client = new algosdk.Algodv2(token, server, port)
+
+    for (const index in addresses) {
+      client.accountInformation(addresses[index]).do().then(response => {
+        for (const asset of response.assets) {
+          uncommon.forEach(item => {
+            if (item.id === asset['asset-id']) {
+              item.available = asset.amount
+            }
+          })
+          rare.forEach(item => {
+            if (item.id === asset['asset-id']) {
+              item.available = asset.amount
+            }
+          })
+          // craft.forEach(item => {
+          //   if (item.id === asset['asset-id']) {
+          //     item.available = asset.amount
+          //   }
+          // })
+        }
+      })
     }
   },
-  mounted () {
-    window.scrollTo(0, 0)
-  },
   methods: {
-    async evolveAlchemon (appID, evolvedAlchemon, tradedAlchemon) {
-      if (address === undefined) {
-        popupTriggers.value.chooseWallet = !popupTriggers.value.chooseWallet
-      } else {
-        let quickEvolveOneResponse = await axios.post(`${apiURL}/quickEvolveAlchOne`, {
-          customerAddress: address,
-          tradeInStoreAddress: tradeInAddresses[tradedAlchemon],
-          quickEvolveAlchOneAppID: appID,
-          evolvedAlchemonAssetID: evolvedAlchemon,
-          tradeInAlchemonAssetID: tradedAlchemon,
-          tradeInAlchemonAssetAmountSent: 2,
-          alchecoinAssetID: 310014962,
-          requiredAmountOfAlchecoin: 100
-        })
-        const serializedTxns = quickEvolveOneResponse.data.txns
-        let signedTxns
-        switch (userWallet) {
-          case 'myalgo':
-            signedTxns = await myAlgoConnect.signTransaction(serializedTxns)
-            if (Array.isArray(signedTxns)) {
-              signedTxn = signedTxns.map((txn) => (Buffer.from(txn.blob).toString('base64')))
-            } else {
-              signedTxn = Buffer.from(signedTxns.blob).toString('base64')
-            }
-            break
-          case 'walletconnect':
-            this.TogglePopup('signTransaction')
-            // eslint-disable-next-line no-case-declarations
-            const txnsToSign = serializedTxns.map(txn => {
-              const encodedTxn = txn
-              return {
-                txn: encodedTxn
-              }
-            })
-            // eslint-disable-next-line no-case-declarations
-            const requestParams = [txnsToSign]
-            // eslint-disable-next-line no-case-declarations
-            const request = formatJsonRpcRequest('algo_signTxn', requestParams)
-            signedTxn = await walletConnector.sendCustomRequest(request)
-            break
-        }
-        try {
-          const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
-            txn: signedTxn
-          })
-          if (sendTxnResponse.status === 200) {
-            this.TogglePopup('transactionSuccessful')
-          }
-        } catch {
-          this.TogglePopup('transactionFailed')
-          quickEvolveOneResponse = null
-        }
-      }
-    },
-    async craftAlchemon (appID, evolvedAlchemon, tradedAlchemonOne, tradedAlchemonTwo, amount, cost) {
-      if (address === undefined) {
-        popupTriggers.value.chooseWallet = !popupTriggers.value.chooseWallet
-      } else {
-        if (userWallet === 'walletconnect') {
-          this.TogglePopup('signTransaction')
-        }
-        let quickEvolveOneResponse = await axios.post(`${apiURL}/quickEvolveAlchTwo`, {
-          customerAddress: address,
-          tradeInOneStoreAddress: tradeInAddresses[tradedAlchemonOne],
-          tradeInTwoStoreAddress: tradeInAddresses[tradedAlchemonTwo],
-          quickEvolveAlchTwoAppID: appID,
-          evolvedAlchemonAssetID: evolvedAlchemon,
-          tradeInAlchemonAssetIDOne: tradedAlchemonOne,
-          tradeInAlchemonOneAmount: amount,
-          tradeInAlchemonAssetIDTwo: tradedAlchemonTwo,
-          tradeInAlchemonTwoAmount: amount,
-          alchecoinAssetID: 310014962,
-          requiredAmountOfAlch: cost
-        })
-        const serializedTxns = quickEvolveOneResponse.data.txns
-        let signedTxns
-        switch (userWallet) {
-          case 'myalgo':
-            signedTxns = await myAlgoConnect.signTransaction(serializedTxns)
-            if (Array.isArray(signedTxns)) {
-              signedTxn = signedTxns.map((txn) => (Buffer.from(txn.blob).toString('base64')))
-            } else {
-              signedTxn = Buffer.from(signedTxns.blob).toString('base64')
-            }
-            break
-          case 'walletconnect':
-            // eslint-disable-next-line no-case-declarations
-            const txnsToSign = serializedTxns.map(txn => {
-              const encodedTxn = txn
-              return {
-                txn: encodedTxn
-              }
-            })
-
-            // eslint-disable-next-line no-case-declarations
-            const requestParams = [txnsToSign]
-            // eslint-disable-next-line no-case-declarations
-            const request = formatJsonRpcRequest('algo_signTxn', requestParams)
-            signedTxn = await walletConnector.sendCustomRequest(request)
-            break
-        }
-        try {
-          const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
-            txn: signedTxn
-          })
-          if (sendTxnResponse.status === 200) {
-            this.TogglePopup('transactionSuccessful')
-          }
-        } catch {
-          this.TogglePopup('transactionFailed')
-          quickEvolveOneResponse = null
-        }
-      }
+    TogglePopup (trigger) {
+      popupTriggers.value[trigger] = !popupTriggers.value[trigger]
     },
     async connectWallet (wallet) {
-      userWallet = wallet
       switch (wallet) {
         case 'myalgo':
           account = await myAlgoConnect.connect()
-          address = account[0].address
+          // eslint-disable-next-line no-unused-vars
+          this.address = account[0].address
+          this.wallet = 'myalgo'
           break
         case 'walletconnect':
           // Check if connection is already established
@@ -254,34 +306,59 @@ export default {
             // eslint-disable-next-line no-undef
             walletConnector.createSession()
           } else {
-            address = walletConnector.accounts[0]
+            this.address = walletConnector.accounts[0]
+            this.wallet = 'walletconnect'
           }
           // Subscribe to connection events
           walletConnector.on('connect', (error, payload) => {
             if (error) {
               throw error
             }
-            address = walletConnector.accounts[0]
+            this.address = walletConnector.accounts[0]
+            this.wallet = 'walletconnect'
           })
 
           walletConnector.on('session_update', (error, payload) => {
             if (error) {
               throw error
             }
-            address = walletConnector.accounts[0]
+            this.address = walletConnector.accounts[0]
+            this.wallet = 'walletconnect'
           })
 
           walletConnector.on('disconnect', (error, payload) => {
             if (error) {
               throw error
             }
-            address = undefined
+            this.address = undefined
           })
       }
+      console.log(this.address)
+      this.foundAddress = true
       this.TogglePopup('chooseWallet')
-    },
-    TogglePopup (trigger) {
-      popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+    }
+  },
+  mounted () {
+    window.scrollTo(0, 0)
+  },
+  components: {
+    EvolveCard,
+    EvolveCardTwo,
+    CraftCard,
+    PopupWindow
+  },
+  data () {
+    return {
+      uncommon,
+      rare,
+      uncommonFive,
+      rareFive,
+      craftFive,
+      PopupWindow,
+      popupTriggers,
+      foundAddress: false,
+      address,
+      wallet
     }
   }
 }

@@ -6,6 +6,7 @@
     <div class="buttonContainer">
       <p> Evolve a {{ name }}</p>
       <p> 2 {{ tradedCard }} + 100 Alch</p>
+      <p>Available: {{ available }}</p>
       <button @click="evolveAlchemon(`${name}`)" class="boxShadow nftButton">100 ALCH</button>
     </div>
   </div>
@@ -35,7 +36,9 @@
   </template>
 
 <style lang="scss" scoped>
-
+p {
+  text-align: center;
+}
 .nftContainer {
     border-radius: 1%;
     display: inline-block;
@@ -220,7 +223,7 @@ const popupTriggers = ref({
 })
 export default {
   components: { PopupWindow },
-  props: ['name', 'tradedCard'],
+  props: ['name', 'tradedCard', 'available', 'address'],
   data () {
     return {
       PopupWindow,

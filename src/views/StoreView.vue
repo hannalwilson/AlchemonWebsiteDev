@@ -12,9 +12,6 @@
       <div>
         <store-card v-for="item in filteredItems" :key="item.id" :type="item.type" :cost="item.cost" :name="item.name" :id="item.id" :amount="item.amount">
         </store-card>
-        <evolve-card v-for="(name, tradedCard) in uncommon" :key="tradedCard" :name="name" :tradedCard="tradedCard"></evolve-card>
-        <evolve-card-two v-for="(name, tradedCard) in rare" :key="tradedCard" :name="name" :tradedCard="tradedCard"></evolve-card-two>
-        <craft-card v-for="card in craft" :key="card.name" :name="card.name" :tradedCardOne="card.tradedCardOne" :tradedCardTwo="card.tradedCardTwo" :amount="card.amount"></craft-card>
       </div>
     </div>
   </div>
@@ -72,9 +69,6 @@ import items from '../data/storeItems.json'
 import algosdk from 'algosdk'
 import { reactive } from 'vue'
 import StoreCard from '../components/StoreCard.vue'
-import EvolveCard from '@/components/EvolveCard.vue'
-import EvolveCardTwo from '@/components/EvolveCardTwo.vue'
-import CraftCard from '@/components/CraftCard.vue'
 
 const storeItems = reactive([])
 
@@ -102,41 +96,6 @@ const addresses = [
   'TFY2WW37XK7NSPG7CJMT4ILJRANXYXMI2FQBIDMFDHHHWQRYSQZSH3RKSQ',
   'OX5UZFYVLKDHCOFZ7MGNPLJUKOLV43NLJJOM47KM2SNHCCJVKGERQAC4OA',
   'E3VNMDHNLVZW4SGASBXICP2PU5CDVELGJTIOBMEXOJNHFYRHQVFIVI7OZA'
-]
-
-const uncommon = {
-  Zip: 'Zipadol',
-  Puff: 'Hailpuff',
-  Dagz: 'Daggerz',
-  Lika: 'Chomp'
-}
-
-const rare = {
-  Zipadol: 'Zipacute',
-  Hailpuff: 'Hailstorm',
-  Daggerz: 'Daggerpult',
-  Chomp: 'Likachomp'
-}
-
-const craft = [
-  {
-    name: 'Voltstorm',
-    tradedCardOne: 'Zipacute',
-    tradedCardTwo: 'Hailstorm',
-    amount: 2
-  },
-  {
-    name: 'Chomperz',
-    tradedCardOne: 'Daggerpult',
-    tradedCardTwo: 'Likachomp',
-    amount: 2
-  },
-  {
-    name: 'Cyclostorm',
-    tradedCardOne: 'Voltstorm',
-    tradedCardTwo: 'Chomperz',
-    amount: 1
-  }
 ]
 
 export default {
@@ -168,17 +127,11 @@ export default {
     window.scrollTo(0, 0)
   },
   components: {
-    StoreCard,
-    EvolveCard,
-    EvolveCardTwo,
-    CraftCard
+    StoreCard
   },
   data () {
     return {
-      viewOnly: 'all',
-      uncommon,
-      rare,
-      craft
+      viewOnly: 'all'
     }
   },
   computed: {

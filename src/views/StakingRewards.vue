@@ -30,7 +30,7 @@
 
 .stakinginfo {
     padding-top: 5%;
-    background-image: linear-gradient(to left, #007bff, #2A78F8, #4287F9, #89B4FB);
+    background-color: #007bff;
 }
 #text {
     width: 50%;

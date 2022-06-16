@@ -8,7 +8,11 @@
           "rarity": 1,
           "number": 75,
           "reward": 105,
-          "isOwned": true
+          "isOwned": true,
+          "tradedCardOne": "Araknolyth",
+          "tradedCardTwo": "Torcydious",
+          "amount": 2,
+          "available": 0
 },
 {
           "name": "Torcydious",
@@ -19,7 +23,11 @@
           "rarity": 2,
           "number": 74,
           "reward": 50,
-        "isOwned": true
+        "isOwned": true,
+        "tradedCardOne": "Torrment",
+        "tradedCardTwo": "Incydious",
+        "amount": 2,
+        "available": 0
 },
 {
           "name": "Araknolyth",
@@ -30,7 +38,11 @@
           "rarity": 2,
           "number": 73,
           "reward": 50,
-        "isOwned": true
+        "isOwned": true,
+        "tradedCardOne": "Monolyth",
+        "tradedCardTwo": "Arakumo",
+        "amount": 2,
+        "available": 0
 },
 {
           "name": "Incydious",
@@ -41,7 +53,9 @@
           "rarity": 3,
           "number": 72,
           "reward": 8,
-        "isOwned": true
+        "isOwned": true,
+        "tradedCard": "Cydevil",
+        "available": 0
 },
 {
           "name": "Cydevil",
@@ -52,7 +66,9 @@
           "rarity": 4,
           "number": 71,
           "reward": 4,
-        "isOwned": true
+        "isOwned": true,
+        "tradedCard": "Cyd",
+        "available": 0
 },
 {
           "name": "Cyd",
@@ -74,7 +90,9 @@
           "rarity": 3,
           "number": 69,
           "reward": 8,
-        "isOwned": true
+        "isOwned": true,
+        "tradedCard": "Torrden",
+        "available": 0
 },
 {
           "name": "Torrden",
@@ -85,7 +103,9 @@
           "rarity": 4,
           "number": 68,
           "reward": 4,
-        "isOwned": true
+        "isOwned": true,
+        "tradedCard": "Torr",
+        "available": 0
 },
 {
           "name": "Torr",
@@ -107,7 +127,9 @@
           "rarity": 3,
           "number": 66,
           "reward": 8,
-        "isOwned": true
+        "isOwned": true,
+        "tradedCard": "Araku",
+        "available": 0
 },
 {
           "name": "Araku",
@@ -118,7 +140,9 @@
           "rarity": 4,
           "number": 65,
           "reward": 4,
-        "isOwned": true
+        "isOwned": true,
+        "tradedCard": "Kumo",
+        "available": 0
 },
 {
           "name": "Kumo",
@@ -140,7 +164,9 @@
           "rarity": 3,
           "number": 63,
           "reward": 8,
-        "isOwned": true
+        "isOwned": true,
+        "tradedCard": "Golyth",
+        "available": 0
 },
 {
           "name": "Golyth",
@@ -151,7 +177,9 @@
           "rarity": 4,
           "number": 62,
           "reward": 4,
-        "isOwned": true
+        "isOwned": true,
+        "tradedCard": "Lyth",
+        "available": 0
 },
 {
           "name": "Lyth",
@@ -173,7 +201,11 @@
           "rarity": 1,
           "number": 60,
           "reward": 105,
-        "isOwned": true
+        "isOwned": true,
+        "tradedCardOne": "Voltstorm",
+        "tradedCardTwo": "Chomperz",
+        "amount": 1,
+        "available": 0
 },
 {
           "name": "Chomperz",
@@ -184,7 +216,11 @@
           "rarity": 2,
           "number": 59,
           "reward": 50,
-        "isOwned": true
+        "isOwned": true,
+        "tradedCardOne": "Daggerpult",
+        "tradedCardTwo": "Likachomp",
+        "amount": 2,
+        "available": 0
 },
 {
           "name": "Voltstorm",
@@ -195,7 +231,11 @@
           "rarity": 2,
           "number": 58,
           "reward": 50,
-        "isOwned": true
+        "isOwned": true,
+    "tradedCardOne": "Zipacute",
+    "tradedCardTwo": "Hailstorm",
+    "amount": 2,
+    "available": 0
 },
 {
           "name": "Likachomp",
@@ -206,7 +246,9 @@
           "rarity": 3,
           "number": 57,
           "reward": 8,
-        "isOwned": true
+        "isOwned": true,
+        "tradedCard": "Chomp",
+        "available": 0
 },
 {
           "name": "Chomp",
@@ -217,7 +259,9 @@
           "rarity": 4,
           "number": 56,
           "reward": 4,
-        "isOwned": true
+        "isOwned": true,
+        "tradedCard": "Lika",
+        "available": 0
 },
 {
           "name": "Lika",
@@ -239,7 +283,9 @@
           "rarity": 3,
           "number": 54,
           "reward": 8,
-        "isOwned": true
+        "isOwned": true,
+        "tradedCard": "Daggerz",
+        "available": 0
 },
 {
           "name": "Daggerz",
@@ -250,7 +296,9 @@
           "rarity": 4,
           "number": 53,
           "reward": 4,
-        "isOwned": true
+        "isOwned": true,
+        "tradedCard": "Dagz",
+        "available": 0
 },
 {
           "name": "Dagz",
@@ -272,7 +320,9 @@
           "rarity": 3,
           "number": 51,
           "reward": 8,
-        "isOwned": true
+        "isOwned": true,
+        "tradedCard": "Hailuff",
+        "available": 0
 },
 {
           "name": "Hailpuff",
@@ -283,7 +333,9 @@
           "rarity": 4,
           "number": 50,
           "reward": 4,
-        "isOwned": true
+        "isOwned": true,
+    "tradedCard": "Puff",
+    "available": 0
 },
 {
           "name": "Puff",
@@ -305,7 +357,9 @@
           "rarity": 3,
           "number": 48,
           "reward": 8,
-        "isOwned": true
+        "isOwned": true,
+    "tradedCard": "Zipadol",
+    "available": 0
 },
 {
           "name": "Zipadol",
@@ -316,7 +370,9 @@
           "rarity": 4,
           "number": 47,
           "reward": 4,
-        "isOwned": true
+        "isOwned": true,
+        "tradedCard": "Zip",
+        "available": 0
 },
 {
           "name": "Zip",
