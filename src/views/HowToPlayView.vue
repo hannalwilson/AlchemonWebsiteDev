@@ -65,52 +65,7 @@
             <img class="zoomIn_1" src="../assets/craft.jpg" width="25%" alt="Crafting">
         </div>
         <staking-rewards></staking-rewards>
-        <div class="evolveswap">
-            <p class="yellowHeader spreadText">EVOLVE // SWAP</p>
-            <p class="whiteText">All available evolutions are contained in the <a class="blueLinks"
-                    href="https://www.randgallery.com/algo-collection/?address=ALCHY5SJXOXZXADZPD73KO6CYNZXDUWFYANTSXU6RIO3EZACIIXUCS3YDM"
-                    target="_blank">Store</a>. The Quick-Evolve links below:</p>
-            <p><br>&#9830; <a class="blueLinks"
-                    href="https://www.randgallery.com/recipe/evolve-zip-into-zipadol-alchemon/" target="_blank">Evolve a
-                    <b>Zipadol</b> from 2 Zip</a>
-                <br>&#9830; <a class="blueLinks"
-                    href="https://www.randgallery.com/recipe/evolve-zipadol-into-zipacute-alchemon/"
-                    target="_blank">Evolve a <b>Zipacute</b> from 2 Zipadol</a>
-                <br>&#9830; <a class="blueLinks"
-                    href="https://www.randgallery.com/recipe/evolve-puff-into-hailpuff-alchemon/" target="_blank">Evolve
-                    a <b>Hailpuff</b> from 2 Puff</a>
-                <br>&#9830; <a class="blueLinks"
-                    href="https://www.randgallery.com/recipe/evolve-hailpuff-into-hailstorm-alchemon/"
-                    target="_blank">Evolve a <b>Hailstorm</b> from 2 Hailpuff</a>
-                <br>&#9830; <a class="blueLinks"
-                    href="https://www.randgallery.com/recipe/evolve-dagz-into-daggerz-alchemon/" target="_blank">Evolve
-                    a <b>Daggerz</b> from 2 Dagz</a>
-                <br>&#9830; <a class="blueLinks"
-                    href="https://www.randgallery.com/recipe/evolve-daggerz-into-daggerpult-alchemon/"
-                    target="_blank">Evolve a <b>Daggerpult</b> from 2 Daggerz</a>
-                <br>&#9830; <a class="blueLinks"
-                    href="https://www.randgallery.com/recipe/evolve-lika-into-chomp-alchemon/" target="_blank">Evolve a
-                    <b>Chomp</b> from 2 Lika</a>
-                <br>&#9830; <a class="blueLinks"
-                    href="https://www.randgallery.com/recipe/evolve-chomp-into-likachomp-alchemon/"
-                    target="_blank">Evolve a <b>Likachomp</b> from 2 Chomp</a>
-            </p>
-            <img class="zoomIn_1" src="../assets/evolutions.png" width="60%" alt="Evolutions">
-        </div>
-        <div class="craftswap">
-            <p class="darkBlueHeader spreadText">CRAFT // SWAP</p>
-            <p>All available crafts are contained in the <a class="blueLinks"
-                    href="https://www.randgallery.com/algo-collection/?address=ALCHY5SJXOXZXADZPD73KO6CYNZXDUWFYANTSXU6RIO3EZACIIXUCS3YDM"
-                    target="_blank">Store</a>. The Craft links below:</p>
-            <!-- <p>
-            <br>&#9830; <a class="blueLinks" href="https://www.randgallery.com/recipe/craft-a-voltstorm-alchemon/" target="_blank">Craft a <b>Voltstorm</b> from 2 Hailstorm and 2 Zipacute</a> SOLD OUT! More coming in the future...
-            <br>&#9830; <a class="blueLinks" href="https://www.randgallery.com/recipe/craft-a-chomperz-alchemon/" target="_blank">Craft a <b>Chomperz</b> from 2 Daggerpult and 2 Likachomp</a> SOLD OUT! More coming in the future...
-            <br>&#9830; <a class="blueLinks" href="https://www.randgallery.com/recipe/craft-a-cyclostorm-alchemon/" target="_blank">Craft a <b>Cyclostorm</b> from a Chomperz and a Voltstorm</a> SOLD OUT! More coming in the future...</p> -->
-            <div>
-                <img class="zoomIn_1" src="../assets/craft.jpg" width="15%" alt="Crafting Icon">
-                <img class="zoomIn_1" src="../assets/transfer.png" width="15%" alt="Trading Icon">
-            </div>
-        </div>
+        <evolve-view></evolve-view>
         <div class="evolvestake">
             <p class="yellowHeader spreadText">EVOLVE // STAKE</p>
             <p class="whiteHeader">Wallet address: <b>5Q2PRQDMH7JNT76EYFXBB4UBFVBL6WI37GTJC7HELNPZ4EL5BE6WKQXP4Y</b></p>
@@ -282,10 +237,12 @@ animation-iteration-count:infinite;
 <script>
 import StakingView from './StakingView.vue'
 import StakingRewards from './StakingRewards.vue'
+import EvolveView from './EvolveView.vue'
 export default {
   components: {
     StakingView,
-    StakingRewards
+    StakingRewards,
+    EvolveView
   },
   mounted () {
     window.scrollTo(0, 0)

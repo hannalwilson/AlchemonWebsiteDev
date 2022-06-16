@@ -3,9 +3,9 @@
         <p class="darkBlueHeader spreadText">CRAFT // SWAP</p>
         <p>All available crafts are contained in the <a class="blueLinks" href="https://www.randgallery.com/algo-collection/?address=ALCHY5SJXOXZXADZPD73KO6CYNZXDUWFYANTSXU6RIO3EZACIIXUCS3YDM">Store</a>. The Craft links below:</p>
         <p>
-            <br>&#9830; <a @click="craftAlchemon()" class="blueLinks">Craft an <b>Araknolyth</b> from 2 Monolyth and 2 Arakumo</a>
-            <br>&#9830; <a @click="craftAlchemon()" class="blueLinks">Craft a <b>Torcydious</b> from 2 Torrment and 2 Incydious</a>
-            <br>&#9830; <a @click="craftAlchemon()" class="blueLinks">Craft an <b>Araknadevil</b> from an Araknolyth and a Torcydious</a></p>
+            <br>&#9830; <a @click="craftAlchemon(1, 67960230, 67960024, 67960082, 2)" class="blueLinks">Craft an <b>Voltstorm</b> from 2 Hailstorm and 2 Zipacute</a>
+            <br>&#9830; <a @click="craftAlchemon(1, 67960252, 67960205, 67960153, 2)" class="blueLinks">Craft a <b>Chomperz</b> from 2 Likachomp and 2 Daggerpult</a>
+            <br>&#9830; <a @click="craftAlchemon(1, 97860303, 67960230, 67960252, 1)" class="blueLinks">Craft an <b>Cyclostorm</b> from an Chomperz and a Voltstorm</a></p>
         <div>
             <img class="zoomIn_1" src="../assets/craft.jpg" alt="Crafting Icon">
             <img class="zoomIn_1" src="../assets/transfer.png" alt="Trading Icon">
@@ -37,19 +37,22 @@ let signedTxn
 let account
 export default {
   methods: {
-    async craftAlchemon (appID, evolvedAlchemon, tradedAlchemonOne, tradedAlchemonTwo) {
+    async craftAlchemon (appID, evolvedAlchemon, tradedAlchemonOne, tradedAlchemonTwo, amount) {
       if (address === undefined) {
         account = await myAlgoConnect.connect()
       }
       address = account[0].address
-      const quickEvolveOneResponse = await axios.post(`${apiURL}/quickEvolveTwo`, {
+      const quickEvolveOneResponse = await axios.post(`${apiURL}/quickEvolveAlchTwo`, {
         customerAddress: address,
-        quickEvolveOneAppID: appID,
+        tradeInOneStoreAddress: 'KP7DMA2YSVSOCKAA2QBUWNFFEWB47EJZKQ6E74TXGG5GJLXSTSO7VLI3YE',
+        tradeinTwoStoreAddress: 'QTOCX5EVIH73V5QSO5TXEHZW2WW7EUYIVLBLYDBLFO4MSXXBBDY6RVWZ2E',
+        quickEvolveAlchTwoAppID: appID,
         evolvedAlchemonAssetID: evolvedAlchemon,
         tradeInAlchemonAssetIDOne: tradedAlchemonOne,
+        tradeInAlchemonOneAmount: amount,
         tradeInAlchemonAssetIDTwo: tradedAlchemonTwo,
-        tradeInAlchemonAssetAmountSent: 2,
-        requiredAmountOfMicroAlgos: 1_000_000
+        tradeInAlchemonTwoAmount: amount,
+        requiredAmountOfAlch: 100
       })
       const serializedTxns = quickEvolveOneResponse.data.txns
       const signedTxns = await myAlgoConnect.signTransaction(serializedTxns)
