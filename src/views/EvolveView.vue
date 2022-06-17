@@ -258,6 +258,7 @@ let account
 // eslint-disable-next-line no-unused-vars
 let address
 let wallet
+let foundAddress
 export default {
   setup () {
     const token = ''
@@ -356,7 +357,7 @@ export default {
       craftFive,
       PopupWindow,
       popupTriggers,
-      foundAddress: false,
+      foundAddress,
       address,
       wallet
     }
