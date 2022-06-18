@@ -7,7 +7,7 @@
       <p> Evolve a {{ name }}</p>
       <p> 2 {{ tradedCard }} + 100 Alch</p>
       <p>Available: {{ available }}</p>
-      <button @click="evolveAlchemon(`${name}`)" class="boxShadow nftButton">100 ALCH</button>
+      <button v-if="available > 0" @click="setAlchemon(`${name}`, this.address, this.wallet)" class="boxShadow nftButton">100 ALCH</button>
     </div>
   </div>
   <popup-window v-if="popupTriggers.chooseWallet">
@@ -30,7 +30,6 @@
   </popup-window>
   <popup-window v-if="popupTriggers.transactionFailed">
     <h2>Failed. Please try again.</h2>
-    <p>Make sure you have the right Alchemon and enough ALCH to evolve.</p>
     <button class="boxShadow" @click="TogglePopup('transactionFailed')">Close</button>
   </popup-window>
   </template>
@@ -141,9 +140,6 @@ import PopupWindow from './PopupWindow.vue'
 const apiURL = 'https://avk5m0z0nc.execute-api.us-east-1.amazonaws.com'
 // eslint-disable-next-line no-unused-vars
 let signedTxn
-let address
-let account
-let userWallet
 const myAlgoConnect = new MyAlgoConnect()
 const walletConnector = new WalletConnect(
   {
@@ -152,38 +148,22 @@ const walletConnector = new WalletConnect(
   }
 )
 const tradeInAddresses = {
-  490139078: '7OVSLHCECWQZ7R4DVV64VWCPG4AL6JTDBLQZZX6FPG22JCIIVFOSTC6GBQ', // zip
   509842608: 'DWGPVTDCFM3DADFBHTE7S4DX7QL4HUJHGHC6DFGJXUPD5P5HPSII4MRGQ4', // zipadol
-  527475282: 'OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA', // zipacute
-  490141855: '5BSQOOEXICBRFBWBAQKFDUF4YFQN67OQFAH5NFHE2FUHTNHEHNGXJ6MPJU', // puff
   509844088: 'SAWCR4D342HOKTHK7EDNE6UONGHGRVYGYKTCCHVMJD4BPX4KLMAF5JNK6Y', // hailpuff
-  527477069: 'OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA', // hailstorm
-  493271743: '5HPPE2OE6L3UDVG2LOU3LKD56TS6AQAMRY37FGRN45B7UG5ZJAQCZ2TWAM', // dagz
   509848775: 'DORWEXHUPVXMLELBTGAGGG4PGPRB6GB77YZ5WHHTT3TFASE5A25LBMQIWY', // daggerz
-  527479654: 'OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA', // daggerpult
-  490146814: 'I3QBOS6X6IWOY7S65CRRU47RAS2IK3TPLXAF3HYVY5JIEP7IXWARBWMJYQ', // lika
   509850827: 'HFIAQTXJC5QJKXNY5TQ7GRUPXDI46DWQQNH4WLONANCX6WLGGAQYOIUFDU', // chomp
-  527481591: 'OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA', // likachomp
-  527483715: 'L6G7FT6UOC5B4OJ37GVN37HD2RMTSXIXAAGNMFW2IKSTPQWQ4S56ZTAH5I', // voltstorm
-  527485015: 'XGE7HBT3ORNSIF2V5TLE4BN4T3LK2UZKAZJFZIFV7H3FFO4WAJ5SDXZHFQ' // chomperz
+  744527932: 'YCTTBN4WVEACXLKURQQ4X2X6HEVV4ANH2LZ4HI5MF5RMLPOH2ICC4BC6AI', // golyth
+  744530060: 'SOLSRI3V5JW2RYJJXQRXGFBNQQMTKOUQZQXHMGFO7YJ4BDSFLNRBFOLK3I', // araku
+  744532520: 'V7WQJCTFNJPY74FX55IPG5OYMM2OUTHIVBCFNTJZTUYQFLJ6PIJ443L6O4', // torrden
+  744535776: 'D5UOOPGEX3M7CIXF2VLRGTNOQA2EHU4FVZ34KHYPJMZXLNJCQOCV3QM3DQ' // cydevil
 }
 
 const smartContractInfo = {
-  Zipadol: {
-    appID: 778975194,
-    evolved: 509842608,
-    traded: 490139078
-  },
   Zipacute: {
     appID: 779979805,
     evolved: 527475282,
     traded: 509842608
 
-  },
-  Hailpuff: {
-    appID: 778975387,
-    evolved: 509844088,
-    traded: 490141855
   },
   Hailstorm: {
     appID: 779980397,
@@ -191,27 +171,37 @@ const smartContractInfo = {
     traded: 509844088
 
   },
-  Daggerz: {
-    appID: 778975506,
-    evolved: 509848775,
-    traded: 493271743
-  },
   Daggerpult: {
     appID: 779980888,
     evolved: 527479654,
     traded: 509848775
 
   },
-  Chomp: {
-    appID: 778975613,
-    evolved: 509850827,
-    traded: 490146814
-  },
   Likachomp: {
     appID: 779981368,
     evolved: 527481591,
     traded: 509850827
 
+  },
+  Monolyth: {
+    appID: 780902676,
+    evolved: 744528583,
+    traded: 744527932
+  },
+  Arakumo: {
+    appID: 780903179,
+    evolved: 744530969,
+    traded: 744530060
+  },
+  Torrment: {
+    appID: 780903876,
+    evolved: 744533302,
+    traded: 744532520
+  },
+  Incydious: {
+    appID: 780904407,
+    evolved: 744536686,
+    traded: 744535776
   }
 }
 const popupTriggers = ref({
@@ -223,7 +213,7 @@ const popupTriggers = ref({
 })
 export default {
   components: { PopupWindow },
-  props: ['name', 'tradedCard', 'available', 'address'],
+  props: ['name', 'tradedCard', 'available', 'address', 'wallet'],
   data () {
     return {
       PopupWindow,
@@ -231,117 +221,74 @@ export default {
     }
   },
   methods: {
-    setAlchemon (name) {
-      console.log(smartContractInfo)
+    setAlchemon (name, userAddress, userWallet) {
       const id = smartContractInfo[name].appID
       const evolved = smartContractInfo[name].evolved
       const traded = smartContractInfo[name].traded
-      if (address === undefined) {
-        this.TogglePopup('chooseWallet')
-      } else {
-        this.evolveAlchemon(id, evolved, traded)
-      }
+      const address = userAddress
+      const wallet = userWallet
+      this.evolveAlchemon(id, evolved, traded, address, wallet)
     },
-    async evolveAlchemon (name) {
-      if (address === undefined) {
-        this.TogglePopup('chooseWallet')
-      } else {
-        if (userWallet === 'walletconnect') {
-          this.TogglePopup('signTransaction')
-        }
-        console.log(smartContractInfo[name].traded)
-        let quickEvolveOneResponse = await axios.post(`${apiURL}/quickEvolveAlchTwo`, {
-          customerAddress: address,
-          tradeInOneStoreAddress: 'OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA',
-          tradeInTwoStoreAddress: tradeInAddresses[smartContractInfo[name].traded],
-          quickEvolveAlchTwoAppID: smartContractInfo[name].appID,
-          evolvedAlchemonAssetID: smartContractInfo[name].evolved,
-          tradeInAlchemonAssetIDOne: smartContractInfo[name].traded,
-          tradeInAlchemonOneAmount: 1,
-          tradeInAlchemonAssetIDTwo: smartContractInfo[name].traded,
-          tradeInAlchemonTwoAmount: 1,
-          alchecoinAssetID: 310014962,
-          requiredAmountOfAlch: 100
-        })
-        const serializedTxns = quickEvolveOneResponse.data.txns
-        let signedTxns
-        switch (userWallet) {
-          case 'myalgo':
-            signedTxns = await myAlgoConnect.signTransaction(serializedTxns)
-            if (Array.isArray(signedTxns)) {
-              signedTxn = signedTxns.map((txn) => (Buffer.from(txn.blob).toString('base64')))
-            } else {
-              signedTxn = Buffer.from(signedTxns.blob).toString('base64')
-            }
-            break
-          case 'walletconnect':
-          // eslint-disable-next-line no-case-declarations
-            const txnsToSign = serializedTxns.map(txn => {
-              const encodedTxn = txn
-              return {
-                txn: encodedTxn
-              }
-            })
-
-            // eslint-disable-next-line no-case-declarations
-            const requestParams = [txnsToSign]
-            // eslint-disable-next-line no-case-declarations
-            const request = formatJsonRpcRequest('algo_signTxn', requestParams)
-            signedTxn = await walletConnector.sendCustomRequest(request)
-            break
-        }
-        try {
-          const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
-            txn: signedTxn
-          })
-          if (sendTxnResponse.status === 200) {
-            this.TogglePopup('transactionSuccessful')
-          }
-        } catch {
-          this.TogglePopup('transactionFailed')
-          quickEvolveOneResponse = null
-        }
+    async evolveAlchemon (appID, evolvedAlchemon, tradedAlchemon, address, wallet) {
+      console.log(appID)
+      console.log(evolvedAlchemon)
+      console.log(tradedAlchemon)
+      console.log(address)
+      console.log(wallet)
+      if (wallet === 'walletconnect') {
+        this.TogglePopup('signTransaction')
       }
-    },
-    async connectWallet (wallet) {
-      userWallet = wallet
+      let quickEvolveOneResponse = await axios.post(`${apiURL}/quickEvolveAlchTwo`, {
+        customerAddress: address,
+        tradeInOneStoreAddress: 'OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA',
+        tradeInTwoStoreAddress: tradeInAddresses[tradedAlchemon],
+        quickEvolveAlchTwoAppID: appID,
+        evolvedAlchemonAssetID: evolvedAlchemon,
+        tradeInAlchemonAssetIDOne: tradedAlchemon,
+        tradeInAlchemonOneAmount: 1,
+        tradeInAlchemonAssetIDTwo: tradedAlchemon,
+        tradeInAlchemonTwoAmount: 1,
+        alchecoinAssetID: 310014962,
+        requiredAmountOfAlch: 100
+      })
+      const serializedTxns = quickEvolveOneResponse.data.txns
+      let signedTxns
       switch (wallet) {
         case 'myalgo':
-          account = await myAlgoConnect.connect()
-          address = account[0].address
+          signedTxns = await myAlgoConnect.signTransaction(serializedTxns)
+          if (Array.isArray(signedTxns)) {
+            signedTxn = signedTxns.map((txn) => (Buffer.from(txn.blob).toString('base64')))
+          } else {
+            signedTxn = Buffer.from(signedTxns.blob).toString('base64')
+          }
           break
         case 'walletconnect':
-        // Check if connection is already established
-          if (!walletConnector.connected) {
-          // create new session
-          // eslint-disable-next-line no-undef
-            walletConnector.createSession()
-          } else {
-            address = walletConnector.accounts[0]
-          }
-          // Subscribe to connection events
-          walletConnector.on('connect', (error, payload) => {
-            if (error) {
-              throw error
+          // eslint-disable-next-line no-case-declarations
+          const txnsToSign = serializedTxns.map(txn => {
+            const encodedTxn = txn
+            return {
+              txn: encodedTxn
             }
-            address = walletConnector.accounts[0]
           })
 
-          walletConnector.on('session_update', (error, payload) => {
-            if (error) {
-              throw error
-            }
-            address = walletConnector.accounts[0]
-          })
-
-          walletConnector.on('disconnect', (error, payload) => {
-            if (error) {
-              throw error
-            }
-            address = undefined
-          })
+          // eslint-disable-next-line no-case-declarations
+          const requestParams = [txnsToSign]
+          // eslint-disable-next-line no-case-declarations
+          const request = formatJsonRpcRequest('algo_signTxn', requestParams)
+          signedTxn = await walletConnector.sendCustomRequest(request)
+          break
       }
-      this.TogglePopup('chooseWallet')
+      try {
+        const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
+          txn: signedTxn
+        })
+        if (sendTxnResponse.status === 200) {
+          this.TogglePopup('transactionSuccessful')
+        }
+      } catch {
+        this.TogglePopup('transactionFailed')
+        quickEvolveOneResponse = null
+      }
     },
     TogglePopup (trigger) {
       popupTriggers.value[trigger] = !popupTriggers.value[trigger]

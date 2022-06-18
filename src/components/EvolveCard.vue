@@ -7,7 +7,7 @@
       <p> Evolve a {{ name }}</p>
       <p> 2 {{ tradedCard }} + 100 Alch</p>
       <p>Available: {{ available }}</p>
-      <button @click="setAlchemon(`${name}`, this.address, this.wallet)" class="boxShadow nftButton">100 ALCH</button>
+      <button v-if="available > 0" @click="setAlchemon(`${name}`, this.address, this.wallet)" class="boxShadow nftButton">100 ALCH</button>
     </div>
   </div>
   <popup-window v-if="popupTriggers.chooseWallet">
@@ -30,7 +30,6 @@
   </popup-window>
   <popup-window v-if="popupTriggers.transactionFailed">
     <h2>Failed. Please try again.</h2>
-    <p>Make sure you have the right Alchemon and enough ALCH to evolve.</p>
     <button class="boxShadow" @click="TogglePopup('transactionFailed')">Close</button>
   </popup-window>
   </template>
@@ -150,19 +149,13 @@ const walletConnector = new WalletConnect(
 )
 const tradeInAddresses = {
   490139078: '7OVSLHCECWQZ7R4DVV64VWCPG4AL6JTDBLQZZX6FPG22JCIIVFOSTC6GBQ', // zip
-  509842608: 'DWGPVTDCFM3DADFBHTE7S4DX7QL4HUJHGHC6DFGJXUPD5P5HPSII4MRGQ4', // zipadol
-  527475282: 'TE3Y35D3L6P7Q5STTXQBHGNCOI3PR5FGQIARLTN7AHDCY47KJURHP3CXSY', // zipacute
   490141855: '5BSQOOEXICBRFBWBAQKFDUF4YFQN67OQFAH5NFHE2FUHTNHEHNGXJ6MPJU', // puff
-  509844088: 'SAWCR4D342HOKTHK7EDNE6UONGHGRVYGYKTCCHVMJD4BPX4KLMAF5JNK6Y', // hailpuff
-  527477069: 'P7OM32HZHSV3VIF7NVNQH5Z5QOTU4PK7NO222XKSATTEB2IWJOZ5P2G44E', // hailstorm
   493271743: '5HPPE2OE6L3UDVG2LOU3LKD56TS6AQAMRY37FGRN45B7UG5ZJAQCZ2TWAM', // dagz
-  509848775: 'DORWEXHUPVXMLELBTGAGGG4PGPRB6GB77YZ5WHHTT3TFASE5A25LBMQIWY', // daggerz
-  527479654: '2NEKVJVM5PEK6TBH45DM37SVEO5IT24M3JKM6TI237UWOKFW3JJUYMMXEE', // daggerpult
   490146814: 'I3QBOS6X6IWOY7S65CRRU47RAS2IK3TPLXAF3HYVY5JIEP7IXWARBWMJYQ', // lika
-  509850827: 'HFIAQTXJC5QJKXNY5TQ7GRUPXDI46DWQQNH4WLONANCX6WLGGAQYOIUFDU', // chomp
-  527481591: 'NZDAY727QMQKHZGY3HZMN2Z5P647YFEFS3P6ZVIWJ3AGVEVQFPGTLSDNGA', // likachomp
-  527483715: 'OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA', // voltstorm
-  527485015: 'OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA' // chomperz
+  744527019: 'O3BY3EN4SA75TBYKE6OTOCWIYK4CT7EY47HMYJGKET2PICWLNVCO4P2P6E', // lyth
+  744551347: '4CBGCW7NNKN6YQRODCTQ5TDWYK5HGP7N6QLAYIV2ZG6JER3A7GUENNKYN4', // kumo
+  744531764: 'BLBMPJ2T2R34STSEIMR2M3ONWRUQKDVERCJA6FYSK563KBNCWWDKKXXPLM', // torr
+  744534630: 'WP55X5NNDLVSD2KRL4MHUYR2QGFART6V4OUQN54ETURA5AGM6Y5J4AI6I4' // cyd
 }
 
 const smartContractInfo = {
@@ -171,44 +164,40 @@ const smartContractInfo = {
     evolved: 509842608,
     traded: 490139078
   },
-  Zipacute: {
-    appID: 778987467,
-    evolved: 527475282,
-    traded: 509850827
-
-  },
   Hailpuff: {
     appID: 778975387,
     evolved: 509844088,
     traded: 490141855
-  },
-  Hailstorm: {
-    appID: 778988202,
-    evolved: 527477069,
-    traded: 509848775
-
   },
   Daggerz: {
     appID: 778975506,
     evolved: 509848775,
     traded: 493271743
   },
-  Daggerpult: {
-    appID: 778989153,
-    evolved: 527479654,
-    traded: 509844088
-
-  },
   Chomp: {
     appID: 778975613,
     evolved: 509850827,
     traded: 490146814
   },
-  Likachomp: {
-    appID: 778989735,
-    evolved: 527481591,
-    traded: 509842608
-
+  Golyth: {
+    appID: 780885401,
+    evolved: 744527932,
+    traded: 744527019
+  },
+  Araku: {
+    appID: 780890332,
+    evolved: 744530060,
+    traded: 744551347
+  },
+  Torrden: {
+    appID: 780890445,
+    evolved: 744532520,
+    traded: 744531764
+  },
+  Cydevil: {
+    appID: 780890555,
+    evolved: 744535776,
+    traded: 744534630
   }
 }
 const popupTriggers = ref({

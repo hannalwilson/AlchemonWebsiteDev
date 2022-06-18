@@ -7,11 +7,10 @@
     </div>
     <div class="forSale">
       <div v-if="foundAddress">
-      <craft-card v-for="card in craftFive" :key="card.name" :name="card.name" :tradedCardOne="card.tradedCardOne" :tradedCardTwo="card.tradedCardTwo" :amount="card.amount" :address="this.address" :available="card.available" :wallet="wallet"></craft-card>
-        <evolve-card-two v-for="card in rareFive" :key="card.name" :name="card.name" :tradedCard="card.tradedCard" :address="address" :available="card.available"></evolve-card-two>
+      <craft-card v-for="card in craftFive" :key="card.name" :name="card.name" :tradedCardOne="card.tradedCardOne" :tradedCardTwo="card.tradedCardTwo" :amount="card.amount" :address="address" :available="card.available" :wallet="wallet"></craft-card>
+        <evolve-card-two v-for="card in rareFive" :key="card.name" :name="card.name" :tradedCard="card.tradedCard" :address="address" :available="card.available" :wallet="wallet"></evolve-card-two>
         <evolve-card v-for="card in uncommonFive" :key="card.name" :name="card.name" :tradedCard="card.tradedCard" :address="address" :available="card.available" :wallet="wallet"></evolve-card>
-        <craft-card v-for="card in craft" :key="card.name" :name="card.name" :tradedCardOne="card.tradedCardOne" :tradedCardTwo="card.tradedCardTwo" :amount="card.amount" :address="this.address" :available="card.available" :wallet="wallet"></craft-card>
-        <evolve-card-two v-for="card in rare" :key="card.name" :name="card.name" :tradedCard="card.tradedCard" :address="address" :available="card.available"></evolve-card-two>
+        <evolve-card-two v-for="card in rare" :key="card.name" :name="card.name" :tradedCard="card.tradedCard" :address="address" :available="card.available" :wallet="wallet"></evolve-card-two>
         <evolve-card v-for="card in uncommon" :key="card.name" :name="card.name" :tradedCard="card.tradedCard" :address="address" :available="card.available" :wallet="wallet"></evolve-card>
       </div>
     </div>
@@ -171,7 +170,7 @@ const craftFive = [
   {
     name: 'Torcydious',
     id: 744539419,
-    tradedCardOne: 'Torrden',
+    tradedCardOne: 'Torrment',
     tradedCardTwo: 'Incydious',
     amount: 2,
     available: 0
@@ -251,7 +250,22 @@ const addresses = [
   'VYMXJKQSQBBIBSGNFDPI3T33YYOVVPD4EJXRYRBKCIFK6WB5DDHME77VY4',
   'L6G7FT6UOC5B4OJ37GVN37HD2RMTSXIXAAGNMFW2IKSTPQWQ4S56ZTAH5I',
   'XGE7HBT3ORNSIF2V5TLE4BN4T3LK2UZKAZJFZIFV7H3FFO4WAJ5SDXZHFQ',
-  'SNWYQ7QUL6DLZZ5YZ24PNHKVXOKYN6PLRRHVZ4CFGLFKPG5LOHET5JGGUQ'
+  'SNWYQ7QUL6DLZZ5YZ24PNHKVXOKYN6PLRRHVZ4CFGLFKPG5LOHET5JGGUQ',
+  'O3BY3EN4SA75TBYKE6OTOCWIYK4CT7EY47HMYJGKET2PICWLNVCO4P2P6E',
+  '4CBGCW7NNKN6YQRODCTQ5TDWYK5HGP7N6QLAYIV2ZG6JER3A7GUENNKYN4',
+  'BLBMPJ2T2R34STSEIMR2M3ONWRUQKDVERCJA6FYSK563KBNCWWDKKXXPLM',
+  'WP55X5NNDLVSD2KRL4MHUYR2QGFART6V4OUQN54ETURA5AGM6Y5J4AI6I4',
+  'YCTTBN4WVEACXLKURQQ4X2X6HEVV4ANH2LZ4HI5MF5RMLPOH2ICC4BC6AI',
+  'SOLSRI3V5JW2RYJJXQRXGFBNQQMTKOUQZQXHMGFO7YJ4BDSFLNRBFOLK3I',
+  'V7WQJCTFNJPY74FX55IPG5OYMM2OUTHIVBCFNTJZTUYQFLJ6PIJ443L6O4',
+  'D5UOOPGEX3M7CIXF2VLRGTNOQA2EHU4FVZ34KHYPJMZXLNJCQOCV3QM3DQ',
+  'MSKNULULYUYJJWCBGFN3IXJSDDQWX5YFSGEMLI5UJTFEHYKOJ7CG6X3ZH4',
+  'IJOVKGTVVDWOAMRCRMES6FO5Z3ZL2YQU4SJ42BDBRTCWXLABVURUWSOQHQ',
+  'ND75GVK7UJJ76U7UD5ZGNUHCD2VN4VL5E7RGTX2GBNGREPTE7XGECCHAKM',
+  '7I23MXKEQQW3PRP5UE3N22ZRHOEHEVPSE5KG63UU4Q2ABCUN5G6XKNWHJ4',
+  'T2L4WBMXBGLLW5TFYH76QVQYBJ4LCKV4TSFRGOMSOHMOHTT6OSIA4GFMRM',
+  'SYFVB77GVQKYHCX34UVJ6HVV4TUIUQKC4UGRCQDEXRGJNVPZ74BQNRC4CY',
+  'YOHSDM3T5DMN3BAIRPLPCJYFO6UAJXUFZZ7P7Y4I66RYVRR4VYQVMB2YEM'
 ]
 
 let account
@@ -269,6 +283,21 @@ export default {
     for (const index in addresses) {
       client.accountInformation(addresses[index]).do().then(response => {
         for (const asset of response.assets) {
+          craftFive.forEach(item => {
+            if (item.id === asset['asset-id']) {
+              item.available = asset.amount
+            }
+          })
+          uncommonFive.forEach(item => {
+            if (item.id === asset['asset-id']) {
+              item.available = asset.amount
+            }
+          })
+          rareFive.forEach(item => {
+            if (item.id === asset['asset-id']) {
+              item.available = asset.amount
+            }
+          })
           uncommon.forEach(item => {
             if (item.id === asset['asset-id']) {
               item.available = asset.amount
@@ -279,11 +308,6 @@ export default {
               item.available = asset.amount
             }
           })
-          // craft.forEach(item => {
-          //   if (item.id === asset['asset-id']) {
-          //     item.available = asset.amount
-          //   }
-          // })
         }
       })
     }
