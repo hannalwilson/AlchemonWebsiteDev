@@ -359,12 +359,16 @@ export default {
           })
       }
       console.log(this.address)
+      localStorage.userAddress = this.address
       this.foundAddress = true
       this.TogglePopup('chooseWallet')
+      console.log(localStorage.userAddress)
     }
   },
   mounted () {
     window.scrollTo(0, 0)
+    this.address = localStorage.userAddress
+    this.foundAddress = true
   },
   components: {
     EvolveCard,
