@@ -172,9 +172,9 @@ const smartContractInfo = {
     traded: 490139078
   },
   Zipacute: {
-    appID: 778987467,
-    evolved: 527475282,
-    traded: 509850827
+    appID: 95614290,
+    evolved: 67960024,
+    traded: 67960008
 
   },
   Hailpuff: {
@@ -183,9 +183,9 @@ const smartContractInfo = {
     traded: 490141855
   },
   Hailstorm: {
-    appID: 778988202,
-    evolved: 527477069,
-    traded: 509848775
+    appID: 95614600,
+    evolved: 67960082,
+    traded: 67960062
 
   },
   Daggerz: {
@@ -194,20 +194,20 @@ const smartContractInfo = {
     traded: 493271743
   },
   Daggerpult: {
-    appID: 778989153,
-    evolved: 527479654,
-    traded: 509844088
+    appID: 95614714,
+    evolved: 67960153,
+    traded: 67960122
 
   },
   Chomp: {
     appID: 778975613,
-    evolved: 509850827,
+    evolved: 67960205,
     traded: 490146814
   },
   Likachomp: {
-    appID: 778989735,
-    evolved: 527481591,
-    traded: 509842608
+    appID: 95614782,
+    evolved: 67960205,
+    traded: 67960185
 
   }
 }

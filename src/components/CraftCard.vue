@@ -138,7 +138,7 @@ import { formatJsonRpcRequest } from '@json-rpc-tools/utils'
 import { ref } from 'vue'
 import PopupWindow from './PopupWindow.vue'
 
-const apiURL = 'https://avk5m0z0nc.execute-api.us-east-1.amazonaws.com'
+const apiURL = 'https://l84jesjbd4.execute-api.us-east-1.amazonaws.com'
 // eslint-disable-next-line no-unused-vars
 let signedTxn
 let address
@@ -162,40 +162,40 @@ const popupTriggers = ref({
 const tradeInAddresses = {
   490139078: '7OVSLHCECWQZ7R4DVV64VWCPG4AL6JTDBLQZZX6FPG22JCIIVFOSTC6GBQ', // zip
   509842608: 'DWGPVTDCFM3DADFBHTE7S4DX7QL4HUJHGHC6DFGJXUPD5P5HPSII4MRGQ4', // zipadol
-  527475282: 'OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA', // zipacute
+  67960024: 'ZRWO4MMILE7QFZ4BXUVDQCEBZYMBDOOS5MZ5BSSWGN33GORV5ARSKQAJ3M', // zipacute
   490141855: '5BSQOOEXICBRFBWBAQKFDUF4YFQN67OQFAH5NFHE2FUHTNHEHNGXJ6MPJU', // puff
   509844088: 'SAWCR4D342HOKTHK7EDNE6UONGHGRVYGYKTCCHVMJD4BPX4KLMAF5JNK6Y', // hailpuff
-  527477069: 'OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA', // hailstorm
+  67960082: 'EW3VX3TPF6EVQY6GLJPSE4UTXWGWDTK2Z6FLRXYPQA7QIR7FWHNNXRCI6I', // hailstorm
   493271743: '5HPPE2OE6L3UDVG2LOU3LKD56TS6AQAMRY37FGRN45B7UG5ZJAQCZ2TWAM', // dagz
   509848775: 'DORWEXHUPVXMLELBTGAGGG4PGPRB6GB77YZ5WHHTT3TFASE5A25LBMQIWY', // daggerz
-  527479654: 'OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA', // daggerpult
+  67960153: 'OKYWGCCQLWJDKWETYYTFI5QFIM52URWFU4KIN2RBGWMB2HO244XINNGUWM', // daggerpult
   490146814: 'I3QBOS6X6IWOY7S65CRRU47RAS2IK3TPLXAF3HYVY5JIEP7IXWARBWMJYQ', // lika
   509850827: 'HFIAQTXJC5QJKXNY5TQ7GRUPXDI46DWQQNH4WLONANCX6WLGGAQYOIUFDU', // chomp
-  527481591: 'OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA', // likachomp
-  527483715: 'L6G7FT6UOC5B4OJ37GVN37HD2RMTSXIXAAGNMFW2IKSTPQWQ4S56ZTAH5I', // voltstorm
-  527485015: 'XGE7HBT3ORNSIF2V5TLE4BN4T3LK2UZKAZJFZIFV7H3FFO4WAJ5SDXZHFQ' // chomperz
+  67960205: 'IDRWNHOCVFLXYATI5YOGA2HTEGVZ4EXAZDLW6ENBIHPSQ2K5R5JKVQHYPM', // likachomp
+  67960230: 'GVX33TKM6W6K367PEMHP4UZOF4JAHQUJJ2TTO7S2UHNJ4HRCN6LVQKBMRU', // voltstorm
+  67960252: 'GVX33TKM6W6K367PEMHP4UZOF4JAHQUJJ2TTO7S2UHNJ4HRCN6LVQKBMRU' // chomperz
 }
 
 const smartContractInfo = {
   Voltstorm: {
-    appID: 779101008,
-    evolvedAlchemon: 527483715,
-    tradedAlchemonOne: 527475282,
-    tradedAlchemonTwo: 527477069,
+    appID: 96567359,
+    evolvedAlchemon: 67960230,
+    tradedAlchemonOne: 67960024,
+    tradedAlchemonTwo: 67960082,
     amount: 2
   },
   Chomperz: {
-    appID: 779102943,
-    evolvedAlchemon: 527485015,
-    tradedAlchemonOne: 527479654,
-    tradedAlchemonTwo: 527481591,
+    appID: 95614905,
+    evolvedAlchemon: 67960252,
+    tradedAlchemonOne: 67960153,
+    tradedAlchemonTwo: 67960205,
     amount: 2
   },
   Cyclostorm: {
-    appID: 779106769,
-    evolvedAlchemon: 527486409,
-    tradedAlchemonOne: 527483715,
-    tradedAlchemonTwo: 527485015,
+    appID: 96567413,
+    evolvedAlchemon: 67960303,
+    tradedAlchemonOne: 67960230,
+    tradedAlchemonTwo: 67960252,
     amount: 1
   }
 }
@@ -244,7 +244,7 @@ export default {
           tradeInAlchemonOneAmount: amount,
           tradeInAlchemonAssetIDTwo: tradedTwo,
           tradeInAlchemonTwoAmount: amount,
-          alchecoinAssetID: 310014962,
+          alchecoinAssetID: 78127598,
           requiredAmountOfAlch: 250
         })
         const serializedTxns = quickEvolveOneResponse.data.txns
@@ -274,6 +274,16 @@ export default {
             signedTxn = await walletConnector.sendCustomRequest(request)
             break
         }
+        // axios.post(`${apiURL}/sendTxn`, {
+        //   txn: signedTxn
+        // }).then(sendTxnResponse => {
+        //   if (sendTxnResponse.status === 200) {
+        //     this.TogglePopup('transactionSuccessful')
+        //   } else if (sendTxnResponse.status === 400) {
+        //     this.TogglePopup('transactionFailed')
+        //     console.log(sendTxnResponse)
+        //   }
+        // })
         try {
           const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
             txn: signedTxn
@@ -281,10 +291,11 @@ export default {
           if (sendTxnResponse.status === 200) {
             this.TogglePopup('transactionSuccessful')
           }
-        } catch {
+        } catch (error) {
           this.TogglePopup('transactionFailed')
-          quickEvolveOneResponse = null
+          console.log(error.status)
         }
+        quickEvolveOneResponse = null
       }
     },
     async connectWallet (wallet) {
@@ -332,4 +343,5 @@ export default {
     }
   }
 }
+
 </script>

@@ -159,7 +159,7 @@ const tradeInAddresses = {
   509848775: 'DORWEXHUPVXMLELBTGAGGG4PGPRB6GB77YZ5WHHTT3TFASE5A25LBMQIWY', // daggerz
   527479654: 'OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA', // daggerpult
   490146814: 'I3QBOS6X6IWOY7S65CRRU47RAS2IK3TPLXAF3HYVY5JIEP7IXWARBWMJYQ', // lika
-  509850827: 'HFIAQTXJC5QJKXNY5TQ7GRUPXDI46DWQQNH4WLONANCX6WLGGAQYOIUFDU', // chomp
+  95605280: 'IAYHQ7W4N7K2AFFRAUHBTOD4GNNBLTZU63MXEJJBSKBXKEAXH55KVB6YSE', // chomp
   527481591: 'OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA', // likachomp
   527483715: 'L6G7FT6UOC5B4OJ37GVN37HD2RMTSXIXAAGNMFW2IKSTPQWQ4S56ZTAH5I', // voltstorm
   527485015: 'XGE7HBT3ORNSIF2V5TLE4BN4T3LK2UZKAZJFZIFV7H3FFO4WAJ5SDXZHFQ' // chomperz
@@ -205,9 +205,9 @@ const smartContractInfo = {
     traded: 490146814
   },
   Likachomp: {
-    appID: 779981368,
-    evolved: 527481591,
-    traded: 509850827
+    appID: 95614782,
+    evolved: 67960205,
+    traded: 67960185
 
   }
 }
@@ -249,7 +249,7 @@ export default {
         console.log(smartContractInfo[name].traded)
         let quickEvolveOneResponse = await axios.post(`${apiURL}/quickEvolveAlchTwo`, {
           customerAddress: address,
-          tradeInOneStoreAddress: 'OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA',
+          tradeInOneStoreAddress: tradeInAddresses[smartContractInfo[name].traded],
           tradeInTwoStoreAddress: tradeInAddresses[smartContractInfo[name].traded],
           quickEvolveAlchTwoAppID: smartContractInfo[name].appID,
           evolvedAlchemonAssetID: smartContractInfo[name].evolved,
