@@ -28,9 +28,9 @@
     <h2>Successful! Go check out your new Alchemon!</h2>
     <button class="boxShadow" @click="TogglePopup('transactionSuccessful')">Close</button>
   </popup-window>
-  <popup-window v-if="popupTriggers.transactionFailed">
+  <popup-window v-if="popupTriggers.transactionFailed" :message="errorMessage">
     <h2>Failed. Please try again.</h2>
-        <p>Make sure you have the right Alchemon and enough ALCH to craft.</p>
+    <p style="text-align: left"> {{ getErrorMessage }}</p>
     <button class="boxShadow" @click="TogglePopup('transactionFailed')">Close</button>
   </popup-window>
 </template>
@@ -144,6 +144,8 @@ let signedTxn
 let address
 let account
 let userWallet
+// eslint-disable-next-line no-unused-vars
+let errorMessage
 
 const myAlgoConnect = new MyAlgoConnect()
 const walletConnector = new WalletConnect(
@@ -205,7 +207,13 @@ export default {
   data () {
     return {
       PopupWindow,
-      popupTriggers
+      popupTriggers,
+      errorMessage
+    }
+  },
+  computed: {
+    getErrorMessage () {
+      return errorMessage
     }
   },
   methods: {
@@ -289,11 +297,17 @@ export default {
             txn: signedTxn
           })
           if (sendTxnResponse.status === 200) {
-            this.TogglePopup('transactionSuccessful')
+            console.log(sendTxnResponse)
+            if (sendTxnResponse.data.txnId) {
+              this.TogglePopup('transactionSuccessful')
+            } else if (sendTxnResponse.data.message.includes('underflow')) {
+              errorMessage = sendTxnResponse.data.message
+              this.TogglePopup('transactionFailed')
+            }
           }
         } catch (error) {
-          this.TogglePopup('transactionFailed')
-          console.log(error.status)
+          this.TogglePopup('errorOccured')
+          console.log(error)
         }
         quickEvolveOneResponse = null
       }
