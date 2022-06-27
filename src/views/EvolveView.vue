@@ -367,8 +367,12 @@ export default {
   },
   mounted () {
     window.scrollTo(0, 0)
-    this.address = localStorage.userAddress
-    this.foundAddress = true
+    if (localStorage.userAddress) {
+      this.address = localStorage.userAddress
+      this.foundAddress = true
+    } else {
+      this.foundAddress = false
+    }
   },
   components: {
     EvolveCard,
