@@ -2,10 +2,13 @@
   <div>
     <div class="background">
       <h1 class="spreadText">ALCHESHOP</h1>
+      <button v-if="!foundAddress" @click="TogglePopup('chooseWallet')">CONNECT WALLET</button>
+      <p v-if="foundAddress" class="connectedWallet">Connected wallet: {{ this.address }}</p>
     </div>
     <div class="forSale">
       <div>
         <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'alchemon'">Alchemon</button>
+        <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'alchibilities'">Alchibilities</button>
         <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'art'">Art</button>
         <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'all'">View All</button>
       </div>
@@ -15,6 +18,16 @@
       </div>
     </div>
   </div>
+  <popup-window v-if="popupTriggers.chooseWallet">
+    <h3>Connect Your Wallet</h3>
+    <button class="boxShadow" @click="connectWallet('myalgo')">
+      MyAlgo
+    </button><br>
+    <button class="boxShadow" @click="connectWallet('walletconnect')">
+      WalletConnect
+    </button><br>
+    <button class="boxShadow" @click="TogglePopup('chooseWallet')">Cancel</button>
+  </popup-window>
 </template>
 
 <style lang="scss" scoped>
@@ -24,8 +37,16 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 15% 0%;
+  padding: 5% 0% 2%;
 
+}
+.connectedWallet {
+    background-color: #fff9e8;
+    padding: 1%;
+    border: 4px black solid;
+    border-radius: 15px;
+    width: 75%;
+    margin: auto;
 }
 p {
     text-align: center;
@@ -67,8 +88,24 @@ button:hover {
 <script>
 import items from '../data/storeItems.json'
 import algosdk from 'algosdk'
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import StoreCard from '../components/StoreCard.vue'
+import PopupWindow from '../components/PopupWindow.vue'
+import MyAlgoConnect from '@randlabs/myalgo-connect'
+import WalletConnect from '@walletconnect/client'
+import QRCodeModal from 'algorand-walletconnect-qrcode-modal'
+
+const myAlgoConnect = new MyAlgoConnect()
+const walletConnector = new WalletConnect(
+  {
+    bridge: 'https://bridge.walletconnect.org', // Required
+    qrcodeModal: QRCodeModal
+  }
+)
+
+const popupTriggers = ref({
+  chooseWallet: false
+})
 
 const storeItems = reactive([])
 
@@ -95,13 +132,27 @@ const addresses = [
   '6GN65BOLLZRUBMYD73GLZCRORABTWVRM3ALPC6LQ3KJDGTEHXVOATYJM7A',
   'TFY2WW37XK7NSPG7CJMT4ILJRANXYXMI2FQBIDMFDHHHWQRYSQZSH3RKSQ',
   'OX5UZFYVLKDHCOFZ7MGNPLJUKOLV43NLJJOM47KM2SNHCCJVKGERQAC4OA',
-  'E3VNMDHNLVZW4SGASBXICP2PU5CDVELGJTIOBMEXOJNHFYRHQVFIVI7OZA'
+  'E3VNMDHNLVZW4SGASBXICP2PU5CDVELGJTIOBMEXOJNHFYRHQVFIVI7OZA', // end of mainnet address
+  'FRXI3QYOFQHBKCUMQJDEJUWCI3EPMMM7RUWABKBR5MH3XYGMNSR6ALINAI', // beginning of testnet address
+  'KPJ2FHS3OATRTGGVKCRF24RXYC64BR6HX75Y3FHQYBUGAD53EV6ZACEVOU',
+  'RZU5ZBINSGLIEOJMM44RA45KRXUH5DCXE32TPGSMKYWBYICS6MSFHLJSRM',
+  'RYDUCUN2Q6OA5BDSTKI5IL7KDRUHU646B6SJECWUUHKO366UFR33T4JTRQ',
+  '7IFZJ2KKJ4B7TRE3H72GWHZFYCOLLQQ5GJJUN4GYJRYTS2X4GGXGKDDSP4',
+  '3OQKVI7ZCOHVBRN63MQAJWZUUWT3DSBEL7V5CX7CNPS6K4ZFHZQKK5XHSQ',
+  'L75YE6ONHD3HGDR6V64IGE4GIYIYEX6UVCEWNKC4I2NFDBGENOYSSXWUFM',
+  'BDXWFKZNOLXM73ISYUFW4THIVMFQSLVQUU5J576ZRB6OUHFJK7MG3ZDI6Q'
 ]
+
+let account
+// eslint-disable-next-line no-unused-vars
+let address
+let wallet
+let foundAddress
 
 export default {
   setup () {
     const token = ''
-    const server = 'https://mainnet-api.algonode.cloud'
+    const server = 'https://testnet-api.algonode.cloud'
     const port = ''
     const client = new algosdk.Algodv2(token, server, port)
 
@@ -123,20 +174,86 @@ export default {
       })
     }
   },
+  methods: {
+    TogglePopup (trigger) {
+      popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+    },
+    async connectWallet (wallet) {
+      switch (wallet) {
+        case 'myalgo':
+          account = await myAlgoConnect.connect()
+          // eslint-disable-next-line no-unused-vars
+          this.address = account[0].address
+          this.wallet = 'myalgo'
+          localStorage.userAddress = this.address
+          localStorage.userWallet = this.wallet
+          break
+        case 'walletconnect':
+          // Check if connection is already established
+          if (!walletConnector.connected) {
+            // create new session
+            // eslint-disable-next-line no-undef
+            walletConnector.createSession()
+          } else {
+            this.address = walletConnector.accounts[0]
+            localStorage.userAddress = this.address
+            this.wallet = 'walletconnect'
+            localStorage.userWallet = this.wallet
+          }
+          // Subscribe to connection events
+          walletConnector.on('connect', (error, payload) => {
+            if (error) {
+              throw error
+            }
+            this.address = walletConnector.accounts[0]
+            localStorage.userAddress = this.address
+            this.wallet = 'walletconnect'
+            localStorage.userWallet = this.wallet
+          })
+
+          walletConnector.on('session_update', (error, payload) => {
+            if (error) {
+              throw error
+            }
+          })
+
+          walletConnector.on('disconnect', (error, payload) => {
+            if (error) {
+              throw error
+            }
+          })
+          break
+      }
+      this.foundAddress = true
+      this.TogglePopup('chooseWallet')
+    }
+  },
   mounted () {
     window.scrollTo(0, 0)
+    if (localStorage.userAddress) {
+      this.address = localStorage.userAddress
+      this.foundAddress = true
+    } else {
+      this.foundAddress = false
+    }
   },
   components: {
-    StoreCard
+    StoreCard,
+    PopupWindow
   },
   data () {
     return {
-      viewOnly: 'all'
+      viewOnly: 'all',
+      PopupWindow,
+      popupTriggers,
+      foundAddress,
+      address,
+      wallet
     }
   },
   computed: {
     filteredItems () {
-      let tempItems = storeItems
+      let tempItems = storeItems.filter(item => item.amount > 0)
 
       if (this.viewOnly === 'alchemon') {
         tempItems = tempItems.filter(item => {
@@ -146,6 +263,11 @@ export default {
       if (this.viewOnly === 'art') {
         tempItems = tempItems.filter(item => {
           return item.type.includes('art')
+        })
+      }
+      if (this.viewOnly === 'alchibilities') {
+        tempItems = tempItems.filter(item => {
+          return item.type.includes('alchibilities')
         })
       }
       if (this.viewOnly === 'all') {

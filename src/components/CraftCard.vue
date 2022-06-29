@@ -237,12 +237,6 @@ export default {
       this.craftAlchemon(id, evolved, tradedOne, tradedTwo, amount, address, wallet)
     },
     async craftAlchemon (appID, evolvedAlchemon, tradedAlchemonOne, tradedAlchemonTwo, amount, address, wallet) {
-      console.log(appID)
-      console.log(evolvedAlchemon)
-      console.log(tradedAlchemonOne)
-      console.log(tradedAlchemonTwo)
-      console.log(address)
-      console.log(wallet)
       const id = appID
       const evolved = evolvedAlchemon
       const tradedOne = tradedAlchemonOne

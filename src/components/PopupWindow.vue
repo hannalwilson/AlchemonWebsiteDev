@@ -2,6 +2,7 @@
     <div class="popup">
         <div class="popup-inner">
             <slot />
+            <p v-if="message">{{ message }}</p>
         </div>
     </div>
 </template>
@@ -41,3 +42,9 @@ button:hover {
 }
 }
 </style>
+
+<script>
+export default {
+  props: ['message']
+}
+</script>
