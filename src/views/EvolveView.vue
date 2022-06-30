@@ -2,8 +2,6 @@
   <div>
     <div class="background">
       <h1 class="spreadText">CRAFT & EVOLVE</h1>
-      <button v-if="!foundAddress" @click="TogglePopup('chooseWallet')">CONNECT WALLET</button>
-      <p v-if="foundAddress" class="connectedWallet">Connected wallet: {{ this.address }}</p>
     </div>
     <div class="forSale">
       <div v-if="foundAddress">
@@ -15,16 +13,6 @@
       </div>
     </div>
   </div>
-  <popup-window v-if="popupTriggers.chooseWallet">
-    <h3>Connect Your Wallet</h3>
-    <button class="boxShadow" @click="connectWallet('myalgo')">
-      MyAlgo
-    </button><br>
-    <button class="boxShadow" @click="connectWallet('walletconnect')">
-      WalletConnect
-    </button><br>
-    <button class="boxShadow" @click="TogglePopup('chooseWallet')">Cancel</button>
-  </popup-window>
 </template>
 
 <style lang="scss" scoped>
@@ -43,14 +31,6 @@ p {
 }
 h1 {
   padding: 0%;
-}
-.connectedWallet {
-    background-color: #fff9e8;
-    padding: 1%;
-    border: 4px black solid;
-    border-radius: 15px;
-    width: 80%;
-    margin: auto;
 }
 img {
   width: 100%;
@@ -82,28 +62,12 @@ button:hover {
 </style>
 
 <script>
-import { ref } from 'vue'
 import EvolveCard from '@/components/EvolveCard.vue'
 import EvolveCardTwo from '@/components/EvolveCardTwo.vue'
 import CraftCard from '@/components/CraftCard.vue'
-import PopupWindow from '../components/PopupWindow.vue'
-import MyAlgoConnect from '@randlabs/myalgo-connect'
-import WalletConnect from '@walletconnect/client'
-import QRCodeModal from 'algorand-walletconnect-qrcode-modal'
 import algosdk from 'algosdk'
 // import alchemon from '../data/alchemon.json'
 
-const myAlgoConnect = new MyAlgoConnect()
-const walletConnector = new WalletConnect(
-  {
-    bridge: 'https://bridge.walletconnect.org', // Required
-    qrcodeModal: QRCodeModal
-  }
-)
-
-const popupTriggers = ref({
-  chooseWallet: false
-})
 const uncommon = [
   {
     name: 'Chomp',
@@ -268,10 +232,8 @@ const addresses = [
   'YOHSDM3T5DMN3BAIRPLPCJYFO6UAJXUFZZ7P7Y4I66RYVRR4VYQVMB2YEM'
 ]
 
-let account
 // eslint-disable-next-line no-unused-vars
 let address
-let wallet
 let foundAddress
 export default {
   setup () {
@@ -312,59 +274,6 @@ export default {
       })
     }
   },
-  methods: {
-    TogglePopup (trigger) {
-      popupTriggers.value[trigger] = !popupTriggers.value[trigger]
-    },
-    async connectWallet (wallet) {
-      switch (wallet) {
-        case 'myalgo':
-          account = await myAlgoConnect.connect()
-          // eslint-disable-next-line no-unused-vars
-          this.address = account[0].address
-          this.wallet = 'myalgo'
-          break
-        case 'walletconnect':
-          // Check if connection is already established
-          if (!walletConnector.connected) {
-            // create new session
-            // eslint-disable-next-line no-undef
-            walletConnector.createSession()
-          } else {
-            this.address = walletConnector.accounts[0]
-            this.wallet = 'walletconnect'
-          }
-          // Subscribe to connection events
-          walletConnector.on('connect', (error, payload) => {
-            if (error) {
-              throw error
-            }
-            this.address = walletConnector.accounts[0]
-            this.wallet = 'walletconnect'
-          })
-
-          walletConnector.on('session_update', (error, payload) => {
-            if (error) {
-              throw error
-            }
-            this.address = walletConnector.accounts[0]
-            this.wallet = 'walletconnect'
-          })
-
-          walletConnector.on('disconnect', (error, payload) => {
-            if (error) {
-              throw error
-            }
-            this.address = undefined
-          })
-      }
-      console.log(this.address)
-      localStorage.userAddress = this.address
-      this.foundAddress = true
-      this.TogglePopup('chooseWallet')
-      console.log(localStorage.userAddress)
-    }
-  },
   mounted () {
     window.scrollTo(0, 0)
     if (localStorage.userAddress) {
@@ -377,8 +286,7 @@ export default {
   components: {
     EvolveCard,
     EvolveCardTwo,
-    CraftCard,
-    PopupWindow
+    CraftCard
   },
   data () {
     return {
@@ -387,11 +295,8 @@ export default {
       uncommonFive,
       rareFive,
       craftFive,
-      PopupWindow,
-      popupTriggers,
       foundAddress,
-      address,
-      wallet
+      address
     }
   }
 }

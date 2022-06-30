@@ -2,8 +2,6 @@
   <div>
     <div class="background">
       <h1 class="spreadText">ALCHESHOP</h1>
-      <button v-if="!foundAddress" @click="TogglePopup('chooseWallet')">CONNECT WALLET</button>
-      <p v-if="foundAddress" class="connectedWallet">Connected wallet: {{ this.address }}</p>
     </div>
     <div class="forSale">
       <div>
@@ -18,16 +16,6 @@
       </div>
     </div>
   </div>
-  <popup-window v-if="popupTriggers.chooseWallet">
-    <h3>Connect Your Wallet</h3>
-    <button class="boxShadow" @click="connectWallet('myalgo')">
-      MyAlgo
-    </button><br>
-    <button class="boxShadow" @click="connectWallet('walletconnect')">
-      WalletConnect
-    </button><br>
-    <button class="boxShadow" @click="TogglePopup('chooseWallet')">Cancel</button>
-  </popup-window>
 </template>
 
 <style lang="scss" scoped>
@@ -39,18 +27,6 @@
   background-size: cover;
   padding: 5% 0% 2%;
 
-}
-.connectedWallet {
-    background-color: #fff9e8;
-    padding: 1%;
-    border: 4px black solid;
-    border-radius: 15px;
-    width: 75%;
-    margin: auto;
-}
-p {
-    text-align: center;
-    margin: 0;
 }
 .forSale {
     background-color: white;
@@ -66,46 +42,13 @@ h1 {
   color: #e6ad10;
   -webkit-text-stroke:1px rgb(22, 22, 54);
 }
-button {
-  font-family: poppins;
-  text-align: center;
-  background-color: orange;
-  border: 2px solid orange;
-  color: white;
-  cursor: pointer;
-  border-radius: 8px;
-  margin: 1%;
-  padding: .5%;
-}
-
-button:hover {
-  background-color: darkblue;
-  border: 2px solid orange;
-  color: orange;
-}
 </style>
 
 <script>
 import items from '../data/storeItems.json'
 import algosdk from 'algosdk'
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 import StoreCard from '../components/StoreCard.vue'
-import PopupWindow from '../components/PopupWindow.vue'
-import MyAlgoConnect from '@randlabs/myalgo-connect'
-import WalletConnect from '@walletconnect/client'
-import QRCodeModal from 'algorand-walletconnect-qrcode-modal'
-
-const myAlgoConnect = new MyAlgoConnect()
-const walletConnector = new WalletConnect(
-  {
-    bridge: 'https://bridge.walletconnect.org', // Required
-    qrcodeModal: QRCodeModal
-  }
-)
-
-const popupTriggers = ref({
-  chooseWallet: false
-})
 
 const storeItems = reactive([])
 
@@ -143,10 +86,8 @@ const addresses = [
   'BDXWFKZNOLXM73ISYUFW4THIVMFQSLVQUU5J576ZRB6OUHFJK7MG3ZDI6Q'
 ]
 
-let account
 // eslint-disable-next-line no-unused-vars
 let address
-let wallet
 let foundAddress
 
 export default {
@@ -174,60 +115,6 @@ export default {
       })
     }
   },
-  methods: {
-    TogglePopup (trigger) {
-      popupTriggers.value[trigger] = !popupTriggers.value[trigger]
-    },
-    async connectWallet (wallet) {
-      switch (wallet) {
-        case 'myalgo':
-          account = await myAlgoConnect.connect()
-          // eslint-disable-next-line no-unused-vars
-          this.address = account[0].address
-          this.wallet = 'myalgo'
-          localStorage.userAddress = this.address
-          localStorage.userWallet = this.wallet
-          break
-        case 'walletconnect':
-          // Check if connection is already established
-          if (!walletConnector.connected) {
-            // create new session
-            // eslint-disable-next-line no-undef
-            walletConnector.createSession()
-          } else {
-            this.address = walletConnector.accounts[0]
-            localStorage.userAddress = this.address
-            this.wallet = 'walletconnect'
-            localStorage.userWallet = this.wallet
-          }
-          // Subscribe to connection events
-          walletConnector.on('connect', (error, payload) => {
-            if (error) {
-              throw error
-            }
-            this.address = walletConnector.accounts[0]
-            localStorage.userAddress = this.address
-            this.wallet = 'walletconnect'
-            localStorage.userWallet = this.wallet
-          })
-
-          walletConnector.on('session_update', (error, payload) => {
-            if (error) {
-              throw error
-            }
-          })
-
-          walletConnector.on('disconnect', (error, payload) => {
-            if (error) {
-              throw error
-            }
-          })
-          break
-      }
-      this.foundAddress = true
-      this.TogglePopup('chooseWallet')
-    }
-  },
   mounted () {
     window.scrollTo(0, 0)
     if (localStorage.userAddress) {
@@ -238,17 +125,13 @@ export default {
     }
   },
   components: {
-    StoreCard,
-    PopupWindow
+    StoreCard
   },
   data () {
     return {
       viewOnly: 'all',
-      PopupWindow,
-      popupTriggers,
       foundAddress,
-      address,
-      wallet
+      address
     }
   },
   computed: {

@@ -6,53 +6,140 @@
       <div class="line2"></div>
       <div class="line3"></div>
     </div>
-    <ul class="nav-links">
-       <li>
+    <div class="nav-links">
             <router-link to="/news">NEWS</router-link>
-        </li>
-        <li>
+
             <router-link to="/faq">FAQ</router-link>
-        </li>
-        <li>
+
             <router-link to="/howtoplay">HOW&nbsp;TO&nbsp;PLAY</router-link>
-        </li>
-        <li>
+
             <router-link to="/token">TOKEN</router-link>
-        </li>
-        <li>
+
             <router-link to="/alchedex">ALCHEDEX</router-link>
-        </li>
-        <!-- <li>
-            <router-link to="/crafting">CRAFT</router-link>
-        </li>
-        <li>
-            <router-link to="/evolving">EVOLVE</router-link>
-        </li> -->
-        <li class="dropdown-link">
-                <span>STORE&nbsp;&#x2193;</span>
-          <ul class="dropdown-menu">
-            <li>
+        <div class="dropdown-link">
+                <p class="navp">STORE&nbsp;▼</p>
+          <div class="dropdown-menu">
               <a href="https://shop.alchemon.net" target="_blank">MERCH</a>
-            </li>
-             <li>
                <router-link to="/store">ALCHESHOP</router-link>
-            </li>
-            <li>
                <router-link to="/craftandevolve">CRAFT & EVOLVE</router-link>
-            </li>
-            <li>
               <a href="https://www.randgallery.com/algo-collection/?address=ALCHY5SJXOXZXADZPD73KO6CYNZXDUWFYANTSXU6RIO3EZACIIXUCS3YDM" target="_blank">RANDGALLERY</a>
-            </li>
-          </ul>
-      </li>
-    </ul>
+          </div>
+      </div>
+      <div class="connectWallet">
+        <p v-if="!foundAddress" class="navp" @click="TogglePopup('chooseWallet')">CONNECT</p>
+        <p v-if="foundAddress" class="navp"> {{ displayAddress }}...</p>
+      </div>
+    </div>
   </nav>
+<popup-window v-if="popupTriggers.chooseWallet">
+    <h3>Connect Your Wallet</h3>
+    <button class="boxShadow" @click="connectWallet('myalgo')">
+      MyAlgo
+    </button><br>
+    <button class="boxShadow" @click="connectWallet('walletconnect')">
+      WalletConnect
+    </button><br>
+    <button class="boxShadow" @click="TogglePopup('chooseWallet')">Cancel</button>
+  </popup-window>
 </template>
 
 <script>
+import { ref } from 'vue'
+import PopupWindow from './PopupWindow.vue'
+
+import MyAlgoConnect from '@randlabs/myalgo-connect'
+import WalletConnect from '@walletconnect/client'
+import QRCodeModal from 'algorand-walletconnect-qrcode-modal'
+
+const popupTriggers = ref({
+  chooseWallet: false
+})
+
+const myAlgoConnect = new MyAlgoConnect()
+const walletConnector = new WalletConnect(
+  {
+    bridge: 'https://bridge.walletconnect.org', // Required
+    qrcodeModal: QRCodeModal
+  }
+)
+
+let account
+let foundAddress
+
 export default {
+  components: { PopupWindow },
   name: 'NavBar',
+  computed: {
+    displayAddress () {
+      // eslint-disable-next-line no-unused-vars
+      const refresh = foundAddress
+      const shortAddress = localStorage.userAddress.slice(0, 4)
+      if (localStorage.userAddress !== undefined) {
+        return shortAddress
+      } else {
+        return 'ERROR'
+      }
+    }
+  },
   methods: {
+    TogglePopup (trigger) {
+      popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+    },
+    async connectWallet (wallet) {
+      this.TogglePopup('chooseWallet')
+      switch (wallet) {
+        case 'myalgo':
+          account = await myAlgoConnect.connect()
+          // eslint-disable-next-line no-unused-vars
+          this.address = account[0].address
+          this.wallet = 'myalgo'
+          this.saveUserInformation()
+          break
+        case 'walletconnect':
+          // Check if connection is already established
+          if (!walletConnector.connected) {
+            // create new session
+            // eslint-disable-next-line no-undef
+            walletConnector.createSession()
+          } else {
+            this.address = walletConnector.accounts[0]
+            this.wallet = 'walletconnect'
+            this.saveUserInformation()
+          }
+          // Subscribe to connection events
+          walletConnector.on('connect', (error) => {
+            if (error) {
+              throw error
+            }
+            this.address = walletConnector.accounts[0]
+            this.wallet = 'walletconnect'
+            this.saveUserInformation()
+          })
+
+          walletConnector.on('session_update', (error) => {
+            if (error) {
+              throw error
+            }
+            this.address = walletConnector.accounts[0]
+            this.wallet = 'walletconnect'
+            this.saveUserInformation()
+          })
+
+          walletConnector.on('disconnect', (error) => {
+            if (error) {
+              throw error
+            }
+            this.address = undefined
+            foundAddress = false
+          })
+      }
+    },
+    saveUserInformation () {
+      localStorage.userAddress = this.address
+      localStorage.userWallet = this.wallet
+      this.foundAddress = true
+      window.location.reload()
+    },
     openMobileNav () {
       const nav = document.querySelector('.nav-links')
       // const navLinks = document.querySelectorAll('.nav-links li')
@@ -103,6 +190,19 @@ export default {
     if (window.innerWidth < 768) {
       this.countClicksOnMobileDropdown()
     }
+    if (localStorage.userAddress) {
+      this.address = localStorage.userAddress
+      this.foundAddress = true
+    } else {
+      this.foundAddress = false
+    }
+  },
+  data () {
+    return {
+      popupTriggers,
+      PopupWindow,
+      foundAddress
+    }
   }
 }
 </script>
@@ -115,11 +215,17 @@ nav {
   z-index: 100;
 }
 
-li:hover, a:hover, span:hover {
+p{
+  text-align: center;
+  padding: 0%;
+}
+
+a:hover, .navp:hover {
     background-color: orange;
     color: #00006f;
     transition: 0.3s;
     color: white;
+    cursor: pointer;
 }
 
 img {
@@ -132,7 +238,7 @@ img {
     margin: 1%;
 }
 
-ul.nav-links {
+div.nav-links {
   display: flex;
   justify-content: right;
   width: 60%;
@@ -143,22 +249,20 @@ ul.nav-links {
 
 @media not all and (min-resolution:.001dpcm)
 { @supports (-webkit-appearance:none) and (stroke-color:transparent) {
-ul.nav-links {
+div.nav-links {
 margin-right: 5%;
 }
 }}
 
-ul.nav-links li {
-  list-style: none;
-  padding: 2% 4%;
-}
-
-ul.nav-links a, span {
+div.nav-links a, .navp {
   text-decoration: none;
   color: #fefefe;
   font-weight: 500;
   display: block;
+  padding: 1vw 2vw;
+  margin: 0%;
 }
+
 #burger {
   display: none;
   cursor: pointer;
@@ -174,26 +278,22 @@ ul.nav-links a, span {
   right: 100px;
 }
 
-ul.dropdown-menu {
+div.dropdown-menu {
   position: absolute;
   cursor: pointer;
   display: none;
   top: 100%;
   padding: 0%;
-  min-width: 200px;
-  right: 0%;
-}
-li {
-  text-align: center;
+  background-color: rgba(0, 0, 140, 0.5);
 }
 
-ul.dropdown-menu li {
+div.dropdown-menu li {
   margin: 0%;
   background-color: rgb(0, 0, 80);
   padding: 0%;
 }
 
-ul.dropdown-menu a {
+div.dropdown-menu a {
   line-height: 8vh;
   line-height: 50px;
   text-align: center;
@@ -207,7 +307,7 @@ ul.dropdown-menu a {
 
 /* Mobile */
 @media screen and (max-width: 768px) {
-  ul.nav-links {
+  div.nav-links {
     align-items: center;
     justify-content: flex-start;
     display: block;
@@ -222,7 +322,7 @@ ul.dropdown-menu a {
     visibility: hidden;
   }
 
-  ul.nav-links a {
+  div.nav-links a {
     width: 100%;
   }
 
@@ -230,7 +330,7 @@ ul.dropdown-menu a {
     display: block;
   }
 
-  ul.dropdown-menu {
+  div.dropdown-menu {
       width: 100vw;
       right: 0%;
   }
@@ -238,7 +338,7 @@ ul.dropdown-menu a {
       height: 5vw;
   }
 
-  ul.dropdown-menu a {
+  div.dropdown-menu a {
   padding: 1% ;
 }
 }

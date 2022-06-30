@@ -10,11 +10,11 @@
       <p> {{ name }}</p>
       <p> {{ id }}</p>
       <p> Available: {{ amount }} </p>
-      <button @click="setAlchemonId(id, cost, type, this.address, this.wallet)" class="boxShadow nftButton"
+      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
         v-if="type === 'alchemon'">{{ cost }} ALGO</button>
-      <button @click="setAlchemonId(id, cost, type, this.address, this.wallet)" class="boxShadow nftButton"
+      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
         v-if="type === 'art'">{{ cost }} ALCH</button>
-        <button @click="setAlchemonId(id, cost, type, this.address, this.wallet)" class="boxShadow nftButton"
+        <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
         v-if="type === 'alchibilities'">{{ cost }} ALCH</button>
     </div>
   </div>
@@ -229,6 +229,8 @@ export default {
       userAddress = localStorage.userAddress
       userWallet = localStorage.userWallet
       this.TogglePopup('makePurchase')
+      console.log(userAddress)
+      console.log(userWallet)
     },
     TogglePopup (trigger) {
       popupTriggers.value[trigger] = !popupTriggers.value[trigger]

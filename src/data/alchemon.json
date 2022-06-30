@@ -11,7 +11,9 @@
           "isOwned": true,
           "tradedCardOne": "Araknolyth",
           "tradedCardTwo": "Torcydious",
-          "amount": 2,
+          "tradeInOneStoreAddress": "T2L4WBMXBGLLW5TFYH76QVQYBJ4LCKV4TSFRGOMSOHMOHTT6OSIA4GFMRM",
+          "tradeInTwoStoreAddress": "SYFVB77GVQKYHCX34UVJ6HVV4TUIUQKC4UGRCQDEXRGJNVPZ74BQNRC4CY",
+          "appID": 780915147,
           "available": 0
 },
 {
@@ -26,7 +28,9 @@
         "isOwned": true,
         "tradedCardOne": "Torrment",
         "tradedCardTwo": "Incydious",
-        "amount": 2,
+        "tradeInOneStoreAddress": "OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA",
+        "tradeInTwoStoreAddress": "OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA",
+        "appID": 780912756,
         "available": 0
 },
 {
@@ -41,7 +45,9 @@
         "isOwned": true,
         "tradedCardOne": "Monolyth",
         "tradedCardTwo": "Arakumo",
-        "amount": 2,
+        "tradeInOneStoreAddress": "OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA",
+        "tradeInTwoStoreAddress": "OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA",
+        "appID": 780911874,
         "available": 0
 },
 {
@@ -55,6 +61,9 @@
           "reward": 8,
         "isOwned": true,
         "tradedCard": "Cydevil",
+        "tradeInOneStoreAddress": "OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA",
+        "tradeInTwoStoreAddress": "D5UOOPGEX3M7CIXF2VLRGTNOQA2EHU4FVZ34KHYPJMZXLNJCQOCV3QM3DQ",
+        "appID": 780904407,
         "available": 0
 },
 {
@@ -68,6 +77,8 @@
           "reward": 4,
         "isOwned": true,
         "tradedCard": "Cyd",
+        "tradeInStoreAddress": "WP55X5NNDLVSD2KRL4MHUYR2QGFART6V4OUQN54ETURA5AGM6Y5J4AI6I4",
+        "appID": 780890555,
         "available": 0
 },
 {
@@ -92,6 +103,9 @@
           "reward": 8,
         "isOwned": true,
         "tradedCard": "Torrden",
+        "tradeInOneStoreAddress": "OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA",
+        "tradeInTwoStoreAddress": "V7WQJCTFNJPY74FX55IPG5OYMM2OUTHIVBCFNTJZTUYQFLJ6PIJ443L6O4",
+        "appID": 780903876,
         "available": 0
 },
 {
@@ -105,6 +119,8 @@
           "reward": 4,
         "isOwned": true,
         "tradedCard": "Torr",
+        "tradeInStoreAddress": "BLBMPJ2T2R34STSEIMR2M3ONWRUQKDVERCJA6FYSK563KBNCWWDKKXXPLM",
+        "appID": 780890445,
         "available": 0
 },
 {
@@ -129,6 +145,9 @@
           "reward": 8,
         "isOwned": true,
         "tradedCard": "Araku",
+        "tradeInOneStoreAddress": "OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA",
+        "tradeInTwoStoreAddress": "SOLSRI3V5JW2RYJJXQRXGFBNQQMTKOUQZQXHMGFO7YJ4BDSFLNRBFOLK3I",
+        "appID": 780903179,
         "available": 0
 },
 {
@@ -142,6 +161,8 @@
           "reward": 4,
         "isOwned": true,
         "tradedCard": "Kumo",
+        "tradeInStoreAddress": "4CBGCW7NNKN6YQRODCTQ5TDWYK5HGP7N6QLAYIV2ZG6JER3A7GUENNKYN4",
+        "appID": 780890332,
         "available": 0
 },
 {
@@ -166,6 +187,9 @@
           "reward": 8,
         "isOwned": true,
         "tradedCard": "Golyth",
+        "tradeInStoreAddress": "OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA",
+        "tradeInTwoStoreAddress": "YCTTBN4WVEACXLKURQQ4X2X6HEVV4ANH2LZ4HI5MF5RMLPOH2ICC4BC6AI",
+        "appID": 780902676,
         "available": 0
 },
 {
@@ -179,6 +203,8 @@
           "reward": 4,
         "isOwned": true,
         "tradedCard": "Lyth",
+        "tradeInStoreAddress": "O3BY3EN4SA75TBYKE6OTOCWIYK4CT7EY47HMYJGKET2PICWLNVCO4P2P6E",
+        "appID": 780885401,
         "available": 0
 },
 {
@@ -248,6 +274,9 @@
           "reward": 8,
         "isOwned": true,
         "tradedCard": "Chomp",
+        "tradeInOneStoreAddress": "OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA",
+        "tradeInTwoStoreAddress": "HFIAQTXJC5QJKXNY5TQ7GRUPXDI46DWQQNH4WLONANCX6WLGGAQYOIUFDU",
+        "appID": 779981368,
         "available": 0
 },
 {
@@ -261,6 +290,8 @@
           "reward": 4,
         "isOwned": true,
         "tradedCard": "Lika",
+        "tradeInStoreAddress": "I3QBOS6X6IWOY7S65CRRU47RAS2IK3TPLXAF3HYVY5JIEP7IXWARBWMJYQ",
+        "appID": 778975613,
         "available": 0
 },
 {
@@ -285,6 +316,9 @@
           "reward": 8,
         "isOwned": true,
         "tradedCard": "Daggerz",
+        "tradeInOneStoreAddress": "OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA",
+        "tradeInTwoStoreAddress": "DORWEXHUPVXMLELBTGAGGG4PGPRB6GB77YZ5WHHTT3TFASE5A25LBMQIWY",
+        "appID": 779980888,
         "available": 0
 },
 {
@@ -298,6 +332,8 @@
           "reward": 4,
         "isOwned": true,
         "tradedCard": "Dagz",
+        "tradeInStoreAddress": "5HPPE2OE6L3UDVG2LOU3LKD56TS6AQAMRY37FGRN45B7UG5ZJAQCZ2TWAM",
+        "appID": 778975506,
         "available": 0
 },
 {
@@ -322,6 +358,9 @@
           "reward": 8,
         "isOwned": true,
         "tradedCard": "Hailuff",
+        "tradeInOneStoreAddress": "OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA",
+        "tradeInTwoStoreAddress": "SAWCR4D342HOKTHK7EDNE6UONGHGRVYGYKTCCHVMJD4BPX4KLMAF5JNK6Y",
+        "appID": 779980397,
         "available": 0
 },
 {
@@ -335,6 +374,8 @@
           "reward": 4,
         "isOwned": true,
     "tradedCard": "Puff",
+    "tradeInStoreAddress": "5BSQOOEXICBRFBWBAQKFDUF4YFQN67OQFAH5NFHE2FUHTNHEHNGXJ6MPJU",
+    "appID": 778975387,
     "available": 0
 },
 {
@@ -359,6 +400,9 @@
           "reward": 8,
         "isOwned": true,
     "tradedCard": "Zipadol",
+          "tradeInOneStoreAddress": "OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA",
+          "tradeInTwoStoreAddress": "DWGPVTDCFM3DADFBHTE7S4DX7QL4HUJHGHC6DFGJXUPD5P5HPSII4MRGQ4",
+          "appID": 779979805,
     "available": 0
 },
 {
@@ -372,6 +416,8 @@
           "reward": 4,
         "isOwned": true,
         "tradedCard": "Zip",
+        "tradeInStoreAddress": "7OVSLHCECWQZ7R4DVV64VWCPG4AL6JTDBLQZZX6FPG22JCIIVFOSTC6GBQ",
+        "appID": 778975194,
         "available": 0
 },
 {

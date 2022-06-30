@@ -15,7 +15,7 @@
     right: 0;
     bottom: 0;
     z-index: 99;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,6 +23,7 @@
     background: #FFF;
     padding: 32px;
     z-index: 100;
+    width: 100vw;
 }
 button {
     font-family: poppins;

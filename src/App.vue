@@ -42,7 +42,9 @@ export default {
     margin: 0;
     display: grid;
     grid-template-rows: 1fr auto;
-    overflow-wrap: break-word;
+}
+.website {
+  width: 100vw;
 }
 p{
   text-align: justify;
