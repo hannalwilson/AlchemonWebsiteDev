@@ -196,17 +196,17 @@ export default {
       const stakingAddress = '5Q2PRQDMH7JNT76EYFXBB4UBFVBL6WI37GTJC7HELNPZ4EL5BE6WKQXP4Y'
       let cardFound = false
       let userStakedCardId
+      const now = new Date()
+      const weekAgo = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 7)
+      const formattedWeekAgo = weekAgo.toISOString()
       // const userTransactions = reactive({})
-      client.lookupAccountTransactions(this.$refs.address.value).afterTime().do().then(response => {
+      client.lookupAccountTransactions(this.$refs.address.value).afterTime(formattedWeekAgo).do().then(response => {
         try {
-          console.log(response)
+          console.log(formattedWeekAgo)
           for (let i = 0; !cardFound; i++) {
             const userTransaction = response.transactions[i]
             if (userTransaction['asset-transfer-transaction'] !== undefined) {
               if (userTransaction['asset-transfer-transaction'].receiver === stakingAddress) {
-                console.log(userTransaction['round-time'])
-                const date = new Date(userTransaction['round-time'])
-                console.log(date)
                 userStakedCardId = userTransaction['asset-transfer-transaction']['asset-id']
                 if (alchemonName[userStakedCardId] !== undefined) {
                   this.userStakedCard = alchemonName[userStakedCardId]

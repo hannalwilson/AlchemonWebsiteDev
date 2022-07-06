@@ -79,7 +79,7 @@
                 forfeit your evolution. I have made links to easily add all assets of the the game on the AlcheDex page.
             </p>
             <img id="trainingAnimation_2" src="../assets/24_drathslayer.png" width="50%" alt="Drathslayer flipping">
-            <staking-view class="evolutionsAvailable"></staking-view>
+            <staking-view></staking-view>
         </div>
         <div class="huntinggrounds">
             <p class="whiteHeader spreadText">HUNTING GROUNDS</p>

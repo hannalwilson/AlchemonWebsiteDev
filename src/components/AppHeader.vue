@@ -224,6 +224,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 nav {
   background-color: rgba(0, 0, 140, 0.5);
   position: fixed;
@@ -257,6 +258,7 @@ img {
     position: absolute;
     left: 12vw;
 }
+
 div.nav-links {
   display: flex;
   justify-content: right;
@@ -379,5 +381,8 @@ div.dropdown-menu a {
   .connectWallet {
     font-size: 6vw;
   }
+}
+.navp {
+  font-weight: 900;
 }
 </style>
