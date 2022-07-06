@@ -2,7 +2,7 @@
   <div class="nftContainer boxShadow">
     <div class="imgContainer">
       <img :src="require(`@/assets/alchemon/${name}.png`)" v-if="type === 'alchemon'" class="nftImage">
-      <img :src="require(`@/assets/alchibilities/${name}.png`)" v-if="type === 'alchibilities'" class="nftImage">
+      <img :src="require(`@/assets/alchebilities/${name}.png`)" v-if="type === 'alchebilities'" class="nftImage">
       <video :src="require(`@/assets/art/${name}.mp4`)" v-if="type === 'art'" class="nftImage" autoplay muted loop
         playsinline></video>
     </div>
@@ -15,7 +15,7 @@
       <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
         v-if="type === 'art'">{{ cost }} ALCH</button>
         <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
-        v-if="type === 'alchibilities'">{{ cost }} ALCH</button>
+        v-if="type === 'alchebilities'">{{ cost }} ALCH</button>
     </div>
   </div>
   <popup-window v-if="popupTriggers.makePurchase">
@@ -187,15 +187,7 @@ const itemIds = {
   773031968: 773120532,
   773060393: 773120705,
   773062744: 773120833,
-  773065518: 773120982, // end of mainnet
-  96558356: 96562409,
-  96558278: 96562430,
-  96558168: 96562441,
-  96558068: 96562455,
-  96557972: 96562468,
-  96557866: 96562483,
-  96557782: 96562499,
-  96557521: 96562512
+  773065518: 773120982
 }
 const popupTriggers = ref({
   chooseWallet: false,
@@ -250,7 +242,7 @@ export default {
             microalgoAmount: (1000000 * alchemonCost)
           })
           break
-        case 'alchibilities':
+        case 'alchebilities':
         case 'art':
           payWithAlgoResponse = await axios.post(`${apiURL}/payWithToken`, {
             customerAddress: userAddress,

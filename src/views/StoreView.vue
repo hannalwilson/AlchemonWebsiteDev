@@ -6,7 +6,7 @@
     <div class="forSale">
       <div>
         <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'alchemon'">Alchemon</button>
-        <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'alchibilities'">Alchibilities</button>
+        <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'alchebilities'">Alchebilities</button>
         <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'art'">Art</button>
         <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'all'">View All</button>
       </div>
@@ -75,15 +75,7 @@ const addresses = [
   '6GN65BOLLZRUBMYD73GLZCRORABTWVRM3ALPC6LQ3KJDGTEHXVOATYJM7A',
   'TFY2WW37XK7NSPG7CJMT4ILJRANXYXMI2FQBIDMFDHHHWQRYSQZSH3RKSQ',
   'OX5UZFYVLKDHCOFZ7MGNPLJUKOLV43NLJJOM47KM2SNHCCJVKGERQAC4OA',
-  'E3VNMDHNLVZW4SGASBXICP2PU5CDVELGJTIOBMEXOJNHFYRHQVFIVI7OZA', // end of mainnet address
-  'FRXI3QYOFQHBKCUMQJDEJUWCI3EPMMM7RUWABKBR5MH3XYGMNSR6ALINAI', // beginning of testnet address
-  'KPJ2FHS3OATRTGGVKCRF24RXYC64BR6HX75Y3FHQYBUGAD53EV6ZACEVOU',
-  'RZU5ZBINSGLIEOJMM44RA45KRXUH5DCXE32TPGSMKYWBYICS6MSFHLJSRM',
-  'RYDUCUN2Q6OA5BDSTKI5IL7KDRUHU646B6SJECWUUHKO366UFR33T4JTRQ',
-  '7IFZJ2KKJ4B7TRE3H72GWHZFYCOLLQQ5GJJUN4GYJRYTS2X4GGXGKDDSP4',
-  '3OQKVI7ZCOHVBRN63MQAJWZUUWT3DSBEL7V5CX7CNPS6K4ZFHZQKK5XHSQ',
-  'L75YE6ONHD3HGDR6V64IGE4GIYIYEX6UVCEWNKC4I2NFDBGENOYSSXWUFM',
-  'BDXWFKZNOLXM73ISYUFW4THIVMFQSLVQUU5J576ZRB6OUHFJK7MG3ZDI6Q'
+  'E3VNMDHNLVZW4SGASBXICP2PU5CDVELGJTIOBMEXOJNHFYRHQVFIVI7OZA'
 ]
 
 // eslint-disable-next-line no-unused-vars
@@ -93,7 +85,7 @@ let foundAddress
 export default {
   setup () {
     const token = ''
-    const server = 'https://testnet-api.algonode.cloud'
+    const server = 'https://mainnet-api.algonode.cloud'
     const port = ''
     const client = new algosdk.Algodv2(token, server, port)
 
@@ -136,7 +128,8 @@ export default {
   },
   computed: {
     filteredItems () {
-      let tempItems = storeItems.filter(item => item.amount > 0)
+      // let tempItems = storeItems.filter(item => item.amount > 0)
+      let tempItems = storeItems
 
       if (this.viewOnly === 'alchemon') {
         tempItems = tempItems.filter(item => {
@@ -148,12 +141,13 @@ export default {
           return item.type.includes('art')
         })
       }
-      if (this.viewOnly === 'alchibilities') {
+      if (this.viewOnly === 'alchebilities') {
         tempItems = tempItems.filter(item => {
-          return item.type.includes('alchibilities')
+          return item.type.includes('alchebilities')
         })
       }
       if (this.viewOnly === 'all') {
+        // tempItems = storeItems.filter(item => item.amount > 0)
         tempItems = storeItems
       }
       return tempItems

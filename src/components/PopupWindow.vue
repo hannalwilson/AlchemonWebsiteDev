@@ -23,23 +23,7 @@
     background: #FFF;
     padding: 32px;
     z-index: 100;
-    width: 100vw;
-}
-button {
-    font-family: poppins;
-    text-align: center;
-    background-color: orange;
-  border: 2px solid orange;
-    color: white;
-    cursor: pointer;
-    border-radius: 8px;
-    padding: 0 5%;
-    margin: 2% 4%;
-}
-button:hover {
-  background-color:darkblue;
-  border: 2px solid orange;
-  color: orange;
+    padding: 1vw 5vw 2vw;
 }
 }
 </style>
