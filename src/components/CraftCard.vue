@@ -8,7 +8,7 @@
       <p> Craft a {{ name }}</p>
       <p> {{ amount }} {{ tradedCardOne }} + {{ amount }} {{ tradedCardTwo }} + 250 Alch</p>
       <p>Available: {{ available }}</p>
-      <button v-if="available > 0" @click="setAlchemon(`${name}`, this.address, this.wallet)" class="boxShadow nftButton">250 ALCH</button>
+      <button v-if="available > 0" @click="setAlchemon(`${name}`)" class="boxShadow nftButton">250 ALCH</button>
     </div>
   </div>
   <popup-window v-if="popupTriggers.chooseWallet">
@@ -24,6 +24,9 @@
   <popup-window v-if="popupTriggers.signTransaction">
     <h2>Please open your wallet app to sign the transaction!</h2>
     <button class="boxShadow" @click="TogglePopup('signTransaction')">Close</button>
+  </popup-window>
+      <popup-window v-if="popupTriggers.processingTransaction">
+    <h2>Transaction processing...</h2>
   </popup-window>
   <popup-window v-if="popupTriggers.transactionSuccessful">
     <h2>Successful! Go check out your new Alchemon!</h2>
@@ -241,13 +244,15 @@ export default {
     }
   },
   methods: {
-    setAlchemon (name, address, wallet) {
+    setAlchemon (name) {
       console.log(smartContractInfo)
       const id = smartContractInfo[name].appID
       const evolved = smartContractInfo[name].evolvedAlchemon
       const tradedOne = smartContractInfo[name].tradedAlchemonOne
       const tradedTwo = smartContractInfo[name].tradedAlchemonTwo
       const amount = smartContractInfo[name].amount
+      const address = localStorage.userAddress
+      const wallet = localStorage.userWallet
       this.craftAlchemon(id, evolved, tradedOne, tradedTwo, amount, address, wallet)
     },
     async craftAlchemon (appID, evolvedAlchemon, tradedAlchemonOne, tradedAlchemonTwo, amount, address, wallet) {
@@ -255,10 +260,13 @@ export default {
       const evolved = evolvedAlchemon
       const tradedOne = tradedAlchemonOne
       const tradedTwo = tradedAlchemonTwo
+      if (!wallet) {
+        window.alert('Error: No wallet connected.')
+      }
       if (wallet === 'walletconnect') {
         this.TogglePopup('signTransaction')
       }
-      let quickEvolveOneResponse = await axios.post(`${apiURL}/quickEvolveAlchTwo`, {
+      const quickEvolveOneResponse = await axios.post(`${apiURL}/quickEvolveAlchTwo`, {
         customerAddress: address,
         tradeInOneStoreAddress: tradeInAddresses[tradedOne],
         tradeInTwoStoreAddress: tradeInAddresses[tradedTwo],
@@ -290,7 +298,6 @@ export default {
               txn: encodedTxn
             }
           })
-
           // eslint-disable-next-line no-case-declarations
           const requestParams = [txnsToSign]
           // eslint-disable-next-line no-case-declarations
@@ -300,19 +307,30 @@ export default {
           } catch (error) {
             errorMessage = error.message
             this.TogglePopup('transactionFailed')
+            this.TogglePopup('signTransaction')
           }
+          this.TogglePopup('signTransaction')
           break
       }
-      try {
-        const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
-          txn: signedTxn
-        })
-        if (sendTxnResponse.status === 200) {
-          this.TogglePopup('transactionSuccessful')
+
+      if (signedTxn) {
+        this.TogglePopup('processingTransaction')
+        try {
+          const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
+            txn: signedTxn
+          })
+          if (sendTxnResponse.status === 200) {
+            if (sendTxnResponse.data.txnId) {
+              this.TogglePopup('transactionSuccessful')
+            } else if (sendTxnResponse.data.message) {
+              errorMessage = sendTxnResponse.data.message
+              this.TogglePopup('transactionFailed')
+            }
+          }
+        } catch (error) {
+          this.TogglePopup('errorOccured')
         }
-      } catch {
-        this.TogglePopup('transactionFailed')
-        quickEvolveOneResponse = null
+        this.TogglePopup('processingTransaction')
       }
     },
     TogglePopup (trigger) {

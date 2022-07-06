@@ -1,0 +1,57 @@
+[{
+        "name": "Swoop",
+        "id": 96558356,
+        "type": "alchebilities",
+        "amount": 0,
+        "cost": 500
+    },
+    {
+        "name": "SpinningKick",
+        "id": 96558278,
+        "type": "alchebilities",
+        "amount": 0,
+        "cost": 500
+    },
+    {
+        "name": "Phoenix",
+        "id": 96558168,
+        "type": "alchebilities",
+        "amount": 0,
+        "cost": 500
+    },
+    {
+        "name": "MentalMaze",
+        "id": 96558068,
+        "type": "alchebilities",
+        "amount": 0,
+        "cost": 500
+    },
+    {
+        "name": "FrostBurn",
+        "id": 96557972,
+        "type": "alchebilities",
+        "amount": 0,
+        "cost": 500
+    },
+    {
+        "name": "DirtSmash",
+        "id": 96557866,
+        "type": "alchebilities",
+        "amount": 0,
+        "cost": 500
+    },
+    {
+        "name": "Charge",
+        "id": 96557782,
+        "type": "alchebilities",
+        "amount": 0,
+        "cost": 500
+    },
+    {
+        "name": "Cultivate",
+        "id": 96557521,
+        "type": "alchebilities",
+        "amount": 0,
+        "cost": 500
+    }
+]

@@ -146,7 +146,7 @@ import { formatJsonRpcRequest } from '@json-rpc-tools/utils'
 import { ref } from 'vue'
 import PopupWindow from './PopupWindow.vue'
 
-const apiURL = 'https://l84jesjbd4.execute-api.us-east-1.amazonaws.com'
+const apiURL = 'https://avk5m0z0nc.execute-api.us-east-1.amazonaws.com'
 // eslint-disable-next-line no-unused-vars
 let signedTxn
 
@@ -229,6 +229,9 @@ export default {
     },
     async buyWithAlgo () {
       this.TogglePopup('makePurchase')
+      if (!userWallet) {
+        window.alert('Error: No wallet connected.')
+      }
       if (userWallet === 'walletconnect') {
         this.TogglePopup('signTransaction')
       }
@@ -247,7 +250,7 @@ export default {
           payWithAlgoResponse = await axios.post(`${apiURL}/payWithToken`, {
             customerAddress: userAddress,
             itemShopAppId: itemIds[alchemonId],
-            paymentToken: 78127598,
+            paymentToken: 310014962,
             forSale: parseInt(alchemonId),
             requestedAmount: 1,
             paymentTokenAmount: alchemonCost
@@ -285,10 +288,12 @@ export default {
             this.TogglePopup('transactionFailed')
             this.TogglePopup('signTransaction')
           }
+          this.TogglePopup('signTransaction')
           break
       }
 
       if (signedTxn) {
+        this.TogglePopup('processingTransaction')
         try {
           const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
             txn: signedTxn

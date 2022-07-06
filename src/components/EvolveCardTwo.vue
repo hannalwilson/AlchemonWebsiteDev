@@ -7,7 +7,7 @@
       <p> Evolve a {{ name }}</p>
       <p> 2 {{ tradedCard }} + 100 Alch</p>
       <p>Available: {{ available }}</p>
-      <button v-if="available > 0" @click="setAlchemon(`${name}`, this.address, this.wallet)" class="boxShadow nftButton">100 ALCH</button>
+      <button v-if="available > 0" @click="setAlchemon(`${name}`)" class="boxShadow nftButton">100 ALCH</button>
     </div>
   </div>
   <popup-window v-if="popupTriggers.chooseWallet">
@@ -23,6 +23,9 @@
   <popup-window v-if="popupTriggers.signTransaction">
     <h2>Please open your wallet app to sign the transaction!</h2>
     <button class="boxShadow" @click="TogglePopup('signTransaction')">Close</button>
+  </popup-window>
+    <popup-window v-if="popupTriggers.processingTransaction">
+    <h2>Transaction processing...</h2>
   </popup-window>
   <popup-window v-if="popupTriggers.transactionSuccessful">
     <h2>Successful! Go check out your new Alchemon!</h2>
@@ -234,20 +237,18 @@ export default {
     }
   },
   methods: {
-    setAlchemon (name, userAddress, userWallet) {
+    setAlchemon (name) {
       const id = smartContractInfo[name].appID
       const evolved = smartContractInfo[name].evolved
       const traded = smartContractInfo[name].traded
-      const address = userAddress
-      const wallet = userWallet
+      const address = localStorage.userAddress
+      const wallet = localStorage.userWallet
       this.evolveAlchemon(id, evolved, traded, address, wallet)
     },
     async evolveAlchemon (appID, evolvedAlchemon, tradedAlchemon, address, wallet) {
-      console.log(appID)
-      console.log(evolvedAlchemon)
-      console.log(tradedAlchemon)
-      console.log(address)
-      console.log(wallet)
+      if (!wallet) {
+        window.alert('Error: No wallet connected.')
+      }
       if (wallet === 'walletconnect') {
         this.TogglePopup('signTransaction')
       }
@@ -292,29 +293,31 @@ export default {
           } catch (error) {
             errorMessage = error.message
             this.TogglePopup('transactionFailed')
+            this.TogglePopup('signTransaction')
           }
+          this.TogglePopup('signTransaction')
           break
       }
-      if (wallet === 'walletconnect') {
-        this.TogglePopup('signTransaction')
-      }
-      this.TogglePopup('processingTransaction')
-      try {
-        const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
-          txn: signedTxn
-        })
-        if (sendTxnResponse.status === 200) {
-          if (sendTxnResponse.data.txnId) {
-            this.TogglePopup('transactionSuccessful')
-          } else if (sendTxnResponse.data.message) {
-            errorMessage = sendTxnResponse.data.message
-            this.TogglePopup('transactionFailed')
+
+      if (signedTxn) {
+        this.TogglePopup('processingTransaction')
+        try {
+          const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
+            txn: signedTxn
+          })
+          if (sendTxnResponse.status === 200) {
+            if (sendTxnResponse.data.txnId) {
+              this.TogglePopup('transactionSuccessful')
+            } else if (sendTxnResponse.data.message) {
+              errorMessage = sendTxnResponse.data.message
+              this.TogglePopup('transactionFailed')
+            }
           }
+        } catch (error) {
+          this.TogglePopup('errorOccured')
         }
-      } catch (error) {
-        this.TogglePopup('errorOccured')
+        this.TogglePopup('processingTransaction')
       }
-      this.TogglePopup('processingTransaction')
     },
     TogglePopup (trigger) {
       popupTriggers.value[trigger] = !popupTriggers.value[trigger]

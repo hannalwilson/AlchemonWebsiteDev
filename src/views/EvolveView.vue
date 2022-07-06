@@ -4,13 +4,11 @@
       <h1 class="spreadText">CRAFT & EVOLVE</h1>
     </div>
     <div class="forSale">
-      <div v-if="foundAddress">
-      <craft-card v-for="card in craftFive" :key="card.name" :name="card.name" :tradedCardOne="card.tradedCardOne" :tradedCardTwo="card.tradedCardTwo" :amount="card.amount" :address="address" :available="card.available" :wallet="wallet"></craft-card>
-        <evolve-card-two v-for="card in rareFive" :key="card.name" :name="card.name" :tradedCard="card.tradedCard" :address="address" :available="card.available" :wallet="wallet"></evolve-card-two>
-        <evolve-card v-for="card in uncommonFive" :key="card.name" :name="card.name" :tradedCard="card.tradedCard" :address="address" :available="card.available" :wallet="wallet"></evolve-card>
-        <evolve-card-two v-for="card in rare" :key="card.name" :name="card.name" :tradedCard="card.tradedCard" :address="address" :available="card.available" :wallet="wallet"></evolve-card-two>
-        <evolve-card v-for="card in uncommon" :key="card.name" :name="card.name" :tradedCard="card.tradedCard" :address="address" :available="card.available" :wallet="wallet"></evolve-card>
-      </div>
+      <craft-card v-for="card in craftFive" :key="card.available" :name="card.name" :tradedCardOne="card.tradedCardOne" :tradedCardTwo="card.tradedCardTwo" :amount="card.amount" :address="address" :available="card.available"></craft-card>
+        <evolve-card-two v-for="card in rareFive" :key="card.available" :name="card.name" :tradedCard="card.tradedCard" :address="address" :available="card.available"></evolve-card-two>
+        <evolve-card v-for="card in uncommonFive" :key="card.available" :name="card.name" :tradedCard="card.tradedCard" :address="address" :available="card.available"></evolve-card>
+        <evolve-card-two v-for="card in rare" :key="card.available" :name="card.name" :tradedCard="card.tradedCard" :address="address" :available="card.available"></evolve-card-two>
+        <evolve-card v-for="card in uncommon" :key="card.available" :name="card.name" :tradedCard="card.tradedCard" :address="address" :available="card.available"></evolve-card>
     </div>
   </div>
 </template>
@@ -66,9 +64,11 @@ import EvolveCard from '@/components/EvolveCard.vue'
 import EvolveCardTwo from '@/components/EvolveCardTwo.vue'
 import CraftCard from '@/components/CraftCard.vue'
 import algosdk from 'algosdk'
+import { reactive } from 'vue'
+
 // import alchemon from '../data/alchemon.json'
 
-const uncommon = [
+const uncommon = reactive([
   {
     name: 'Chomp',
     id: 509850827,
@@ -93,9 +93,9 @@ const uncommon = [
     tradedCard: 'Zip',
     available: 0
   }
-]
+])
 
-const rare = [
+const rare = reactive([
   {
     name: 'Likachomp',
     id: 527481591,
@@ -120,9 +120,9 @@ const rare = [
     tradedCard: 'Zipadol',
     available: 0
   }
-]
+])
 
-const craftFive = [
+const craftFive = reactive([
   {
     name: 'Araknadevil',
     id: 744540333,
@@ -147,9 +147,9 @@ const craftFive = [
     amount: 2,
     available: 0
   }
-]
+])
 
-const uncommonFive = [
+const uncommonFive = reactive([
   {
     name: 'Cydevil',
     id: 744535776,
@@ -174,9 +174,9 @@ const uncommonFive = [
     tradedCard: 'Lyth',
     available: 0
   }
-]
+])
 
-const rareFive = [
+const rareFive = reactive([
   {
     name: 'Incydious',
     id: 744536686,
@@ -201,7 +201,7 @@ const rareFive = [
     tradedCard: 'Golyth',
     available: 0
   }
-]
+])
 
 const addresses = [
   'DWGPVTDCFM3DADFBHTE7S4DX7QL4HUJHGHC6DFGJXUPD5P5HPSII4MRGQ4',
@@ -232,9 +232,6 @@ const addresses = [
   'YOHSDM3T5DMN3BAIRPLPCJYFO6UAJXUFZZ7P7Y4I66RYVRR4VYQVMB2YEM'
 ]
 
-// eslint-disable-next-line no-unused-vars
-let address
-let foundAddress
 export default {
   setup () {
     const token = ''
@@ -274,15 +271,6 @@ export default {
       })
     }
   },
-  mounted () {
-    window.scrollTo(0, 0)
-    if (localStorage.userAddress) {
-      this.address = localStorage.userAddress
-      this.foundAddress = true
-    } else {
-      this.foundAddress = false
-    }
-  },
   components: {
     EvolveCard,
     EvolveCardTwo,
@@ -294,9 +282,7 @@ export default {
       rare,
       uncommonFive,
       rareFive,
-      craftFive,
-      foundAddress,
-      address
+      craftFive
     }
   }
 }

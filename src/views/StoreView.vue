@@ -21,7 +21,7 @@
 <style lang="scss" scoped>
 
 .background {
-  background-image: url("../assets/alcheshop_coin.png") ,linear-gradient(to right, #007bff, #2A78F8, #4287F9, #89B4FB);
+  background-image: url("../assets/alcheshop_coin.png"),linear-gradient(to right, #007bff, #2A78F8, #4287F9, #89B4FB);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -107,15 +107,6 @@ export default {
       })
     }
   },
-  mounted () {
-    window.scrollTo(0, 0)
-    if (localStorage.userAddress) {
-      this.address = localStorage.userAddress
-      this.foundAddress = true
-    } else {
-      this.foundAddress = false
-    }
-  },
   components: {
     StoreCard
   },
@@ -128,8 +119,7 @@ export default {
   },
   computed: {
     filteredItems () {
-      // let tempItems = storeItems.filter(item => item.amount > 0)
-      let tempItems = storeItems
+      let tempItems = storeItems.filter(item => item.amount > 0)
 
       if (this.viewOnly === 'alchemon') {
         tempItems = tempItems.filter(item => {
@@ -147,8 +137,7 @@ export default {
         })
       }
       if (this.viewOnly === 'all') {
-        // tempItems = storeItems.filter(item => item.amount > 0)
-        tempItems = storeItems
+        tempItems = storeItems.filter(item => item.amount > 0)
       }
       return tempItems
     }

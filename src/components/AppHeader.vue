@@ -1,7 +1,11 @@
 <template>
   <nav>
     <router-link to="/"><img alt="Vue Logo" src="../assets/logo.png"></router-link>
-    <div v-on:click="openMobileNav()" id="burger">
+    <div class="connectWallet">
+        <div v-if="!foundAddress" class="navp" @click="TogglePopup('chooseWallet')">CONNECT</div>
+        <div v-if="foundAddress" class="navp" @click="TogglePopup('disconnectWallet')">{{ displayAddress }}...</div>
+      </div>
+      <div v-on:click="openMobileNav()" id="burger">
       <div class="line1"></div>
       <div class="line2"></div>
       <div class="line3"></div>
@@ -19,16 +23,11 @@
         <div class="dropdown-link">
                 <p class="navp">STORE&nbsp;▼</p>
           <div class="dropdown-menu">
-              <a href="https://shop.alchemon.net" target="_blank">MERCH</a>
-               <router-link to="/store">ALCHESHOP</router-link>
+            <router-link to="/store">ALCHESHOP</router-link>
                <router-link to="/craftandevolve">CRAFT & EVOLVE</router-link>
               <a href="https://www.randgallery.com/algo-collection/?address=ALCHY5SJXOXZXADZPD73KO6CYNZXDUWFYANTSXU6RIO3EZACIIXUCS3YDM" target="_blank">RANDGALLERY</a>
+              <a href="https://shop.alchemon.net" target="_blank">MERCH</a>
           </div>
-      </div>
-      <div class="connectWallet">
-        <p v-if="!foundAddress" class="navp" @click="TogglePopup('chooseWallet')">CONNECT</p>
-        <p v-if="foundAddress" class="navp"> {{ displayAddress }}...</p>
-        <p v-if="foundAddress" class="navp" @click="disconnectWallet"> DISCONNECT</p>
       </div>
     </div>
   </nav>
@@ -42,6 +41,15 @@
     </button><br>
     <button class="boxShadow" @click="TogglePopup('chooseWallet')">Cancel</button>
   </popup-window>
+  <popup-window v-if="popupTriggers.disconnectWallet">
+    <h3>Are you sure you want to disconnect your wallet?</h3>
+    <button class="boxShadow" @click="disconnectWallet">
+      Yes, disconnect
+    </button><br>
+    <button class="boxShadow" @click="TogglePopup('disconnectWallet')">
+      No, stay connected
+    </button>
+  </popup-window>
 </template>
 
 <script>
@@ -53,7 +61,8 @@ import WalletConnect from '@walletconnect/client'
 import QRCodeModal from 'algorand-walletconnect-qrcode-modal'
 
 const popupTriggers = ref({
-  chooseWallet: false
+  chooseWallet: false,
+  disconnectWallet: false
 })
 
 const myAlgoConnect = new MyAlgoConnect()
@@ -134,13 +143,15 @@ export default {
       }
     },
     saveUserInformation () {
+      window.location.reload()
       localStorage.userAddress = this.address
       localStorage.userWallet = this.wallet
       this.foundAddress = true
-      window.location.reload()
     },
     disconnectWallet () {
-      console.log('disconnect')
+      if (localStorage.userWallet === 'walletconnect') {
+        walletConnector.killSession()
+      }
       foundAddress = false
       localStorage.removeItem('userAddress')
       localStorage.removeItem('userWallet')
@@ -180,7 +191,6 @@ export default {
           if (counts % 2 === 0) {
             window.location.href = dropdown.children[0].getAttribute('href')
           } else {
-            event.preventDefault()
             dropdown.children[1].style.display = 'block'
             setTimeout(() => {
               dropdown.children[1].style.display = 'none'
@@ -243,7 +253,10 @@ img {
     top: 25%;
     margin: 1%;
 }
-
+.connectWallet {
+    position: absolute;
+    left: 12vw;
+}
 div.nav-links {
   display: flex;
   justify-content: right;
@@ -312,7 +325,10 @@ div.dropdown-menu a {
 }
 
 /* Mobile */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 799px) {
+  .connectWallet {
+    left: 17vw;
+}
   div.nav-links {
     align-items: center;
     justify-content: flex-start;
@@ -347,5 +363,21 @@ div.dropdown-menu a {
   div.dropdown-menu a {
   padding: 1% ;
 }
+}
+
+@media screen and (max-width: 450px) {
+  .connectWallet {
+    font-size: 5vw;
+    left: 25vw;
+  }
+    img {
+      height: 7vw;
+      margin-top: 2%;
+  }
+}
+@media screen and (max-width: 350px) {
+  .connectWallet {
+    font-size: 6vw;
+  }
 }
 </style>
