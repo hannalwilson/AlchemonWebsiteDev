@@ -28,6 +28,7 @@
       <div class="connectWallet">
         <p v-if="!foundAddress" class="navp" @click="TogglePopup('chooseWallet')">CONNECT</p>
         <p v-if="foundAddress" class="navp"> {{ displayAddress }}...</p>
+        <p v-if="foundAddress" class="navp" @click="disconnectWallet"> DISCONNECT</p>
       </div>
     </div>
   </nav>
@@ -129,8 +130,6 @@ export default {
             if (error) {
               throw error
             }
-            this.address = undefined
-            foundAddress = false
           })
       }
     },
@@ -138,6 +137,13 @@ export default {
       localStorage.userAddress = this.address
       localStorage.userWallet = this.wallet
       this.foundAddress = true
+      window.location.reload()
+    },
+    disconnectWallet () {
+      console.log('disconnect')
+      foundAddress = false
+      localStorage.removeItem('userAddress')
+      localStorage.removeItem('userWallet')
       window.location.reload()
     },
     openMobileNav () {

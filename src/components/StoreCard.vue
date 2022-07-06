@@ -278,29 +278,34 @@ export default {
           const requestParams = [txnsToSign]
           // eslint-disable-next-line no-case-declarations
           const request = formatJsonRpcRequest('algo_signTxn', requestParams)
-          signedTxn = await walletConnector.sendCustomRequest(request)
+          try {
+            signedTxn = await walletConnector.sendCustomRequest(request)
+          } catch (error) {
+            errorMessage = error.message
+            this.TogglePopup('transactionFailed')
+            this.TogglePopup('signTransaction')
+          }
           break
       }
-      if (userWallet === 'walletconnect') {
-        this.TogglePopup('signTransaction')
-      }
-      this.TogglePopup('processingTransaction')
-      try {
-        const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
-          txn: signedTxn
-        })
-        if (sendTxnResponse.status === 200) {
-          if (sendTxnResponse.data.txnId) {
-            this.TogglePopup('transactionSuccessful')
-          } else if (sendTxnResponse.data.message) {
-            errorMessage = sendTxnResponse.data.message
-            this.TogglePopup('transactionFailed')
+
+      if (signedTxn) {
+        try {
+          const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
+            txn: signedTxn
+          })
+          if (sendTxnResponse.status === 200) {
+            if (sendTxnResponse.data.txnId) {
+              this.TogglePopup('transactionSuccessful')
+            } else if (sendTxnResponse.data.message) {
+              errorMessage = sendTxnResponse.data.message
+              this.TogglePopup('transactionFailed')
+            }
           }
+        } catch (error) {
+          this.TogglePopup('errorOccured')
         }
-      } catch (error) {
-        this.TogglePopup('errorOccured')
+        this.TogglePopup('processingTransaction')
       }
-      this.TogglePopup('processingTransaction')
     }
   }
 }

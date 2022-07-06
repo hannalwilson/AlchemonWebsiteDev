@@ -28,9 +28,15 @@
     <h2>Successful! Go check out your new Alchemon!</h2>
     <button class="boxShadow" @click="TogglePopup('transactionSuccessful')">Close</button>
   </popup-window>
-  <popup-window v-if="popupTriggers.transactionFailed">
+<popup-window v-if="popupTriggers.transactionFailed">
     <h2>Failed. Please try again.</h2>
+    <p style="text-align: left"> {{ getErrorMessage }}</p>
     <button class="boxShadow" @click="TogglePopup('transactionFailed')">Close</button>
+  </popup-window>
+  <popup-window v-if="popupTriggers.errorOccured">
+    <h2>Unknown Server Error. Please try again.</h2>
+    <p style="text-align: left">If this error continues, please contact support.</p>
+    <button class="boxShadow" @click="TogglePopup('errorOccured')">Close</button>
   </popup-window>
   </template>
 
@@ -205,8 +211,11 @@ const popupTriggers = ref({
   makePurchase: false,
   signTransaction: false,
   transactionSuccessful: false,
-  transactionFailed: false
+  transactionFailed: false,
+  errorOccurred: false
 })
+
+let errorMessage
 export default {
   components: { PopupWindow },
   props: ['name', 'tradedCard', 'available', 'address', 'wallet'],
@@ -214,6 +223,11 @@ export default {
     return {
       PopupWindow,
       popupTriggers
+    }
+  },
+  computed: {
+    getErrorMessage () {
+      return errorMessage
     }
   },
   methods: {
@@ -230,7 +244,7 @@ export default {
       if (wallet === 'walletconnect') {
         this.TogglePopup('signTransaction')
       }
-      let quickEvolveOneResponse = await axios.post(`${apiURL}/quickEvolveAlchOne`, {
+      const quickEvolveOneResponse = await axios.post(`${apiURL}/quickEvolveAlchOne`, {
         customerAddress: address,
         tradeInStoreAddress: tradeInAddresses[tradedAlchemon],
         quickEvolveAlchOneAppID: appID,
@@ -263,19 +277,33 @@ export default {
           const requestParams = [txnsToSign]
           // eslint-disable-next-line no-case-declarations
           const request = formatJsonRpcRequest('algo_signTxn', requestParams)
-          signedTxn = await walletConnector.sendCustomRequest(request)
+          try {
+            signedTxn = await walletConnector.sendCustomRequest(request)
+          } catch (error) {
+            errorMessage = error.message
+            this.TogglePopup('transactionFailed')
+            console.log(signedTxn)
+          }
           break
       }
-      try {
-        const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
-          txn: signedTxn
-        })
-        if (sendTxnResponse.status === 200) {
-          this.TogglePopup('transactionSuccessful')
+
+      if (signedTxn) {
+        try {
+          const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
+            txn: signedTxn
+          })
+          if (sendTxnResponse.status === 200) {
+            if (sendTxnResponse.data.txnId) {
+              this.TogglePopup('transactionSuccessful')
+            } else if (sendTxnResponse.data.message) {
+              errorMessage = sendTxnResponse.data.message
+              this.TogglePopup('transactionFailed')
+            }
+          }
+        } catch (error) {
+          this.TogglePopup('errorOccured')
         }
-      } catch {
-        this.TogglePopup('transactionFailed')
-        quickEvolveOneResponse = null
+        this.TogglePopup('processingTransaction')
       }
     },
     TogglePopup (trigger) {

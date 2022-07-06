@@ -29,9 +29,15 @@
     <h2>Successful! Go check out your new Alchemon!</h2>
     <button class="boxShadow" @click="TogglePopup('transactionSuccessful')">Close</button>
   </popup-window>
-  <popup-window v-if="popupTriggers.transactionFailed">
+<popup-window v-if="popupTriggers.transactionFailed">
     <h2>Failed. Please try again.</h2>
+    <p style="text-align: left"> {{ getErrorMessage }}</p>
     <button class="boxShadow" @click="TogglePopup('transactionFailed')">Close</button>
+  </popup-window>
+  <popup-window v-if="popupTriggers.errorOccured">
+    <h2>Unknown Server Error. Please try again.</h2>
+    <p style="text-align: left">If this error continues, please contact support.</p>
+    <button class="boxShadow" @click="TogglePopup('errorOccured')">Close</button>
   </popup-window>
 </template>
 
@@ -156,7 +162,8 @@ const popupTriggers = ref({
   makePurchase: false,
   signTransaction: false,
   transactionSuccessful: false,
-  transactionFailed: false
+  transactionFailed: false,
+  errorOccurred: false
 })
 const tradeInAddresses = {
   527475282: 'OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA', // zipacute
@@ -217,6 +224,8 @@ const smartContractInfo = {
     amount: 1
   }
 }
+
+let errorMessage
 export default {
   components: { PopupWindow },
   props: ['name', 'tradedCardOne', 'tradedCardTwo', 'amount', 'available', 'address', 'wallet'],
@@ -224,6 +233,11 @@ export default {
     return {
       PopupWindow,
       popupTriggers
+    }
+  },
+  computed: {
+    getErrorMessage () {
+      return errorMessage
     }
   },
   methods: {
@@ -281,7 +295,12 @@ export default {
           const requestParams = [txnsToSign]
           // eslint-disable-next-line no-case-declarations
           const request = formatJsonRpcRequest('algo_signTxn', requestParams)
-          signedTxn = await walletConnector.sendCustomRequest(request)
+          try {
+            signedTxn = await walletConnector.sendCustomRequest(request)
+          } catch (error) {
+            errorMessage = error.message
+            this.TogglePopup('transactionFailed')
+          }
           break
       }
       try {

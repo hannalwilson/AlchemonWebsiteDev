@@ -28,9 +28,15 @@
     <h2>Successful! Go check out your new Alchemon!</h2>
     <button class="boxShadow" @click="TogglePopup('transactionSuccessful')">Close</button>
   </popup-window>
-  <popup-window v-if="popupTriggers.transactionFailed">
+    <popup-window v-if="popupTriggers.transactionFailed">
     <h2>Failed. Please try again.</h2>
+    <p style="text-align: left"> {{ getErrorMessage }}</p>
     <button class="boxShadow" @click="TogglePopup('transactionFailed')">Close</button>
+  </popup-window>
+  <popup-window v-if="popupTriggers.errorOccured">
+    <h2>Unknown Server Error. Please try again.</h2>
+    <p style="text-align: left">If this error continues, please contact support.</p>
+    <button class="boxShadow" @click="TogglePopup('errorOccured')">Close</button>
   </popup-window>
   </template>
 
@@ -138,7 +144,8 @@ import { ref } from 'vue'
 import PopupWindow from './PopupWindow.vue'
 
 const apiURL = 'https://avk5m0z0nc.execute-api.us-east-1.amazonaws.com'
-// eslint-disable-next-line no-unused-vars
+
+let errorMessage
 let signedTxn
 const myAlgoConnect = new MyAlgoConnect()
 const walletConnector = new WalletConnect(
@@ -209,7 +216,8 @@ const popupTriggers = ref({
   makePurchase: false,
   signTransaction: false,
   transactionSuccessful: false,
-  transactionFailed: false
+  transactionFailed: false,
+  errorOccured: false
 })
 export default {
   components: { PopupWindow },
@@ -218,6 +226,11 @@ export default {
     return {
       PopupWindow,
       popupTriggers
+    }
+  },
+  computed: {
+    getErrorMessage () {
+      return errorMessage
     }
   },
   methods: {
@@ -238,7 +251,7 @@ export default {
       if (wallet === 'walletconnect') {
         this.TogglePopup('signTransaction')
       }
-      let quickEvolveOneResponse = await axios.post(`${apiURL}/quickEvolveAlchTwo`, {
+      const quickEvolveOneResponse = await axios.post(`${apiURL}/quickEvolveAlchTwo`, {
         customerAddress: address,
         tradeInOneStoreAddress: 'OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA',
         tradeInTwoStoreAddress: tradeInAddresses[tradedAlchemon],
@@ -270,25 +283,38 @@ export default {
               txn: encodedTxn
             }
           })
-
           // eslint-disable-next-line no-case-declarations
           const requestParams = [txnsToSign]
           // eslint-disable-next-line no-case-declarations
           const request = formatJsonRpcRequest('algo_signTxn', requestParams)
-          signedTxn = await walletConnector.sendCustomRequest(request)
+          try {
+            signedTxn = await walletConnector.sendCustomRequest(request)
+          } catch (error) {
+            errorMessage = error.message
+            this.TogglePopup('transactionFailed')
+          }
           break
       }
+      if (wallet === 'walletconnect') {
+        this.TogglePopup('signTransaction')
+      }
+      this.TogglePopup('processingTransaction')
       try {
         const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
           txn: signedTxn
         })
         if (sendTxnResponse.status === 200) {
-          this.TogglePopup('transactionSuccessful')
+          if (sendTxnResponse.data.txnId) {
+            this.TogglePopup('transactionSuccessful')
+          } else if (sendTxnResponse.data.message) {
+            errorMessage = sendTxnResponse.data.message
+            this.TogglePopup('transactionFailed')
+          }
         }
-      } catch {
-        this.TogglePopup('transactionFailed')
-        quickEvolveOneResponse = null
+      } catch (error) {
+        this.TogglePopup('errorOccured')
       }
+      this.TogglePopup('processingTransaction')
     },
     TogglePopup (trigger) {
       popupTriggers.value[trigger] = !popupTriggers.value[trigger]
