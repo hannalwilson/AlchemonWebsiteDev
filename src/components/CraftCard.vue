@@ -6,7 +6,7 @@
 
     <div class="buttonContainer">
       <p> Craft a {{ name }}</p>
-      <p> {{ amount }} {{ tradedCardOne }} + {{ amount }} {{ tradedCardTwo }} + 250 Alch</p>
+      <p>You need: {{ amount }} {{ tradedCardOne }} + {{ amount }} {{ tradedCardTwo }} + 250 Alch</p>
       <p>Available: {{ available }}</p>
       <button v-if="available > 0" @click="setAlchemon(`${name}`)" class="boxShadow nftButton">250 ALCH</button>
     </div>

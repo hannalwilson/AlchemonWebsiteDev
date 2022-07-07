@@ -5,7 +5,7 @@
     </div>
     <div class="buttonContainer">
       <p> Evolve a {{ name }}</p>
-      <p> 2 {{ tradedCard }} + 100 Alch</p>
+      <p>You need: 2 {{ tradedCard }} + 100 Alch</p>
       <p>Available: {{ available }}</p>
       <button v-if="available > 0" @click="setAlchemon(`${name}`)" class="boxShadow nftButton">100 ALCH</button>
     </div>

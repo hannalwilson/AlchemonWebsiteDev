@@ -11,12 +11,15 @@
       <p> {{ name }}</p>
       <p> {{ id }}</p>
       <p> Available: {{ amount }} </p>
-      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton" v-if="type === 'alchemon'">{{ cost }}
+      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
+        v-if="type === 'alchemon' && amount > 0">{{ cost }}
         ALGO</button>
-      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton" v-if="type === 'art'">{{ cost }}
+      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton" v-if="type === 'art' && amount > 0">{{
+      cost }}
         ALCH</button>
-      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton" v-if="type === 'alchebilities'">{{ cost
-      }} ALCH</button>
+      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
+        v-if="type === 'alchebilities' && amount > 0">{{ cost
+        }} ALCH</button>
     </div>
   </div>
   <popup-window v-if="popupTriggers.makePurchase">
@@ -188,7 +191,17 @@ const itemIds = {
   773031968: 773120532,
   773060393: 773120705,
   773062744: 773120833,
-  773065518: 773120982
+  773065518: 773120982,
+  799720185: 800651534,
+  799720875: 800651706,
+  799721646: 800651835,
+  799722298: 800651976,
+  799723642: 800652129,
+  799725137: 800652244,
+  799725874: 800652395,
+  799726595: 800652510,
+  799727884: 800652612,
+  799728466: 800652730
 }
 const popupTriggers = ref({
   chooseWallet: false,
