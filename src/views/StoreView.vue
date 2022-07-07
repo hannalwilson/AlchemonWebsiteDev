@@ -11,7 +11,7 @@
         <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'all'">View All</button>
       </div>
       <div>
-        <store-card v-for="item in filteredItems" :key="item.id" :type="item.type" :cost="item.cost" :name="item.name" :id="item.id" :amount="item.amount">
+        <store-card v-for="item in filteredItems" :key="item.id" :type="item.type" :cost="item.cost" :name="item.displayName" :id="item.id" :amount="item.amount">
         </store-card>
       </div>
     </div>
@@ -89,6 +89,14 @@ export default {
     const port = ''
     const client = new algosdk.Algodv2(token, server, port)
 
+    items.forEach(item => {
+      if (item.type === 'alchebilities') {
+        item.displayName = item.name.split(/(?=[A-Z])/).join(' ')
+      } else {
+        item.displayName = item.name
+      }
+    })
+
     if (storeItems.length === 0) {
       for (const item of items) {
         storeItems.push(item)
@@ -119,7 +127,7 @@ export default {
   },
   computed: {
     filteredItems () {
-      let tempItems = storeItems.filter(item => item.amount > 0)
+      let tempItems = storeItems// .filter(item => item.amount > 0)
 
       if (this.viewOnly === 'alchemon') {
         tempItems = tempItems.filter(item => {
@@ -137,7 +145,7 @@ export default {
         })
       }
       if (this.viewOnly === 'all') {
-        tempItems = storeItems.filter(item => item.amount > 0)
+        tempItems = storeItems// .filter(item => item.amount > 0)
       }
       return tempItems
     }

@@ -139,5 +139,75 @@
     "type": "art",
     "amount": 0,
     "cost": 4000
+},
+{
+    "name": "Swoop",
+    "id": 799720875,
+    "type": "alchebilities",
+    "amount": 0,
+    "cost": 800
+},
+{
+    "name": "SpinningKick",
+    "id": 799721646,
+    "type": "alchebilities",
+    "amount": 0,
+    "cost": 800
+},
+{
+    "name": "Phoenix",
+    "id": 799722298,
+    "type": "alchebilities",
+    "amount": 0,
+    "cost": 800
+},
+{
+    "name": "MentalMaze",
+    "id": 799723642,
+    "type": "alchebilities",
+    "amount": 0,
+    "cost": 800
+},
+{
+    "name": "Frostburn",
+    "id": 799725137,
+    "type": "alchebilities",
+    "amount": 0,
+    "cost": 800
+},
+{
+    "name": "DirtSmash",
+    "id": 799725874,
+    "type": "alchebilities",
+    "amount": 0,
+    "cost": 800
+},
+{
+    "name": "Charge",
+    "id": 799727884,
+    "type": "alchebilities",
+    "amount": 0,
+    "cost": 800
+},
+{
+    "name": "Cultivate",
+    "id": 799726595,
+    "type": "alchebilities",
+    "amount": 0,
+    "cost": 800
+},
+{
+    "name": "TidalWave",
+    "id": 799720185,
+    "type": "alchebilities",
+    "amount": 0,
+    "cost": 800
+},
+{
+    "name": "BugBite",
+    "id": 799728466,
+    "type": "alchebilities",
+    "amount": 0,
+    "cost": 800
 }
 ]

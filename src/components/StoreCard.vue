@@ -2,7 +2,8 @@
   <div class="nftContainer boxShadow">
     <div class="imgContainer">
       <img :src="require(`@/assets/alchemon/${name}.png`)" v-if="type === 'alchemon'" class="nftImage">
-      <img :src="require(`@/assets/alchebilities/${name}.png`)" v-if="type === 'alchebilities'" class="nftImage">
+      <img :src="require(`@/assets/alchebilities/${name.replace(/\s+/g, '')}.png`)" v-if="type === 'alchebilities'"
+        class="nftImage">
       <video :src="require(`@/assets/art/${name}.mp4`)" v-if="type === 'art'" class="nftImage" autoplay muted loop
         playsinline></video>
     </div>
@@ -10,12 +11,12 @@
       <p> {{ name }}</p>
       <p> {{ id }}</p>
       <p> Available: {{ amount }} </p>
-      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
-        v-if="type === 'alchemon'">{{ cost }} ALGO</button>
-      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
-        v-if="type === 'art'">{{ cost }} ALCH</button>
-        <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
-        v-if="type === 'alchebilities'">{{ cost }} ALCH</button>
+      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton" v-if="type === 'alchemon'">{{ cost }}
+        ALGO</button>
+      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton" v-if="type === 'art'">{{ cost }}
+        ALCH</button>
+      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton" v-if="type === 'alchebilities'">{{ cost
+      }} ALCH</button>
     </div>
   </div>
   <popup-window v-if="popupTriggers.makePurchase">
@@ -26,7 +27,7 @@
   <popup-window v-if="popupTriggers.signTransaction">
     <h2>Please open your wallet app to sign the transaction!</h2>
   </popup-window>
-    <popup-window v-if="popupTriggers.processingTransaction">
+  <popup-window v-if="popupTriggers.processingTransaction">
     <h2>Transaction processing...</h2>
   </popup-window>
   <popup-window v-if="popupTriggers.transactionSuccessful">
