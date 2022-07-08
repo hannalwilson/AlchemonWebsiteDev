@@ -235,8 +235,6 @@ export default {
       userAddress = localStorage.userAddress
       userWallet = localStorage.userWallet
       this.TogglePopup('makePurchase')
-      console.log(userAddress)
-      console.log(userWallet)
     },
     TogglePopup (trigger) {
       popupTriggers.value[trigger] = !popupTriggers.value[trigger]

@@ -88,7 +88,6 @@ const addresses = [
   'JLNJOJTMDMYHCUFNYM2HLX4WFOQ4VWG6QJUJRAJ5KNHFMVWU6IO43VFTZI'
 ]
 
-// eslint-disable-next-line no-unused-vars
 let address
 let foundAddress
 
@@ -137,7 +136,7 @@ export default {
   },
   computed: {
     filteredItems () {
-      let tempItems = storeItems// .filter(item => item.amount > 0)
+      let tempItems = storeItems.filter(item => item.amount > 0)
 
       if (this.viewOnly === 'alchemon') {
         tempItems = tempItems.filter(item => {
@@ -155,7 +154,7 @@ export default {
         })
       }
       if (this.viewOnly === 'all') {
-        tempItems = storeItems// .filter(item => item.amount > 0)
+        tempItems = storeItems.filter(item => item.amount > 0)
       }
       return tempItems
     }
