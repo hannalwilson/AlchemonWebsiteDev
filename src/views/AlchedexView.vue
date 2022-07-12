@@ -50,6 +50,7 @@
             <option value='3'>Set 3</option>
             <option value='4'>Set 4</option>
             <option value='5'>Set 5</option>
+            <option value='Community'>Community Set</option>
           </select>
           <select name="filterBy" id="select" v-model="filterBy" class="boxShadow">
             <option value="Filter By">Filter By:</option>
@@ -180,6 +181,11 @@ export default {
       if (this.viewSet === '5') {
         tempCards = tempCards.filter((item) => {
           return item.set === 5
+        })
+      }
+      if (this.viewSet === 'Community') {
+        tempCards = tempCards.filter((item) => {
+          return item.set === 'Community'
         })
       }
       if (this.searchValue !== '' && this.searchValue) {
