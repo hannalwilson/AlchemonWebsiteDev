@@ -19,31 +19,26 @@
     <img src="../assets/rewards_table.jpg" alt="Staking Rewards Table" class="zoomIn_2">
   </div>
   <popup-window v-if="popupTriggers.calculatedRewards">
-  <div v-if="hasStakeFlag">
     <h2>Weekly Staking Rewards:</h2>
     <h3>{{ userRewards }} Alchecoin!</h3>
-  </div>
-  <div v-if="!hasStakeFlag">
-    <h2>Your wallet does not have the Stake Flag Asset approved.</h2>
-    <p>Add the Stake Flag (ASA ID: 320570576) to receive rewards.</p>
-  </div>
     <button class="boxShadow" @click="TogglePopup('calculatedRewards')">Close</button>
   </popup-window>
 </template>
 
 <style lang="scss" scoped>
-
 .stakinginfo {
-    padding-top: 5%;
-    background-color: #007bff;
+  padding-top: 5%;
+  background-color: #007bff;
 }
+
 #text {
-    width: 50%;
-    font-family: poppins;
-    border: none;
-    padding: 1%;
-    font-weight: bold;
+  width: 50%;
+  font-family: poppins;
+  border: none;
+  padding: 1%;
+  font-weight: bold;
 }
+
 img {
   width: 90%
 }
@@ -60,15 +55,13 @@ const popupTriggers = ref({
 
 // eslint-disable-next-line prefer-const
 let userRewards = 0
-let hasStakeFlag = false
 
 export default {
   data () {
     return {
       PopupWindow,
       popupTriggers,
-      userRewards,
-      hasStakeFlag
+      userRewards
     }
   },
   components: { PopupWindow },
@@ -88,14 +81,10 @@ export default {
       const client = new algosdk.Algodv2(token, server, port)
 
       client.accountInformation(this.$refs.address.value).do().then(response => {
-        if (response.assets.includes('320570576')) {
-          console.log('hithere')
-          hasStakeFlag = true
-          for (const userAsset of response.assets) {
-            for (const alchemon of alchemons) {
-              if (userAsset['asset-id'] === alchemon.id && userAsset.amount > 0) {
-                this.userRewards += (alchemon.reward * userAsset.amount)
-              }
+        for (const userAsset of response.assets) {
+          for (const alchemon of alchemons) {
+            if (userAsset['asset-id'] === alchemon.id && userAsset.amount > 0) {
+              this.userRewards += (alchemon.reward * userAsset.amount)
             }
           }
         }

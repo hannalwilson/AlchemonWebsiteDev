@@ -11,8 +11,8 @@
 "isOwned": true,
 "tradedCardOne": 798985842,
 "tradedCardTwo": 798986475,
-"tradeInOneStoreAddress": "T2L4WBMXBGLLW5TFYH76QVQYBJ4LCKV4TSFRGOMSOHMOHTT6OSIA4GFMRM",
-"tradeInTwoStoreAddress": "SYFVB77GVQKYHCX34UVJ6HVV4TUIUQKC4UGRCQDEXRGJNVPZ74BQNRC4CY",
+"tradeInOneStoreAddress": "",
+"tradeInTwoStoreAddress": "",
 "appID": 780915147,
 "available": 0
 },
@@ -28,8 +28,8 @@
 "isOwned": true,
 "tradedCardOne": 798982872,
 "tradedCardTwo": 798985107,
-"tradeInOneStoreAddress": "OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA",
-"tradeInTwoStoreAddress": "OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA",
+"tradeInOneStoreAddress": "",
+"tradeInTwoStoreAddress": "",
 "appID": 780911874,
 "available": 0
 },
@@ -45,8 +45,8 @@
 "isOwned": true,
 "tradedCardOne": 798978192,
 "tradedCardTwo": 798980408,
-"tradeInOneStoreAddress": "OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA",
-"tradeInTwoStoreAddress": "OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA",
+"tradeInOneStoreAddress": "",
+"tradeInTwoStoreAddress": "",
 "appID": 780912756,
 "available": 0
 },
@@ -61,7 +61,7 @@
 "reward": 0,
 "isOwned": true,
 "tradedCard": 798984317,
-"tradeInStoreAddress": "WP55X5NNDLVSD2KRL4MHUYR2QGFART6V4OUQN54ETURA5AGM6Y5J4AI6I4",
+"tradeInStoreAddress": "",
 "appID": 780890555,
 "available": 0
 },
@@ -76,7 +76,7 @@
   "reward": 0,
   "isOwned": true,
   "tradedCard": 798983583,
-  "tradeInStoreAddress": "WP55X5NNDLVSD2KRL4MHUYR2QGFART6V4OUQN54ETURA5AGM6Y5J4AI6I4",
+  "tradeInStoreAddress": "",
   "appID": 780890555,
   "available": 0
 },
@@ -102,7 +102,7 @@
   "reward": 0,
   "isOwned": true,
   "tradedCard": 798982205,
-  "tradeInStoreAddress": "WP55X5NNDLVSD2KRL4MHUYR2QGFART6V4OUQN54ETURA5AGM6Y5J4AI6I4",
+  "tradeInStoreAddress": "",
   "appID": 780890555,
   "available": 0
 },
@@ -117,7 +117,7 @@
   "reward": 0,
   "isOwned": true,
   "tradedCard": 798981060,
-  "tradeInStoreAddress": "WP55X5NNDLVSD2KRL4MHUYR2QGFART6V4OUQN54ETURA5AGM6Y5J4AI6I4",
+  "tradeInStoreAddress": "",
   "appID": 780890555,
   "available": 0
 },
@@ -143,8 +143,8 @@
   "reward": 0,
   "isOwned": true,
   "tradedCard": 798979660,
-  "tradeInOneStoreAddress": "OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA",
-  "tradeInTwoStoreAddress": "D5UOOPGEX3M7CIXF2VLRGTNOQA2EHU4FVZ34KHYPJMZXLNJCQOCV3QM3DQ",
+  "tradeInOneStoreAddress": "",
+  "tradeInTwoStoreAddress": "",
   "appID": 780904407,
   "available": 0
 },
@@ -159,7 +159,7 @@
   "reward": 0,
   "isOwned": true,
   "tradedCard": 798978892,
-  "tradeInStoreAddress": "WP55X5NNDLVSD2KRL4MHUYR2QGFART6V4OUQN54ETURA5AGM6Y5J4AI6I4",
+  "tradeInStoreAddress": "",
   "appID": 780890555,
   "available": 0
 },
@@ -185,7 +185,7 @@
   "reward": 0,
   "isOwned": true,
   "tradedCard": 798977534,
-  "tradeInStoreAddress": "WP55X5NNDLVSD2KRL4MHUYR2QGFART6V4OUQN54ETURA5AGM6Y5J4AI6I4",
+  "tradeInStoreAddress": "",
   "appID": 780890555,
   "available": 0
 },
@@ -200,7 +200,7 @@
   "reward": 0,
   "isOwned": true,
   "tradedCard": 798976821,
-  "tradeInStoreAddress": "WP55X5NNDLVSD2KRL4MHUYR2QGFART6V4OUQN54ETURA5AGM6Y5J4AI6I4",
+  "tradeInStoreAddress": "",
   "appID": 780890555,
   "available": 0
 },
