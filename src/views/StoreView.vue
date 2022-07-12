@@ -11,7 +11,7 @@
         <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'all'">View All</button>
       </div>
       <div>
-        <store-card v-for="item in filteredItems" :key="item.id" :type="item.type" :cost="item.cost" :name="item.displayName" :id="item.id" :amount="item.amount">
+        <store-card v-for="item in filteredItems" :key="item.id" :type="item.type" :cost="item.cost" :name="item.displayName" :id="item.id" :amount="item.amount" :description="item.description">
         </store-card>
       </div>
     </div>

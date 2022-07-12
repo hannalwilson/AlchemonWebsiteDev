@@ -1,29 +1,34 @@
 <template>
-    <div class="stakinginfo">
-        <p class="yellowHeader spreadText">STAKING HOURS:<br>SUNDAYS 1PM-MONDAYS 1PM PST<br><br>
-            <span class="orangeHeader">EARN ALCHECOIN // WALLET STAKING</span>
-        </p>
-        <p class="whiteText" style="text-align:center;">AlcheCoin Asset: <b>310014962</b> // Stake Flag Asset:
-            <b>320570576</b>
-        </p>
-        <p class="whiteText marginFix_2">Get paid AlcheCoin just by holding Alchemon in your wallet! You must add the
-            AlcheCoin and Stake Flag Assets. This means you get to stake all your Alchemon in your own wallet! The chart
-            below shows how much you will be paid out for each card in your wallet. Payouts will be Saturday evenings.
-            Please ensure you have AlcheCoin and the Stake Flag approved in your wallet so our bot can find your wallet
-            and send you your AlcheCoin, otherwise you will not receive your rewards.</p>
-        <p class="whiteText">
-            Calculate your weekly staking rewards!
-        </p>
-        <input type="text" id="text" class="darkGrayText_1 boxShadow" placeholder="  Enter wallet address"
-            ref="address" />
-        <button class="boxShadow" id="btn" @click="calculateRewards">Submit</button>
-        <img src="../assets/rewards_table.jpg" alt="Staking Rewards Table" class="zoomIn_2">
-    </div>
-    <popup-window v-if="popupTriggers.calculatedRewards">
-        <h2>Weekly Staking Rewards:</h2>
-        <h3>{{ userRewards }} Alchecoin!</h3>
-        <button class="boxShadow" @click="TogglePopup('calculatedRewards')">Close</button>
-    </popup-window>
+  <div class="stakinginfo">
+    <p class="yellowHeader spreadText">STAKING HOURS:<br>SUNDAYS 1PM-MONDAYS 1PM PST<br><br>
+      <span class="orangeHeader">EARN ALCHECOIN // WALLET STAKING</span>
+    </p>
+    <p class="whiteText" style="text-align:center;">AlcheCoin Asset: <b>310014962</b> // Stake Flag Asset:
+      <b>320570576</b>
+    </p>
+    <p class="whiteText marginFix_2">Get paid AlcheCoin just by holding Alchemon in your wallet! You must add the
+      AlcheCoin and Stake Flag Assets. This means you get to stake all your Alchemon in your own wallet! The chart
+      below shows how much you will be paid out for each card in your wallet. Payouts will be Saturday evenings.
+      Please ensure you have AlcheCoin and the Stake Flag approved in your wallet so our bot can find your wallet
+      and send you your AlcheCoin, otherwise you will not receive your rewards.</p>
+    <p class="whiteText">
+      Calculate your weekly staking rewards!
+    </p>
+    <input type="text" id="text" class="darkGrayText_1 boxShadow" placeholder="  Enter wallet address" ref="address" />
+    <button class="boxShadow" id="btn" @click="calculateRewards">Submit</button>
+    <img src="../assets/rewards_table.jpg" alt="Staking Rewards Table" class="zoomIn_2">
+  </div>
+  <popup-window v-if="popupTriggers.calculatedRewards">
+  <div v-if="hasStakeFlag">
+    <h2>Weekly Staking Rewards:</h2>
+    <h3>{{ userRewards }} Alchecoin!</h3>
+  </div>
+  <div v-if="!hasStakeFlag">
+    <h2>Your wallet does not have the Stake Flag Asset approved.</h2>
+    <p>Add the Stake Flag (ASA ID: 320570576) to receive rewards.</p>
+  </div>
+    <button class="boxShadow" @click="TogglePopup('calculatedRewards')">Close</button>
+  </popup-window>
 </template>
 
 <style lang="scss" scoped>
@@ -55,13 +60,15 @@ const popupTriggers = ref({
 
 // eslint-disable-next-line prefer-const
 let userRewards = 0
+let hasStakeFlag = false
 
 export default {
   data () {
     return {
       PopupWindow,
       popupTriggers,
-      userRewards
+      userRewards,
+      hasStakeFlag
     }
   },
   components: { PopupWindow },
@@ -81,10 +88,14 @@ export default {
       const client = new algosdk.Algodv2(token, server, port)
 
       client.accountInformation(this.$refs.address.value).do().then(response => {
-        for (const userAsset of response.assets) {
-          for (const alchemon of alchemons) {
-            if (userAsset['asset-id'] === alchemon.id && userAsset.amount > 0) {
-              this.userRewards += (alchemon.reward * userAsset.amount)
+        if (response.assets.includes('320570576')) {
+          console.log('hithere')
+          hasStakeFlag = true
+          for (const userAsset of response.assets) {
+            for (const alchemon of alchemons) {
+              if (userAsset['asset-id'] === alchemon.id && userAsset.amount > 0) {
+                this.userRewards += (alchemon.reward * userAsset.amount)
+              }
             }
           }
         }

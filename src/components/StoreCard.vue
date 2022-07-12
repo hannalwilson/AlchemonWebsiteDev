@@ -1,6 +1,7 @@
 <template>
   <div class="nftContainer boxShadow">
-    <div class="imgContainer">
+    <span v-if="hover" class="itemDescription">{{ description }}</span>
+    <div class="imgContainer" @mouseover="hover = true" @mouseleave="hover = false">
       <img :src="require(`@/assets/alchemon/${name}.png`)" v-if="type === 'alchemon'" class="nftImage">
       <img :src="require(`@/assets/alchebilities/${name.replace(/\s+/g, '')}.png`)" v-if="type === 'alchebilities'"
         class="nftImage">
@@ -57,6 +58,15 @@
     background-color: lightgray;
     margin: 2%;
     vertical-align: top;
+}
+
+.itemDescription {
+  position: absolute;
+  background-color: darkgray;
+  padding: 1%;
+  display: inline-flex;
+  border-radius: 10px;
+  margin: 1%;
 }
 
 .nftImage {
@@ -214,12 +224,13 @@ const popupTriggers = ref({
 })
 export default {
   components: { PopupWindow },
-  props: ['name', 'id', 'amount', 'type', 'cost'],
+  props: ['name', 'id', 'amount', 'type', 'cost', 'description'],
   data () {
     return {
       PopupWindow,
       popupTriggers,
-      errorMessage
+      errorMessage,
+      hover: false
     }
   },
   computed: {

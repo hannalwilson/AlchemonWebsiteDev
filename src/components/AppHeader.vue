@@ -2,36 +2,37 @@
   <nav>
     <router-link to="/"><img alt="Vue Logo" src="../assets/logo.png"></router-link>
     <div class="connectWallet">
-        <div v-if="!foundAddress" class="navp" @click="TogglePopup('chooseWallet')">CONNECT</div>
-        <div v-if="foundAddress" class="navp" @click="TogglePopup('disconnectWallet')">{{ displayAddress }}...</div>
-      </div>
-      <div v-on:click="openMobileNav()" id="burger">
+      <div v-if="!foundAddress" class="navp" @click="TogglePopup('chooseWallet')">CONNECT</div>
+      <div v-if="foundAddress" class="navp" @click="TogglePopup('disconnectWallet')">{{ displayAddress }}...</div>
+    </div>
+    <div v-on:click="openMobileNav()" id="burger">
       <div class="line1"></div>
       <div class="line2"></div>
       <div class="line3"></div>
     </div>
     <div class="nav-links">
-            <router-link to="/news">NEWS</router-link>
+      <router-link to="/news">NEWS</router-link>
 
-            <router-link to="/faq">FAQ</router-link>
+      <router-link to="/faq">FAQ</router-link>
 
-            <router-link to="/howtoplay">HOW&nbsp;TO&nbsp;PLAY</router-link>
+      <router-link to="/howtoplay">HOW&nbsp;TO&nbsp;PLAY</router-link>
 
-            <router-link to="/token">TOKEN</router-link>
+      <router-link to="/token">TOKEN</router-link>
 
-            <router-link to="/alchedex">ALCHEDEX</router-link>
-        <div class="dropdown-link">
-                <p class="navp">STORE&nbsp;▼</p>
-          <div class="dropdown-menu">
-            <router-link to="/store">ALCHESHOP</router-link>
-               <router-link to="/craftandevolve">CRAFT & EVOLVE</router-link>
-              <a href="https://www.randgallery.com/algo-collection/?address=ALCHY5SJXOXZXADZPD73KO6CYNZXDUWFYANTSXU6RIO3EZACIIXUCS3YDM" target="_blank">RANDGALLERY</a>
-              <a href="https://shop.alchemon.net" target="_blank">MERCH</a>
-          </div>
+      <router-link to="/alchedex">ALCHEDEX</router-link>
+      <div class="dropdown-link">
+        <p class="navp">STORE&nbsp;▼</p>
+        <div class="dropdown-menu">
+          <router-link to="/store">ALCHESHOP</router-link>
+          <router-link to="/craftandevolve">CRAFT & EVOLVE</router-link>
+          <a href="https://www.randgallery.com/algo-collection/?address=ALCHY5SJXOXZXADZPD73KO6CYNZXDUWFYANTSXU6RIO3EZACIIXUCS3YDM"
+            target="_blank">RANDGALLERY</a>
+          <a href="https://shop.alchemon.net" target="_blank">MERCH</a>
+        </div>
       </div>
     </div>
   </nav>
-<popup-window v-if="popupTriggers.chooseWallet">
+  <popup-window v-if="popupTriggers.chooseWallet">
     <h3>Connect Your Wallet</h3>
     <button class="boxShadow" @click="connectWallet('myalgo')">
       MyAlgo
@@ -42,12 +43,13 @@
     <button class="boxShadow" @click="TogglePopup('chooseWallet')">Cancel</button>
   </popup-window>
   <popup-window v-if="popupTriggers.disconnectWallet">
-    <h3>Are you sure you want to disconnect your wallet?</h3>
+    <h3>Wallet Information</h3>
+    <p>Address: {{ this.address }}</p>
     <button class="boxShadow" @click="disconnectWallet">
-      Yes, disconnect
-    </button><br>
+      Disconnect
+    </button>
     <button class="boxShadow" @click="TogglePopup('disconnectWallet')">
-      No, stay connected
+      Close
     </button>
   </popup-window>
 </template>
@@ -144,6 +146,7 @@ export default {
     },
     saveUserInformation () {
       window.location.reload()
+      this.getuserRewards()
       localStorage.userAddress = this.address
       localStorage.userWallet = this.wallet
       this.foundAddress = true
@@ -155,6 +158,7 @@ export default {
       foundAddress = false
       localStorage.removeItem('userAddress')
       localStorage.removeItem('userWallet')
+      localStorage.removeItem('userRewards')
       window.location.reload()
     },
     openMobileNav () {
@@ -209,6 +213,7 @@ export default {
     if (localStorage.userAddress) {
       this.address = localStorage.userAddress
       this.foundAddress = true
+      this.userRewards = localStorage.userRewards
     } else {
       this.foundAddress = false
     }
