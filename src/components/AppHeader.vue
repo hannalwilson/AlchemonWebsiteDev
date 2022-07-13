@@ -146,7 +146,6 @@ export default {
     },
     saveUserInformation () {
       window.location.reload()
-      this.getuserRewards()
       localStorage.userAddress = this.address
       localStorage.userWallet = this.wallet
       this.foundAddress = true
