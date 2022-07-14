@@ -1,21 +1,21 @@
 <template>
 <div class="videoContainer">
   <video autoplay muted loop playsinline id="backgroundVideo">
-    <source src="../assets/game_video.mp4" type="video/mp4">Your browser does not support HTML5 videos.
+    <source src="https://alchemon-website-assets.s3.amazonaws.com/assets/game_video.mp4" type="video/mp4">Your browser does not support HTML5 videos.
   </video>
   </div>
   <router-link to="/beta" class="navlinks"><button class="downloadButton boxShadow">DOWNLOAD GAME</button></router-link>
   <div id="about" class="whiteGrayBackground">
-    <img class="centerImage zoomIn_1 sable" src="../assets/34_sable.gif" width="50%" alt="Sable">
+    <img class="centerImage zoomIn_1 sable" src="https://alchemon-website-assets.s3.amazonaws.com/assets/34_sable.gif" width="50%" alt="Sable">
     <p class="orangeHeader spreadText">ALCHEMON = ALGO+ALCHEMY+MONSTER<br><br>
     <span class="darkBlueHeader spreadText">STAKE! TRADE! EVOLVE! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CRAFT! COLLECT! EARN!</span></p>
     <p class="darkGrayText_1 marginFix_2">Alchemon is the first monster-collecting NFT staking, crafting and trading card game only on the Algorand Blockchain! <br><br>Get your Alchemon, evolve them and then craft Epic and Legendary Alchemon that will never be for sale (in the official store)!</p>
   </div>
-  <img src="../assets/evolution.png" class="evolution zoomIn_1">
+  <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/evolution.png" class="evolution zoomIn_1">
   <div class="orangeBackground">
     <p class="grayHeader spreadText">ALCHEMON INC'S WALLET</p>
     <p class="whiteHeader">OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA</p>
-    <img class="wallet zoomIn_1" src="../assets/wallet.jpg" alt="Creator's wallet" width="35%">
+    <img class="wallet zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/wallet.jpg" alt="Creator's wallet" width="35%">
   </div>
   <div id="disclaimer">
     <p class="orangeHeader spreadText">DISCLAIMER</p>

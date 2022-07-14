@@ -37,9 +37,9 @@
       to click "Keep" or "Download anyways."
     </p> <br><br>
     <a href="https://alch-executables.s3.amazonaws.com/AlchemonBeta2.0_Setup.exe" download>
-      <img src="../assets/pc.png" alt="Windows download" width="40%" height="auto"></a><br>
+      <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/pc.png" alt="Windows download" width="40%" height="auto"></a><br>
     <a href="https://alch-executables.s3.amazonaws.com/AlchemonBeta2.zip" download>
-      <img src="../assets/mac.png" alt="Mac download" width="40%" height="auto">
+      <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/mac.png" alt="Mac download" width="40%" height="auto">
     </a>
   </div>
 </template>

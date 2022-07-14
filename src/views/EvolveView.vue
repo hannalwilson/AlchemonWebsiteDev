@@ -4,11 +4,11 @@
       <h1 class="spreadText">CRAFT & EVOLVE</h1>
     </div>
     <div class="forSale">
-      <craft-card v-for="card in craftFive" :key="card.available" :name="card.name" :tradedCardOne="card.tradedCardOne" :tradedCardTwo="card.tradedCardTwo" :amount="card.amount" :address="address" :available="card.available"></craft-card>
-        <evolve-card-two v-for="card in rareFive" :key="card.available" :name="card.name" :tradedCard="card.tradedCard" :address="address" :available="card.available"></evolve-card-two>
-        <evolve-card v-for="card in uncommonFive" :key="card.available" :name="card.name" :tradedCard="card.tradedCard" :address="address" :available="card.available"></evolve-card>
-        <evolve-card-two v-for="card in rare" :key="card.available" :name="card.name" :tradedCard="card.tradedCard" :address="address" :available="card.available"></evolve-card-two>
-        <evolve-card v-for="card in uncommon" :key="card.available" :name="card.name" :tradedCard="card.tradedCard" :address="address" :available="card.available"></evolve-card>
+      <craft-card v-for="card in craftFive" :key="card.available" :name="card.name" :tradedCardOne="card.tradedCardOne" :tradedCardTwo="card.tradedCardTwo" :amount="card.amount" :available="card.available"></craft-card>
+        <evolve-card-two v-for="card in rareFive" :key="card.available" :name="card.name" :tradedCard="card.tradedCard" :available="card.available"></evolve-card-two>
+        <evolve-card v-for="card in uncommonFive" :key="card.available" :name="card.name" :tradedCard="card.tradedCard" :available="card.available"></evolve-card>
+        <evolve-card-two v-for="card in rare" :key="card.available" :name="card.name" :tradedCard="card.tradedCard" :available="card.available"></evolve-card-two>
+        <evolve-card v-for="card in uncommon" :key="card.available" :name="card.name" :tradedCard="card.tradedCard" :available="card.available"></evolve-card>
     </div>
   </div>
 </template>

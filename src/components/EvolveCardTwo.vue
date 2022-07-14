@@ -1,7 +1,8 @@
 <template>
   <div class="nftContainer boxShadow">
     <div class="imgContainer">
-      <img :src="require(`@/assets/alchemon/${name}.png`)" class="nftImage">
+      <img :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/alchemon/${name}.png`"
+        class="nftImage">
     </div>
     <div class="buttonContainer">
       <p> Evolve a {{ name }}</p>
@@ -24,14 +25,14 @@
     <h2>Please open your wallet app to sign the transaction!</h2>
     <button class="boxShadow" @click="TogglePopup('signTransaction')">Close</button>
   </popup-window>
-    <popup-window v-if="popupTriggers.processingTransaction">
+  <popup-window v-if="popupTriggers.processingTransaction">
     <h2>Transaction processing...</h2>
   </popup-window>
   <popup-window v-if="popupTriggers.transactionSuccessful">
     <h2>Successful! Go check out your new Alchemon!</h2>
     <button class="boxShadow" @click="TogglePopup('transactionSuccessful')">Close</button>
   </popup-window>
-    <popup-window v-if="popupTriggers.transactionFailed">
+  <popup-window v-if="popupTriggers.transactionFailed">
     <h2>Failed. Please try again.</h2>
     <p style="text-align: left"> {{ getErrorMessage }}</p>
     <button class="boxShadow" @click="TogglePopup('transactionFailed')">Close</button>
@@ -41,7 +42,7 @@
     <p style="text-align: left">If this error continues, please contact support.</p>
     <button class="boxShadow" @click="TogglePopup('errorOccured')">Close</button>
   </popup-window>
-  </template>
+</template>
 
 <style lang="scss" scoped>
 p {
@@ -224,7 +225,7 @@ const popupTriggers = ref({
 })
 export default {
   components: { PopupWindow },
-  props: ['name', 'tradedCard', 'available', 'address', 'wallet'],
+  props: ['name', 'tradedCard', 'available'],
   data () {
     return {
       PopupWindow,

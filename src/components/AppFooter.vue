@@ -1,6 +1,6 @@
 <template>
   <footer id="contact">
-    <img class="bolt" src="../assets/10_bolt_back.gif" alt="Bolt">
+    <img class="bolt" src="https://alchemon-website-assets.s3.amazonaws.com/assets/10_bolt_back.gif" alt="Bolt">
     <div>
       <a class="footerLink" href="https://t.me/joinchat/WbyxkfAyJDZmMzE5" target="_blank">Telegram</a> //
       <a class="footerLink" href="https://discord.gg/qKtk4XGXyS" target="_blank">Discord</a> //
@@ -14,7 +14,7 @@
       <li><router-link to="/staff" class="navlinks">Staff</router-link></li>
     </ul>
     &copy; {{new Date().getFullYear()}} Alchemon. All Rights Reserved.
-    <img class="slug" src="../assets/19_slug.gif" alt="Slug">
+    <img class="slug" src="https://alchemon-website-assets.s3.amazonaws.com/assets/19_slug.gif" alt="Slug">
   </footer>
 </template>
 

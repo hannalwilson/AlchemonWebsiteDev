@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="whiteGrayBackground">
-        <img src="../assets/token.png" class="token">
+        <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/token.png" class="token">
     </div>
     <div class="tokenomics">
         <p class="yellowHeader spreadText">TOKENOMICS</p>
@@ -40,12 +40,12 @@
             <br>
             Outside of the above uses we also intend to build a GameFi suite for AlcheGold. It will allow users to stake, swap or win up & coming Algorand game assets through partnerships. This will make it so Alchemon can be a gateway to help mature the GameFi space on Algorand.
         </p>
-        <img class="zoomIn_1" src="../assets/tokenomics.png" width="50%" alt="Tokenomics">
+        <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/tokenomics.png" width="50%" alt="Tokenomics">
     </div>
     <div class="legal">
         <p class="darkBlueHeader spreadText">LEGAL OPINION LETTER</p>
-        <img class="boxShadow" src="../assets/legal_opinion_1.png" alt="Legal Opinion Letter Page 1">
-        <img class="boxShadow" src="../assets/legal_opinion_2.png" alt="Legal Opinion Letter Page 2">
+        <img class="boxShadow" src="https://alchemon-website-assets.s3.amazonaws.com/assets/legal_opinion_1.png" alt="Legal Opinion Letter Page 1">
+        <img class="boxShadow" src="https://alchemon-website-assets.s3.amazonaws.com/assets/legal_opinion_2.png" alt="Legal Opinion Letter Page 2">
     </div>
 </div>
 </template>

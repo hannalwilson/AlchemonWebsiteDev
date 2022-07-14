@@ -2,11 +2,13 @@
   <div class="nftContainer boxShadow">
     <span v-if="hover" class="itemDescription">{{ description }}</span>
     <div class="imgContainer" @mouseover="hover = true" @mouseleave="hover = false">
-      <img :src="require(`@/assets/alchemon/${name}.png`)" v-if="type === 'alchemon'" class="nftImage">
-      <img :src="require(`@/assets/alchebilities/${name.replace(/\s+/g, '')}.png`)" v-if="type === 'alchebilities'"
-        class="nftImage">
-      <video :src="require(`@/assets/art/${name}.mp4`)" v-if="type === 'art'" class="nftImage" autoplay muted loop
-        playsinline></video>
+      <img :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/alchemon/${name}.png`"
+        v-if="type === 'alchemon'" class="nftImage">
+      <img
+        :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/alchebilities/${name.replace(/\s+/g, '')}.png`"
+        v-if="type === 'alchebilities'" class="nftImage">
+      <video :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/art/${name}.mp4`"
+        v-if="type === 'art'" class="nftImage" autoplay muted loop playsinline></video>
     </div>
     <div class="buttonContainer">
       <p> {{ name }}</p>

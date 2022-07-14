@@ -163,6 +163,8 @@ export default {
           const amountAvailable = rewardCardAmount - stakedCardAmount // calulates how many rewards are available
           if (alchemonName[rewardCard] !== undefined && amountAvailable > 0) {
             rewardsAvailable[alchemonName[rewardCard]] = amountAvailable // adds alchemon name as key and amount available as value to dictionary
+          } else if (alchemonName[rewardCard] !== undefined && amountAvailable <= 0) {
+            rewardsAvailable[alchemonName[rewardCard]] = 0
           }
         }
       })

@@ -16,7 +16,8 @@
     </p>
     <input type="text" id="text" class="darkGrayText_1 boxShadow" placeholder="  Enter wallet address" ref="address" />
     <button class="boxShadow" id="btn" @click="calculateRewards">Submit</button>
-    <img src="../assets/rewards_table.jpg" alt="Staking Rewards Table" class="zoomIn_2">
+    <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/rewards_table.jpg" alt="Staking Rewards Table"
+      class="zoomIn_2">
   </div>
   <popup-window v-if="popupTriggers.calculatedRewards">
     <h2>Weekly Staking Rewards:</h2>

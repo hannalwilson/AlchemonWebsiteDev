@@ -1,6 +1,7 @@
 <template>
   <nav>
-    <router-link to="/"><img alt="Vue Logo" src="../assets/logo.png"></router-link>
+    <router-link to="/"><img alt="Vue Logo" src="https://alchemon-website-assets.s3.amazonaws.com/assets/logo.png">
+    </router-link>
     <div class="connectWallet">
       <div v-if="!foundAddress" class="navp" @click="TogglePopup('chooseWallet')">CONNECT</div>
       <div v-if="foundAddress" class="navp" @click="TogglePopup('disconnectWallet')">{{ displayAddress }}...</div>

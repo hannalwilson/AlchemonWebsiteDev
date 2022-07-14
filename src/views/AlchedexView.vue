@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="whiteGrayBackground">
-      <img src="../assets/alchedex.png" class="alchedex" />
+      <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/alchedex.png" class="alchedex" />
       <p class="darkBlueHeader spreadText">ALCHEDEX</p>
     </div>
     <div class="cards">

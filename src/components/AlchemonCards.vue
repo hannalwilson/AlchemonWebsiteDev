@@ -1,10 +1,11 @@
 <template>
-    <div class='cardContainer boxShadow'>
-        <img :src= "require(`../assets/alchemon/${name}.png`)" class="cardImage">
-        <p class="cardText"> {{id}}<br>
-        Type(s): {{ type }}<br>
-        Minted: {{ minted }}</p>
-    </div>
+  <div class='cardContainer boxShadow'>
+    <img :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/alchemon/${name}.png`"
+      class="cardImage">
+    <p class="cardText"> {{id}}<br>
+      Type(s): {{ type }}<br>
+      Minted: {{ minted }}</p>
+  </div>
 </template>
 
 <script>

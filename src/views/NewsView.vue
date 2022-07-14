@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="blueBackground">
-            <img id="moveAnimation_1" src="../assets/news.png" alt="News Character">
+            <img id="moveAnimation_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/news.png" alt="News Character">
         </div>
         <div>
             <p class="orangeHeader spreadText">BETA 2.0 RELEASE - JULY 2022</p>
@@ -38,7 +38,7 @@
                 <p>
                 <strong><br>If you have any feedback on Beta 2.0, please email feedback@alchemon.net</strong>
             </p>
-            <img src="../assets/beta2.jpg" alt="Beta2.0">
+            <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/beta2.jpg" alt="Beta2.0">
         </div>
         <div class="roadmap">
             <p class="grayHeader spreadText">JUNE 2022 UPDATE</p>
@@ -112,7 +112,7 @@
                 More Game Modes (Co-Op Boss Battles, Story Mode, etc.)<br>
                 AlcheGold DeFi Launch<br>
                 Alchemon Metaverse<br>
-                <img class="zoomIn_1" src="../assets/map.png" alt="Roadmap">
+                <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/map.png" alt="Roadmap">
             </p><br><br>
         </div>
         <div class="oldRoadmap">
@@ -122,7 +122,7 @@
                 Make sure you check out our new & improved <router-link to="/token">tokenomics</router-link> if you
                 haven't yet!
             </p>
-            <img class="zoomIn_1" src="../assets/token.png" alt="token">
+            <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/token.png" alt="token">
             <p class="whiteText">I take pride in having the worst, least-detailed roadmaps in crypto, but here we are.
                 The team & I
                 pounded this out for you all so you know what we are focused on going into the future. The team is up to
