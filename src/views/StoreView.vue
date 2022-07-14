@@ -37,11 +37,6 @@ img {
   margin: 0%;
   padding: 0%;
 }
-h1 {
-  font-size: 10vw;
-  color: #e6ad10;
-  -webkit-text-stroke:1px rgb(22, 22, 54);
-}
 </style>
 
 <script>

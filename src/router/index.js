@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import AlchedexView from '../views/AlchedexView.vue'
 import FAQView from '../views/FAQView.vue'
 import HomeView from '../views/HomeView.vue'
-import HowToPlayView from '../views/HowToPlayView.vue'
 import NewsView from '../views/NewsView.vue'
 import StoreView from '../views/StoreView.vue'
 import TokenView from '../views/TokenView.vue'
@@ -12,10 +11,12 @@ import PrivacyPolicyView from '../views/PrivacyPolicyView.vue'
 import StaffView from '../views/StaffView.vue'
 import TermsAndConditionsView from '../views/TermsAndConditionsView.vue'
 import BetaView from '../views/BetaView.vue'
-import InstructionsView from '../views/InstructionsView.vue'
-import StakingView from '../views/StakingView.vue'
-import StakingRewardsView from '../views/StakingRewards.vue'
+import GettingStartedView from '../views/GettingStarted.vue'
 import EvolveView from '../views/EvolveView.vue'
+import BattleGameView from '../views/BattleGame.vue'
+import HuntingGroundsView from '../views/HuntingGrounds.vue'
+import TrainingGroundsView from '../views/TrainingGrounds.vue'
+import WalletStakingView from '../views/WalletStaking.vue'
 
 const routes = [
   {
@@ -32,11 +33,6 @@ const routes = [
     path: '/faq',
     name: 'faq',
     component: FAQView
-  },
-  {
-    path: '/howtoplay',
-    name: 'howtoplay',
-    component: HowToPlayView
   },
   {
     path: '/news',
@@ -85,23 +81,33 @@ const routes = [
   },
   {
     path: '/instructions',
-    name: 'instructions',
-    component: InstructionsView
-  },
-  {
-    path: '/staking',
-    name: 'staking',
-    component: StakingView
-  },
-  {
-    path: '/stakingrewards',
-    name: 'stakingrewards',
-    component: StakingRewardsView
+    name: 'GettingStarted',
+    component: GettingStartedView
   },
   {
     path: '/craftandevolve',
     name: 'craftandevolve',
     component: EvolveView
+  },
+  {
+    path: '/howtobattle',
+    name: 'battle',
+    component: BattleGameView
+  },
+  {
+    path: '/huntinggrounds',
+    name: 'huntinggrounds',
+    component: HuntingGroundsView
+  },
+  {
+    path: '/traininggrounds',
+    name: 'traininggrounds',
+    component: TrainingGroundsView
+  },
+  {
+    path: '/walletstaking',
+    name: 'walletstaking',
+    component: WalletStakingView
   }
 ]
 

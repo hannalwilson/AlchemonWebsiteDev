@@ -5,7 +5,7 @@
     <p class="orangeHeader spreadText">ALCHEMON INSTRUCTIONS</p>
     <p>Follow these steps to purchase Alchemon and play the game:</p>
     <ol>
-        <li>Download and install the Algorand Wallet app on your mobile device and set up your account.</li>
+        <li>Download and install the Pera Wallet app on your mobile device and set up your account.</li>
         <li>Set up an Algorand wallet at: <a href="https://wallet.myalgo.com/" target="_blank">My Algo Wallet</a>.</li>
         <li>Import the wallet from your mobile app to myalgo.com. To do so, follow these steps:</li>
             <ul>

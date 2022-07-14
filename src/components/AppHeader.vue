@@ -3,8 +3,9 @@
     <router-link to="/"><img alt="Vue Logo" src="https://alchemon-website-assets.s3.amazonaws.com/assets/logo.png">
     </router-link>
     <div class="connectWallet">
-      <div v-if="!foundAddress" class="navp" @click="TogglePopup('chooseWallet')">CONNECT</div>
-      <div v-if="foundAddress" class="navp" @click="TogglePopup('disconnectWallet')">{{ displayAddress }}...</div>
+      <div v-if="!foundAddress" class="navp" @click="TogglePopup('chooseWallet')"><strong>CONNECT</strong></div>
+      <div v-if="foundAddress" class="navp" @click="TogglePopup('disconnectWallet')"><strong>{{ displayAddress
+          }}...</strong></div>
     </div>
     <div v-on:click="openMobileNav()" id="burger">
       <div class="line1"></div>
@@ -16,7 +17,16 @@
 
       <router-link to="/faq">FAQ</router-link>
 
-      <router-link to="/howtoplay">HOW&nbsp;TO&nbsp;PLAY</router-link>
+      <div class="dropdown-link">
+        <p class="navp">HOW&nbsp;TO&nbsp;PLAY&nbsp;▼</p>
+        <div class="dropdown-menu">
+          <router-link to="/instructions">GETTING STARTED</router-link>
+          <router-link to="/walletstaking">WALLET STAKING</router-link>
+          <router-link to="/traininggrounds">TRAINING GROUNDS</router-link>
+          <router-link to="/huntinggrounds">HUNTING GROUNDS</router-link>
+          <router-link to="/howtobattle">BATTLE</router-link>
+        </div>
+      </div>
 
       <router-link to="/token">TOKEN</router-link>
 
@@ -242,7 +252,7 @@ p{
   padding: 0%;
 }
 
-a:hover, .navp:hover {
+a:hover, .navp:hover,  div.nav-links a:hover{
     background-color: orange;
     color: #00006f;
     transition: 0.3s;
@@ -310,10 +320,9 @@ div.dropdown-menu {
   display: none;
   top: 100%;
   padding: 0%;
-  background-color: rgba(0, 0, 140, 0.5);
 }
 
-div.dropdown-menu li {
+div.dropdown-menu a {
   margin: 0%;
   background-color: rgb(0, 0, 80);
   padding: 0%;
@@ -386,8 +395,5 @@ div.dropdown-menu a {
   .connectWallet {
     font-size: 6vw;
   }
-}
-.navp {
-  font-weight: 900;
 }
 </style>
