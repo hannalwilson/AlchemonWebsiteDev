@@ -14,14 +14,14 @@
             </p>
             <a href="https://www.youtube.com/c/WhiteboardCrypto/videos" target="_blank"><button
                     class="linkButton boxShadow">FREE EDUCATIONAL VIDEOS</button></a>
-            <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/archislash.gif" width="60%" alt="Archislash">
+            <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/archislash.gif" alt="Archislash">
         </div>
         <div class="rules">
             <p class="yellowHeader spreadText">RULES</p>
             <p class="whiteText marginFix_2">Common & Uncommon Alchemon can be evolved into more powerful versions!
                 <br><br>There are two ways to evolve your Alchemon: Trading or Staking.
             </p>
-            <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/vena_evolution.png" width="50%" alt="Vena Evolutions">
+            <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/vena_evolution.png" alt="Vena Evolutions">
         </div>
         <div class="staking">
             <p class="grayHeader spreadText">STAKING</p>
@@ -33,7 +33,7 @@
                 smart contract. Also, typing in the Alchemon into the official wallet and approving the asset works.
                 Click <a class="blueLinks" href="#evolutionsAvailable">here</a> to view how many Alchemon are available
                 for staking rewards.</p>
-            <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/handshake.png" width="30%" alt="Handshake">
+            <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/handshake.png" alt="Handshake">
         </div>
         <div class="trading">
             <p class="orangeHeader spreadText">TRADING</p>
@@ -41,7 +41,7 @@
                 Common or Uncommon Alchemon at the proper RandSwap page and in return you will receive an evolved
                 version! <br><br>This is all set up in RandSwap with smart contracts and is completely trustless, so a
                 small fee to Trade is involved. These are also a limited supply, so trade while they are available!</p>
-            <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/transfer.png" width="25%" alt="Transfer">
+            <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/transfer.png" alt="Transfer">
         </div>
         <div class="deflationary">
             <p class="grayHeader spreadText">DEFLATIONARY</p>
@@ -53,7 +53,7 @@
                 to help existing players to get what they need. This will keep the Crafting and Staking Wallets
                 restocked so others can play the game. Set 01 Uncommon, Rare, Epic, Legendary will never be sold by the
                 store.</p>
-            <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/deflationary.png" width="25%" alt="Deflation">
+            <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/deflationary.png" alt="Deflation">
         </div>
         <div class="crafting">
             <p class="orangeHeader spreadText">CRAFTING</p>
@@ -62,14 +62,14 @@
                 Alchemon. Remember you are combining these 2 Alchemon to make a stronger one, so the original 2 get sent
                 back to the Trading & Staking Wallets. Getting to the top will not be easy. This is also done through
                 RandSwap and will have a higher fee than Trading.</p>
-            <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/craft.jpg" width="25%" alt="Crafting">
+            <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/craft.jpg" alt="Crafting">
         </div>
         <staking-rewards></staking-rewards>
         <div class="evolvestake">
             <p class="yellowHeader spreadText">EVOLVE // STAKE</p>
             <p class="whiteHeader">Wallet address: <b>5Q2PRQDMH7JNT76EYFXBB4UBFVBL6WI37GTJC7HELNPZ4EL5BE6WKQXP4Y</b></p>
             <img class="wallet_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/wallet_1.jpg" alt="Wallet" width="50%"><br>
-            <img id="trainingAnimation_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/10_bolt.png" width="50%" alt="Bolt flipping">
+            <img id="trainingAnimation_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/10_bolt.png" alt="Bolt flipping">
             <p class="orangeHeader spreadText">TRAINING GROUNDS</p>
             <p class="whiteText">You can send the Alchemon you want evolved to this address at any time. 1 Alchemon per
                 wallet. After 7 days your Alchemon will evolve if possible! There are a limited # of available NFT Cards
@@ -78,7 +78,7 @@
                 evolved. MAKE SURE YOU ADD THE ASSET OF THE EVOLVED VERSION YOU ARE TO RECEIVE, if you do not, you
                 forfeit your evolution. I have made links to easily add all assets of the the game on the AlcheDex page.
             </p>
-            <img id="trainingAnimation_2" src="https://alchemon-website-assets.s3.amazonaws.com/assets/24_drathslayer.png" width="50%" alt="Drathslayer flipping">
+            <img id="trainingAnimation_2" src="https://alchemon-website-assets.s3.amazonaws.com/assets/24_drathslayer.png" alt="Drathslayer flipping">
             <staking-view></staking-view>
         </div>
         <div class="huntinggrounds">
@@ -91,7 +91,7 @@
                 it. Only time will tell what the lucky Alchemon will find in future weeks of the Hunting
                 Grounds.<br><br>&diams; Common = 1 Raffle Entry<br><br>&diams; Uncommon = 2 Raffle
                 Entries<br><br>&diams; Rare // Epic // Legendary = 3 Raffle Entries</p>
-            <img id="moveAnimation_2" src="https://alchemon-website-assets.s3.amazonaws.com/assets/hunting_grounds.png" alt="Bat" width="35%">
+            <img id="moveAnimation_2" src="https://alchemon-website-assets.s3.amazonaws.com/assets/hunting_grounds.png" alt="Bat">
             <p class="whiteHeader spreadText">WALLET ADDRESS FOR THE HUNTING GROUNDS: </p>
             <p><b>HUNTMEC6NPJH7MLBUSMJQWZF5N5GPJBF6FJ5LYTRXR7NGLDBT5KB6453FA</b></p>
             <img class="wallet_2" src="https://alchemon-website-assets.s3.amazonaws.com/assets/wallet_2.png" alt="Wallet" width="30%">
@@ -99,13 +99,13 @@
                 entries from the same address will be sent back. Must stake starting on Sunday to earn the raffle
                 entries. There will be a weekly announcment of what prizes are in the raffle. Raffle will be
                 scheduled/paid out weekly on Sat/Sun.</p>
-            <img id="moveAnimation_3" src="https://alchemon-website-assets.s3.amazonaws.com/assets/hunting_grounds_1.png" alt="Demo" width="35%">
+            <img id="moveAnimation_3" src="https://alchemon-website-assets.s3.amazonaws.com/assets/hunting_grounds_1.png" alt="Demo">
         </div>
         <div class="eggs">
             <p class="orangeHeader spreadText">EGGS</p>
             <p>So you got an Egg, nice job!<br><br>It can be traded in for a new Set Common that you will get to own
                 before the Set Pack Opening!<br><br>Eggs may contain different rarities.</p>
-            <img id="loader_text" src="https://alchemon-website-assets.s3.amazonaws.com/assets/Egg.png" width="25%" alt="Egg">
+            <img id="loader_text" src="https://alchemon-website-assets.s3.amazonaws.com/assets/Egg.png" alt="Egg">
         </div>
         <div class="distribution">
             <p class="yellowHeader spreadText">DISTRIBUTION</p>
@@ -125,6 +125,7 @@
 </template>
 
 <style lang="scss" scoped>
+
 .playrules {
     width: 50%;
     margin-top: 8%;
@@ -230,6 +231,9 @@ position: relative;
 animation-name: spin_1;
 animation-duration: 7s;
 animation-iteration-count:infinite;
+}
+img {
+    max-width: 1000px;
 }
 </style>
 
