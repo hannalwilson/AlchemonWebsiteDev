@@ -3,25 +3,31 @@
         <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/play_rules.png" class="playrules">
     </div>
     <div class="newPlayer">
-        <p class="orangeHeader spreadText">NEW TO ALCHEMON?<router-link to="/instructions"
-                class="darkBlueHeader spreadText">START HERE</router-link>
+        <p class="orangeHeader spreadText">NEW TO ALCHEMON?
         </p>
-        <p>Here are instructions on how to purchase and play Alchemon!:</p>
+        <p>Here are instructions on how to set up your Algorand wallet and purchase Alchemon:</p>
         <router-link to="/instructions" class="navlinks"><button class="linkButton boxShadow">ALCHEMON
                 INSTRUCTIONS</button></router-link>
         <p>Are you new to Algorand or cryptocurrency in general? Here are some excellent free educational videos!:
         </p>
         <a href="https://www.youtube.com/c/WhiteboardCrypto/videos" target="_blank"><button
                 class="linkButton boxShadow">FREE EDUCATIONAL VIDEOS</button></a>
-        <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/archislash.gif" width="60%"
-            alt="Archislash">
     </div>
-    <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/archislash.gif" width="60%"
-        alt="Archislash">
     <div class="rules">
-        <p class="yellowHeader spreadText">RULES</p>
-        <p class="whiteText marginFix_2">Common & Uncommon Alchemon can be evolved into more powerful versions!
-            <br><br>There are two ways to evolve your Alchemon: Trading or Staking.
+        <p class="yellowHeader spreadText">BASICS</p>
+        <p class="whiteText">Alchemon are released in sets that comprise of 15 unique cards: 4 Common, 4 Uncommon,
+            4 Rare, 2 Epic, and 1 Legendary. Lower level cards (Common and Uncommon) can
+            evolve to higher levels through staking in the Training Grounds, leveling up in game, or by trading in
+            lower rarity cards and a small evolving fee at our <router-link to="/craftandevolve">Craft & Evolve
+            </router-link>
+            store. Epic and Legendary Alchemon can be crafted here, as well, by trading in the correct lower rarity
+            cards
+            with a small evolving fee.<br><br>
+            You can purchase Common Alchemon in our official <router-link to="/store">Alcheshop</router-link> or higher
+            rarity
+            Alchemon from secondary markets sites like <a href="https://www.randgallery.com/algo-collection/"
+                target="_blank">RandGallery</a> and
+            <a href="https://algoxnft.com/" target="_blank">ALGOxNFT</a><br><br>
         </p>
         <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/vena_evolution.png"
             width="50%" alt="Vena Evolutions">
@@ -37,8 +43,6 @@
             Click <router-link to="/traininggrounds">here</router-link> to view how many Alchemon are
             available
             for staking rewards.</p>
-        <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/handshake.png" width="30%"
-            alt="Handshake">
     </div>
     <div class="trading">
         <p class="orangeHeader spreadText">TRADING</p>
@@ -46,8 +50,6 @@
             Common or Uncommon Alchemon at our Craft & Evolve Store and in return you will receive an evolved
             version! <br><br>This is all set up smart contracts and is completely trustless, so a
             small fee to Trade is involved. These are also a limited supply, so trade while they are available!</p>
-        <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/transfer.png" width="25%"
-            alt="Transfer">
     </div>
     <div class="crafting">
         <p class="orangeHeader spreadText">CRAFTING</p>
@@ -56,8 +58,6 @@
             Alchemon. Remember you are combining these 2 Alchemon to make a stronger one, so the original 2 get sent
             back to the Trading & Staking Wallets. Getting to the top will not be easy. This is also done through
             smart contracts and will have a higher fee than Trading.</p>
-        <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/craft.jpg" width="25%"
-            alt="Crafting">
     </div>
     <div class="deflationary">
         <p class="grayHeader spreadText">DEFLATIONARY</p>
@@ -68,15 +68,11 @@
             to help existing players to get what they need. This will keep the Crafting and Staking Wallets
             restocked so others can play the game. Uncommons, Rares, Epics, and Legendaries will never be sold by the
             store.</p>
-        <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/deflationary.png" width="25%"
-            alt="Deflation">
     </div>
     <div class="eggs">
         <p class="orangeHeader spreadText">EGGS</p>
         <p>So you got an Egg, nice job!<br><br>It can be traded in for a new Set Common that you will get to own
             before the Set Pack Opening!<br><br>Eggs may contain different rarities.</p>
-        <img id="loader_text" src="https://alchemon-website-assets.s3.amazonaws.com/assets/Egg.png" width="25%"
-            alt="Egg">
     </div>
     <div class="distribution">
         <p class="yellowHeader spreadText">DISTRIBUTION</p>

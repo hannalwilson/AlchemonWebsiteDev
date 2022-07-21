@@ -17,6 +17,7 @@ import BattleGameView from '../views/BattleGame.vue'
 import HuntingGroundsView from '../views/HuntingGrounds.vue'
 import TrainingGroundsView from '../views/TrainingGrounds.vue'
 import WalletStakingView from '../views/WalletStaking.vue'
+import InstructionsView from '../views/InstructionsView.vue'
 
 const routes = [
   {
@@ -80,11 +81,6 @@ const routes = [
     component: BetaView
   },
   {
-    path: '/instructions',
-    name: 'GettingStarted',
-    component: GettingStartedView
-  },
-  {
     path: '/craftandevolve',
     name: 'craftandevolve',
     component: EvolveView
@@ -108,6 +104,16 @@ const routes = [
     path: '/walletstaking',
     name: 'walletstaking',
     component: WalletStakingView
+  },
+  {
+    path: '/instructions',
+    name: 'instructions',
+    component: InstructionsView
+  },
+  {
+    path: '/howtoplay',
+    name: 'howtoplay',
+    component: GettingStartedView
   }
 ]
 

@@ -17,16 +17,7 @@
 
       <router-link to="/faq">FAQ</router-link>
 
-      <div class="dropdown-link">
-        <p class="navp">HOW&nbsp;TO&nbsp;PLAY&nbsp;▼</p>
-        <div class="dropdown-menu">
-          <router-link to="/instructions">GETTING STARTED</router-link>
-          <router-link to="/walletstaking">WALLET STAKING</router-link>
-          <router-link to="/traininggrounds">TRAINING GROUNDS</router-link>
-          <router-link to="/huntinggrounds">HUNTING GROUNDS</router-link>
-          <router-link to="/howtobattle">BATTLE</router-link>
-        </div>
-      </div>
+        <router-link to="/howtoplay">HOW&nbsp;TO&nbsp;PLAY</router-link>
 
       <router-link to="/token">TOKEN</router-link>
 

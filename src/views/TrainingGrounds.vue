@@ -4,13 +4,11 @@
         <p class="whiteText">Players can send their Common or Uncommon Alchemon to the Training Grounds to evolve!
             After one week, you will be sent back the evolution of your Alchemon, if possible. There are a limited # of available NFT Cards
             for your Alchemon to be turned into. The chart below shows what is currently available for Sets 4 and 5. All previous sets have been evolved. It is first come, first serve for staked Alchemon to get
-            evolved, so if you send in a card that's evolution isn't available, that card will be sent back to your wallet. <br><br>MAKE SURE YOU ADD THE ASSET OF THE EVOLVED VERSION YOU ARE TO RECEIVE.
+            evolved, so if you send in a card that's evolution isn't available, that card will be sent back to your wallet. <br><br><strong>MAKE SURE YOU ADD THE ASSET OF THE EVOLVED VERSION YOU ARE TO RECEIVE.</strong>
         </p>
             <img class="wallet_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/wallet_1.jpg" alt="Wallet"
                 width="25%"><br>
             <p class="whiteHeader">Wallet address: <b>5Q2PRQDMH7JNT76EYFXBB4UBFVBL6WI37GTJC7HELNPZ4EL5BE6WKQXP4Y</b></p>
-        <img id="trainingAnimation_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/66_arakumo.png"
-            width="50%" alt="Arakumo flipping">
         <p class="orangeHeader spreadText">EVOLUTIONS AVAILABLE</p>
         <table class="boxShadow">
             <tr class="tableTitle">
