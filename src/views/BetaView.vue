@@ -36,9 +36,9 @@
       For Windows and Mac, you may also get notifications like "This download may not be safe," which will require you
       to click "Keep" or "Download anyways."
     </p> <br><br>
-    <a href="https://alch-executables.s3.amazonaws.com/AlchemonBeta2.0_Setup.exe" download>
+    <a href="https://alch-executables.s3.amazonaws.com/AlchemonBetaSetup.exe" download>
       <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/pc.png" alt="Windows download" width="40%" height="auto"></a><br>
-    <a href="https://alch-executables.s3.amazonaws.com/AlchemonBeta2.zip" download>
+    <a href="https://alch-executables.s3.amazonaws.com/AlchemonBeta.zip" download>
       <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/mac.png" alt="Mac download" width="40%" height="auto">
     </a>
   </div>
