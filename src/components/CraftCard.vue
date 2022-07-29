@@ -149,7 +149,7 @@ import { formatJsonRpcRequest } from '@json-rpc-tools/utils'
 import { ref } from 'vue'
 import PopupWindow from './PopupWindow.vue'
 
-const apiURL = 'https://avk5m0z0nc.execute-api.us-east-1.amazonaws.com'
+const apiURL = 'https://l84jesjbd4.execute-api.us-east-1.amazonaws.com/'
 // eslint-disable-next-line no-unused-vars
 let signedTxn
 
@@ -199,10 +199,10 @@ const smartContractInfo = {
     amount: 2
   },
   Cyclostorm: {
-    appID: 779106769,
-    evolvedAlchemon: 527486409,
-    tradedAlchemonOne: 527483715,
-    tradedAlchemonTwo: 527485015,
+    appID: 101167721,
+    evolvedAlchemon: 67960303,
+    tradedAlchemonOne: 67960230,
+    tradedAlchemonTwo: 67960252,
     amount: 1
   },
   Araknolyth: {

@@ -89,7 +89,7 @@ const uncommon = reactive([
   },
   {
     name: 'Zipadol',
-    id: 509842608,
+    id: 67960008,
     tradedCard: 'Zip',
     available: 0
   }
@@ -142,6 +142,22 @@ const craftFive = reactive([
   {
     name: 'Araknolyth',
     id: 744538073,
+    tradedCardOne: 'Monolyth',
+    tradedCardTwo: 'Araukmo',
+    amount: 2,
+    available: 0
+  },
+  {
+    name: 'Chomperz',
+    id: 744539419,
+    tradedCardOne: 'Torrment',
+    tradedCardTwo: 'Incydious',
+    amount: 2,
+    available: 0
+  },
+  {
+    name: 'Cyclostorm',
+    id: 67960303,
     tradedCardOne: 'Monolyth',
     tradedCardTwo: 'Araukmo',
     amount: 2,
@@ -229,13 +245,15 @@ const addresses = [
   '7I23MXKEQQW3PRP5UE3N22ZRHOEHEVPSE5KG63UU4Q2ABCUN5G6XKNWHJ4',
   'T2L4WBMXBGLLW5TFYH76QVQYBJ4LCKV4TSFRGOMSOHMOHTT6OSIA4GFMRM',
   'SYFVB77GVQKYHCX34UVJ6HVV4TUIUQKC4UGRCQDEXRGJNVPZ74BQNRC4CY',
-  'YOHSDM3T5DMN3BAIRPLPCJYFO6UAJXUFZZ7P7Y4I66RYVRR4VYQVMB2YEM'
+  'YOHSDM3T5DMN3BAIRPLPCJYFO6UAJXUFZZ7P7Y4I66RYVRR4VYQVMB2YEM',
+  '6YT7VAENYAL7B5KJYL363BWI2TM6YCEDKOEVZLBY26IWOUAUNCQBVPVBOI',
+  'BF52ZVIA2EERQICAHE4HCF65ETAADNI3KET6PADPIFZNYUTXCMTCHYVOUE'
 ]
 
 export default {
   setup () {
     const token = ''
-    const server = 'https://mainnet-api.algonode.cloud'
+    const server = 'https://testnet-api.algonode.cloud'
     const port = ''
     const client = new algosdk.Algodv2(token, server, port)
 

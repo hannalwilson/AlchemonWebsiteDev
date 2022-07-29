@@ -11,13 +11,10 @@ import PrivacyPolicyView from '../views/PrivacyPolicyView.vue'
 import StaffView from '../views/StaffView.vue'
 import TermsAndConditionsView from '../views/TermsAndConditionsView.vue'
 import BetaView from '../views/BetaView.vue'
-import GettingStartedView from '../views/GettingStarted.vue'
 import EvolveView from '../views/EvolveView.vue'
-import BattleGameView from '../views/BattleGame.vue'
-import HuntingGroundsView from '../views/HuntingGrounds.vue'
-import TrainingGroundsView from '../views/TrainingGrounds.vue'
-import WalletStakingView from '../views/WalletStaking.vue'
 import InstructionsView from '../views/InstructionsView.vue'
+import GovernanceView from '../views/GovernanceView.vue'
+import HowToPlayView from '../views/HowToPlayView.vue'
 
 const routes = [
   {
@@ -86,26 +83,6 @@ const routes = [
     component: EvolveView
   },
   {
-    path: '/howtobattle',
-    name: 'battle',
-    component: BattleGameView
-  },
-  {
-    path: '/huntinggrounds',
-    name: 'huntinggrounds',
-    component: HuntingGroundsView
-  },
-  {
-    path: '/traininggrounds',
-    name: 'traininggrounds',
-    component: TrainingGroundsView
-  },
-  {
-    path: '/walletstaking',
-    name: 'walletstaking',
-    component: WalletStakingView
-  },
-  {
     path: '/instructions',
     name: 'instructions',
     component: InstructionsView
@@ -113,7 +90,12 @@ const routes = [
   {
     path: '/howtoplay',
     name: 'howtoplay',
-    component: GettingStartedView
+    component: HowToPlayView
+  },
+  {
+    path: '/governance',
+    name: 'givernance',
+    component: GovernanceView
   }
 ]
 

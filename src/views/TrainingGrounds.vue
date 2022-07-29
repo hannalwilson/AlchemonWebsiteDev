@@ -1,50 +1,52 @@
 <template>
-    <div class="evolvestake">
-                <p class="orangeHeader spreadText">TRAINING GROUNDS</p>
-        <p class="whiteText">Players can send their Common or Uncommon Alchemon to the Training Grounds to evolve!
-            After one week, you will be sent back the evolution of your Alchemon, if possible. There are a limited # of available NFT Cards
-            for your Alchemon to be turned into. The chart below shows what is currently available for Sets 4 and 5. All previous sets have been evolved. It is first come, first serve for staked Alchemon to get
-            evolved, so if you send in a card that's evolution isn't available, that card will be sent back to your wallet. <br><br><strong>MAKE SURE YOU ADD THE ASSET OF THE EVOLVED VERSION YOU ARE TO RECEIVE.</strong>
-        </p>
-            <img class="wallet_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/wallet_1.jpg" alt="Wallet"
-                width="25%"><br>
-            <p class="whiteHeader">Wallet address: <b>5Q2PRQDMH7JNT76EYFXBB4UBFVBL6WI37GTJC7HELNPZ4EL5BE6WKQXP4Y</b></p>
-        <p class="orangeHeader spreadText">EVOLUTIONS AVAILABLE</p>
-        <table class="boxShadow">
-            <tr class="tableTitle">
-                <td>Alchemon</td>
-                <td>Amount Available</td>
-            </tr>
-            <tr v-for="(index, alchemon) in rewardsAvailable" :key="index">
-                <td> {{ alchemon }} </td>
-                <td> {{ index }}</td>
-            </tr>
-        </table>
-        <p class="whiteText">
-            Check what Alchemon you are staking by entering your wallet address below!
-        </p>
-        <input type="text" id="text" class="darkGrayText_1 boxShadow" placeholder="  Enter wallet address"
-            ref="address" />
-        <button class="boxShadow" id="btn" @click="getStaked">Submit</button>
-    </div>
-    <popup-window v-if="popupTriggers.stakedAlchemon">
-        <h2>You have a(n) {{ userStakedCard }} staked!</h2>
-        <button class="boxShadow" @click="TogglePopup('stakedAlchemon')">Close</button>
-    </popup-window>
-    <popup-window v-if="popupTriggers.noStakedAlchemon">
-        <h2>You do not have an Alchemon staked. Scan the QR code above to send one to the Training Grounds!</h2>
-        <button class="boxShadow" @click="TogglePopup('noStakedAlchemon')">Close</button>
-    </popup-window>
+  <div class="evolvestake">
+    <p class="orangeHeader spreadText">TRAINING GROUNDS</p>
+    <p class="whiteText">Players can send their Common or Uncommon Alchemon to the Training Grounds to evolve!
+      After one week, you will be sent back the evolution of your Alchemon, if possible. There are a limited # of
+      available NFT Cards
+      for your Alchemon to be turned into. The chart below shows what is currently available for Sets 4 and 5. All
+      previous sets have been evolved. It is first come, first serve for staked Alchemon to get
+      evolved, so if you send in a card that's evolution isn't available, that card will be sent back to your wallet.
+    </p><p class="whiteText center"><strong>MAKE SURE YOU ADD THE ASSET OF THE EVOLVED VERSION YOU ARE TO RECEIVE.</strong></p>
+    <img class="wallet_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/wallet_1.jpg" alt="Wallet"
+      width="25%"><br>
+    <p class="whiteHeader center">Wallet address: <b>5Q2PRQDMH7JNT76EYFXBB4UBFVBL6WI37GTJC7HELNPZ4EL5BE6WKQXP4Y</b></p>
+    <p class="orangeHeader spreadText">
+      CHECK WHICH ALCHEMON YOU ARE STAKING
+    </p>
+    <input type="text" id="text" class="darkGrayText_1 boxShadow" placeholder="  Enter wallet address" ref="address" />
+    <button class="boxShadow" id="btn" @click="getStaked">Submit</button>
+    <p class="orangeHeader spreadText">EVOLUTIONS AVAILABLE</p>
+    <table class="boxShadow">
+      <tr class="tableTitle">
+        <td>Alchemon</td>
+        <td>Amount Available</td>
+      </tr>
+      <tr v-for="(index, alchemon) in rewardsAvailable" :key="index">
+        <td> {{ alchemon }} </td>
+        <td> {{ index }}</td>
+      </tr>
+    </table>
+  </div>
+  <popup-window v-if="popupTriggers.stakedAlchemon">
+    <h2>You have a(n) {{ userStakedCard }} staked!</h2>
+    <button class="boxShadow" @click="TogglePopup('stakedAlchemon')">Close</button>
+  </popup-window>
+  <popup-window v-if="popupTriggers.noStakedAlchemon">
+    <h2>You do not have an Alchemon staked. Scan the QR code above to send one to the Training Grounds!</h2>
+    <button class="boxShadow" @click="TogglePopup('noStakedAlchemon')">Close</button>
+  </popup-window>
 </template>
 
 <style lang="scss" scoped>
-
+.center {
+  text-align: center;
+}
 div {
     padding: 2%;
 }
 .evolvestake {
     background-color: #007bff;
-    padding-top: 5%;
 }
 table {
   margin: auto;
@@ -143,9 +145,6 @@ export default {
     }
   },
   components: { PopupWindow },
-  mounted () {
-    window.scrollTo(0, 0)
-  },
   setup () {
     const algosdk = require('algosdk')
     const token = ''
@@ -227,8 +226,8 @@ export default {
       const formattedWeekAgo = weekAgo.toISOString()
       // const userTransactions = reactive({})
       client.lookupAccountTransactions(this.$refs.address.value).afterTime(formattedWeekAgo).do().then(response => {
+        console.log(response)
         try {
-          console.log(formattedWeekAgo)
           for (let i = 0; !cardFound; i++) {
             const userTransaction = response.transactions[i]
             if (userTransaction['asset-transfer-transaction'] !== undefined) {
@@ -236,8 +235,14 @@ export default {
                 userStakedCardId = userTransaction['asset-transfer-transaction']['asset-id']
                 if (alchemonName[userStakedCardId] !== undefined) {
                   this.userStakedCard = alchemonName[userStakedCardId]
-                  this.TogglePopup('stakedAlchemon')
                   cardFound = true
+                  for (const key in response.transactions) {
+                    if (response.transactions[key].sender === stakingAddress) {
+                      this.TogglePopup('noStakedAlchemon')
+                      break
+                    }
+                  }
+                  this.TogglePopup('stakedAlchemon')
                 } else {
                   this.TogglePopup('noStakedAlchemon')
                 }

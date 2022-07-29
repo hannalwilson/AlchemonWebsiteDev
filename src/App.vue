@@ -1,6 +1,6 @@
 <template>
+<div class="website">
     <app-header/>
-    <div class="website">
     <router-view/>
     <app-footer/>
     </div>
@@ -44,7 +44,7 @@ export default {
     grid-template-rows: 1fr auto;
 }
 .website {
-  width: 100vw;
+  max-width: 100vw;
 }
 p{
   text-align: justify;

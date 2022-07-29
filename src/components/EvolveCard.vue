@@ -146,7 +146,7 @@ import { formatJsonRpcRequest } from '@json-rpc-tools/utils'
 import { ref } from 'vue'
 import PopupWindow from './PopupWindow.vue'
 
-const apiURL = 'https://avk5m0z0nc.execute-api.us-east-1.amazonaws.com'
+const apiURL = 'https://l84jesjbd4.execute-api.us-east-1.amazonaws.com/'
 // eslint-disable-next-line no-unused-vars
 let signedTxn
 const myAlgoConnect = new MyAlgoConnect()
@@ -157,7 +157,7 @@ const walletConnector = new WalletConnect(
   }
 )
 const tradeInAddresses = {
-  490139078: '7OVSLHCECWQZ7R4DVV64VWCPG4AL6JTDBLQZZX6FPG22JCIIVFOSTC6GBQ', // zip
+  490139078: 'KP7DMA2YSVSOCKAA2QBUWNFFEWB47EJZKQ6E74TXGG5GJLXSTSO7VLI3YE', // zip
   490141855: '5BSQOOEXICBRFBWBAQKFDUF4YFQN67OQFAH5NFHE2FUHTNHEHNGXJ6MPJU', // puff
   493271743: '5HPPE2OE6L3UDVG2LOU3LKD56TS6AQAMRY37FGRN45B7UG5ZJAQCZ2TWAM', // dagz
   490146814: 'I3QBOS6X6IWOY7S65CRRU47RAS2IK3TPLXAF3HYVY5JIEP7IXWARBWMJYQ', // lika
@@ -169,9 +169,9 @@ const tradeInAddresses = {
 
 const smartContractInfo = {
   Zipadol: {
-    appID: 778975194,
-    evolved: 509842608,
-    traded: 490139078
+    appID: 101166471,
+    evolved: 67960008,
+    traded: 67959981
   },
   Hailpuff: {
     appID: 778975387,
@@ -257,7 +257,7 @@ export default {
         evolvedAlchemonAssetID: evolvedAlchemon,
         tradeInAlchemonAssetID: tradedAlchemon,
         tradeInAlchemonAssetAmountSent: 2,
-        alchecoinAssetID: 310014962,
+        alchecoinAssetID: 78127598,
         requiredAmountOfAlchecoin: 100
       })
       const serializedTxns = quickEvolveOneResponse.data.txns

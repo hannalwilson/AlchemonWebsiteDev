@@ -17,7 +17,7 @@
 
       <router-link to="/faq">FAQ</router-link>
 
-        <router-link to="/howtoplay">HOW&nbsp;TO&nbsp;PLAY</router-link>
+      <router-link to="/howtoplay">HOW&nbsp;TO&nbsp;PLAY</router-link>
 
       <router-link to="/token">TOKEN</router-link>
 
@@ -34,6 +34,7 @@
       </div>
     </div>
   </nav>
+  <router-link to="/beta" class="navlinks"><button class="downloadButton boxShadow">DOWNLOAD GAME</button></router-link>
   <popup-window v-if="popupTriggers.chooseWallet">
     <h3>Connect Your Wallet</h3>
     <button class="boxShadow" @click="connectWallet('myalgo')">
@@ -231,11 +232,32 @@ export default {
 
 <style lang="scss" scoped>
 
+.downloadButton {
+  color: #000080;
+  /* Sets the color of the button text to black */
+  border: solid #000080;
+  /* This makes a solid black border around the button */
+  border-radius: 2vw;
+  font-weight: bold;
+  padding: 1% 3%;
+  letter-spacing: 5px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+}
+@media only screen and (max-width: 798px) {
+  .downloadButton {
+    right: 30vw;
+    width: 75%;
+    }
+}
 nav {
   background-color: rgba(0, 0, 140, 0.5);
   position: fixed;
   width: 100%;
   z-index: 100;
+  max-width: 100vw;
 }
 
 p{
