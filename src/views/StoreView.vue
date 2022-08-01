@@ -20,6 +20,12 @@
 
 <style lang="scss" scoped>
 
+h1 {
+  font-size: 10vw;
+  color: #e6ad10;
+  -webkit-text-stroke: 1px rgb(22, 22, 54);
+  padding: 0%;
+}
 .background {
   background-image: url("../assets/alcheshop_coin.png"),linear-gradient(to right, #007bff, #2A78F8, #4287F9, #89B4FB);
   background-position: center;

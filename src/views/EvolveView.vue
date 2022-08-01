@@ -27,9 +27,6 @@ p {
     text-align: center;
     margin: 0;
 }
-h1 {
-  padding: 0%;
-}
 img {
   width: 100%;
   margin: 0%;
@@ -39,6 +36,7 @@ h1 {
   font-size: 10vw;
   color: #e6ad10;
   -webkit-text-stroke:1px rgb(22, 22, 54);
+  padding: 0%;
 }
 button {
   font-family: poppins;

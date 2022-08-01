@@ -4,15 +4,13 @@
         <p class="whiteText">Alchemon are released in sets that comprise of 15 unique cards: 4 Common, 4 Uncommon,
             4 Rare, 2 Epic, and 1 Legendary. Lower level cards (Common and Uncommon) can
             evolve to higher levels through staking in the Training Grounds, leveling up in game, or by trading in
-            lower rarity cards and a small evolving fee at our <router-link to="/craftandevolve">Craft & Evolve
-            </router-link>
+            lower rarity cards and a small evolving fee at our <router-link to="/craftandevolve">Craft & Evolve</router-link>
             store. Epic and Legendary Alchemon can be crafted here, as well, by trading in the correct lower rarity
             cards
             with a small evolving fee.<br><br>Alchemon is a Deflationary NFT Collecting Card Game. All Staking
             Evolutions, Trading
             Evolutions and Crafting Swaps have the Alchemon come back home to be redistributed to other players that
-            want to do the same. 100% of all Commons go back on sale in tour <router-link to="/store">Alcheshop
-            </router-link>.
+            want to do the same. 100% of all Commons go back on sale in tour <router-link to="/store">Alcheshop</router-link>.
             This is to make it easier for new players to get started &
             to help existing players to get what they need. This will keep the Crafting and Staking Wallets
             restocked so others can play the game. Uncommons, Rares, Epics, and Legendaries will never be sold by the

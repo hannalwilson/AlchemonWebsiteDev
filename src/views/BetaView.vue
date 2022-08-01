@@ -6,9 +6,7 @@
       properly. <br><br>
       Requirements to play: <br>
       1. Wallet Connect access via Pera Algo Wallet
-      <br>2. At least 3 unique Alchemon NFT Cards (Store: <a
-        href="https://www.randgallery.com/algo-collection/?address=ALCHY5SJXOXZXADZPD73KO6CYNZXDUWFYANTSXU6RIO3EZACIIXUCS3YDM"
-        target="_blank">NFTs)</a>
+      <br>2. At least 3 unique Alchemon NFT Cards (Store: <router-link to="/store">NFTs</router-link>)
       <br><br>Due to the fact that this is not a finished game, some operating systems attempt to block the download and
       installation process, thinking that the game is a virus. You can feel free to run your own virus scan. We are in
       the process of becoming a verified publisher.
@@ -37,9 +35,9 @@
       to click "Keep" or "Download anyways."
     </p> <br><br>
     <a href="https://alch-executables.s3.amazonaws.com/AlchemonBetaSetup.exe" download>
-      <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/pc.png" alt="Windows download" width="40%" height="auto"></a><br>
+      <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/pc.png" alt="Windows download"></a><br>
     <a href="https://alch-executables.s3.amazonaws.com/AlchemonBeta.zip" download>
-      <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/mac.png" alt="Mac download" width="40%" height="auto">
+      <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/mac.png" alt="Mac download">
     </a>
   </div>
 </template>

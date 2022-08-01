@@ -1,24 +1,24 @@
 <template>
-        <img src="../assets/card-game.png" class="playrules">
-    <div class="selectPage whiteText">
-        Learn More About:
+  <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/card-game.png" class="playrules">
+  <div class="selectPage whiteText">
+    Learn More About:
     <select v-model="viewingPage">
-        <option value = 'gettingstarted'>Getting
-            Started</option>
-        <option value = 'traininggrounds'>Training
-            Grounds</option>
-        <option value = 'huntinggrounds'>Hunting
-            Grounds</option>
-        <option value = 'walletstaking'>Wallet
-            Staking</option>
-        <!-- <option value = 'battle'>How To Battle</option> -->
+      <option value='gettingstarted'>Getting
+        Started</option>
+      <option value='traininggrounds'>Training
+        Grounds</option>
+      <option value='huntinggrounds'>Hunting
+        Grounds</option>
+      <option value='walletstaking'>Wallet
+        Staking</option>
+      <!-- <option value = 'battle'>How To Battle</option> -->
     </select>
-    </div>
-    <getting-started-view v-if="viewPage === 'gettingstarted'"></getting-started-view>
-    <training-grounds-view v-if="viewPage === 'traininggrounds'"></training-grounds-view>
-    <hunting-grounds-view v-if="viewPage === 'huntinggrounds'"></hunting-grounds-view>
-    <wallet-staking-view v-if="viewPage === 'walletstaking'"></wallet-staking-view>
-    <battle-game-view v-if="viewPage === 'battle'"></battle-game-view>
+  </div>
+  <getting-started-view v-if="viewPage === 'gettingstarted'"></getting-started-view>
+  <training-grounds-view v-if="viewPage === 'traininggrounds'"></training-grounds-view>
+  <hunting-grounds-view v-if="viewPage === 'huntinggrounds'"></hunting-grounds-view>
+  <wallet-staking-view v-if="viewPage === 'walletstaking'"></wallet-staking-view>
+  <battle-game-view v-if="viewPage === 'battle'"></battle-game-view>
 </template>
 
 <style lang="scss" scoped>
@@ -26,6 +26,7 @@
 .playrules {
     width: 100%;
     margin: 0%;
+    margin-top: -15%;
     background-color: black;
 }
 
@@ -54,7 +55,7 @@ select {
 
 .selectPage {
 background-image: linear-gradient(to top, #007bff, #4287F9, #89B4FB, #ffffff);
-    border-bottom: orange 2px dashed;
+    border-bottom: orange 2px solid;
 
 }
 div {

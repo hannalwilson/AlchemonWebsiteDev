@@ -32,10 +32,9 @@
             <li>To evolve a card, login to the Algorand Wallet app on your mobile device and send the card you
                 wish to evolve in the Training Grounds:
                 <b>5Q2PRQDMH7JNT76EYFXBB4UBFVBL6WI37GTJC7HELNPZ4EL5BE6WKQXP4Y</b>.
-                Make sure the evolution of your card is available by visiting the <router-link to="/traininggrounds">
-                    Training Grounds</router-link> page.</li>
-            <li>To battle your Alchemon, download the desktop game for Mac or Windows <router-link to="/beta">here</router-link>, then head over to the
-                <router-link to="/battlegame">Gameplay</router-link> page for an overview of how to battle.
+                Make sure the evolution of your card is available by visiting the <router-link to="/howtoplay">
+                    How To Play</router-link> page and selecting 'Training Grounds'.</li>
+            <li>To battle your Alchemon, download the desktop game for Mac or Windows <router-link to="/beta">here</router-link>.
             </li>
             <li>Last but certainly not least, check out the <router-link to="/huntinggrounds">Hunting Grounds</router-link> page to learn how you can
                 enter our weekly raffle!</li>

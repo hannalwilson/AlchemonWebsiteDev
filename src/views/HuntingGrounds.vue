@@ -2,22 +2,14 @@
   <div class="huntinggrounds">
     <p class="orangeHeader spreadText">HUNTING GROUNDS</p>
     <p>The Hunting Grounds is evolving! Players no longer need to stake one of their Alchemon for a whole week to
-      earn entries in the Hunting Grounds raffle. Entries will now be earned through battling your Alchemon. Each
-      battle won
-      equals one entry to the raffle and there is no limit to the number of entries any wallet can have. The
+      earn entries in the Hunting Grounds raffle. Entries will now be earned through battling your Alchemon in our
+     <router-link to="/beta">desktop game</router-link>, currently in Beta. Each
+      battle won equals one entry to the raffle and there is no limit to the number of entries any wallet can have. The
       raffle will occur
       weekly and random winners will get the prizes determined by RNG! Winning does not remove your entries, so
       one wallet
       can win multiple prizes each week. Good luck, you will need it.
     </p>
-    <i>
-      <p>If you still have an Alchemon staked in the Hunting Grounds, don't worry, those still count for raffle
-        entries. We will be
-        sending those back to players over the next month. You can still send a 0.00 ALGO transaction with your
-        Alchemon's name
-        in the notes to receive it back sooner, if you'd like.
-      </p>
-    </i>
     <p class="orangeHeader spreadText">
 CALCULATE HUNTING GROUNDS ENTRIES</p>
     <input type="text" id="text" class="darkGrayText_1 boxShadow" placeholder="  Enter wallet address" ref="address" />
@@ -95,13 +87,12 @@ const popupTriggers = ref({
 const leaderboard = reactive({})
 
 let userEntries
-let totalEntries
 
 export default {
   setup () {
     axios.get('https://mj7nw0yoxf.execute-api.us-east-1.amazonaws.com/getEntries').then(response => {
       for (const key in response.data) {
-        leaderboard[key] = response.data[key]
+        leaderboard[key.slice(0, 8) + '...'] = response.data[key]
       }
     })
 
@@ -113,9 +104,6 @@ export default {
       popupTriggers.value[trigger] = !popupTriggers.value[trigger]
     },
     calculateEntries () {
-      for (const key in leaderboard) {
-        totalEntries += leaderboard[key]
-      }
       if (leaderboard[this.$refs.address.value]) {
         this.userEntries = leaderboard[this.$refs.address.value]
       } else {
@@ -128,8 +116,7 @@ export default {
     return {
       PopupWindow,
       popupTriggers,
-      userEntries,
-      totalEntries
+      userEntries
     }
   }
 }

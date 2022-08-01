@@ -23,6 +23,9 @@ export default {
   margin: 2%;
   vertical-align: top;
 }
+.cardContainer:hover {
+  cursor: pointer;
+}
 @media (max-width: 1100px) {
   .cardContainer {
     height: calc(27vw * 2) }

@@ -246,6 +246,11 @@ export default {
   left: 0;
   z-index: 100;
 }
+.downloadButton:hover {
+    background-color: darkblue;
+      border: 2px solid orange;
+      color: orange;
+}
 @media only screen and (max-width: 798px) {
   .downloadButton {
     right: 30vw;
