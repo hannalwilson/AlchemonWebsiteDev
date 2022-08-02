@@ -245,7 +245,6 @@ export default {
   },
   methods: {
     setAlchemon (name) {
-      console.log(smartContractInfo)
       const id = smartContractInfo[name].appID
       const evolved = smartContractInfo[name].evolvedAlchemon
       const tradedOne = smartContractInfo[name].tradedAlchemonOne
@@ -276,7 +275,7 @@ export default {
         tradeInAlchemonOneAmount: amount,
         tradeInAlchemonAssetIDTwo: tradedTwo,
         tradeInAlchemonTwoAmount: amount,
-        alchecoinAssetID: 310014962,
+        alchecoinAssetID: 78127598,
         requiredAmountOfAlch: 250
       })
       const serializedTxns = quickEvolveOneResponse.data.txns
