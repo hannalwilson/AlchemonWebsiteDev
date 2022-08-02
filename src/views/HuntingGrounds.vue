@@ -85,18 +85,24 @@ const popupTriggers = ref({
 })
 
 const leaderboard = reactive({})
+const allEntries = reactive({})
 
 let userEntries
 
 export default {
   setup () {
+    let n = 0
     axios.get('https://mj7nw0yoxf.execute-api.us-east-1.amazonaws.com/getEntries').then(response => {
       for (const key in response.data) {
-        leaderboard[key.slice(0, 8) + '...'] = response.data[key]
+        allEntries[key] = response.data[key]
+        if (n < 15) {
+          leaderboard[key.slice(0, 8) + '...'] = response.data[key]
+          n++
+        }
       }
     })
 
-    return { leaderboard }
+    return { allEntries, leaderboard }
   },
   components: { PopupWindow },
   methods: {
@@ -104,8 +110,8 @@ export default {
       popupTriggers.value[trigger] = !popupTriggers.value[trigger]
     },
     calculateEntries () {
-      if (leaderboard[this.$refs.address.value]) {
-        this.userEntries = leaderboard[this.$refs.address.value]
+      if (allEntries[this.$refs.address.value]) {
+        this.userEntries = allEntries[this.$refs.address.value]
       } else {
         this.userEntries = 0
       }

@@ -6,10 +6,10 @@
     </video>
   </div>
   <div id="about" class="whiteGrayBackground">
-    <img class="centerImage zoomIn_1 araknadevil"
+    <img class="centerImage venoreaper"
       src="https://alchemon-website-assets.s3.amazonaws.com/assets/45_venoreaper_back.gif" alt="Venoreaper">
-    <img class="centerImage zoomIn_1 araknadevil"
-      src="https://alchemon-website-assets.s3.amazonaws.com/assets/75_araknadevil.gif" alt="Araknodevil">
+    <img class="centerImage araknadevil"
+      src="https://alchemon-website-assets.s3.amazonaws.com/assets/75_araknadevil.gif" alt="Araknadevil">
     <p class="orangeHeader spreadText">ALCHEMON = ALGO+ALCHEMY+MONSTER<br><br>
       <span class="darkBlueHeader spreadText">STAKE! TRADE! EVOLVE! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CRAFT! COLLECT!
         EARN!</span>
@@ -50,10 +50,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .araknadevil {
-  margin-bottom: 0%;
-  width: 35%;
-  margin-top: 7%;
+  margin-bottom: 10%;
+  width: 30%;
+  margin-top: 8%;
+}
+.venoreaper {
+    margin-bottom: 0%;
+      width: 38%;
+      margin-top: 10%;
 }
 #backgroundVideo {
   width: 100%;

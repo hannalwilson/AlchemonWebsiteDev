@@ -27,6 +27,9 @@ p {
     text-align: center;
     margin: 0;
 }
+h1 {
+  padding: 0%;
+}
 img {
   width: 100%;
   margin: 0%;
@@ -36,7 +39,6 @@ h1 {
   font-size: 10vw;
   color: #e6ad10;
   -webkit-text-stroke:1px rgb(22, 22, 54);
-  padding: 0%;
 }
 button {
   font-family: poppins;
@@ -87,7 +89,7 @@ const uncommon = reactive([
   },
   {
     name: 'Zipadol',
-    id: 67960008,
+    id: 509842608,
     tradedCard: 'Zip',
     available: 0
   }
@@ -140,22 +142,6 @@ const craftFive = reactive([
   {
     name: 'Araknolyth',
     id: 744538073,
-    tradedCardOne: 'Monolyth',
-    tradedCardTwo: 'Araukmo',
-    amount: 2,
-    available: 0
-  },
-  {
-    name: 'Chomperz',
-    id: 744539419,
-    tradedCardOne: 'Torrment',
-    tradedCardTwo: 'Incydious',
-    amount: 2,
-    available: 0
-  },
-  {
-    name: 'Cyclostorm',
-    id: 67960303,
     tradedCardOne: 'Monolyth',
     tradedCardTwo: 'Araukmo',
     amount: 2,
@@ -251,7 +237,7 @@ const addresses = [
 export default {
   setup () {
     const token = ''
-    const server = 'https://testnet-api.algonode.cloud'
+    const server = 'https://mainnet-api.algonode.cloud'
     const port = ''
     const client = new algosdk.Algodv2(token, server, port)
 
