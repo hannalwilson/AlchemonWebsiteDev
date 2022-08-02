@@ -216,7 +216,6 @@ const itemIds = {
   799728466: 800652730
 }
 const popupTriggers = ref({
-  chooseWallet: false,
   makePurchase: false,
   signTransaction: false,
   transactionSuccessful: false,
