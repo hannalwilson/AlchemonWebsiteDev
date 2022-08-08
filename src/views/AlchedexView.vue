@@ -84,10 +84,10 @@
   </div>
   <popup-window v-if="popupTriggers.viewAlchemon">
     <h1>Select Website to View Alchemon</h1>
-    <button @click="openWebpage('rand', this.id)">RAND GALLERY</button>
-    <button @click="openWebpage('algo', this.id)">ALGO EXPLORER</button>
-    <button @click="openWebpage('nft', this.id)">NFT EXPLORER</button><br><br>
-    <button @click="TogglePopup('viewAlchemon')">Close</button>
+    <button @click="openWebpage('rand', this.id)" class="boxShadow">RAND GALLERY</button>
+    <button @click="openWebpage('algo', this.id)" class="boxShadow">ALGO EXPLORER</button>
+    <button @click="openWebpage('nft', this.id)" class="boxShadow">NFT EXPLORER</button><br><br>
+    <button @click="TogglePopup('viewAlchemon')" class="boxShadow">Close</button>
   </popup-window>
 </template>
 
