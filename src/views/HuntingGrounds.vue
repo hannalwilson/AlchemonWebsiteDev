@@ -14,13 +14,13 @@
 CALCULATE HUNTING GROUNDS ENTRIES</p>
     <input type="text" id="text" class="darkGrayText_1 boxShadow" placeholder="  Enter wallet address" ref="address" />
     <button class="boxShadow" id="btn" @click="calculateEntries">Submit</button>
-    <p class="orangeHeader spreadText">WEEKLY LEADERBOARD</p>
-    <table>
+    <p class="orangeHeader spreadText">WEEKLY ENTRIES</p>
+    <table class="boxShadow">
       <tr class="tableTitle">
         <td>Wallet Address</td>
         <td>Amount of Entries</td>
       </tr>
-      <tr v-for="(amount, address) in leaderboard" :key="address">
+      <tr v-for="(amount, address) in allEntries" :key="address">
         <td class="justifyText"> {{ address }} </td>
         <td> {{ amount }}</td>
       </tr>
@@ -54,11 +54,14 @@ table {
   border: 2px white solid;
   border-collapse: collapse;
   color: white;
+  table-layout:fixed;
+  width: 90vw;
 }
 
 td {
   text-align: center;
   padding: 1vw 5vw;
+  word-wrap: break-word;
 }
 
 tr {
@@ -84,25 +87,19 @@ const popupTriggers = ref({
   noUserEntries: false
 })
 
-const leaderboard = reactive({})
 const allEntries = reactive({})
 
 let userEntries
 
 export default {
   setup () {
-    let n = 0
     axios.get('https://mj7nw0yoxf.execute-api.us-east-1.amazonaws.com/getEntries').then(response => {
       for (const key in response.data) {
         allEntries[key] = response.data[key]
-        if (n < 15) {
-          leaderboard[key.slice(0, 8) + '...'] = response.data[key]
-          n++
-        }
       }
     })
 
-    return { allEntries, leaderboard }
+    return { allEntries }
   },
   components: { PopupWindow },
   methods: {
