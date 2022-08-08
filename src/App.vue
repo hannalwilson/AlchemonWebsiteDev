@@ -1,6 +1,6 @@
 <template>
-<div class="website">
     <app-header/>
+<div class="website">
     <router-view/>
     <app-footer/>
     </div>
