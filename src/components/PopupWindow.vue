@@ -21,7 +21,6 @@
     justify-content: center;
 .popup-inner {
     background: #FFF;
-    padding: 32px;
     z-index: 100;
     padding: 1vw 5vw 2vw;
     position: absolute;
