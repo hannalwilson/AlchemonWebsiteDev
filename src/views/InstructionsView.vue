@@ -27,16 +27,19 @@
                     may need to select the "All" tab)</li>
             </ul>
             <li>Make sure you add the AlcheCoin and Alchemon Stake Flag assets to ensure you receive your weekly staking
-                 rewards for holding Alchemon in your wallet.
+                rewards for holding Alchemon in your wallet.
             </li>
             <li>To evolve a card, login to the Algorand Wallet app on your mobile device and send the card you
                 wish to evolve in the Training Grounds:
                 <b>5Q2PRQDMH7JNT76EYFXBB4UBFVBL6WI37GTJC7HELNPZ4EL5BE6WKQXP4Y</b>.
                 Make sure the evolution of your card is available by visiting the <router-link to="/howtoplay">
-                    How To Play</router-link> page and selecting 'Training Grounds'.</li>
-            <li>To battle your Alchemon, download the desktop game for Mac or Windows <router-link to="/beta">here</router-link>.
+                    How To Play</router-link> page and selecting 'Training Grounds'.
             </li>
-            <li>Last but certainly not least, check out the <router-link to="/huntinggrounds">Hunting Grounds</router-link> page to learn how you can
+            <li>To battle your Alchemon, download the desktop game for Mac or Windows <router-link to="/beta">here
+                </router-link>.
+            </li>
+            <li>Last but certainly not least, check out the Hunting Grounds on our <router-link to="/howtoplay">
+                    How To Play</router-link> page to learn how you can
                 enter our weekly raffle!</li>
         </ol>
         <p><b>If you have any questions, please contact us through Discord or Telegram (listed in the footer).</b></p>

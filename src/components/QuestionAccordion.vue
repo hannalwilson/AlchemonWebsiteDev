@@ -68,7 +68,7 @@ export default {
         },
         {
           question: 'Wah! How come I can’t evolve my cards from earlier sets?',
-          answer: 'Because those rewards have already been distributed to the players in the past. There is a finite amount of evolutions available for each set. You will have to get older Alchemon from the aftermarket <a href="https://www.nftexplorer.app/sellers?collection=alchemon" target="_blank">here</a>.'
+          answer: 'Because those rewards have already been distributed to the players in the past. There is a finite amount of evolutions available for each set. You will have to get older Alchemon from the aftermarket <a href="https://www.nftexplorer.app/collection/alchemon" target="_blank">here</a>.'
         },
         {
           question: 'Crafting and Alchemon. What’s it all about?',
