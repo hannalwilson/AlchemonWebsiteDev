@@ -24,6 +24,8 @@
     padding: 32px;
     z-index: 100;
     padding: 1vw 5vw 2vw;
+    position: absolute;
+    top: 25%;
 }
 }
 </style>
