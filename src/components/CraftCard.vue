@@ -149,7 +149,7 @@ import { formatJsonRpcRequest } from '@json-rpc-tools/utils'
 import { ref } from 'vue'
 import PopupWindow from './PopupWindow.vue'
 
-const apiURL = 'https://l84jesjbd4.execute-api.us-east-1.amazonaws.com/'
+const apiURL = 'https://avk5m0z0nc.execute-api.us-east-1.amazonaws.com/'
 // eslint-disable-next-line no-unused-vars
 let signedTxn
 
