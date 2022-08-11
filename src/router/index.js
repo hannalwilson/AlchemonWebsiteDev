@@ -13,7 +13,6 @@ import TermsAndConditionsView from '../views/TermsAndConditionsView.vue'
 import BetaView from '../views/BetaView.vue'
 import EvolveView from '../views/EvolveView.vue'
 import InstructionsView from '../views/InstructionsView.vue'
-import GovernanceView from '../views/GovernanceView.vue'
 import HowToPlayView from '../views/HowToPlayView.vue'
 
 const routes = [
@@ -91,11 +90,6 @@ const routes = [
     path: '/howtoplay',
     name: 'howtoplay',
     component: HowToPlayView
-  },
-  {
-    path: '/governance',
-    name: 'governance',
-    component: GovernanceView
   }
 ]
 
