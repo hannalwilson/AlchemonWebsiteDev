@@ -27,7 +27,7 @@ CALCULATE HUNTING GROUNDS ENTRIES</p>
     </table>
   </div>
   <popup-window v-if="popupTriggers.userEntries">
-    <h2>You have {{ userEntries }} entries in this week's Hunting Grounds!</h2>
+    <h2>You have {{ userEntries }}/{{ totalEntries }} entries in this week's Hunting Grounds!</h2>
     <button class="boxShadow" @click="TogglePopup('userEntries')">Close</button>
   </popup-window>
 </template>
@@ -91,6 +91,9 @@ const allEntries = reactive({})
 
 let userEntries
 
+// eslint-disable-next-line prefer-const
+let totalEntries = 0
+
 export default {
   setup () {
     axios.get('https://mj7nw0yoxf.execute-api.us-east-1.amazonaws.com/getEntries').then(response => {
@@ -107,6 +110,10 @@ export default {
       popupTriggers.value[trigger] = !popupTriggers.value[trigger]
     },
     calculateEntries () {
+      this.totalEntries = 0
+      for (const key in allEntries) {
+        this.totalEntries += allEntries[key]
+      }
       if (allEntries[this.$refs.address.value]) {
         this.userEntries = allEntries[this.$refs.address.value]
       } else {
@@ -119,7 +126,8 @@ export default {
     return {
       PopupWindow,
       popupTriggers,
-      userEntries
+      userEntries,
+      totalEntries
     }
   }
 }

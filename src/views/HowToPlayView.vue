@@ -11,7 +11,7 @@
         Grounds</option>
       <option value='walletstaking'>Wallet
         Staking</option>
-      <!-- <option value = 'battle'>How To Battle</option> -->
+      <option value = 'battle'>How To Battle</option>
     </select>
   </div>
   <getting-started-view v-if="viewPage === 'gettingstarted'"></getting-started-view>
