@@ -49,7 +49,7 @@
             Some types are more effective against other types, meaning their attack will damage certain types more than
             others. Attacks going in the opposite direction of the arrow will have reduced damage.
         </p>
-        <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/typesWheel.png">
+        <img src="../assets/typesWheel.png">
         <p class="yellowHeader spreadText">PASSIVES</p>
         <p>Passive abilities are effects that may or may not be applied to an Alchemon after an
             attack. Each type has a unique passive ability. The higher the level of your Alchemon, the more likely a
@@ -115,15 +115,5 @@ li {
   padding: 1% 0;
   color: white;
 }
-.blueBackground {
-  background-color: #136af8;
-  padding-bottom: 2%;
-  a {
-    text-decoration: none;
-  }
-  a:hover {
-    color: orange;
-    cursor: pointer;
-  }
-}
+
 </style>
