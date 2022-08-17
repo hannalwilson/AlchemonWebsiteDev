@@ -1,6 +1,10 @@
 <template>
     <div class="battleGame">
-        <p class="yellowHeader spreadText">RELEASE NOTES</p>
+        <p class="yellowHeader spreadText">OVERVIEW</p>
+        <p>The Alchemon Card Game is a 3v3 battle style game against a CPU. Players need three unqiue Alchemon to play. The game currently includes
+            passives, potent and weak attacks, potions, and much more. PvP and more battle modes are coming soon!
+        </p>
+        <p class="yellowHeader spreadText">RELEASE NOTES - BETA 2.0.2</p>
         <p>WHATS NEW<br><br>
         <ul>
             <li>Leveling system: boost your Alchemon's power by leveling them up! Knock out enemies and win battles to
@@ -70,9 +74,9 @@
             You are allowed three items in your backpack per battle. To select the items you want to bring, click on My
             Cards on the Main Menu. Click More in the bottom right corner. If you have purchased items from the shop,
             they will display here with the amount you own in the bottom left corner. Select up to three items to pack
-            in your backpack.</p>
-            <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/battlezipacute.png" class="battle">
-            <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/battlemiya.png" class="battle">
+            in your backpack. Items will take affect when the battle round starts.</p>
+        <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/battlezipacute.png" class="battle">
+        <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/battlemiya.png" class="battle">
     </div>
 </template>
 

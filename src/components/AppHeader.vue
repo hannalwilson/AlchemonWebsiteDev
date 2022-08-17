@@ -253,8 +253,7 @@ export default {
 }
 @media only screen and (max-width: 798px) {
   .downloadButton {
-    right: 30vw;
-    width: 75%;
+    width: 98vw;
     }
 }
 nav {
