@@ -149,7 +149,7 @@ import { formatJsonRpcRequest } from '@json-rpc-tools/utils'
 import { ref } from 'vue'
 import PopupWindow from './PopupWindow.vue'
 
-const apiURL = 'https://avk5m0z0nc.execute-api.us-east-1.amazonaws.com/'
+const apiURL = 'https://avk5m0z0nc.execute-api.us-east-1.amazonaws.com'
 // eslint-disable-next-line no-unused-vars
 let signedTxn
 
@@ -169,25 +169,25 @@ const popupTriggers = ref({
   errorOccurred: false
 })
 const tradeInAddresses = {
-  744528583: 'IJOVKGTVVDWOAMRCRMES6FO5Z3ZL2YQU4SJ42BDBRTCWXLABVURUWSOQHQ', // mmonolyth
-  744530969: 'MSKNULULYUYJJWCBGFN3IXJSDDQWX5YFSGEMLI5UJTFEHYKOJ7CG6X3ZH4', // arakumo
-  744533302: '7I23MXKEQQW3PRP5UE3N22ZRHOEHEVPSE5KG63UU4Q2ABCUN5G6XKNWHJ4', // torrment
-  744536686: 'ND75GVK7UJJ76U7UD5ZGNUHCD2VN4VL5E7RGTX2GBNGREPTE7XGECCHAKM' // incydious
+  744528583: 'MSKNULULYUYJJWCBGFN3IXJSDDQWX5YFSGEMLI5UJTFEHYKOJ7CG6X3ZH4', // mmonolyth
+  744530969: 'IJOVKGTVVDWOAMRCRMES6FO5Z3ZL2YQU4SJ42BDBRTCWXLABVURUWSOQHQ', // arakumo
+  744533302: 'ND75GVK7UJJ76U7UD5ZGNUHCD2VN4VL5E7RGTX2GBNGREPTE7XGECCHAKM', // torrment
+  744536686: '7I23MXKEQQW3PRP5UE3N22ZRHOEHEVPSE5KG63UU4Q2ABCUN5G6XKNWHJ4' // incydious
 }
 
 const smartContractInfo = {
   Araknolyth: {
     appID: 842475771,
     evolvedAlchemon: 744538073,
-    tradedAlchemonOne: 744530969,
-    tradedAlchemonTwo: 744528583,
+    tradedAlchemonOne: 744528583,
+    tradedAlchemonTwo: 744530969,
     amount: 1
   },
   Torcydious: {
     appID: 842475638,
     evolvedAlchemon: 744539419,
-    tradedAlchemonOne: 744536686,
-    tradedAlchemonTwo: 744533302,
+    tradedAlchemonOne: 744533302,
+    tradedAlchemonTwo: 744536686,
     amount: 1
   }
 }
@@ -288,6 +288,7 @@ export default {
           if (sendTxnResponse.status === 200) {
             if (sendTxnResponse.data.txnId) {
               this.TogglePopup('transactionSuccessful')
+              window.location.reload()
             } else if (sendTxnResponse.data.message) {
               errorMessage = sendTxnResponse.data.message
               this.TogglePopup('transactionFailed')

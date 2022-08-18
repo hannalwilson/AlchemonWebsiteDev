@@ -277,6 +277,7 @@ export default {
           if (sendTxnResponse.status === 200) {
             if (sendTxnResponse.data.txnId) {
               this.TogglePopup('transactionSuccessful')
+              window.location.reload()
             } else if (sendTxnResponse.data.message) {
               errorMessage = sendTxnResponse.data.message
               this.TogglePopup('transactionFailed')

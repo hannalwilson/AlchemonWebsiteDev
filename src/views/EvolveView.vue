@@ -5,10 +5,10 @@
     </div>
     <div class="forSale">
       <craft-legendary v-for="card in legendary" :key="card.available" :name="card.name"
-        :tradedCardOne="card.tradedCardOneName" :tradedCardTwo="card.tradedCardTwoName" :amount="card.amount"
+        :tradedCardOne="card.tradedCardOneName" :tradedCardTwo="card.tradedCardTwoName"
         :available="card.available"></craft-legendary>
       <craft-epic v-for="card in epic" :key="card.available" :name="card.name" :tradedCardOne="card.tradedCardOneName"
-        :tradedCardTwo="card.tradedCardTwoName" :amount="card.amount" :available="card.available"></craft-epic>
+        :tradedCardTwo="card.tradedCardTwoName" :available="card.available"></craft-epic>
       <evolve-rare v-for="card in rare" :key="card.available" :name="card.name" :tradedCard="card.tradedCardName"
         :available="card.available"></evolve-rare>
       <evolve-uncommon v-for="card in uncommon" :key="card.available" :name="card.name" :tradedCard="card.tradedCardName"
