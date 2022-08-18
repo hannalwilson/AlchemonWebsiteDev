@@ -4,11 +4,15 @@
       <h1 class="spreadText">CRAFT & EVOLVE</h1>
     </div>
     <div class="forSale">
-      <craft-card v-for="card in craftFive" :key="card.available" :name="card.name" :tradedCardOne="card.tradedCardOne" :tradedCardTwo="card.tradedCardTwo" :amount="card.amount" :available="card.available"></craft-card>
-        <evolve-card-two v-for="card in rareFive" :key="card.available" :name="card.name" :tradedCard="card.tradedCard" :available="card.available"></evolve-card-two>
-        <evolve-card v-for="card in uncommonFive" :key="card.available" :name="card.name" :tradedCard="card.tradedCard" :available="card.available"></evolve-card>
-        <evolve-card-two v-for="card in rare" :key="card.available" :name="card.name" :tradedCard="card.tradedCard" :available="card.available"></evolve-card-two>
-        <evolve-card v-for="card in uncommon" :key="card.available" :name="card.name" :tradedCard="card.tradedCard" :available="card.available"></evolve-card>
+      <craft-legendary v-for="card in legendary" :key="card.available" :name="card.name"
+        :tradedCardOne="card.tradedCardOneName" :tradedCardTwo="card.tradedCardTwoName"
+        :available="card.available"></craft-legendary>
+      <craft-epic v-for="card in epic" :key="card.available" :name="card.name" :tradedCardOne="card.tradedCardOneName"
+        :tradedCardTwo="card.tradedCardTwoName" :available="card.available"></craft-epic>
+      <evolve-rare v-for="card in rare" :key="card.available" :name="card.name" :tradedCard="card.tradedCardName"
+        :available="card.available"></evolve-rare>
+      <evolve-uncommon v-for="card in uncommon" :key="card.available" :name="card.name" :tradedCard="card.tradedCardName"
+        :available="card.available"></evolve-uncommon>
     </div>
   </div>
 </template>
@@ -60,179 +64,20 @@ button:hover {
 </style>
 
 <script>
-import EvolveCard from '@/components/EvolveCard.vue'
-import EvolveCardTwo from '@/components/EvolveCardTwo.vue'
-import CraftCard from '@/components/CraftCard.vue'
+import EvolveUncommon from '@/components/EvolveUncommon.vue'
+import EvolveRare from '@/components/EvolveRare.vue'
+import CraftEpic from '@/components/CraftEpic.vue'
+import CraftLegendary from '@/components/CraftLegendary.vue'
+
 import algosdk from 'algosdk'
 import { reactive } from 'vue'
 
-// import alchemon from '../data/alchemon.json'
+import alchemon from '../data/craftandevolve.json'
 
-const uncommon = reactive([
-  {
-    name: 'Chomp',
-    id: 509850827,
-    tradedCard: 'Lika',
-    available: 0
-  },
-  {
-    name: 'Daggerz',
-    id: 509848775,
-    tradedCard: 'Dagz',
-    available: 0
-  },
-  {
-    name: 'Hailpuff',
-    id: 509844088,
-    tradedCard: 'Puff',
-    available: 0
-  },
-  {
-    name: 'Zipadol',
-    id: 509842608,
-    tradedCard: 'Zip',
-    available: 0
-  }
-])
-
-const rare = reactive([
-  {
-    name: 'Likachomp',
-    id: 527481591,
-    tradedCard: 'Chomp',
-    available: 0
-  },
-  {
-    name: 'Daggerpult',
-    id: 527479654,
-    tradedCard: 'Daggerz',
-    available: 0
-  },
-  {
-    name: 'Hailstorm',
-    id: 527477069,
-    tradedCard: 'Hailpuff',
-    available: 0
-  },
-  {
-    name: 'Zipacute',
-    id: 527475282,
-    tradedCard: 'Zipadol',
-    available: 0
-  }
-])
-
-const craftFive = reactive([
-  {
-    name: 'Araknadevil',
-    id: 744540333,
-    tradedCardOne: 'Araknolyth',
-    tradedCardTwo: 'Torcydious',
-    amount: 1,
-    available: 0
-  },
-  {
-    name: 'Torcydious',
-    id: 744539419,
-    tradedCardOne: 'Torrment',
-    tradedCardTwo: 'Incydious',
-    amount: 2,
-    available: 0
-  },
-  {
-    name: 'Araknolyth',
-    id: 744538073,
-    tradedCardOne: 'Monolyth',
-    tradedCardTwo: 'Araukmo',
-    amount: 2,
-    available: 0
-  }
-])
-
-const uncommonFive = reactive([
-  {
-    name: 'Cydevil',
-    id: 744535776,
-    tradedCard: 'Cyd',
-    available: 0
-  },
-  {
-    name: 'Torrden',
-    id: 744532520,
-    tradedCard: 'Torr',
-    available: 0
-  },
-  {
-    name: 'Araku',
-    id: 744530060,
-    tradedCard: 'Kumo',
-    available: 0
-  },
-  {
-    name: 'Golyth',
-    id: 744527932,
-    tradedCard: 'Lyth',
-    available: 0
-  }
-])
-
-const rareFive = reactive([
-  {
-    name: 'Incydious',
-    id: 744536686,
-    tradedCard: 'Cydevil',
-    available: 0
-  },
-  {
-    name: 'Torrment',
-    id: 744533302,
-    tradedCard: 'Torrden',
-    available: 0
-  },
-  {
-    name: 'Arakumo',
-    id: 744530969,
-    tradedCard: 'Araku',
-    available: 0
-  },
-  {
-    name: 'Monolyth',
-    id: 744528583,
-    tradedCard: 'Golyth',
-    available: 0
-  }
-])
-
-const addresses = [
-  'DWGPVTDCFM3DADFBHTE7S4DX7QL4HUJHGHC6DFGJXUPD5P5HPSII4MRGQ4',
-  'SAWCR4D342HOKTHK7EDNE6UONGHGRVYGYKTCCHVMJD4BPX4KLMAF5JNK6Y',
-  'DORWEXHUPVXMLELBTGAGGG4PGPRB6GB77YZ5WHHTT3TFASE5A25LBMQIWY',
-  'HFIAQTXJC5QJKXNY5TQ7GRUPXDI46DWQQNH4WLONANCX6WLGGAQYOIUFDU',
-  '6N5FSXFNNIQIW6HQNGNYIK7GNATKTEP6CPB6MLXTWMUPGCXPTTYGXQ2H64',
-  'SMCMVU2C2BST7ULL3EJQCNHQT55UAA2JYBN22SSQYDAOC4FATROIJJXZRQ',
-  'EQGB3XI46J6NQ6MAP6PWDUZZGRHAOHDOL5MZ5FGKBMWHOW2KXXKDN5VYQU',
-  'VYMXJKQSQBBIBSGNFDPI3T33YYOVVPD4EJXRYRBKCIFK6WB5DDHME77VY4',
-  'L6G7FT6UOC5B4OJ37GVN37HD2RMTSXIXAAGNMFW2IKSTPQWQ4S56ZTAH5I',
-  'XGE7HBT3ORNSIF2V5TLE4BN4T3LK2UZKAZJFZIFV7H3FFO4WAJ5SDXZHFQ',
-  'SNWYQ7QUL6DLZZ5YZ24PNHKVXOKYN6PLRRHVZ4CFGLFKPG5LOHET5JGGUQ',
-  'O3BY3EN4SA75TBYKE6OTOCWIYK4CT7EY47HMYJGKET2PICWLNVCO4P2P6E',
-  '4CBGCW7NNKN6YQRODCTQ5TDWYK5HGP7N6QLAYIV2ZG6JER3A7GUENNKYN4',
-  'BLBMPJ2T2R34STSEIMR2M3ONWRUQKDVERCJA6FYSK563KBNCWWDKKXXPLM',
-  'WP55X5NNDLVSD2KRL4MHUYR2QGFART6V4OUQN54ETURA5AGM6Y5J4AI6I4',
-  'YCTTBN4WVEACXLKURQQ4X2X6HEVV4ANH2LZ4HI5MF5RMLPOH2ICC4BC6AI',
-  'SOLSRI3V5JW2RYJJXQRXGFBNQQMTKOUQZQXHMGFO7YJ4BDSFLNRBFOLK3I',
-  'V7WQJCTFNJPY74FX55IPG5OYMM2OUTHIVBCFNTJZTUYQFLJ6PIJ443L6O4',
-  'D5UOOPGEX3M7CIXF2VLRGTNOQA2EHU4FVZ34KHYPJMZXLNJCQOCV3QM3DQ',
-  'MSKNULULYUYJJWCBGFN3IXJSDDQWX5YFSGEMLI5UJTFEHYKOJ7CG6X3ZH4',
-  'IJOVKGTVVDWOAMRCRMES6FO5Z3ZL2YQU4SJ42BDBRTCWXLABVURUWSOQHQ',
-  'ND75GVK7UJJ76U7UD5ZGNUHCD2VN4VL5E7RGTX2GBNGREPTE7XGECCHAKM',
-  '7I23MXKEQQW3PRP5UE3N22ZRHOEHEVPSE5KG63UU4Q2ABCUN5G6XKNWHJ4',
-  'T2L4WBMXBGLLW5TFYH76QVQYBJ4LCKV4TSFRGOMSOHMOHTT6OSIA4GFMRM',
-  'SYFVB77GVQKYHCX34UVJ6HVV4TUIUQKC4UGRCQDEXRGJNVPZ74BQNRC4CY',
-  'YOHSDM3T5DMN3BAIRPLPCJYFO6UAJXUFZZ7P7Y4I66RYVRR4VYQVMB2YEM',
-  '6YT7VAENYAL7B5KJYL363BWI2TM6YCEDKOEVZLBY26IWOUAUNCQBVPVBOI',
-  'BF52ZVIA2EERQICAHE4HCF65ETAADNI3KET6PADPIFZNYUTXCMTCHYVOUE'
-]
+const uncommon = reactive({})
+const rare = reactive({})
+const epic = reactive({})
+const legendary = reactive({})
 
 export default {
   setup () {
@@ -241,50 +86,84 @@ export default {
     const port = ''
     const client = new algosdk.Algodv2(token, server, port)
 
-    for (const index in addresses) {
-      client.accountInformation(addresses[index]).do().then(response => {
+    for (const item in alchemon) {
+      switch (alchemon[item].rarity) {
+        case 1:
+          legendary[item] = alchemon[item]
+          break
+        case 2:
+          epic[item] = alchemon[item]
+          break
+        case 3:
+          rare[item] = alchemon[item]
+          break
+        case 4:
+          uncommon[item] = alchemon[item]
+          break
+      }
+    }
+
+    for (const item in uncommon) {
+      client.accountInformation(uncommon[item].contractAddress).do().then(response => {
         for (const asset of response.assets) {
-          craftFive.forEach(item => {
-            if (item.id === asset['asset-id']) {
-              item.available = asset.amount
+          for (const item in uncommon) {
+            if (uncommon[item].id === asset['asset-id']) {
+              uncommon[item].available = asset.amount
             }
-          })
-          uncommonFive.forEach(item => {
-            if (item.id === asset['asset-id']) {
-              item.available = asset.amount
+          }
+        }
+      })
+    }
+
+    for (const item in rare) {
+      client.accountInformation(rare[item].contractAddress).do().then(response => {
+        for (const asset of response.assets) {
+          for (const item in rare) {
+            if (rare[item].id === asset['asset-id']) {
+              rare[item].available = asset.amount
             }
-          })
-          rareFive.forEach(item => {
-            if (item.id === asset['asset-id']) {
-              item.available = asset.amount
+          }
+        }
+      })
+    }
+
+    for (const item in epic) {
+      client.accountInformation(epic[item].contractAddress).do().then(response => {
+        console.log(response)
+        for (const asset of response.assets) {
+          for (const item in epic) {
+            if (epic[item].id === asset['asset-id']) {
+              epic[item].available = asset.amount
             }
-          })
-          uncommon.forEach(item => {
-            if (item.id === asset['asset-id']) {
-              item.available = asset.amount
+          }
+        }
+      })
+    }
+
+    for (const item in legendary) {
+      client.accountInformation(legendary[item].contractAddress).do().then(response => {
+        for (const asset of response.assets) {
+          for (const item in legendary) {
+            if (legendary[item].id === asset['asset-id']) {
+              legendary[item].available = asset.amount
             }
-          })
-          rare.forEach(item => {
-            if (item.id === asset['asset-id']) {
-              item.available = asset.amount
-            }
-          })
+          }
         }
       })
     }
   },
   components: {
-    EvolveCard,
-    EvolveCardTwo,
-    CraftCard
+    EvolveUncommon,
+    EvolveRare,
+    CraftEpic,
+    CraftLegendary
   },
   data () {
     return {
       uncommon,
       rare,
-      uncommonFive,
-      rareFive,
-      craftFive
+      epic,
+      legendary
     }
   }
 }

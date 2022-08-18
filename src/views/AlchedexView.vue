@@ -84,6 +84,7 @@
   </div>
   <popup-window v-if="popupTriggers.viewAlchemon">
     <h1>Select Website to View Alchemon</h1>
+    <img src="../assets/68_torrden.gif" class="torrden">
     <button @click="openWebpage('rand', this.id)" class="boxShadow">RAND GALLERY</button>
     <button @click="openWebpage('algo', this.id)" class="boxShadow">ALGO EXPLORER</button>
     <button @click="openWebpage('nft', this.id)" class="boxShadow">NFT EXPLORER</button><br><br>
@@ -359,5 +360,12 @@ a {
 }
 .missing {
   filter: grayscale(1);
+}
+
+.torrden {
+  width: 10%;
+  position: absolute;
+    top: 0;
+    right: 0;
 }
 </style>
