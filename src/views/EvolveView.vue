@@ -129,8 +129,9 @@ export default {
 
     for (const item in epic) {
       client.accountInformation(epic[item].contractAddress).do().then(response => {
+        console.log(response)
         for (const asset of response.assets) {
-          for (const item in uncommon) {
+          for (const item in epic) {
             if (epic[item].id === asset['asset-id']) {
               epic[item].available = asset.amount
             }

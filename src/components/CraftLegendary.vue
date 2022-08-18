@@ -6,7 +6,7 @@
 
     <div class="buttonContainer">
       <p> Craft a {{ name }}</p>
-      <p>You need: {{ amount }} {{ tradedCardOne }} + {{ amount }} {{ tradedCardTwo }} + 250 ALCH</p>
+      <p>You need: 1 {{ tradedCardOne }} + 1 {{ tradedCardTwo }} + 250 ALCH</p>
       <p>Available: {{ available }}</p>
       <button v-if="available > 0" @click="setAlchemon(`${name}`)" class="boxShadow nftButton">250 ALCH</button>
     </div>
@@ -174,13 +174,6 @@ const tradeInAddresses = {
 }
 
 const smartContractInfo = {
-  Cyclostorm: {
-    appID: 101167721,
-    evolvedAlchemon: 67960303,
-    tradedAlchemonOne: 67960230,
-    tradedAlchemonTwo: 67960252,
-    amount: 1
-  },
   Araknadevil: {
     appID: 780915147,
     evolvedAlchemon: 744540333,
