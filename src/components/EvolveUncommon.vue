@@ -169,9 +169,9 @@ const tradeInAddresses = {
 
 const smartContractInfo = {
   Zipadol: {
-    appID: 101166471,
-    evolved: 67960008,
-    traded: 67959981
+    appID: 778975194,
+    evolved: 509842608,
+    traded: 490139078
   },
   Hailpuff: {
     appID: 778975387,
