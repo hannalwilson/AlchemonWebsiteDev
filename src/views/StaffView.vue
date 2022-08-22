@@ -21,7 +21,6 @@
             <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/Emily.jpg" alt="Borderless Capital">
             <p class="darkBlueHeader">Emily Stanley</p>
             <p class="darkBlueHeader">Chief Financial Officer</p>
-            <img src="../assets/zip.gif" class="investors">
         </div>
     </div>
 <p class="darkBlueHeader spreadText">INVESTORS</p>
