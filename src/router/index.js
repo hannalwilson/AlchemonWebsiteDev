@@ -15,6 +15,7 @@ import EvolveView from '../views/EvolveView.vue'
 import InstructionsView from '../views/InstructionsView.vue'
 import HowToPlayView from '../views/HowToPlayView.vue'
 import BattleGameView from '../views/BattleGame.vue'
+import GovernanceView from '../views/GovernanceView.vue'
 
 const routes = [
   {
@@ -96,6 +97,11 @@ const routes = [
     path: '/howtobattle',
     name: 'howtobattle',
     component: BattleGameView
+  },
+  {
+    path: '/governance',
+    name: 'governance',
+    component: GovernanceView
   }
 ]
 
