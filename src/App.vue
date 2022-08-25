@@ -150,7 +150,7 @@ button:hover {
 }
 /* width */
 ::-webkit-scrollbar {
-  width:15px;
+  width: 15px;
 }
 
 /* Track */

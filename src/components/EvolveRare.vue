@@ -1,8 +1,7 @@
 <template>
   <div class="nftContainer boxShadow">
     <div class="imgContainer">
-      <img :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/alchemon/${name}.png`"
-        class="nftImage">
+      <img :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/alchemon/${name}.png`" class="nftImage">
     </div>
     <div class="buttonContainer">
       <p> Evolve a {{ name }}</p>
@@ -30,7 +29,7 @@
   </popup-window>
   <popup-window v-if="popupTriggers.transactionSuccessful">
     <h2>Successful! Go check out your new Alchemon!</h2>
-    <button class="boxShadow" @click="TogglePopup('transactionSuccessful')">Close</button>
+    <button class="boxShadow" @click="TogglePopup('transactionSuccessful'); window.location.reload()">Close</button>
   </popup-window>
   <popup-window v-if="popupTriggers.transactionFailed">
     <h2>Failed. Please try again.</h2>
@@ -309,7 +308,6 @@ export default {
           if (sendTxnResponse.status === 200) {
             if (sendTxnResponse.data.txnId) {
               this.TogglePopup('transactionSuccessful')
-              window.location.reload()
             } else if (sendTxnResponse.data.message) {
               errorMessage = sendTxnResponse.data.message
               this.TogglePopup('transactionFailed')

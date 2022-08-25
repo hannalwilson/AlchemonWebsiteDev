@@ -70,6 +70,20 @@ p {
     width: 25%;
     padding-bottom: 1%;
 }
+.investors {
+    width: 2vw;
+    position: absolute;
+    top: 43.5%;
+    right: 42%;
+}
+@media only screen and (max-width: 798px) {
+  .investors {
+    width: 3vw;
+    position: absolute;
+    top: 39.5%;
+    right: 42%;
+    }
+}
 </style>
 
 <script>
