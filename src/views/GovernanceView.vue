@@ -5,18 +5,18 @@
   <div class="voteSection">
     <div>
       <p class="orangeHeader spreadText">HOW IT WORKS</p>
-      <p>AlcheCoin is Alchemons Governance Token. It gives holders the right to vote on the
+      <p>AlcheCoin is Alchemon's Governance Token. It gives holders the right to vote on the
         development and operations of Alchemon, i.e., it gives our community decision making power.
         Each AlcheCoin is worth one vote and each wallet is only allowed to vote once. Before voting opens, a
         snapshot of all AlcheCoin is taken and the amount of AlcheCoin held in your wallet at the time of
-        the snapshot is the amount of your vote. For example, if you had 5400 AlcheCoin and voted for
+        the snapshot is how many times your vote counts. For example, if you had 5400 AlcheCoin and voted for
         option A, that would count as 5400 'A' votes.
       </p>
     </div>
     <p class="orangeHeader spreadText">QUESTION</p>
     <div class="buttonContainer">
-      <button class="boxShadow voteButton" @click=" castVote('A')">VOTE A</button>
-      <button class="boxShadow voteButton" @click=" castVote('B')">VOTE B</button>
+      <button class="boxShadow voteButton" @click="castVote('A')">VOTE A</button>
+      <button class="boxShadow voteButton" @click="castVote('B')">VOTE B</button>
     </div>
   </div>
   <popup-window v-if="popupTriggers.signTransaction">
@@ -39,6 +39,10 @@
     <h2>Unknown Server Error. Please try again.</h2>
     <p style="text-align: left">If this error continues, please contact support.</p>
     <button class="boxShadow" @click="TogglePopup('errorOccured')">Close</button>
+  </popup-window>
+  <popup-window v-if="popupTriggers.alreadyVoted">
+    <p style="text-align: left">This wallet's vote has already been recorded.</p>
+    <button class="boxShadow" @click="TogglePopup('alreadyVoted')">Close</button>
   </popup-window>
 </template>
 
@@ -102,7 +106,8 @@ const popupTriggers = ref({
   transactionSuccessful: false,
   transactionFailed: false,
   processingTransaction: false,
-  errorOccured: false
+  errorOccured: false,
+  alreadyVoted: false
 })
 
 const userBalances = reactive({})
@@ -167,25 +172,16 @@ export default {
         }
       )
 
-      const params = await client.getTransactionParams().do()
-
-      const receiver = 'KP7DMA2YSVSOCKAA2QBUWNFFEWB47EJZKQ6E74TXGG5GJLXSTSO7VLI3YE'
-      const enc = new TextEncoder()
-      const note = enc.encode(userVote)
-      const amount = 0
       const sender = localStorage.userAddress
       let signedTxn
-      const voteTxn = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
-        from: sender,
-        to: receiver,
-        amount: amount,
-        note: note,
-        suggestedParams: params
+      const voteResponse = await axios.post(`${apiURL}/castVote`, {
+        userAddress: sender,
+        userVote: userVote
       })
       let signedTxns
       switch (userWallet) {
         case 'myalgo':
-          signedTxns = await myAlgoConnect.signTransaction(voteTxn)
+          signedTxns = await myAlgoConnect.signTransaction(voteResponse)
           if (Array.isArray(signedTxns)) {
             signedTxn = signedTxns.map((txn) => (Buffer.from(txn.blob).toString('base64')))
           } else {
@@ -194,7 +190,7 @@ export default {
           break
         case 'walletconnect':
           // eslint-disable-next-line no-case-declarations
-          const voteTxns = [voteTxn]
+          const voteTxns = [voteResponse]
           // eslint-disable-next-line no-case-declarations
           const txnsToSign = voteTxns.map(txn => {
             const encodedTxn = Buffer.from(algosdk.encodeUnsignedTransaction(txn)).toString('base64')
