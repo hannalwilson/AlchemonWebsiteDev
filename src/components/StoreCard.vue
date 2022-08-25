@@ -8,7 +8,7 @@
         :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/alchebilities/${name.replace(/\s+/g, '')}.png`"
         v-if="type === 'alchebilities'" class="nftImage">
       <video :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/art/${name}.mp4`"
-        v-if="type === 'art'" class="nftImage" autoplay muted loop playsinline></video>
+        v-if="type === 'art'" class="nftImage" muted loop playsinline></video>
     </div>
     <div class="buttonContainer">
       <p> {{ name }}</p>

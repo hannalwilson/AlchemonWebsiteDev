@@ -29,7 +29,7 @@
   </popup-window>
   <popup-window v-if="popupTriggers.transactionSuccessful">
     <h2>Successful! Go check out your new Alchemon!</h2>
-    <button class="boxShadow" @click="TogglePopup('transactionSuccessful')">Close</button>
+    <button class="boxShadow" @click="ReloadWindow()">Close</button>
   </popup-window>
   <popup-window v-if="popupTriggers.transactionFailed">
     <h2>Failed. Please try again.</h2>
@@ -157,7 +157,7 @@ const walletConnector = new WalletConnect(
   }
 )
 const tradeInAddresses = {
-  490139078: 'KP7DMA2YSVSOCKAA2QBUWNFFEWB47EJZKQ6E74TXGG5GJLXSTSO7VLI3YE', // zip
+  490139078: '7OVSLHCECWQZ7R4DVV64VWCPG4AL6JTDBLQZZX6FPG22JCIIVFOSTC6GBQ', // zip
   490141855: '5BSQOOEXICBRFBWBAQKFDUF4YFQN67OQFAH5NFHE2FUHTNHEHNGXJ6MPJU', // puff
   493271743: '5HPPE2OE6L3UDVG2LOU3LKD56TS6AQAMRY37FGRN45B7UG5ZJAQCZ2TWAM', // dagz
   490146814: 'I3QBOS6X6IWOY7S65CRRU47RAS2IK3TPLXAF3HYVY5JIEP7IXWARBWMJYQ', // lika
@@ -302,7 +302,6 @@ export default {
           if (sendTxnResponse.status === 200) {
             if (sendTxnResponse.data.txnId) {
               this.TogglePopup('transactionSuccessful')
-              window.location.reload()
             } else if (sendTxnResponse.data.message) {
               errorMessage = sendTxnResponse.data.message
               this.TogglePopup('transactionFailed')
@@ -316,6 +315,9 @@ export default {
     },
     TogglePopup (trigger) {
       popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+    },
+    ReloadWindow () {
+      window.location.reload()
     }
   }
 }
