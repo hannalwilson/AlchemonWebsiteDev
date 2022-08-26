@@ -1,37 +1,41 @@
 <template>
   <nav>
-    <router-link to="/"><img alt="Vue Logo" src="../assets/logo.png"></router-link>
+    <router-link to="/"><img alt="Vue Logo" src="https://alchemon-website-assets.s3.amazonaws.com/assets/logo.png">
+    </router-link>
     <div class="connectWallet">
-        <div v-if="!foundAddress" class="navp" @click="TogglePopup('chooseWallet')">CONNECT</div>
-        <div v-if="foundAddress" class="navp" @click="TogglePopup('disconnectWallet')">{{ displayAddress }}...</div>
-      </div>
-      <div v-on:click="openMobileNav()" id="burger">
+      <div v-if="!foundAddress" class="navp" @click="TogglePopup('chooseWallet')"><strong>CONNECT</strong></div>
+      <div v-if="foundAddress" class="navp" @click="TogglePopup('disconnectWallet')"><strong>{{ displayAddress
+          }}...</strong></div>
+    </div>
+    <div v-on:click="openMobileNav()" id="burger">
       <div class="line1"></div>
       <div class="line2"></div>
       <div class="line3"></div>
     </div>
     <div class="nav-links">
-            <router-link to="/news">NEWS</router-link>
+      <router-link to="/news">NEWS</router-link>
 
-            <router-link to="/faq">FAQ</router-link>
+      <router-link to="/faq">FAQ</router-link>
 
-            <router-link to="/howtoplay">HOW&nbsp;TO&nbsp;PLAY</router-link>
+      <router-link to="/howtoplay">HOW&nbsp;TO&nbsp;PLAY</router-link>
 
-            <router-link to="/token">TOKEN</router-link>
+      <router-link to="/token">TOKEN</router-link>
 
-            <router-link to="/alchedex">ALCHEDEX</router-link>
-        <div class="dropdown-link">
-                <p class="navp">STORE&nbsp;▼</p>
-          <div class="dropdown-menu">
-            <router-link to="/store">ALCHESHOP</router-link>
-               <router-link to="/craftandevolve">CRAFT & EVOLVE</router-link>
-              <a href="https://www.randgallery.com/algo-collection/?address=ALCHY5SJXOXZXADZPD73KO6CYNZXDUWFYANTSXU6RIO3EZACIIXUCS3YDM" target="_blank">RANDGALLERY</a>
-              <a href="https://shop.alchemon.net" target="_blank">MERCH</a>
-          </div>
+      <router-link to="/alchedex">ALCHEDEX</router-link>
+      <div class="dropdown-link">
+        <p class="navp">STORE&nbsp;▼</p>
+        <div class="dropdown-menu">
+          <router-link to="/store">ALCHESHOP</router-link>
+          <router-link to="/craftandevolve">CRAFT & EVOLVE</router-link>
+          <a href="https://www.randgallery.com/algo-collection/?address=ALCHY5SJXOXZXADZPD73KO6CYNZXDUWFYANTSXU6RIO3EZACIIXUCS3YDM"
+            target="_blank">RANDGALLERY</a>
+          <a href="https://shop.alchemon.net" target="_blank">MERCH</a>
+        </div>
       </div>
     </div>
   </nav>
-<popup-window v-if="popupTriggers.chooseWallet">
+  <router-link to="/beta" class="navlinks"><button class="downloadButton boxShadow">DOWNLOAD GAME</button></router-link>
+  <popup-window v-if="popupTriggers.chooseWallet">
     <h3>Connect Your Wallet</h3>
     <button class="boxShadow" @click="connectWallet('myalgo')">
       MyAlgo
@@ -42,12 +46,13 @@
     <button class="boxShadow" @click="TogglePopup('chooseWallet')">Cancel</button>
   </popup-window>
   <popup-window v-if="popupTriggers.disconnectWallet">
-    <h3>Are you sure you want to disconnect your wallet?</h3>
+    <h3>Wallet Information</h3>
+    <p>Address: {{ this.address }}</p>
     <button class="boxShadow" @click="disconnectWallet">
-      Yes, disconnect
-    </button><br>
+      Disconnect
+    </button>
     <button class="boxShadow" @click="TogglePopup('disconnectWallet')">
-      No, stay connected
+      Close
     </button>
   </popup-window>
 </template>
@@ -155,6 +160,7 @@ export default {
       foundAddress = false
       localStorage.removeItem('userAddress')
       localStorage.removeItem('userWallet')
+      localStorage.removeItem('userRewards')
       window.location.reload()
     },
     openMobileNav () {
@@ -209,6 +215,7 @@ export default {
     if (localStorage.userAddress) {
       this.address = localStorage.userAddress
       this.foundAddress = true
+      this.userRewards = localStorage.userRewards
     } else {
       this.foundAddress = false
     }
@@ -225,11 +232,36 @@ export default {
 
 <style lang="scss" scoped>
 
+.downloadButton {
+  color: #000080;
+  /* Sets the color of the button text to black */
+  border: solid #000080;
+  /* This makes a solid black border around the button */
+  border-radius: 2vw;
+  font-weight: bold;
+  padding: 1% 3%;
+  letter-spacing: 5px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+}
+.downloadButton:hover {
+    background-color: darkblue;
+      border: 2px solid orange;
+      color: orange;
+}
+@media only screen and (max-width: 798px) {
+  .downloadButton {
+    width: 98vw;
+    }
+}
 nav {
   background-color: rgba(0, 0, 140, 0.5);
   position: fixed;
   width: 100%;
   z-index: 100;
+  max-width: 100vw;
 }
 
 p{
@@ -237,7 +269,7 @@ p{
   padding: 0%;
 }
 
-a:hover, .navp:hover {
+a:hover, .navp:hover,  div.nav-links a:hover{
     background-color: orange;
     color: #00006f;
     transition: 0.3s;
@@ -305,10 +337,9 @@ div.dropdown-menu {
   display: none;
   top: 100%;
   padding: 0%;
-  background-color: rgba(0, 0, 140, 0.5);
 }
 
-div.dropdown-menu li {
+div.dropdown-menu a {
   margin: 0%;
   background-color: rgb(0, 0, 80);
   padding: 0%;
@@ -381,8 +412,5 @@ div.dropdown-menu a {
   .connectWallet {
     font-size: 6vw;
   }
-}
-.navp {
-  font-weight: 900;
 }
 </style>

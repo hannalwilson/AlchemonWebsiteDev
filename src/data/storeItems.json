@@ -36,210 +36,239 @@
     "id": 490139078,
     "type": "alchemon",
     "amount": 0,
-    "cost": 5
-
+    "cost": 5,
+    "description": "Set 4 Common"
 },
 {
     "name": "Lika",
     "id": 490146814,
     "type": "alchemon",
     "amount": 0,
-    "cost": 5
+    "cost": 5,
+    "description": "Set 4 Common"
 },
 {
     "name": "Puff",
     "id": 490141855,
     "type": "alchemon",
     "amount": 0,
-    "cost": 5
+    "cost": 5,
+    "description": "Set 4 Common"
 },
 {
     "name": "Dagz",
     "id": 493271743,
     "type": "alchemon",
     "amount": 0,
-    "cost": 5
+    "cost": 5,
+    "description": "Set 4 Common"
 },
 {
     "name": "Cyd",
     "id": 744534630,
     "type": "alchemon",
     "amount": 0,
-    "cost": 5
+    "cost": 5,
+    "description": "Set 5 Common"
 },
 {
     "name": "Torr",
     "id": 744531764,
     "type": "alchemon",
     "amount": 0,
-    "cost": 5
+    "cost": 5,
+    "description": "Set 5 Common"
 },
 {
     "name": "Kumo",
     "id": 744551347,
     "type": "alchemon",
     "amount": 0,
-    "cost": 5
+    "cost": 5,
+    "description": "Set 5 Common"
 },
 {
     "name": "Lyth",
     "id": 744527019,
     "type": "alchemon",
     "amount": 0,
-    "cost": 5
+    "cost": 5,
+    "description": "Set 5 Common"
 },
 {
     "name": "TOYZ-Gheist",
     "id": 773003623,
     "type": "art",
     "amount": 0,
-    "cost": 2000
+    "cost": 2000,
+    "description": "Set 1 Alchemon TOYZ art collaboration"
 },
 {
     "name": "TOYZ-Gheistly",
     "id": 773007053,
     "type": "art",
     "amount": 0,
-    "cost": 3000
+    "cost": 3000,
+    "description": "Set 1 Alchemon TOYZ art collaboration"
 },
 {
     "name": "TOYZ-Psychgeist",
     "id": 773009639,
     "type": "art",
     "amount": 0,
-    "cost": 4000
+    "cost": 4000,
+    "description": "Set 1 Alchemon TOYZ art collaboration"
 },
 {
     "name": "TOYZ-Miya",
     "id": 773012590,
     "type": "art",
     "amount": 0,
-    "cost": 2000
+    "cost": 2000,
+    "description": "Set 1 Alchemon TOYZ art collaboration"
 },
 {
     "name": "TOYZ-Miyachu",
     "id": 773014307,
     "type": "art",
     "amount": 0,
-    "cost": 3000
+    "cost": 3000,
+    "description": "Set 1 Alchemon TOYZ art collaboration"
 },
 {
     "name": "TOYZ-Miyamenice",
     "id": 773017551,
     "type": "art",
     "amount": 0,
-    "cost": 4000
+    "cost": 4000,
+    "description": "Set 1 Alchemon TOYZ art collaboration"
 },
 {
     "name": "TOYZ-Troc",
     "id": 773019831,
     "type": "art",
     "amount": 0,
-    "cost": 2000
+    "cost": 2000,
+    "description": "Set 1 Alchemon TOYZ art collaboration"
 },
 {
     "name": "TOYZ-Troctor",
     "id": 773021991,
     "type": "art",
     "amount": 0,
-    "cost": 3000
+    "cost": 3000,
+    "description": "Set 1 Alchemon TOYZ art collaboration"
 },
 {
     "name": "TOYZ-Troctosaur",
     "id": 773024860,
     "type": "art",
     "amount": 0,
-    "cost": 4000
+    "cost": 4000,
+    "description": "Set 1 Alchemon TOYZ art collaboration"
 },
 {
     "name": "TOYZ-Bolt",
     "id": 773028133,
     "type": "art",
     "amount": 0,
-    "cost": 2000
+    "cost": 2000,
+    "description": "Set 1 Alchemon TOYZ art collaboration"
 },
 {
     "name": "TOYZ-Shockner",
     "id": 773029596,
     "type": "art",
     "amount": 0,
-    "cost": 3000
+    "cost": 3000,
+    "description": "Set 1 Alchemon TOYZ art collaboration"
 },
 {
     "name": "TOYZ-Flightning",
     "id": 773031968,
     "type": "art",
     "amount": 0,
-    "cost": 4000
+    "cost": 4000,
+    "description": "Set 1 Alchemon TOYZ art collaboration"
 },
 {
     "name": "Swoop",
     "id": 799720875,
     "type": "alchebilities",
     "amount": 0,
-    "cost": 800
+    "cost": 800,
+    "description": "Increases attack damage based on Alchemon's speed"
 },
 {
     "name": "SpinningKick",
     "id": 799721646,
     "type": "alchebilities",
     "amount": 0,
-    "cost": 800
+    "cost": 800,
+    "description": "Perform 3 to 5 attacks in one turn, each at 0.4 attack damage"
 },
 {
     "name": "Phoenix",
     "id": 799722298,
     "type": "alchebilities",
     "amount": 0,
-    "cost": 800
+    "cost": 800,
+    "description": "Revive one of your KO'd Alchemon at 50% health"
 },
 {
     "name": "MentalMaze",
     "id": 799723642,
     "type": "alchebilities",
     "amount": 0,
-    "cost": 800
+    "cost": 800,
+    "description": "Applies disturbed to all of your opponents Alchemon"
 },
 {
     "name": "Frostburn",
     "id": 799725137,
     "type": "alchebilities",
     "amount": 0,
-    "cost": 800
+    "cost": 800,
+    "description": "Multiplies attack damage by 1.8 but deals .3 damage to Alchemon using attack"
 },
 {
     "name": "DirtSmash",
     "id": 799725874,
     "type": "alchebilities",
     "amount": 0,
-    "cost": 800
+    "cost": 800,
+    "description": "Increases attack damage based on Alchemon's defense"
 },
 {
     "name": "Charge",
     "id": 799727884,
     "type": "alchebilities",
     "amount": 0,
-    "cost": 800
+    "cost": 800,
+    "description": "Charges up your Alchemon for one turn, then deals mega attack damage your next turn"
 },
 {
     "name": "Cultivate",
     "id": 799726595,
     "type": "alchebilities",
     "amount": 0,
-    "cost": 800
+    "cost": 800,
+    "description": "Heals all of your Alchemon by 0.5 of total attack power"
 },
 {
     "name": "TidalWave",
     "id": 799720185,
     "type": "alchebilities",
     "amount": 0,
-    "cost": 800
+    "cost": 800,
+    "description": "Attacks all of your opponents Alchemon at 0.6 attack damage"
 },
 {
     "name": "BugBite",
     "id": 799728466,
     "type": "alchebilities",
     "amount": 0,
-    "cost": 800
+    "cost": 800,
+    "description": "Applies infested to all of your opponents Alchemon"
 }
 ]

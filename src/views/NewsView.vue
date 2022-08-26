@@ -1,14 +1,52 @@
 <template>
     <div>
         <div class="blueBackground">
-            <img id="moveAnimation_1" src="../assets/news.png" alt="News Character">
+            <img id="moveAnimation_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/news.png" alt="News Character">
+        </div>
+        <div>
+            <p class="orangeHeader spreadText">BETA 2.0 RELEASE - JULY 2022</p>
+            <p>
+                <u>WHATS NEW</u>
+            </p>
+            <p class="justifiedText">
+                - Leveling system: boost your Alchemon's power by leveling them up! Knock out enemies and win battles to
+                gain experience. Level caps set temporarily until V1 release.
+                <br>- Evolutions: Coming in 1.0 release.
+                <br>- Equipable NFTs: Purchase alchebility NFTs from our Website and equip them to your Alchemon!
+                Each
+                attack can be equipped to a single Alchemon of the same type (fire, water, psychic, etc).
+                <br>- Set 5 Alchemon: All set 5 cards are now implemented in game!
+                <br>- First community set: All Alchemon/Yieldy Flamingos have been added to the game! Once the set has
+                been
+                released to the public, they will become playable.
+                <br>- Improved rewards - Each win now rewards players with 6 ALCH. On top of this, each win will count
+                as a
+                single entry into the Hunting Grounds rewards lottery.
+                <br>- Forgot Password Functionality added.
+            </p>
+            <p>
+                <u>BUG FIXES</u>
+            </p>
+            <p class="justifiedText">
+                - Fixed issues related to various hover effects.
+                <br>- Balanced Alchemon animation's scale.
+                <br>- Fixed bug that prevented battle from ending when final Alchemon was affected with the Singed
+                debuff.
+                <br>- Multiple API optimizations made.
+                <br>- Various typos fixed.
+            </p>
+                <p>
+                <strong><br>If you have any feedback on Beta 2.0, please email feedback@alchemon.net</strong>
+            </p>
+            <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/beta2.jpg" alt="Beta2.0">
         </div>
         <div class="roadmap">
-            <p class="orangeHeader spreadText">JUNE 2022 UPDATE</p>
-            <p>Hello Alcheholics,
+            <p class="grayHeader spreadText">JUNE 2022 UPDATE</p>
+            <p class="whiteText">Hello Alcheholics,
                 <br><br>
             </p>
-            <p class="justifiedText">We have news & an updated roadmap for you. Due to the exploit we have had to
+            <p class="justifiedText whiteText">We have news & an updated roadmap for you. Due to the exploit we have had
+                to
                 increase security. Many of
                 these have already been developed in response, but the only real solution is to migrate the game logic
                 to a server, which we have been working on and making good progress. Until this is out in V1 we will
@@ -33,7 +71,7 @@
                 Clifford (CEO), Hanna (CTO) & Forest (Lead Dev) will be doing an AMA with Algo Gaming Guild on Weds June
                 15th at 3PM PST.
             </p>
-            <p><br><br><strong>2022 Roadmap (Updated)</strong>
+            <p class="whiteText"><br><br><strong>2022 Roadmap (Updated)</strong>
                 <br><br>
                 <u>Q2 (April-June)</u><br>
                 Set 5 Launch<br>
@@ -74,17 +112,17 @@
                 More Game Modes (Co-Op Boss Battles, Story Mode, etc.)<br>
                 AlcheGold DeFi Launch<br>
                 Alchemon Metaverse<br>
-                <img class="zoomIn_1" src="../assets/map.png" alt="Roadmap">
+                <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/map.png" alt="Roadmap">
             </p><br><br>
         </div>
         <div class="oldRoadmap">
-            <p class="grayHeader spreadText">2022 ROADMAP</p>
+            <p class="yellowHeader spreadText">2022 ROADMAP</p>
             <p class="whiteText">Hello all my Alchemists!
                 <br><br>
                 Make sure you check out our new & improved <router-link to="/token">tokenomics</router-link> if you
                 haven't yet!
             </p>
-            <img class="zoomIn_1" src="../assets/token.png" alt="token">
+            <img class="zoomIn_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/token.png" alt="token">
             <p class="whiteText">I take pride in having the worst, least-detailed roadmaps in crypto, but here we are.
                 The team & I
                 pounded this out for you all so you know what we are focused on going into the future. The team is up to
@@ -140,9 +178,11 @@ img {
 .blueBackground {
     background-image: linear-gradient(to left, #007bff, #2A78F8, #4287F9, #89B4FB, #E7F0FE);
 }
-.oldRoadmap {
-    background-color: #ffa500;
+.roadmap {
+    background-color: #ffaf1c;
 }
+.oldRoadmap {
+    background-image: linear-gradient(to right, #007bff, #4287F9, #89B4FB);}
 p{
     text-align: center;
 }

@@ -1,6 +1,6 @@
 <template>
     <app-header/>
-    <div class="website">
+<div class="website">
     <router-view/>
     <app-footer/>
     </div>
@@ -44,7 +44,7 @@ export default {
     grid-template-rows: 1fr auto;
 }
 .website {
-  width: 100vw;
+  max-width: 100vw;
 }
 p{
   text-align: justify;
@@ -147,5 +147,24 @@ button:hover {
   background-color:darkblue;
   border: 2px solid orange;
   color: orange;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ffa500;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ffa6007e;
 }
 </style>

@@ -11,7 +11,7 @@
         <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'all'">View All</button>
       </div>
       <div>
-        <store-card v-for="item in filteredItems" :key="item.id" :type="item.type" :cost="item.cost" :name="item.displayName" :id="item.id" :amount="item.amount">
+        <store-card v-for="item in filteredItems" :key="item.id" :type="item.type" :cost="item.cost" :name="item.displayName" :id="item.id" :amount="item.amount" :description="item.description">
         </store-card>
       </div>
     </div>
@@ -20,6 +20,12 @@
 
 <style lang="scss" scoped>
 
+h1 {
+  font-size: 10vw;
+  color: #e6ad10;
+  -webkit-text-stroke: 1px rgb(22, 22, 54);
+  padding: 0%;
+}
 .background {
   background-image: url("../assets/alcheshop_coin.png"),linear-gradient(to right, #007bff, #2A78F8, #4287F9, #89B4FB);
   background-position: center;
@@ -36,11 +42,6 @@ img {
   width: 100%;
   margin: 0%;
   padding: 0%;
-}
-h1 {
-  font-size: 10vw;
-  color: #e6ad10;
-  -webkit-text-stroke:1px rgb(22, 22, 54);
 }
 </style>
 

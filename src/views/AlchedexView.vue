@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="whiteGrayBackground">
-      <img src="../assets/alchedex.png" class="alchedex" />
+      <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/alchedex.png" class="alchedex" />
       <p class="darkBlueHeader spreadText">ALCHEDEX</p>
     </div>
     <div class="cards">
@@ -75,20 +75,35 @@
         <!-- Where the array of Cards get rendered as cards -->
         <div>
           <alchemon-cards v-for="card in filteredCards" :key="card.assetId" :name="card.name" :id="card.id"
-            :type="card.type" :minted="card.minted" v-bind:class="card.isOwned ? 'owned' : 'missing'">
+            :type="card.type" :minted="card.minted" v-bind:class="card.isOwned ? 'owned' : 'missing'"
+            @click="TogglePopup('viewAlchemon', card.id)">
           </alchemon-cards>
         </div>
       </div>
     </div>
   </div>
+  <popup-window v-if="popupTriggers.viewAlchemon">
+    <h1>Select Website to View Alchemon</h1>
+    <button @click="openWebpage('rand', this.id)" class="boxShadow">RAND GALLERY</button>
+    <button @click="openWebpage('algo', this.id)" class="boxShadow">ALGO EXPLORER</button>
+    <button @click="openWebpage('nft', this.id)" class="boxShadow">NFT EXPLORER</button><br><br>
+    <button @click="TogglePopup('viewAlchemon')" class="boxShadow">Close</button>
+  </popup-window>
 </template>
 
 <script>
 import AlchemonCards from '../components/AlchemonCards.vue'
 import alchemons from '../data/alchemon.json'
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
+import PopupWindow from '@/components/PopupWindow.vue'
 
 const userAlchemon = reactive([])
+
+const popupTriggers = ref({
+  viewAlchemon: false
+})
+
+let alchemonId
 
 export default {
   mounted () {
@@ -97,7 +112,8 @@ export default {
     this.gotUserAlchemon = false
   },
   components: {
-    AlchemonCards
+    AlchemonCards,
+    PopupWindow
   },
   data () {
     return {
@@ -108,10 +124,31 @@ export default {
       searchValue: '',
       cards: alchemons,
       gotUserAlchemon: false,
-      showAll: 'all'
+      showAll: 'all',
+      popupTriggers,
+      PopupWindow
     }
   },
   methods: {
+    TogglePopup (trigger, id) {
+      popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+      alchemonId = id
+    },
+    openWebpage (site) {
+      switch (site) {
+        case 'rand':
+          window.open(`https://www.randgallery.com/algo-collection/?address=${alchemonId}`)
+          break
+        case 'algo':
+          window.open(`https://algoexplorer.io/asset/${alchemonId}`)
+          break
+        case 'nft':
+          window.open(`https://www.nftexplorer.app/asset/${alchemonId}`)
+          break
+      }
+
+      this.TogglePopup('viewAlchemon')
+    },
     getUserAlchemon () {
       this.gotUserAlchemon = false
       const algosdk = require('algosdk')
@@ -320,12 +357,8 @@ a {
   font-weight: bold;
   margin-left: 2%;
 }
-
-.cards {
-  padding: 1%;
-  background-image: linear-gradient(to right, #007bff, #00bbff, #8ad1ff);
-}
 .missing {
   filter: grayscale(1);
 }
+
 </style>

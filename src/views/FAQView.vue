@@ -1,9 +1,9 @@
 <template>
-<div class="faq">
-    <img src="../assets/FAQ.png" alt="FAQ" id="faqIMG">
+  <div class="faq">
+    <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/FAQ.png" alt="FAQ" id="faqIMG">
     <p class="yellowHeader spreadText">FREQUENTLY ASKED QUESTIONS</p>
     <question-accordion class="accordion"></question-accordion>
-</div>
+  </div>
 </template>
 
 <script>

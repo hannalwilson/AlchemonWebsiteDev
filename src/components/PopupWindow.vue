@@ -8,6 +8,7 @@
 </template>
 
 <style lang="scss" scoped>
+
 .popup {
     position: fixed;
     top: 0;
@@ -19,11 +20,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    max-width: 100vw;
 .popup-inner {
     background: #FFF;
-    padding: 32px;
     z-index: 100;
     padding: 1vw 5vw 2vw;
+    position: absolute;
+    top: 25%;
+    max-width: 90vw;
+    word-wrap: break-word;
 }
 }
 </style>
