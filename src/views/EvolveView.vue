@@ -5,14 +5,15 @@
     </div>
     <div class="forSale">
       <craft-legendary v-for="card in legendary" :key="card.available" :name="card.name"
-        :tradedCardOne="card.tradedCardOneName" :tradedCardTwo="card.tradedCardTwoName"
-        :available="card.available"></craft-legendary>
+        :tradedCardOne="card.tradedCardOneName" :tradedCardTwo="card.tradedCardTwoName" :available="card.available"
+        :set="card.set">
+      </craft-legendary>
       <craft-epic v-for="card in epic" :key="card.available" :name="card.name" :tradedCardOne="card.tradedCardOneName"
-        :tradedCardTwo="card.tradedCardTwoName" :available="card.available"></craft-epic>
+        :tradedCardTwo="card.tradedCardTwoName" :available="card.available" :set="card.set"></craft-epic>
       <evolve-rare v-for="card in rare" :key="card.available" :name="card.name" :tradedCard="card.tradedCardName"
-        :available="card.available"></evolve-rare>
-      <evolve-uncommon v-for="card in uncommon" :key="card.available" :name="card.name" :tradedCard="card.tradedCardName"
-        :available="card.available"></evolve-uncommon>
+        :available="card.available" :set="card.set"></evolve-rare>
+      <evolve-uncommon v-for="card in uncommon" :key="card.available" :name="card.name"
+        :tradedCard="card.tradedCardName" :available="card.available" :set="card.set"></evolve-uncommon>
     </div>
   </div>
 </template>
@@ -129,7 +130,6 @@ export default {
 
     for (const item in epic) {
       client.accountInformation(epic[item].contractAddress).do().then(response => {
-        console.log(response)
         for (const asset of response.assets) {
           for (const item in epic) {
             if (epic[item].id === asset['asset-id']) {

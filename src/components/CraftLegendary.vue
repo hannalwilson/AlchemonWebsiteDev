@@ -4,11 +4,17 @@
       <img :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/alchemon/${name}.png`" class="nftImage">
     </div>
 
-    <div class="buttonContainer">
+    <div class="buttonContainer" v-if="set !== 'Community'">
       <p> Craft a {{ name }}</p>
       <p>You need: 1 {{ tradedCardOne }} + 1 {{ tradedCardTwo }} + 250 ALCH</p>
       <p>Available: {{ available }}</p>
       <button v-if="available > 0" @click="setAlchemon(`${name}`)" class="boxShadow nftButton">250 ALCH</button>
+    </div>
+    <div class="buttonContainer" v-if="set === 'Community'">
+      <p> Craft a {{ name }}</p>
+      <p>You need: 1 {{ tradedCardOne }} + 1 {{ tradedCardTwo }} + 3750 YLDY</p>
+      <p>Available: {{ available }}</p>
+      <button v-if="available > 0" @click="setAlchemon(`${name}`)" class="boxShadow nftButton">3750 YLDY</button>
     </div>
   </div>
   <popup-window v-if="popupTriggers.chooseWallet">
@@ -169,16 +175,16 @@ const popupTriggers = ref({
   errorOccurred: false
 })
 const tradeInAddresses = {
-  744538073: 'CB5PRX2KWTME4QMUICQNLJ3CY5U7W3IMV3EPHWUNWIW5MJGCSUBNVCTDRU', // araknolyth
-  744539419: 'VDHYGGFOXT2ECFAYVWNWWZ6DL2S44WVTVRSLWW7RLKGRXEVZOLH7LVYS7E' // torcydious
+  798985842: 'F2JYVYEKBKBFPCXDYHI4NH7UAIKA62JESRWTOHEASOWJWR4FWSILT7OFYE', // ghostbark
+  798986475: 'FSWI456BW23UHP3BZAPSVHNCYJGDGC7BHHFXEOACRZQ5XFBICZ4QDO3MCE' // torchwondo
 }
 
 const smartContractInfo = {
-  Araknadevil: {
-    appID: 845816400,
-    evolvedAlchemon: 744540333,
-    tradedAlchemonOne: 744538073,
-    tradedAlchemonTwo: 744539419,
+  Dreadwing: {
+    appID: 852317796,
+    evolvedAlchemon: 798987161,
+    tradedAlchemonOne: 798985842,
+    tradedAlchemonTwo: 798986475,
     amount: 1
   }
 }
@@ -186,7 +192,7 @@ const smartContractInfo = {
 let errorMessage
 export default {
   components: { PopupWindow },
-  props: ['name', 'tradedCardOne', 'tradedCardTwo', 'amount', 'available'],
+  props: ['name', 'tradedCardOne', 'tradedCardTwo', 'amount', 'available', 'set'],
   data () {
     return {
       PopupWindow,
@@ -231,8 +237,8 @@ export default {
         tradeInAlchemonOneAmount: amount,
         tradeInAlchemonAssetIDTwo: tradedTwo,
         tradeInAlchemonTwoAmount: amount,
-        alchecoinAssetID: 310014962,
-        requiredAmountOfAlch: 250
+        alchecoinAssetID: 226701642,
+        requiredAmountOfAlch: 3750
       })
       const serializedTxns = quickEvolveOneResponse.data.txns
       let signedTxns
