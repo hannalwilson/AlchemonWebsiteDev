@@ -1,4 +1,11 @@
 [
+    {
+        "name": "Egg",
+        "id": 318280942,
+        "type": "egg",
+        "amount": 0,
+        "cost": 10
+    },
 {
     "name": "Ash",
     "id": 798983583,

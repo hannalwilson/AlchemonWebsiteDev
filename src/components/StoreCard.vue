@@ -4,11 +4,13 @@
     <div class="imgContainer" @mouseover="hover = true" @mouseleave="hover = false">
       <img :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/alchemon/${name}.png`"
         v-if="type === 'alchemon'" class="nftImage">
+      <img :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/${name}.png`"
+        v-if="type === 'egg'" class="nftImage">
       <img
         :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/alchebilities/${name.replace(/\s+/g, '')}.png`"
         v-if="type === 'alchebilities'" class="nftImage">
-      <video :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/art/${name}.mp4`"
-        v-if="type === 'art'" class="nftImage" muted loop playsinline></video>
+      <video :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/art/${name}.mp4`" v-if="type === 'art'"
+        class="nftImage" muted loop playsinline></video>
     </div>
     <div class="buttonContainer">
       <p> {{ name }}</p>
@@ -18,11 +20,14 @@
         v-if="type === 'alchemon' && amount > 0">{{ cost }}
         ALGO</button>
       <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton" v-if="type === 'art' && amount > 0">{{
-      cost }}
+        cost }}
         ALCH</button>
       <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
         v-if="type === 'alchebilities' && amount > 0">{{ cost
         }} ALCH</button>
+      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton" v-if="type === 'egg' && amount > 0">{{
+        cost
+        }} ALGO</button>
     </div>
   </div>
   <popup-window v-if="popupTriggers.makePurchase">
@@ -181,6 +186,7 @@ const walletConnector = new WalletConnect(
   }
 )
 const itemIds = {
+  318280942: 748356873,
   490139078: 753855088,
   490146814: 753855200,
   490141855: 753859901,
@@ -261,6 +267,7 @@ export default {
       }
       switch (alchemonType) {
         case 'alchemon':
+        case 'egg':
           payWithAlgoResponse = await axios.post(`${apiURL}/payWithAlgo`, {
             customerAddress: userAddress,
             itemShopAppId: itemIds[alchemonId],
