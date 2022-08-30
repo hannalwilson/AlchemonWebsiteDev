@@ -7,34 +7,6 @@
         "cost": 10
     },
 {
-    "name": "Ash",
-    "id": 798983583,
-    "type": "alchemon",
-    "amount": 0,
-    "cost": 5
-},
-{
-    "name": "Jude",
-    "id": 798981060,
-    "type": "alchemon",
-    "amount": 0,
-    "cost": 5
-},
-{
-    "name": "Twig",
-    "id": 798978892,
-    "type": "alchemon",
-    "amount": 0,
-    "cost": 5
-},
-{
-    "name": "Win",
-    "id": 798976821,
-    "type": "alchemon",
-    "amount": 0,
-    "cost": 5
-},
-{
     "name": "Zip",
     "id": 490139078,
     "type": "alchemon",

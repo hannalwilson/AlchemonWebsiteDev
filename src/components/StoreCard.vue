@@ -43,7 +43,7 @@
   </popup-window>
   <popup-window v-if="popupTriggers.transactionSuccessful">
     <h2>Transaction successful!</h2>
-    <button class="boxShadow" @click="TogglePopup('transactionSuccessful')">Close</button>
+    <button class="boxShadow" @click="ReloadWindow()">Close</button>
   </popup-window>
   <popup-window v-if="popupTriggers.transactionFailed">
     <h2>Failed. Please try again.</h2>
@@ -256,6 +256,9 @@ export default {
     },
     TogglePopup (trigger) {
       popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+    },
+    ReloadWindow () {
+      window.location.reload()
     },
     async buyWithAlgo () {
       this.TogglePopup('makePurchase')
