@@ -3,12 +3,17 @@
     <div class="imgContainer">
       <img :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/alchemon/${name}.png`" class="nftImage">
     </div>
-
-    <div class="buttonContainer">
+    <div class="buttonContainer" v-if="set !== 'Community'">
       <p> Craft a {{ name }}</p>
       <p>You need: 2 {{ tradedCardOne }} + 2 {{ tradedCardTwo }} + 250 ALCH</p>
       <p>Available: {{ available }}</p>
       <button v-if="available > 0" @click="setAlchemon(`${name}`)" class="boxShadow nftButton">250 ALCH</button>
+    </div>
+    <div class="buttonContainer" v-if="set === 'Community'">
+      <p> Craft a {{ name }}</p>
+      <p>You need: 2 {{ tradedCardOne }} + 2 {{ tradedCardTwo }} + 3750 YLDY</p>
+      <p>Available: {{ available }}</p>
+      <button v-if="available > 0" @click="setAlchemon(`${name}`)" class="boxShadow nftButton">3750 YLDY</button>
     </div>
   </div>
   <popup-window v-if="popupTriggers.chooseWallet">
@@ -172,7 +177,11 @@ const tradeInAddresses = {
   744528583: 'MSKNULULYUYJJWCBGFN3IXJSDDQWX5YFSGEMLI5UJTFEHYKOJ7CG6X3ZH4', // mmonolyth
   744530969: 'IJOVKGTVVDWOAMRCRMES6FO5Z3ZL2YQU4SJ42BDBRTCWXLABVURUWSOQHQ', // arakumo
   744533302: 'ND75GVK7UJJ76U7UD5ZGNUHCD2VN4VL5E7RGTX2GBNGREPTE7XGECCHAKM', // torrment
-  744536686: '7I23MXKEQQW3PRP5UE3N22ZRHOEHEVPSE5KG63UU4Q2ABCUN5G6XKNWHJ4' // incydious
+  744536686: '7I23MXKEQQW3PRP5UE3N22ZRHOEHEVPSE5KG63UU4Q2ABCUN5G6XKNWHJ4', // incydious
+  798978192: 'CC6BG4KT5ACY7DG3P4PB6Y4HA6FIXGUZ67YJHPIFPQVBIH75TVXHTXXJBE', // winghost
+  798980408: 'UMLXOTX5YGHAXEBLOPCNNIKTB2KKOWHZWCFT5QZQHIJX6VKTUQBZNW3BFQ', // barkbeak
+  798982872: 'OWCJLUNN7LM5HZA6SBI6OV5AUE6QWQWL4AUE5DLWYD6ZZEO3H3AP52JOTU', // judopeck
+  798985107: 'CF7YZ535AXXBPH3ZPH67U43W6ISGA5SMNF3KN5OMQLJMDX3MAWW2MW6J4A' // tochfeather
 }
 
 const smartContractInfo = {
@@ -181,21 +190,43 @@ const smartContractInfo = {
     evolvedAlchemon: 744538073,
     tradedAlchemonOne: 744528583,
     tradedAlchemonTwo: 744530969,
-    amount: 1
+    amount: 1,
+    alchecoinAssetID: 310014962,
+    requiredAmountOfAlch: 250
   },
   Torcydious: {
     appID: 842475638,
     evolvedAlchemon: 744539419,
     tradedAlchemonOne: 744533302,
     tradedAlchemonTwo: 744536686,
-    amount: 1
+    amount: 1,
+    alchecoinAssetID: 310014962,
+    requiredAmountOfAlch: 250
+  },
+  Ghostbark: {
+    appID: 855629576,
+    evolvedAlchemon: 798985842,
+    tradedAlchemonOne: 798978192,
+    tradedAlchemonTwo: 798980408,
+    amount: 1,
+    alchecoinAssetID: 226701642,
+    requiredAmountOfAlch: 3750000000
+  },
+  Torchwondo: {
+    appID: 855629865,
+    evolvedAlchemon: 798986475,
+    tradedAlchemonOne: 798982872,
+    tradedAlchemonTwo: 798985107,
+    amount: 1,
+    alchecoinAssetID: 226701642,
+    requiredAmountOfAlch: 3750000000
   }
 }
 
 let errorMessage
 export default {
   components: { PopupWindow },
-  props: ['name', 'tradedCardOne', 'tradedCardTwo', 'amount', 'available'],
+  props: ['name', 'tradedCardOne', 'tradedCardTwo', 'amount', 'available', 'set'],
   data () {
     return {
       PopupWindow,
@@ -209,17 +240,18 @@ export default {
   },
   methods: {
     setAlchemon (name) {
-      console.log(smartContractInfo)
       const id = smartContractInfo[name].appID
       const evolved = smartContractInfo[name].evolvedAlchemon
       const tradedOne = smartContractInfo[name].tradedAlchemonOne
       const tradedTwo = smartContractInfo[name].tradedAlchemonTwo
       const amount = smartContractInfo[name].amount
+      const token = smartContractInfo[name].alchecoinAssetID
+      const cost = smartContractInfo[name].requiredAmountOfAlch
       const address = localStorage.userAddress
       const wallet = localStorage.userWallet
-      this.craftAlchemon(id, evolved, tradedOne, tradedTwo, amount, address, wallet)
+      this.craftAlchemon(id, evolved, tradedOne, tradedTwo, amount, address, wallet, token, cost)
     },
-    async craftAlchemon (appID, evolvedAlchemon, tradedAlchemonOne, tradedAlchemonTwo, amount, address, wallet) {
+    async craftAlchemon (appID, evolvedAlchemon, tradedAlchemonOne, tradedAlchemonTwo, amount, address, wallet, paymentID, cost) {
       const id = appID
       const evolved = evolvedAlchemon
       const tradedOne = tradedAlchemonOne
@@ -242,8 +274,8 @@ export default {
         tradeInAlchemonAssetIDTwo: tradedTwo,
         tradeInAlchemonTwoAmount: amount,
         amountSentToOther: 1,
-        alchecoinAssetID: 310014962,
-        requiredAmountOfAlch: 250
+        alchecoinAssetID: paymentID,
+        requiredAmountOfAlch: cost
       })
       const serializedTxns = quickEvolveOneResponse.data.txns
       let signedTxns
@@ -288,7 +320,6 @@ export default {
           if (sendTxnResponse.status === 200) {
             if (sendTxnResponse.data.txnId) {
               this.TogglePopup('transactionSuccessful')
-              window.location.reload()
             } else if (sendTxnResponse.data.message) {
               errorMessage = sendTxnResponse.data.message
               this.TogglePopup('transactionFailed')
