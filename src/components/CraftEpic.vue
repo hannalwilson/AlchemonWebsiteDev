@@ -178,10 +178,10 @@ const tradeInAddresses = {
   744530969: 'IJOVKGTVVDWOAMRCRMES6FO5Z3ZL2YQU4SJ42BDBRTCWXLABVURUWSOQHQ', // arakumo
   744533302: 'ND75GVK7UJJ76U7UD5ZGNUHCD2VN4VL5E7RGTX2GBNGREPTE7XGECCHAKM', // torrment
   744536686: '7I23MXKEQQW3PRP5UE3N22ZRHOEHEVPSE5KG63UU4Q2ABCUN5G6XKNWHJ4', // incydious
-  798978192: 'ZG6BSTLI72GLV7E4CBMLGNKRDDTKXEIIIFPAQEIRNRPK7TNXOUUQMDTZGM', // winghost
-  798980408: 'VWH5GUYDSQIZKVY7CZAOHUKYBF66RJAFF32PTCCGNDIZJYNTFALHZHISG4', // barkbeak
-  798982872: 'CQKQYBBLTTUYLONFS2OQBAHKGMFBSEXHDB4QU2BQCZCIKS6TIV7P2NCF2I', // judopeck
-  798985107: 'BJ3RH3VJP6JLZ7USFYHZRJUCGELBLFGRCTKUX2ZJP5CG4XNWRROLIQXKUU' // tochfeather
+  798978192: 'CC6BG4KT5ACY7DG3P4PB6Y4HA6FIXGUZ67YJHPIFPQVBIH75TVXHTXXJBE', // winghost
+  798980408: 'UMLXOTX5YGHAXEBLOPCNNIKTB2KKOWHZWCFT5QZQHIJX6VKTUQBZNW3BFQ', // barkbeak
+  798982872: 'OWCJLUNN7LM5HZA6SBI6OV5AUE6QWQWL4AUE5DLWYD6ZZEO3H3AP52JOTU', // judopeck
+  798985107: 'CF7YZ535AXXBPH3ZPH67U43W6ISGA5SMNF3KN5OMQLJMDX3MAWW2MW6J4A' // tochfeather
 }
 
 const smartContractInfo = {
@@ -204,22 +204,22 @@ const smartContractInfo = {
     requiredAmountOfAlch: 250
   },
   Ghostbark: {
-    appID: 852314994,
+    appID: 855629576,
     evolvedAlchemon: 798985842,
     tradedAlchemonOne: 798978192,
     tradedAlchemonTwo: 798980408,
     amount: 1,
     alchecoinAssetID: 226701642,
-    requiredAmountOfAlch: 3750
+    requiredAmountOfAlch: 3750000000
   },
   Torchwondo: {
-    appID: 852315131,
+    appID: 855629865,
     evolvedAlchemon: 798986475,
     tradedAlchemonOne: 798982872,
     tradedAlchemonTwo: 798985107,
     amount: 1,
     alchecoinAssetID: 226701642,
-    requiredAmountOfAlch: 3750
+    requiredAmountOfAlch: 3750000000
   }
 }
 
@@ -320,7 +320,6 @@ export default {
           if (sendTxnResponse.status === 200) {
             if (sendTxnResponse.data.txnId) {
               this.TogglePopup('transactionSuccessful')
-              window.location.reload()
             } else if (sendTxnResponse.data.message) {
               errorMessage = sendTxnResponse.data.message
               this.TogglePopup('transactionFailed')

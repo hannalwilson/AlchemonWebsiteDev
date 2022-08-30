@@ -175,13 +175,13 @@ const popupTriggers = ref({
   errorOccurred: false
 })
 const tradeInAddresses = {
-  798985842: 'F2JYVYEKBKBFPCXDYHI4NH7UAIKA62JESRWTOHEASOWJWR4FWSILT7OFYE', // ghostbark
-  798986475: 'FSWI456BW23UHP3BZAPSVHNCYJGDGC7BHHFXEOACRZQ5XFBICZ4QDO3MCE' // torchwondo
+  798985842: '2QV3PEUIV54AARFWURWOQQRWHF47GXVLIG2FPHOPJXK32V7Q4L4BRF6QTU', // ghostbark
+  798986475: 'SGY72XB4KTLRDXAAO4LLWLNHPBUJSEP3O37S37RRIEQNUPVWY2R2ACRPAA' // torchwondo
 }
 
 const smartContractInfo = {
   Dreadwing: {
-    appID: 852317796,
+    appID: 855632129,
     evolvedAlchemon: 798987161,
     tradedAlchemonOne: 798985842,
     tradedAlchemonTwo: 798986475,
@@ -238,7 +238,7 @@ export default {
         tradeInAlchemonAssetIDTwo: tradedTwo,
         tradeInAlchemonTwoAmount: amount,
         alchecoinAssetID: 226701642,
-        requiredAmountOfAlch: 3750
+        requiredAmountOfAlch: 3750000000
       })
       const serializedTxns = quickEvolveOneResponse.data.txns
       let signedTxns
@@ -283,7 +283,6 @@ export default {
           if (sendTxnResponse.status === 200) {
             if (sendTxnResponse.data.txnId) {
               this.TogglePopup('transactionSuccessful')
-              window.location.reload()
             } else if (sendTxnResponse.data.message) {
               errorMessage = sendTxnResponse.data.message
               this.TogglePopup('transactionFailed')

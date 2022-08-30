@@ -35,7 +35,7 @@
   </popup-window>
   <popup-window v-if="popupTriggers.transactionSuccessful">
     <h2>Successful! Go check out your new Alchemon!</h2>
-    <button class="boxShadow" @click="TogglePopup('transactionSuccessful'); window.location.reload()">Close</button>
+    <button class="boxShadow" @click="ReloadWindow()">Close</button>
   </popup-window>
   <popup-window v-if="popupTriggers.transactionFailed">
     <h2>Failed. Please try again.</h2>
@@ -172,10 +172,10 @@ const tradeInAddresses = {
   744530060: 'SOLSRI3V5JW2RYJJXQRXGFBNQQMTKOUQZQXHMGFO7YJ4BDSFLNRBFOLK3I', // araku
   744532520: 'V7WQJCTFNJPY74FX55IPG5OYMM2OUTHIVBCFNTJZTUYQFLJ6PIJ443L6O4', // torrden
   744535776: 'D5UOOPGEX3M7CIXF2VLRGTNOQA2EHU4FVZ34KHYPJMZXLNJCQOCV3QM3DQ', // cydevil
-  798977534: 'UUJ6U2B2VI4EVOQUGH2Q3OPIW3XIM66DU442WGBKYM5TCLY4G26YZOYOVA', // wingo
-  798979660: 'DLNGKTHYRKNLGNWQ5QJKVO23Q4KVGGS3MMTTWT6BGYI46YIHQ66OUIRV6E', // barkly
-  798982205: 'MMRE6BXZXC3ZX2DJMNNUHCCFNY7ALBMLCZARIRUOEYQWCLNO2RJJB5HRMI', // judodo
-  798984317: '5YVYWHOAJUEAMPML3TJTS27FKHN7GOD5HVFYPHRB557BCXBUCC3422BPQU' // cinder
+  798977534: '327XVWTGCCPJUX3J5VALX2X7DB77TQOEDCRUIYSSDFICJUTYA2GJO7EF6Q', // wingo
+  798979660: '4XCSZP45EV4NRBW4BGU3RMAGDLG4SYK5R2CMOSRO2APU4VP57MK4SY7LXY', // barkly
+  798982205: 'JOTVSHOV35EBIRWSDTIYVYPVJJXMFYJW2KF27MWMSWLOTFVUDRYBZTAXJM', // judodo
+  798984317: '7FGNZL2KOEACMLHVW24UCGZRZQKVE4CKHGIQ3LQE45ZIOWLYUGGE3YCYE4' // cinder
 }
 
 const smartContractInfo = {
@@ -240,32 +240,32 @@ const smartContractInfo = {
     requiredAmountOfAlch: 100
   },
   Winghost: {
-    appID: 852309647,
+    appID: 855625285,
     evolved: 798978192,
     traded: 798977534,
     alchecoinAssetID: 226701642,
-    requiredAmountOfAlch: 1500
+    requiredAmountOfAlch: 1500000000
   },
   Barkbeak: {
-    appID: 852309738,
+    appID: 855625372,
     evolved: 798980408,
     traded: 798979660,
     alchecoinAssetID: 226701642,
-    requiredAmountOfAlch: 1500
+    requiredAmountOfAlch: 1500000000
   },
   Judopeck: {
-    appID: 852309803,
+    appID: 855625481,
     evolved: 798982872,
     traded: 798982205,
     alchecoinAssetID: 226701642,
-    requiredAmountOfAlch: 1500
+    requiredAmountOfAlch: 1500000000
   },
   Torchfeather: {
-    appID: 852309876,
+    appID: 855625604,
     evolved: 798985107,
     traded: 798984317,
     alchecoinAssetID: 226701642,
-    requiredAmountOfAlch: 1500
+    requiredAmountOfAlch: 1500000000
   }
 }
 const popupTriggers = ref({
@@ -377,6 +377,9 @@ export default {
     },
     TogglePopup (trigger) {
       popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+    },
+    ReloadWindow () {
+      window.location.reload()
     }
   }
 }

@@ -13,13 +13,13 @@
             "tradedCardTwo": 798986475,
             "tradedCardOneName": "Ghostbark",
             "tradedCardTwoName": "Torchwondo",
-            "tradeInOneStoreAddress": "F2JYVYEKBKBFPCXDYHI4NH7UAIKA62JESRWTOHEASOWJWR4FWSILT7OFYE",
-            "tradeInTwoStoreAddress": "FSWI456BW23UHP3BZAPSVHNCYJGDGC7BHHFXEOACRZQ5XFBICZ4QDO3MCE",
-            "appID": 852317796,
-            "contractAddress": "MCJDB3DAHO75QVFWRSZTX5VV7IZNU4BQ5A7UXD5R4SMKPL4EE3UALI4ZSQ",
+            "tradeInOneStoreAddress": "2QV3PEUIV54AARFWURWOQQRWHF47GXVLIG2FPHOPJXK32V7Q4L4BRF6QTU",
+            "tradeInTwoStoreAddress": "SGY72XB4KTLRDXAAO4LLWLNHPBUJSEP3O37S37RRIEQNUPVWY2R2ACRPAA",
+            "appID": 855632129,
+            "contractAddress": "5WFOC5MC7H4M5UR3QSY7NPPKWTSD42LSD5ONPVAHNBODV6AIOYIMYVRAOU",
             "available": 0
         },
-        {
+        { 
             "name": "Torchwondo",
             "id": 798986475,
             "type": "Fire, Martial Arts",
@@ -33,10 +33,10 @@
             "tradedCardTwo": 798985107,
             "tradedCardOneName": "Judopeck",
             "tradedCardTwoName": "Torchfeather",
-            "tradeInOneStoreAddress": "CQKQYBBLTTUYLONFS2OQBAHKGMFBSEXHDB4QU2BQCZCIKS6TIV7P2NCF2I",
-            "tradeInTwoStoreAddress": "BJ3RH3VJP6JLZ7USFYHZRJUCGELBLFGRCTKUX2ZJP5CG4XNWRROLIQXKUU",
-            "appID": 852315131,
-            "contractAddress": "FSWI456BW23UHP3BZAPSVHNCYJGDGC7BHHFXEOACRZQ5XFBICZ4QDO3MCE",
+            "tradeInOneStoreAddress": "OWCJLUNN7LM5HZA6SBI6OV5AUE6QWQWL4AUE5DLWYD6ZZEO3H3AP52JOTU",
+            "tradeInTwoStoreAddress": "CF7YZ535AXXBPH3ZPH67U43W6ISGA5SMNF3KN5OMQLJMDX3MAWW2MW6J4A",
+            "appID": 855629865,
+            "contractAddress": "SGY72XB4KTLRDXAAO4LLWLNHPBUJSEP3O37S37RRIEQNUPVWY2R2ACRPAA",
             "available": 0
         },
         {
@@ -53,10 +53,10 @@
             "tradedCardTwo": 798980408,
             "tradedCardOneName": "Winghost",
             "tradedCardTwoName": "Barkbeak",
-            "tradeInOneStoreAddress": "ZG6BSTLI72GLV7E4CBMLGNKRDDTKXEIIIFPAQEIRNRPK7TNXOUUQMDTZGM",
-            "tradeInTwoStoreAddress": "VWH5GUYDSQIZKVY7CZAOHUKYBF66RJAFF32PTCCGNDIZJYNTFALHZHISG4",
-            "appID": 852314994,
-            "contractAddress": "F2JYVYEKBKBFPCXDYHI4NH7UAIKA62JESRWTOHEASOWJWR4FWSILT7OFYE",
+            "tradeInOneStoreAddress": "CC6BG4KT5ACY7DG3P4PB6Y4HA6FIXGUZ67YJHPIFPQVBIH75TVXHTXXJBE",
+            "tradeInTwoStoreAddress": "UMLXOTX5YGHAXEBLOPCNNIKTB2KKOWHZWCFT5QZQHIJX6VKTUQBZNW3BFQ",
+            "appID": 855629576,
+            "contractAddress": "2QV3PEUIV54AARFWURWOQQRWHF47GXVLIG2FPHOPJXK32V7Q4L4BRF6QTU",
             "available": 0
         },
         {
@@ -72,9 +72,9 @@
             "tradedCard": 798984317,
             "tradedCardName": "Cinder",
             "tradeInOneStoreAddress": "OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA",
-            "tradeInTwoStoreAddress": "5YVYWHOAJUEAMPML3TJTS27FKHN7GOD5HVFYPHRB557BCXBUCC3422BPQU",
-            "appID": 852315131,
-            "contractAddress": "BJ3RH3VJP6JLZ7USFYHZRJUCGELBLFGRCTKUX2ZJP5CG4XNWRROLIQXKUU",
+            "tradeInTwoStoreAddress": "7FGNZL2KOEACMLHVW24UCGZRZQKVE4CKHGIQ3LQE45ZIOWLYUGGE3YCYE4",
+            "appID": 855625604,
+            "contractAddress": "CF7YZ535AXXBPH3ZPH67U43W6ISGA5SMNF3KN5OMQLJMDX3MAWW2MW6J4A",
             "available": 0
         },
         {
@@ -90,8 +90,8 @@
             "tradedCard": 798983583,
             "tradedCardName": "Ash",
             "tradeInStoreAddress": "SOAAA47UPOFB2N3ZS5SMF6BFYMCWFH2S3K5MJDOEPE6U5YKRBOF7UEI73M",
-            "appID": 852301534,
-            "contractAddress": "5YVYWHOAJUEAMPML3TJTS27FKHN7GOD5HVFYPHRB557BCXBUCC3422BPQU",
+            "appID": 855614369,
+            "contractAddress": "7FGNZL2KOEACMLHVW24UCGZRZQKVE4CKHGIQ3LQE45ZIOWLYUGGE3YCYE4",
             "available": 0
         },
         {
@@ -107,9 +107,9 @@
             "tradedCard": 798982205,
             "tradedCardName": "Judodo",
             "tradeInOneStoreAddress": "OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA",
-            "tradeInTwoStoreAddress": "MMRE6BXZXC3ZX2DJMNNUHCCFNY7ALBMLCZARIRUOEYQWCLNO2RJJB5HRMI",
-            "appID": 852309803,
-            "contractAddress": "CQKQYBBLTTUYLONFS2OQBAHKGMFBSEXHDB4QU2BQCZCIKS6TIV7P2NCF2I",
+            "tradeInTwoStoreAddress": "JOTVSHOV35EBIRWSDTIYVYPVJJXMFYJW2KF27MWMSWLOTFVUDRYBZTAXJM",
+            "appID": 855625481,
+            "contractAddress": "OWCJLUNN7LM5HZA6SBI6OV5AUE6QWQWL4AUE5DLWYD6ZZEO3H3AP52JOTU",
             "available": 0
         },
         {
@@ -125,8 +125,8 @@
             "tradedCard": 798981060,
             "tradedCardName": "Jude",
             "tradeInStoreAddress": "ZG3QTF3LJYY735ZDHY7E5USU5MIYBFP2UEJK4UQ2WNXQU5TIOIDTSRHJHU",
-            "appID": 852301399,
-            "contractAddress": "MMRE6BXZXC3ZX2DJMNNUHCCFNY7ALBMLCZARIRUOEYQWCLNO2RJJB5HRMI",
+            "appID": 855614232,
+            "contractAddress": "JOTVSHOV35EBIRWSDTIYVYPVJJXMFYJW2KF27MWMSWLOTFVUDRYBZTAXJM",
             "available": 0
         },
         {
@@ -142,9 +142,9 @@
             "tradedCard": 798979660,
             "tradedCardName": "Barkly",
             "tradeInOneStoreAddress": "OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA",
-            "tradeInTwoStoreAddress": "DLNGKTHYRKNLGNWQ5QJKVO23Q4KVGGS3MMTTWT6BGYI46YIHQ66OUIRV6E",
-            "appID": 852309738,
-            "contractAddress": "VWH5GUYDSQIZKVY7CZAOHUKYBF66RJAFF32PTCCGNDIZJYNTFALHZHISG4",
+            "tradeInTwoStoreAddress": "4XCSZP45EV4NRBW4BGU3RMAGDLG4SYK5R2CMOSRO2APU4VP57MK4SY7LXY",
+            "appID": 855625372,
+            "contractAddress": "UMLXOTX5YGHAXEBLOPCNNIKTB2KKOWHZWCFT5QZQHIJX6VKTUQBZNW3BFQ",
             "available": 0
         },
         {
@@ -160,8 +160,8 @@
             "tradedCard": 798978892,
             "tradedCardName": "Twig",
             "tradeInStoreAddress": "7IHWNYNG4FWFE5TI5SRG6HKYZQPJ5U5HM63PN5G45AR47GX3JYQOXYPDY4",
-            "appID": 852301278,
-            "contractAddress": "DLNGKTHYRKNLGNWQ5QJKVO23Q4KVGGS3MMTTWT6BGYI46YIHQ66OUIRV6E",
+            "appID": 855614064,
+            "contractAddress": "4XCSZP45EV4NRBW4BGU3RMAGDLG4SYK5R2CMOSRO2APU4VP57MK4SY7LXY",
             "available": 0
         },
         {
@@ -177,9 +177,9 @@
             "tradedCard": 798977534,
             "tradedCardName": "Wingo",
             "tradeInOneStoreAddress": "OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA",
-            "tradeInTwoStoreAddress": "UUJ6U2B2VI4EVOQUGH2Q3OPIW3XIM66DU442WGBKYM5TCLY4G26YZOYOVA",
-            "appID": 852309647,
-            "contractAddress": "ZG6BSTLI72GLV7E4CBMLGNKRDDTKXEIIIFPAQEIRNRPK7TNXOUUQMDTZGM",
+            "tradeInTwoStoreAddress": "327XVWTGCCPJUX3J5VALX2X7DB77TQOEDCRUIYSSDFICJUTYA2GJO7EF6Q",
+            "appID": 855625285,
+            "contractAddress": "CC6BG4KT5ACY7DG3P4PB6Y4HA6FIXGUZ67YJHPIFPQVBIH75TVXHTXXJBE",
             "available": 0
         },
         {
@@ -195,8 +195,8 @@
             "tradedCard": 798976821,
             "tradedCardName": "Win",
             "tradeInStoreAddress": "ZDS7OKL4CFN4JYPFHKDFNQOCN2GVO3TDQ6N7N5FOO4BMWAC3N7BY2HS7DY",
-            "appID": 852301180,
-            "contractAddress": "UUJ6U2B2VI4EVOQUGH2Q3OPIW3XIM66DU442WGBKYM5TCLY4G26YZOYOVA",
+            "appID": 855613953,
+            "contractAddress": "327XVWTGCCPJUX3J5VALX2X7DB77TQOEDCRUIYSSDFICJUTYA2GJO7EF6Q",
             "available": 0
         },
     {

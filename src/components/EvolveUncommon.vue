@@ -235,32 +235,32 @@ const smartContractInfo = {
     requiredAmountOfAlchecoin: 100
   },
   Wingo: {
-    appID: 852301180,
+    appID: 855613953,
     evolved: 798977534,
     traded: 798976821,
     alchecoinAssetID: 226701642,
-    requiredAmountOfAlchecoin: 1500
+    requiredAmountOfAlchecoin: 1500000000
   },
   Barkly: {
-    appID: 852301278,
+    appID: 855614064,
     evolved: 798979660,
     traded: 798978892,
     alchecoinAssetID: 226701642,
-    requiredAmountOfAlchecoin: 1500
+    requiredAmountOfAlchecoin: 1500000000
   },
   Judodo: {
-    appID: 852301399,
+    appID: 855614232,
     evolved: 798982205,
     traded: 798981060,
     alchecoinAssetID: 226701642,
-    requiredAmountOfAlchecoin: 1500
+    requiredAmountOfAlchecoin: 1500000000
   },
   Cinder: {
-    appID: 852301534,
+    appID: 855614369,
     evolved: 798984317,
     traded: 798983583,
     alchecoinAssetID: 226701642,
-    requiredAmountOfAlchecoin: 1500
+    requiredAmountOfAlchecoin: 1500000000
   }
 }
 const popupTriggers = ref({
