@@ -43,7 +43,7 @@
   </popup-window>
   <popup-window v-if="popupTriggers.transactionSuccessful">
     <h2>Transaction successful!</h2>
-    <button class="boxShadow" @click="TogglePopup('transactionSuccessful')">Close</button>
+    <button class="boxShadow" @click="ReloadWindow()">Close</button>
   </popup-window>
   <popup-window v-if="popupTriggers.transactionFailed">
     <h2>Failed. Please try again.</h2>
@@ -219,7 +219,11 @@ const itemIds = {
   799725874: 800652395,
   799726595: 800652510,
   799727884: 800652612,
-  799728466: 800652730
+  799728466: 800652730,
+  798976821: 852295895,
+  798978892: 852295986,
+  798981060: 852296118,
+  798983583: 852296213
 }
 const popupTriggers = ref({
   makePurchase: false,
@@ -256,6 +260,9 @@ export default {
     },
     TogglePopup (trigger) {
       popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+    },
+    ReloadWindow () {
+      window.location.reload()
     },
     async buyWithAlgo () {
       this.TogglePopup('makePurchase')

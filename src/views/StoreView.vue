@@ -91,7 +91,10 @@ const addresses = [
   'ZDS7OKL4CFN4JYPFHKDFNQOCN2GVO3TDQ6N7N5FOO4BMWAC3N7BY2HS7DY',
   '7IHWNYNG4FWFE5TI5SRG6HKYZQPJ5U5HM63PN5G45AR47GX3JYQOXYPDY4',
   'ZG3QTF3LJYY735ZDHY7E5USU5MIYBFP2UEJK4UQ2WNXQU5TIOIDTSRHJHU',
-  'SOAAA47UPOFB2N3ZS5SMF6BFYMCWFH2S3K5MJDOEPE6U5YKRBOF7UEI73M'
+  'SOAAA47UPOFB2N3ZS5SMF6BFYMCWFH2S3K5MJDOEPE6U5YKRBOF7UEI73M',
+  'MRRIT7LBP3I6QIMGVST2IUPW7OOEPUBGTVPRWUTZMA5ZJZSBEI53T4QLWQ',
+  'M5VTGXSX2DK3HXWF4YZI537PYQGSPCD4SCZUKTZCLVBWFJU5IHDICDIXE4',
+  'JLNJOJTMDMYHCUFNYM2HLX4WFOQ4VWG6QJUJRAJ5KNHFMVWU6IO43VFTZI'
 ]
 
 let address
@@ -142,7 +145,7 @@ export default {
   },
   computed: {
     filteredItems () {
-      let tempItems = storeItems.filter(item => item.amount > 0)
+      let tempItems = storeItems
 
       if (this.viewOnly === 'alchemon') {
         tempItems = tempItems.filter(item => {
@@ -160,7 +163,7 @@ export default {
         })
       }
       if (this.viewOnly === 'all') {
-        tempItems = storeItems.filter(item => item.amount > 0)
+        tempItems = storeItems
       }
       return tempItems
     }

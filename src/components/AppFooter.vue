@@ -3,15 +3,25 @@
     <img class="bolt" src="https://alchemon-website-assets.s3.amazonaws.com/assets/10_bolt_back.gif" alt="Bolt">
     <div>
       <a class="footerLink" href="https://t.me/joinchat/WbyxkfAyJDZmMzE5" target="_blank">Telegram</a> //
-      <a class="footerLink" href="https://discord.gg/qKtk4XGXyS" target="_blank">Discord</a> //
+      <a class="footerLink" href="https://discord.gg/wh35XRnb" target="_blank">Discord</a> //
       <a class="footerLink" href="https://twitter.com/AlchemonNFT" target="_blank">Twitter</a>
     </div>
     <ul>
-      <li><router-link to="/privacypolicy" class="navlinks">Privacy Policy</router-link></li>
-      <li><router-link to="/termsandconditions" class="navlinks">Terms and Conditions</router-link></li>
-      <li><router-link to="/cookies" class="navlinks">Cookies Policy</router-link></li>
-      <li><router-link to="/litepaper" class="navlinks">Litepaper</router-link></li>
-      <li><router-link to="/staff" class="navlinks">Staff</router-link></li>
+      <li>
+        <router-link to="/privacypolicy" class="navlinks">Privacy Policy</router-link>
+      </li>
+      <li>
+        <router-link to="/termsandconditions" class="navlinks">Terms and Conditions</router-link>
+      </li>
+      <li>
+        <router-link to="/cookies" class="navlinks">Cookies Policy</router-link>
+      </li>
+      <li>
+        <router-link to="/litepaper" class="navlinks">Litepaper</router-link>
+      </li>
+      <li>
+        <router-link to="/staff" class="navlinks">Staff</router-link>
+      </li>
     </ul>
     &copy; {{new Date().getFullYear()}} Alchemon. All Rights Reserved.
     <img class="slug" src="https://alchemon-website-assets.s3.amazonaws.com/assets/19_slug.gif" alt="Slug">

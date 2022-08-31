@@ -103,6 +103,18 @@ import { reactive, ref } from 'vue'
 import PopupWindow from '../components/PopupWindow.vue'
 
 const alchemonName = {
+  798976821: 'Win',
+  798978892: 'Twig',
+  798981060: 'Jude',
+  798983583: 'Ash',
+  798977534: 'Wingo',
+  798979660: 'Barkly',
+  798982205: 'Judodo',
+  798984317: 'Cinder',
+  798978192: 'Winghost',
+  798980408: 'Barkbeak',
+  798982872: 'Judopeck',
+  798985107: 'Torchfeather',
   744527019: 'Lyth',
   744527932: 'Golyth',
   744528583: 'Monolyth',
@@ -159,6 +171,14 @@ export default {
     const rewardsAvailable = reactive({})
 
     const evolutions = {
+      798976821: '798977534', // win to wingo
+      798977534: '798978192', // wingo to winghost
+      798978892: '798979660', // twig to barkly
+      798979660: '798980408', // barlky to barkbeak
+      798981060: '798982205', // jude to judodo
+      798982205: '798982872', // judodo to judopeck
+      798983583: '798984317', // ash to cinder
+      798984317: '798985107', // cinder to torchfeather
       744527019: '744527932', // lyth to golyth
       744527932: '744528583', // golyth to monolyth
       744551347: '744530060', // kumo to araku
