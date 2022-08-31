@@ -150,9 +150,12 @@ import WalletConnect from '@walletconnect/client'
 import QRCodeModal from 'algorand-walletconnect-qrcode-modal'
 import axios from 'axios'
 import { formatJsonRpcRequest } from '@json-rpc-tools/utils'
+import alchemon from '../data/craftandevolve.json'
 
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import PopupWindow from './PopupWindow.vue'
+
+const epics = reactive({})
 
 const apiURL = 'https://avk5m0z0nc.execute-api.us-east-1.amazonaws.com'
 // eslint-disable-next-line no-unused-vars
@@ -173,55 +176,6 @@ const popupTriggers = ref({
   transactionFailed: false,
   errorOccurred: false
 })
-const tradeInAddresses = {
-  744528583: 'MSKNULULYUYJJWCBGFN3IXJSDDQWX5YFSGEMLI5UJTFEHYKOJ7CG6X3ZH4', // mmonolyth
-  744530969: 'IJOVKGTVVDWOAMRCRMES6FO5Z3ZL2YQU4SJ42BDBRTCWXLABVURUWSOQHQ', // arakumo
-  744533302: 'ND75GVK7UJJ76U7UD5ZGNUHCD2VN4VL5E7RGTX2GBNGREPTE7XGECCHAKM', // torrment
-  744536686: '7I23MXKEQQW3PRP5UE3N22ZRHOEHEVPSE5KG63UU4Q2ABCUN5G6XKNWHJ4', // incydious
-  798978192: 'CC6BG4KT5ACY7DG3P4PB6Y4HA6FIXGUZ67YJHPIFPQVBIH75TVXHTXXJBE', // winghost
-  798980408: 'UMLXOTX5YGHAXEBLOPCNNIKTB2KKOWHZWCFT5QZQHIJX6VKTUQBZNW3BFQ', // barkbeak
-  798982872: 'OWCJLUNN7LM5HZA6SBI6OV5AUE6QWQWL4AUE5DLWYD6ZZEO3H3AP52JOTU', // judopeck
-  798985107: 'CF7YZ535AXXBPH3ZPH67U43W6ISGA5SMNF3KN5OMQLJMDX3MAWW2MW6J4A' // tochfeather
-}
-
-const smartContractInfo = {
-  Araknolyth: {
-    appID: 842475771,
-    evolvedAlchemon: 744538073,
-    tradedAlchemonOne: 744528583,
-    tradedAlchemonTwo: 744530969,
-    amount: 1,
-    alchecoinAssetID: 310014962,
-    requiredAmountOfAlch: 250
-  },
-  Torcydious: {
-    appID: 842475638,
-    evolvedAlchemon: 744539419,
-    tradedAlchemonOne: 744533302,
-    tradedAlchemonTwo: 744536686,
-    amount: 1,
-    alchecoinAssetID: 310014962,
-    requiredAmountOfAlch: 250
-  },
-  Ghostbark: {
-    appID: 855629576,
-    evolvedAlchemon: 798985842,
-    tradedAlchemonOne: 798978192,
-    tradedAlchemonTwo: 798980408,
-    amount: 1,
-    alchecoinAssetID: 226701642,
-    requiredAmountOfAlch: 3750000000
-  },
-  Torchwondo: {
-    appID: 855629865,
-    evolvedAlchemon: 798986475,
-    tradedAlchemonOne: 798982872,
-    tradedAlchemonTwo: 798985107,
-    amount: 1,
-    alchecoinAssetID: 226701642,
-    requiredAmountOfAlch: 3750000000
-  }
-}
 
 let errorMessage
 export default {
@@ -238,20 +192,33 @@ export default {
       return errorMessage
     }
   },
+  setup () {
+    for (const item in alchemon) {
+      if (alchemon[item].rarity === 3) {
+        epics[item] = alchemon[item]
+      }
+    }
+  },
   methods: {
     setAlchemon (name) {
-      const id = smartContractInfo[name].appID
-      const evolved = smartContractInfo[name].evolvedAlchemon
-      const tradedOne = smartContractInfo[name].tradedAlchemonOne
-      const tradedTwo = smartContractInfo[name].tradedAlchemonTwo
-      const amount = smartContractInfo[name].amount
-      const token = smartContractInfo[name].alchecoinAssetID
-      const cost = smartContractInfo[name].requiredAmountOfAlch
-      const address = localStorage.userAddress
-      const wallet = localStorage.userWallet
-      this.craftAlchemon(id, evolved, tradedOne, tradedTwo, amount, address, wallet, token, cost)
+      for (const item in epics) {
+        if (epics[item].name === name) {
+          const id = epics[item].appID
+          const evolved = epics[item].evolvedAlchemon
+          const tradedOne = epics[item].tradedCardOne
+          const tradedTwo = epics[item].tradedCardTwo
+          const amount = epics[item].amount
+          const token = epics[item].alchecoinAssetID
+          const cost = epics[item].requiredAmountOfAlch
+          const tradedAddressOne = epics[item].tradeInOneStoreAddress
+          const tradedAddressTwo = epics[item].tradeInTwoStoreAddress
+          const address = localStorage.userAddress
+          const wallet = localStorage.userWallet
+          this.craftAlchemon(id, evolved, tradedOne, tradedTwo, tradedAddressOne, tradedAddressTwo, amount, address, wallet, token, cost)
+        }
+      }
     },
-    async craftAlchemon (appID, evolvedAlchemon, tradedAlchemonOne, tradedAlchemonTwo, amount, address, wallet, paymentID, cost) {
+    async craftAlchemon (appID, evolvedAlchemon, tradedAlchemonOne, tradedAlchemonTwo, tradedAddressOne, tradedAddressTwo, amount, address, wallet, paymentID, cost) {
       const id = appID
       const evolved = evolvedAlchemon
       const tradedOne = tradedAlchemonOne
@@ -264,8 +231,8 @@ export default {
       }
       const quickEvolveOneResponse = await axios.post(`${apiURL}/quickEvolveAlchThree`, {
         customerAddress: address,
-        tradeInOneStoreAddress: tradeInAddresses[tradedOne],
-        tradeInTwoStoreAddress: tradeInAddresses[tradedTwo],
+        tradeInOneStoreAddress: tradedAddressOne,
+        tradeInTwoStoreAddress: tradedAddressTwo,
         otherAccount: 'OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA',
         quickEvolveAlchThreeAppID: id,
         evolvedAlchemonAssetID: evolved,

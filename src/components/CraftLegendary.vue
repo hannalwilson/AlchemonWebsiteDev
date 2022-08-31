@@ -151,9 +151,12 @@ import WalletConnect from '@walletconnect/client'
 import QRCodeModal from 'algorand-walletconnect-qrcode-modal'
 import axios from 'axios'
 import { formatJsonRpcRequest } from '@json-rpc-tools/utils'
+import alchemon from '../data/craftandevolve.json'
 
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import PopupWindow from './PopupWindow.vue'
+
+const legendary = reactive({})
 
 const apiURL = 'https://avk5m0z0nc.execute-api.us-east-1.amazonaws.com/'
 // eslint-disable-next-line no-unused-vars
@@ -174,20 +177,6 @@ const popupTriggers = ref({
   transactionFailed: false,
   errorOccurred: false
 })
-const tradeInAddresses = {
-  798985842: '2QV3PEUIV54AARFWURWOQQRWHF47GXVLIG2FPHOPJXK32V7Q4L4BRF6QTU', // ghostbark
-  798986475: 'SGY72XB4KTLRDXAAO4LLWLNHPBUJSEP3O37S37RRIEQNUPVWY2R2ACRPAA' // torchwondo
-}
-
-const smartContractInfo = {
-  Dreadwing: {
-    appID: 855632129,
-    evolvedAlchemon: 798987161,
-    tradedAlchemonOne: 798985842,
-    tradedAlchemonTwo: 798986475,
-    amount: 1
-  }
-}
 
 let errorMessage
 export default {
@@ -204,19 +193,32 @@ export default {
       return errorMessage
     }
   },
+  setup () {
+    for (const item in alchemon) {
+      if (alchemon[item].rarity === 3) {
+        legendary[item] = alchemon[item]
+      }
+    }
+  },
   methods: {
     setAlchemon (name) {
-      console.log(smartContractInfo)
-      const id = smartContractInfo[name].appID
-      const evolved = smartContractInfo[name].evolvedAlchemon
-      const tradedOne = smartContractInfo[name].tradedAlchemonOne
-      const tradedTwo = smartContractInfo[name].tradedAlchemonTwo
-      const amount = smartContractInfo[name].amount
-      const address = localStorage.userAddress
-      const wallet = localStorage.userWallet
-      this.craftAlchemon(id, evolved, tradedOne, tradedTwo, amount, address, wallet)
+      for (const item in legendary) {
+        if (legendary[item].name === name) {
+          const id = legendary[item].appID
+          const evolved = legendary[item].id
+          const tradedOne = legendary[item].tradedCardOne
+          const tradedTwo = legendary[item].tradedCardTwo
+          const tradedAddressOne = legendary[item].tradeInOneStoreAddress
+          const tradedAddressTwo = legendary[item].tradeInTwoStoreAddress
+          const amount = legendary[item].amount
+          const address = localStorage.userAddress
+          const wallet = localStorage.userWallet
+          this.craftAlchemon(id, evolved, tradedOne, tradedTwo, tradedAddressOne, tradedAddressTwo, amount, address, wallet)
+          break
+        }
+      }
     },
-    async craftAlchemon (appID, evolvedAlchemon, tradedAlchemonOne, tradedAlchemonTwo, amount, address, wallet) {
+    async craftAlchemon (appID, evolvedAlchemon, tradedAlchemonOne, tradedAlchemonTwo, tradedAddressOne, tradedAddressTwo, amount, address, wallet) {
       const id = appID
       const evolved = evolvedAlchemon
       const tradedOne = tradedAlchemonOne
@@ -229,8 +231,8 @@ export default {
       }
       const quickEvolveOneResponse = await axios.post(`${apiURL}/quickEvolveAlchTwo`, {
         customerAddress: address,
-        tradeInOneStoreAddress: tradeInAddresses[tradedOne],
-        tradeInTwoStoreAddress: tradeInAddresses[tradedTwo],
+        tradeInOneStoreAddress: tradedAddressOne,
+        tradeInTwoStoreAddress: tradedAddressTwo,
         quickEvolveAlchTwoAppID: id,
         evolvedAlchemonAssetID: evolved,
         tradeInAlchemonAssetIDOne: tradedOne,

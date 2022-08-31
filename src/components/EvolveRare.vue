@@ -149,8 +149,12 @@ import QRCodeModal from 'algorand-walletconnect-qrcode-modal'
 import axios from 'axios'
 import { formatJsonRpcRequest } from '@json-rpc-tools/utils'
 
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import PopupWindow from './PopupWindow.vue'
+
+import alchemon from '../data/craftandevolve.json'
+
+const rares = reactive({})
 
 const apiURL = 'https://avk5m0z0nc.execute-api.us-east-1.amazonaws.com'
 
@@ -163,111 +167,7 @@ const walletConnector = new WalletConnect(
     qrcodeModal: QRCodeModal
   }
 )
-const tradeInAddresses = {
-  509842608: 'DWGPVTDCFM3DADFBHTE7S4DX7QL4HUJHGHC6DFGJXUPD5P5HPSII4MRGQ4', // zipadol
-  509844088: 'SAWCR4D342HOKTHK7EDNE6UONGHGRVYGYKTCCHVMJD4BPX4KLMAF5JNK6Y', // hailpuff
-  509848775: 'DORWEXHUPVXMLELBTGAGGG4PGPRB6GB77YZ5WHHTT3TFASE5A25LBMQIWY', // daggerz
-  509850827: 'HFIAQTXJC5QJKXNY5TQ7GRUPXDI46DWQQNH4WLONANCX6WLGGAQYOIUFDU', // chomp
-  744527932: 'YCTTBN4WVEACXLKURQQ4X2X6HEVV4ANH2LZ4HI5MF5RMLPOH2ICC4BC6AI', // golyth
-  744530060: 'SOLSRI3V5JW2RYJJXQRXGFBNQQMTKOUQZQXHMGFO7YJ4BDSFLNRBFOLK3I', // araku
-  744532520: 'V7WQJCTFNJPY74FX55IPG5OYMM2OUTHIVBCFNTJZTUYQFLJ6PIJ443L6O4', // torrden
-  744535776: 'D5UOOPGEX3M7CIXF2VLRGTNOQA2EHU4FVZ34KHYPJMZXLNJCQOCV3QM3DQ', // cydevil
-  798977534: '327XVWTGCCPJUX3J5VALX2X7DB77TQOEDCRUIYSSDFICJUTYA2GJO7EF6Q', // wingo
-  798979660: '4XCSZP45EV4NRBW4BGU3RMAGDLG4SYK5R2CMOSRO2APU4VP57MK4SY7LXY', // barkly
-  798982205: 'JOTVSHOV35EBIRWSDTIYVYPVJJXMFYJW2KF27MWMSWLOTFVUDRYBZTAXJM', // judodo
-  798984317: '7FGNZL2KOEACMLHVW24UCGZRZQKVE4CKHGIQ3LQE45ZIOWLYUGGE3YCYE4' // cinder
-}
 
-const smartContractInfo = {
-  Zipacute: {
-    appID: 779979805,
-    evolved: 527475282,
-    traded: 509842608,
-    alchecoinAssetID: 310014962,
-    requiredAmountOfAlch: 100
-
-  },
-  Hailstorm: {
-    appID: 779980397,
-    evolved: 527477069,
-    traded: 509844088,
-    alchecoinAssetID: 310014962,
-    requiredAmountOfAlch: 100
-
-  },
-  Daggerpult: {
-    appID: 779980888,
-    evolved: 527479654,
-    traded: 509848775,
-    alchecoinAssetID: 310014962,
-    requiredAmountOfAlch: 100
-
-  },
-  Likachomp: {
-    appID: 779981368,
-    evolved: 527481591,
-    traded: 509850827,
-    alchecoinAssetID: 310014962,
-    requiredAmountOfAlch: 100
-
-  },
-  Monolyth: {
-    appID: 780902676,
-    evolved: 744528583,
-    traded: 744527932,
-    alchecoinAssetID: 310014962,
-    requiredAmountOfAlch: 100
-  },
-  Arakumo: {
-    appID: 780903179,
-    evolved: 744530969,
-    traded: 744530060,
-    alchecoinAssetID: 310014962,
-    requiredAmountOfAlch: 100
-  },
-  Torrment: {
-    appID: 780903876,
-    evolved: 744533302,
-    traded: 744532520,
-    alchecoinAssetID: 310014962,
-    requiredAmountOfAlch: 100
-  },
-  Incydious: {
-    appID: 780904407,
-    evolved: 744536686,
-    traded: 744535776,
-    alchecoinAssetID: 310014962,
-    requiredAmountOfAlch: 100
-  },
-  Winghost: {
-    appID: 855625285,
-    evolved: 798978192,
-    traded: 798977534,
-    alchecoinAssetID: 226701642,
-    requiredAmountOfAlch: 1500000000
-  },
-  Barkbeak: {
-    appID: 855625372,
-    evolved: 798980408,
-    traded: 798979660,
-    alchecoinAssetID: 226701642,
-    requiredAmountOfAlch: 1500000000
-  },
-  Judopeck: {
-    appID: 855625481,
-    evolved: 798982872,
-    traded: 798982205,
-    alchecoinAssetID: 226701642,
-    requiredAmountOfAlch: 1500000000
-  },
-  Torchfeather: {
-    appID: 855625604,
-    evolved: 798985107,
-    traded: 798984317,
-    alchecoinAssetID: 226701642,
-    requiredAmountOfAlch: 1500000000
-  }
-}
 const popupTriggers = ref({
   chooseWallet: false,
   makePurchase: false,
@@ -290,18 +190,31 @@ export default {
       return errorMessage
     }
   },
+  setup () {
+    for (const item in alchemon) {
+      if (alchemon[item].rarity === 3) {
+        rares[item] = alchemon[item]
+      }
+    }
+  },
   methods: {
     setAlchemon (name) {
-      const id = smartContractInfo[name].appID
-      const evolved = smartContractInfo[name].evolved
-      const traded = smartContractInfo[name].traded
-      const token = smartContractInfo[name].alchecoinAssetID
-      const cost = smartContractInfo[name].requiredAmountOfAlch
-      const address = localStorage.userAddress
-      const wallet = localStorage.userWallet
-      this.evolveAlchemon(id, evolved, traded, address, wallet, token, cost)
+      for (const item in rares) {
+        if (rares[item].name === name) {
+          const id = rares[item].appID
+          const evolved = rares[item].id
+          const traded = rares[item].tradedCard
+          const token = rares[item].alchecoinAssetID
+          const cost = rares[item].requiredAmountOfAlch
+          const tradedAddress = rares[item].tradeInStoreAddress
+          const address = localStorage.userAddress
+          const wallet = localStorage.userWallet
+          this.evolveAlchemon(id, evolved, traded, tradedAddress, address, wallet, token, cost)
+          break
+        }
+      }
     },
-    async evolveAlchemon (appID, evolvedAlchemon, tradedAlchemon, address, wallet, paymentID, cost) {
+    async evolveAlchemon (appID, evolvedAlchemon, tradedAlchemon, tradeInAddress, address, wallet, paymentID, cost) {
       if (!wallet) {
         window.alert('Error: No wallet connected.')
       }
@@ -311,7 +224,7 @@ export default {
       const quickEvolveOneResponse = await axios.post(`${apiURL}/quickEvolveAlchTwo`, {
         customerAddress: address,
         tradeInOneStoreAddress: 'OJGTHEJ2O5NXN7FVXDZZEEJTUEQHHCIYIE5MWY6BEFVVLZ2KANJODBOKGA',
-        tradeInTwoStoreAddress: tradeInAddresses[tradedAlchemon],
+        tradeInTwoStoreAddress: tradeInAddress,
         quickEvolveAlchTwoAppID: appID,
         evolvedAlchemonAssetID: evolvedAlchemon,
         tradeInAlchemonAssetIDOne: tradedAlchemon,
