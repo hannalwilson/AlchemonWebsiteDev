@@ -184,9 +184,6 @@ export default {
   },
   mounted () {
     this.openDropdownNav()
-    if (window.innerWidth < 768) {
-      this.countClicksOnMobileDropdown()
-    }
     if (localStorage.userAddress) {
       this.address = localStorage.userAddress
       this.foundAddress = true
