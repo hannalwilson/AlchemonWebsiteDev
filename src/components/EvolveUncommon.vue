@@ -94,62 +94,55 @@ button {
 
 @media (max-width: 800px) {
   .buttonContainer {
-    height: 25vw;
+    height: 40vw;
     width: 35vw;
   }
-    .nftImage {
-      width: 35vw;
-    }
-    button {
-      padding: 2% 20%;
-    }
+
+  .nftImage {
+    width: 35vw;
+  }
+
+  button {
+    padding: 2% 20%;
+  }
 }
 
 @media (max-width: 650px) {
   .buttonContainer {
-    height: 30vw;
+    height: 50vw;
     width: 45vw;
   }
-    .nftImage {
-      width: 45vw;
-    }
+
+  .nftImage {
+    width: 45vw;
+  }
 }
 
 @media (max-width: 500px) {
   .buttonContainer {
-    height: 35vw;
+    height: 60vw;
     width: 70vw;
   }
-    .nftImage {
-      width: 70vw;
-    }
-        button {
-          padding: 2% 30%;
-        }
+
+  .nftImage {
+    width: 70vw;
+  }
+
+  button {
+    padding: 2% 30%;
+  }
 }
 
 @media (max-width: 350px) {
   .buttonContainer {
-      height: 40vw;
-      width: 90vw;
-    }
-    .nftImage {
-      width: 90vw;
-    }
+    height: 70vw;
+    width: 90vw;
+  }
+
+  .nftImage {
+    width: 90vw;
+  }
 }
-
-@media (max-width: 350px) {
-  .buttonContainer {
-      height: 50vw;
-    }
-
-}
-
-// @media (max-width: 1100px) {
-//   .nftContainer {
-//     height: 485px;
-//   }
-// }
 </style>
 
 <script>
