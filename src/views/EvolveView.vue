@@ -2,30 +2,32 @@
   <div>
     <div class="background">
       <h1 class="spreadText">CRAFT & EVOLVE</h1>
+      <div class="searchBar">
+        <div class="selectContainer">
+        <label for="select">View:</label>
+        <select name="viewSet" id="select" v-model="viewSet" class="boxShadow">
+          <option value="View All">All Sets</option>
+          <option value='4'>Only Set 4</option>
+          <option value='5'>Only Set 5</option>
+          <option value='Community'>Only Community Set</option>
+        </select>
+        </div>
+      </div>
     </div>
     <div class="forSale">
-      <craft-legendary v-for="card in legendary" :key="card.available" :name="card.name"
-        :tradedCardOne="card.tradedCardOneName" :tradedCardTwo="card.tradedCardTwoName" :available="card.available"
-        :set="card.set">
-      </craft-legendary>
-      <craft-epic v-for="card in epic" :key="card.available" :name="card.name" :tradedCardOne="card.tradedCardOneName"
-        :tradedCardTwo="card.tradedCardTwoName" :available="card.available" :set="card.set"></craft-epic>
-      <evolve-rare v-for="card in rare" :key="card.available" :name="card.name" :tradedCard="card.tradedCardName"
-        :available="card.available" :set="card.set"></evolve-rare>
-      <evolve-uncommon v-for="card in uncommon" :key="card.available" :name="card.name"
-        :tradedCard="card.tradedCardName" :available="card.available" :set="card.set"></evolve-uncommon>
+      <craft-evolve-card v-for="card in filteredCards" :key="card.name" :name="card.name" :tradedCardOne="card.tradedCardOneName"
+        :tradedCardTwo="card.tradedCardTwoName" :available="card.available" :set="card.set" :rarity="card.rarity"></craft-evolve-card>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-
 .background {
   background-image: url("../assets/alcheshop_coin.png") ,linear-gradient(to right, #007bff, #2A78F8, #4287F9, #89B4FB);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 5% 0% 2%;
+  padding: 5% 0% 0%;
 
 }
 p {
@@ -45,40 +47,46 @@ h1 {
   color: #e6ad10;
   -webkit-text-stroke:1px rgb(22, 22, 54);
 }
-button {
+
+#select {
   font-family: poppins;
-  text-align: center;
-  background-color: orange;
-  border: 2px solid orange;
+  text-align: left;
+  background-color: #e6ad10;
+  border: 2px solid #e6ad10;
   color: white;
   cursor: pointer;
   border-radius: 8px;
-  margin: 1%;
+  font-size: inherit;
   padding: .5%;
+  width: 50vw;
+  margin-left: 1%;
+
+  &:hover {
+    background-color: darkblue;
+    color: orange;
+  }
 }
 
-button:hover {
-  background-color: darkblue;
-  border: 2px solid orange;
-  color: orange;
+.searchBar {
+  text-align: left;
+  padding: 2%;
+  background-color: #ffffff88;
+}
+
+.selectContainer {
+  margin: 0 18vw;
 }
 </style>
 
 <script>
-import EvolveUncommon from '@/components/EvolveUncommon.vue'
-import EvolveRare from '@/components/EvolveRare.vue'
-import CraftEpic from '@/components/CraftEpic.vue'
-import CraftLegendary from '@/components/CraftLegendary.vue'
+import CraftEvolveCard from '@/components/CraftEvolveCard.vue'
 
 import algosdk from 'algosdk'
 import { reactive } from 'vue'
 
 import alchemon from '../data/craftandevolve.json'
 
-const uncommon = reactive({})
-const rare = reactive({})
-const epic = reactive({})
-const legendary = reactive({})
+const alchemons = reactive([])
 
 export default {
   setup () {
@@ -88,64 +96,15 @@ export default {
     const client = new algosdk.Algodv2(token, server, port)
 
     for (const item in alchemon) {
-      switch (alchemon[item].rarity) {
-        case 1:
-          legendary[item] = alchemon[item]
-          break
-        case 2:
-          epic[item] = alchemon[item]
-          break
-        case 3:
-          rare[item] = alchemon[item]
-          break
-        case 4:
-          uncommon[item] = alchemon[item]
-          break
-      }
+      alchemons[item] = alchemon[item]
     }
 
-    for (const item in uncommon) {
-      client.accountInformation(uncommon[item].contractAddress).do().then(response => {
+    for (const item in alchemons) {
+      client.accountInformation(alchemons[item].contractAddress).do().then(response => {
         for (const asset of response.assets) {
-          for (const item in uncommon) {
-            if (uncommon[item].id === asset['asset-id']) {
-              uncommon[item].available = asset.amount
-            }
-          }
-        }
-      })
-    }
-
-    for (const item in rare) {
-      client.accountInformation(rare[item].contractAddress).do().then(response => {
-        for (const asset of response.assets) {
-          for (const item in rare) {
-            if (rare[item].id === asset['asset-id']) {
-              rare[item].available = asset.amount
-            }
-          }
-        }
-      })
-    }
-
-    for (const item in epic) {
-      client.accountInformation(epic[item].contractAddress).do().then(response => {
-        for (const asset of response.assets) {
-          for (const item in epic) {
-            if (epic[item].id === asset['asset-id']) {
-              epic[item].available = asset.amount
-            }
-          }
-        }
-      })
-    }
-
-    for (const item in legendary) {
-      client.accountInformation(legendary[item].contractAddress).do().then(response => {
-        for (const asset of response.assets) {
-          for (const item in legendary) {
-            if (legendary[item].id === asset['asset-id']) {
-              legendary[item].available = asset.amount
+          for (const item in alchemons) {
+            if (alchemons[item].id === asset['asset-id']) {
+              alchemons[item].available = asset.amount
             }
           }
         }
@@ -153,17 +112,38 @@ export default {
     }
   },
   components: {
-    EvolveUncommon,
-    EvolveRare,
-    CraftEpic,
-    CraftLegendary
+    CraftEvolveCard
+  },
+  computed: {
+    filteredCards () {
+      let tempCards = this.cards
+
+      if (this.viewSet === 'viewAll') {
+        tempCards = this.cards
+      }
+      if (this.viewSet === '4') {
+        tempCards = tempCards.filter((item) => {
+          return item.set === 4
+        })
+      }
+      if (this.viewSet === '5') {
+        tempCards = tempCards.filter((item) => {
+          return item.set === 5
+        })
+      }
+      if (this.viewSet === 'Community') {
+        tempCards = tempCards.filter((item) => {
+          return item.set === 'Community'
+        })
+      }
+
+      return tempCards
+    }
   },
   data () {
     return {
-      uncommon,
-      rare,
-      epic,
-      legendary
+      cards: alchemons,
+      viewSet: 'View All'
     }
   }
 }
