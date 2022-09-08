@@ -4,14 +4,26 @@
       <img :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/alchemon/${name}.png`" class="nftImage">
     </div>
     <div class="buttonContainer" v-if="set !== 'Community'">
-      <p> Craft a {{ name }}</p>
-      <p>You need: 2 {{ tradedCardOne }} + 2 {{ tradedCardTwo }} + 250 ALCH</p>
+      <p> Craft {{ name }}</p>
+      <p>You need: <br>
+      <ul>
+        <li>2 {{ tradedCardOne }}</li>
+        <li>2 {{ tradedCardTwo }}</li>
+        <li>250 ALCH</li>
+      </ul>
+      </p>
       <p>Available: {{ available }}</p>
       <button v-if="available > 0" @click="setAlchemon(`${name}`)" class="boxShadow nftButton">250 ALCH</button>
     </div>
     <div class="buttonContainer" v-if="set === 'Community'">
-      <p> Craft a {{ name }}</p>
-      <p>You need: 2 {{ tradedCardOne }} + 2 {{ tradedCardTwo }} + 3750 YLDY</p>
+      <p> Craft {{ name }}</p>
+      <p>You need: <br>
+      <ul>
+        <li>2 {{ tradedCardOne }}</li>
+        <li>2 {{ tradedCardTwo }}</li>
+        <li> 3750 YLDY</li>
+      </ul>
+      </p>
       <p>Available: {{ available }}</p>
       <button v-if="available > 0" @click="setAlchemon(`${name}`)" class="boxShadow nftButton">3750 YLDY</button>
     </div>
@@ -174,10 +186,6 @@ const popupTriggers = ref({
   errorOccurred: false
 })
 const tradeInAddresses = {
-  744528583: 'MSKNULULYUYJJWCBGFN3IXJSDDQWX5YFSGEMLI5UJTFEHYKOJ7CG6X3ZH4', // mmonolyth
-  744530969: 'IJOVKGTVVDWOAMRCRMES6FO5Z3ZL2YQU4SJ42BDBRTCWXLABVURUWSOQHQ', // arakumo
-  744533302: 'ND75GVK7UJJ76U7UD5ZGNUHCD2VN4VL5E7RGTX2GBNGREPTE7XGECCHAKM', // torrment
-  744536686: '7I23MXKEQQW3PRP5UE3N22ZRHOEHEVPSE5KG63UU4Q2ABCUN5G6XKNWHJ4', // incydious
   798978192: 'CC6BG4KT5ACY7DG3P4PB6Y4HA6FIXGUZ67YJHPIFPQVBIH75TVXHTXXJBE', // winghost
   798980408: 'UMLXOTX5YGHAXEBLOPCNNIKTB2KKOWHZWCFT5QZQHIJX6VKTUQBZNW3BFQ', // barkbeak
   798982872: 'OWCJLUNN7LM5HZA6SBI6OV5AUE6QWQWL4AUE5DLWYD6ZZEO3H3AP52JOTU', // judopeck
@@ -185,24 +193,6 @@ const tradeInAddresses = {
 }
 
 const smartContractInfo = {
-  Araknolyth: {
-    appID: 842475771,
-    evolvedAlchemon: 744538073,
-    tradedAlchemonOne: 744528583,
-    tradedAlchemonTwo: 744530969,
-    amount: 1,
-    alchecoinAssetID: 310014962,
-    requiredAmountOfAlch: 250
-  },
-  Torcydious: {
-    appID: 842475638,
-    evolvedAlchemon: 744539419,
-    tradedAlchemonOne: 744533302,
-    tradedAlchemonTwo: 744536686,
-    amount: 1,
-    alchecoinAssetID: 310014962,
-    requiredAmountOfAlch: 250
-  },
   Ghostbark: {
     appID: 855629576,
     evolvedAlchemon: 798985842,

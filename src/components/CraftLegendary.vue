@@ -5,14 +5,26 @@
     </div>
 
     <div class="buttonContainer" v-if="set !== 'Community'">
-      <p> Craft a {{ name }}</p>
-      <p>You need: 1 {{ tradedCardOne }} + 1 {{ tradedCardTwo }} + 250 ALCH</p>
+      <p> Craft {{ name }}</p>
+      <p>You need: <br>
+      <ul>
+        <li>1 {{ tradedCardOne }}</li>
+        <li>1 {{ tradedCardTwo }}</li>
+        <li>250 ALCH</li>
+      </ul>
+      </p>
       <p>Available: {{ available }}</p>
       <button v-if="available > 0" @click="setAlchemon(`${name}`)" class="boxShadow nftButton">250 ALCH</button>
     </div>
     <div class="buttonContainer" v-if="set === 'Community'">
-      <p> Craft a {{ name }}</p>
-      <p>You need: 1 {{ tradedCardOne }} + 1 {{ tradedCardTwo }} + 3750 YLDY</p>
+      <p> Craft {{ name }}</p>
+      <p>You need: <br>
+      <ul>
+        <li>1 {{ tradedCardOne }}</li>
+        <li>1 {{ tradedCardTwo }}</li>
+        <li> 3750 YLDY</li>
+      </ul>
+      </p>
       <p>Available: {{ available }}</p>
       <button v-if="available > 0" @click="setAlchemon(`${name}`)" class="boxShadow nftButton">3750 YLDY</button>
     </div>

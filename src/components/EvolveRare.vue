@@ -4,14 +4,22 @@
       <img :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/alchemon/${name}.png`" class="nftImage">
     </div>
     <div class="buttonContainer" v-if="set !== 'Community'">
-      <p> Evolve a {{ name }}</p>
-      <p>You need: 2 {{ tradedCard }} + 100 ALCH</p>
+      <p> Evolve {{ name }}</p>
+      <p>You need:<br>
+      <ul>
+        <li>2 {{ tradedCard }}</li>
+        <li>100 ALCH</li>
+      </ul></p>
       <p>Available: {{ available }}</p>
       <button v-if="available > 0" @click="setAlchemon(`${name}`)" class="boxShadow nftButton">100 ALCH</button>
     </div>
     <div class="buttonContainer" v-if="set === 'Community'">
-      <p> Evolve a {{ name }}</p>
-      <p>You need: 2 {{ tradedCard }} + 1500 YLDY</p>
+      <p> Evolve {{ name }}</p>
+      <p>You need:<br>
+      <ul>
+        <li>2 {{ tradedCard }}</li>
+        <li>1500 YLDY</li>
+      </ul> </p>
       <p>Available: {{ available }}</p>
       <button v-if="available > 0" @click="setAlchemon(`${name}`)" class="boxShadow nftButton">1500 YLDY</button>
     </div>
