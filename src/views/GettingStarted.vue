@@ -38,6 +38,8 @@
     </div>
     <popup-window v-if="popupTriggers.setDistribution" class="setPopup">
         <button @click="TogglePopup('setDistribution')">Close</button>
+        <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/distributionTable.gif"
+        alt="Set 2 Distribution" v-if="show" class="distribution">
         <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/distributionTable1.png"
             alt="Set 1 Distribution">
         <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/distributionTable2.png"
@@ -47,13 +49,19 @@
         <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/distributionTable4.png"
             alt="Set 4 Distribution">
         <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/distributionTable5.png"
-            alt="Set 5 Distribution">
+            alt="Set 5 Distribution" @click="show = !show">
     </popup-window>
 </template>
 
 <style lang="scss" scoped>
 .distributionbutton {
 margin: 0 auto;
+}
+.distribution {
+    width: 100px;
+    position: absolute;
+    right: 90%;
+    bottom: 98%;
 }
 .linkButton {
     margin: 3% 20%;
@@ -101,7 +109,8 @@ export default {
   data () {
     return {
       PopupWindow,
-      popupTriggers
+      popupTriggers,
+      show: false
     }
   }
 }
