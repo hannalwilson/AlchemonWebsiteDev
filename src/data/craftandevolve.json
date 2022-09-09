@@ -39,7 +39,7 @@
             "contractAddress": "SGY72XB4KTLRDXAAO4LLWLNHPBUJSEP3O37S37RRIEQNUPVWY2R2ACRPAA",
             "available": 0,
     "alchecoinAssetID": 226701642,
-    "requiredAmountOfAlch": 3750000000
+    "requiredAmountOfAlchecoin": 3750000000
         },
         {
             "name": "Ghostbark",
@@ -61,7 +61,7 @@
             "contractAddress": "2QV3PEUIV54AARFWURWOQQRWHF47GXVLIG2FPHOPJXK32V7Q4L4BRF6QTU",
             "available": 0,
             "alchecoinAssetID": 226701642,
-            "requiredAmountOfAlch": 3750000000
+            "requiredAmountOfAlchecoin": 3750000000
         },
         {
             "name": "Torchfeather",
