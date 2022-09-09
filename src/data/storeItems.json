@@ -4,28 +4,32 @@
     "id": 798983583,
     "type": "alchemon",
     "amount": 0,
-    "cost": 5
+    "cost": 5,
+    "description": "Yieldly Community Set Common"
 },
 {
     "name": "Jude",
     "id": 798981060,
     "type": "alchemon",
     "amount": 0,
-    "cost": 5
+    "cost": 5,
+    "description": "Yieldly Community Set Common"
 },
 {
     "name": "Twig",
     "id": 798978892,
     "type": "alchemon",
     "amount": 0,
-    "cost": 5
+    "cost": 5,
+    "description": "Yieldly Community Set Common"
 },
 {
     "name": "Win",
     "id": 798976821,
     "type": "alchemon",
     "amount": 0,
-    "cost": 5
+    "cost": 5,
+    "description": "Yieldly Community Set Common"
 },
 {
     "name": "Zip",

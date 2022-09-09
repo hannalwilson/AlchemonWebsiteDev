@@ -23,7 +23,7 @@
 
       <router-link to="/alchedex">ALCHEDEX</router-link>
       <div class="dropdown-link">
-        <p class="navp">STORE&nbsp;▼</p>
+        <p class="navp" @click="window.location.reload()">STORE&nbsp;▼</p>
         <div class="dropdown-menu">
           <router-link to="/store">ALCHESHOP</router-link>
           <router-link to="/craftandevolve">CRAFT & EVOLVE</router-link>
@@ -180,38 +180,10 @@ export default {
           dropdown.children[1].style.display = 'none'
         })
       })
-    },
-    /* Run only on mobile
-
-       This code below here will change the behavior of mobile menu links.
-       when you click for once it will open the drop down & by the
-       second click it will lead you to the link page if you don't
-       want to go in dropdown links
-    */
-    countClicksOnMobileDropdown () {
-      const dropdownLink = document.querySelectorAll('.dropdown-link')
-      dropdownLink.forEach((dropdown) => {
-        let counts = dropdown.clicks || 0
-        dropdown.addEventListener('click', () => {
-          counts++
-          if (counts % 2 === 0) {
-            window.location.href = dropdown.children[0].getAttribute('href')
-          } else {
-            dropdown.children[1].style.display = 'block'
-            setTimeout(() => {
-              dropdown.children[1].style.display = 'none'
-            }, 5000)
-          }
-        })
-        setTimeout(() => { counts = 0 }, 8000)
-      })
     }
   },
   mounted () {
     this.openDropdownNav()
-    if (window.innerWidth < 768) {
-      this.countClicksOnMobileDropdown()
-    }
     if (localStorage.userAddress) {
       this.address = localStorage.userAddress
       this.foundAddress = true
