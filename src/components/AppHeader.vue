@@ -48,8 +48,8 @@
   <popup-window v-if="popupTriggers.disconnectWallet">
     <h3>Wallet Information</h3>
     <p>Address: {{ this.address }}</p>
-    <p>ALGO</p>
-    <p>ALCH</p>
+    <p>{{ this.userAlgo }} ALGO</p>
+    <p>{{ this.userAlchecoin }} ALCH</p>
 
     <button class="boxShadow" @click="disconnectWallet">
       Disconnect
@@ -159,8 +159,11 @@ export default {
 
       // eslint-disable-next-line vue/no-async-in-computed-properties
       client.accountInformation(this.address).do().then(response => {
+        this.userAlgo = response.amount / 10000000
         for (const userAsset of response.assets) {
-          console.log(userAsset)
+          if (userAsset['asset-id'] === 310014962) {
+            this.userAlchecoin = userAsset.amount
+          }
         }
         this.gotUserAlchemon = true
       })
