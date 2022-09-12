@@ -48,8 +48,6 @@
   <popup-window v-if="popupTriggers.disconnectWallet">
     <h3>Wallet Information</h3>
     <p>Address: {{ this.address }}</p>
-    <p>{{ this.userAlgo }} ALGO</p>
-    <p>{{ this.userAlchecoin }} ALCH</p>
 
     <button class="boxShadow" @click="disconnectWallet">
       Disconnect
@@ -149,24 +147,6 @@ export default {
             }
           })
       }
-    },
-    async getUserAlgoAndAlchAmounts () {
-      const algosdk = require('algosdk')
-      const token = ''
-      const server = 'https://mainnet-api.algonode.cloud'
-      const port = ''
-      const client = new algosdk.Algodv2(token, server, port)
-
-      // eslint-disable-next-line vue/no-async-in-computed-properties
-      client.accountInformation(this.address).do().then(response => {
-        this.userAlgo = response.amount / 10000000
-        for (const userAsset of response.assets) {
-          if (userAsset['asset-id'] === 310014962) {
-            this.userAlchecoin = userAsset.amount
-          }
-        }
-        this.gotUserAlchemon = true
-      })
     },
     saveUserInformation () {
       // window.location.reload()
