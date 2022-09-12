@@ -48,6 +48,9 @@
   <popup-window v-if="popupTriggers.disconnectWallet">
     <h3>Wallet Information</h3>
     <p>Address: {{ this.address }}</p>
+    <p>ALGO</p>
+    <p>ALCH</p>
+
     <button class="boxShadow" @click="disconnectWallet">
       Disconnect
     </button>
@@ -147,11 +150,27 @@ export default {
           })
       }
     },
+    async getUserAlgoAndAlchAmounts () {
+      const algosdk = require('algosdk')
+      const token = ''
+      const server = 'https://mainnet-api.algonode.cloud'
+      const port = ''
+      const client = new algosdk.Algodv2(token, server, port)
+
+      // eslint-disable-next-line vue/no-async-in-computed-properties
+      client.accountInformation(this.address).do().then(response => {
+        for (const userAsset of response.assets) {
+          console.log(userAsset)
+        }
+        this.gotUserAlchemon = true
+      })
+    },
     saveUserInformation () {
-      window.location.reload()
+      // window.location.reload()
       localStorage.userAddress = this.address
       localStorage.userWallet = this.wallet
       this.foundAddress = true
+      this.getUserAlgoAndAlchAmounts()
     },
     disconnectWallet () {
       if (localStorage.userWallet === 'walletconnect') {
