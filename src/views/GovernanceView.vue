@@ -104,7 +104,7 @@ const server = 'https://mainnet-api.algonode.cloud'
 const port = ''
 const client = new algosdk.Algodv2(token, server, port)
 
-const apiURL = 'https://l84jesjbd4.execute-api.us-east-1.amazonaws.com/'
+const apiURL = 'https://avk5m0z0nc.execute-api.us-east-1.amazonaws.com'
 
 const popupTriggers = ref({
   signTransaction: false,
@@ -260,9 +260,6 @@ export default {
     },
     TogglePopup (trigger) {
       popupTriggers.value[trigger] = !popupTriggers.value[trigger]
-    },
-    sendAlchecoinAmounts () {
-
     }
   }
 }
