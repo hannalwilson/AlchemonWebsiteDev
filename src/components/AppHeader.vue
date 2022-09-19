@@ -48,6 +48,7 @@
   <popup-window v-if="popupTriggers.disconnectWallet">
     <h3>Wallet Information</h3>
     <p>Address: {{ this.address }}</p>
+
     <button class="boxShadow" @click="disconnectWallet">
       Disconnect
     </button>
@@ -148,10 +149,11 @@ export default {
       }
     },
     saveUserInformation () {
-      window.location.reload()
+      // window.location.reload()
       localStorage.userAddress = this.address
       localStorage.userWallet = this.wallet
       this.foundAddress = true
+      this.getUserAlgoAndAlchAmounts()
     },
     disconnectWallet () {
       if (localStorage.userWallet === 'walletconnect') {

@@ -23,8 +23,8 @@
             <br><br>
             To keep AlcheCoin circulating it will also be used for purchasing permanent assets with a discount. This allows Alchemon Inc the ability to earn it back with Alchemon NFT Cards, Special Attack ASAs, Art NFTs & more. The AlcheCoin earned back goes into the same distribution filter above to keep AlcheCoin coming in so we can continue rewarding holders.
             <br><br>
-            <strong>AlcheGold (TBD)</strong><br>
-            &#9830; AlcheGold Asset: TBD<br>
+            <strong>AlcheGold (AGOLD)</strong><br>
+            &#9830; AlcheGold Asset: 877703456<br>
             &#9830; Total Supply: 10,000,000,000.0000<br>
             &#9830; Type: Utility<br><br>
             <strong>Distribution:</strong><br>

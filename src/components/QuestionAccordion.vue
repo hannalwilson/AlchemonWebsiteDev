@@ -48,7 +48,7 @@ export default {
         },
         {
           question: 'How/where/why can I buy Alchemon?',
-          answer: 'You will need a web wallet: <a href="https://wallet.myalgo.com/" target="_blank">https://wallet.myalgo.com/</a> or see our <a href="https://alchemon.net/instructions.html" target="_blank">Instructions page</a>.<br><br>The official Alchemon store is here at Rand Gallery: <a href="https://www.randgallery.com/algo-collection/?address=ALCHY5SJXOXZXADZPD73KO6CYNZXDUWFYANTSXU6RIO3EZACIIXUCS3YDM)" target="_blank">Alchemon NFT Store</a><br><br>You can also see all sales info on the project here: <a href="https://www.nftexplorer.app/collection/alchemon" target="_blank">NFT Explorer (Sales)</a> <br><br>And aftermarket sellers here: <a href="https://www.nftexplorer.app/sellers?collection=alchemon" target="_blank">NFT Explorer (Aftermarket Sellers)</a> <br><br>'
+          answer: 'The official Alchemon store is here: <a href="https://www.alchemon.net/store" target="_blank">Alchemon NFT Store</a><br><br>You can also see all sales info on the project here: <a href="https://www.nftexplorer.app/collection/alchemon" target="_blank">NFT Explorer (Sales)</a> <br><br>And aftermarket sellers here: <a href="https://www.nftexplorer.app/sellers?collection=alchemon" target="_blank">NFT Explorer (Aftermarket Sellers)</a> <br><br>'
         },
         {
           question: 'AlcheCoin? Will it make me rich?',
@@ -56,7 +56,7 @@ export default {
         },
         {
           question: 'Staking? Huh?',
-          answer: 'Let’s start with this video:<br><iframe width="560" height="315" src="https://www.youtube.com/embed/vZ2UZdB07fo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><br>In Alchemon, staking works in a few different ways.<br><ol><li>Stake to earn AlcheCoin </li><li>Stake to evolve</li><li>Stake for prizes </li></ol><br>To learn how to stake, please visit our How to Play page.'
+          answer: 'Let’s start with this video:<br><iframe width="560" height="315" src="https://www.youtube.com/embed/vZ2UZdB07fo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><br>In Alchemon, staking works in a few different ways.<br><ol><li>Stake to earn AlcheCoin </li><li>Stake to evolve</li><li>Stake for prizes </li></ol><br>To learn how to stake, please visit our <a href="https://www.alchemon.net/howtoplay" target="_blank">How To Play</a> page.'
         },
         {
           question: 'What is a “set” in Alchemon?',
@@ -64,7 +64,7 @@ export default {
         },
         {
           question: 'Please… How do I evolve my cards?',
-          answer: 'There are two ways to evolve currently:<br><ol>  <li>One thing to note is that Epics and Legendaries can only be crafted in the store. The free way to evolve is to stake any Common or Uncommon for a week in the Training Grounds.</li>  <li>The second is to craft, which is the fast way, but will take a little alchemy! There are recipes (including a small fee) where you will have to trade in lower rarities for higher powered Alchemon.</li></ol><br>To learn more, please visit our How to Play page.'
+          answer: 'There are two ways to evolve currently:<br><ol>  <li>One thing to note is that Epics and Legendaries can only be crafted in the store. The free way to evolve is to stake any Common or Uncommon for a week in the Training Grounds.</li>  <li>The second is to craft, which is the fast way, but will take a little alchemy! There are recipes (including a small fee) where you will have to trade in lower rarities for higher powered Alchemon.</li></ol><br>To learn more, please visit our <a href="https://www.alchemon.net/howtoplay" target="_blank">How To Play</a> page.'
         },
         {
           question: 'Wah! How come I can’t evolve my cards from earlier sets?',
@@ -76,15 +76,15 @@ export default {
         },
         {
           question: 'What is wallet staking?',
-          answer: 'Welcome to wallet staking! Wallet staking is something we created to reward players for holding Alchemon in their own wallet! You get AlcheCoin for each NFT Card in your wallet as long as you have approved the AlcheCoin and Stake Flag assets. The Stake Flag is an empty asset in your wallet that lets our bot know you are holding Alchemon Cards and want to earn AlcheCoin for them. Then, once a week, the bot goes to all of these wallets and gives the proper amount of AlcheCoin! AlcheCoin Asset: 310014962 Stake Flag Asset: 320570576.<br><br>You can learn more on our Instructions page.'
+          answer: 'Welcome to wallet staking! Wallet staking is something we created to reward players for holding Alchemon in their own wallet! You get AlcheCoin for each NFT Card in your wallet as long as you have approved the AlcheCoin and Stake Flag assets. The Stake Flag is an empty asset in your wallet that lets our bot know you are holding Alchemon Cards and want to earn AlcheCoin for them. Then, once a week, the bot goes to all of these wallets and gives the proper amount of AlcheCoin! AlcheCoin Asset: 310014962 Stake Flag Asset: 320570576.<br><br>You can learn more on our <a href="https://www.alchemon.net/instructions" target="_blank">Instructions</a> page.'
         },
         {
           question: 'Training grounds? Is that like a gym or something?',
-          answer: 'Training Grounds is where you can stake your Alchemon for a week to evolve it for free. Just send your Alchmon to 5Q2PRQDMH7JNT76EYFXBB4UBFVBL6WI37GTJC7HELNPZ4EL5BE6WKQXP4Y and make sure you have added the asset of the evolved version. You will get a better Alchemon after a week and your old version will go back to the store. It is first come, first serve for staked Alchemon to get evolved. MAKE SURE YOU ADD THE ASSET OF THE EVOLVED VERSION YOU ARE TO RECEIVE, if you do not we cannot send it to you. But once added it will be resent. We have made links to easily add assets of the game on the AlcheDex page.You can see what evolutions are available on the <a href="https://discord.gg/qKtk4XGXyS" target="_blank">Discord</a> or How to Play page. You can only train from Common to Uncommon and Uncommon to Rare. Epics and Legendaries can only be crafted.'
+          answer: 'Training Grounds is where you can stake your Alchemon for a week to evolve it for free. Just send your Alchmon to 5Q2PRQDMH7JNT76EYFXBB4UBFVBL6WI37GTJC7HELNPZ4EL5BE6WKQXP4Y and make sure you have added the asset of the evolved version. You will get a better Alchemon after a week and your old version will go back to the store. It is first come, first serve for staked Alchemon to get evolved. MAKE SURE YOU ADD THE ASSET OF THE EVOLVED VERSION YOU ARE TO RECEIVE, if you do not we cannot send it to you. But once added it will be resent. We have made links to easily add assets of the game on the AlcheDex page. You can see what evolutions are available on <a href="https://discord.gg/TmMJRjHH" target="_blank">Discord</a> or <a href="https://www.alchemon.net/howtoplay" target="_blank">How To Play</a> page in the Training Grounds section. You can only train from Common to Uncommon and Uncommon to Rare. Epics and Legendaries can only be crafted.'
         },
         {
           question: 'Hunting grounds? But I’m a vegan!',
-          answer: 'This is another place to stake an Alchemon for the chance to earn rewards. Send it here: HUNTMEC6NPJH7MLBUSMJQWZF5N5GPJBF6FJ5LYTRXR7NGLDBT5KB6453FA and you will have a chance to win every week. <br><br>Stake 1 Alchemon per wallet here for 6 days and you earn entries for a raffle! You keep your Alchemon and can pull it out at any time with a note on a 0.00 transaction, but only NFT Cards staked from Monday at 12pm PST until the drawing earn you entries. The rewards will occur weekly and random winners will get prizes determined by RNG! Winning does not remove your entries, so one wallet can win multiple prizes each week.<br><ul>  <li>Common = 1 Entry</li>  <li>Uncommon = 2 Entries</li>  <li>Rare // Epic // Legendary = 3 Raffle Entries</li>'
+          answer: 'The Hunting Grounds is evolving! Players no longer need to stake one of their Alchemon for a whole week to earn entries in the Hunting Grounds raffle. Entries will now be earned through battling your Alchemon in our <a href="https://www.alchemon.net/beta" target="_blank">desktop game</a>, currently in Beta. Each battle won equals one entry to the raffle and there is no limit to the number of entries any wallet can have.The raffle will occur weekly and random winners will get the prizes determined by RNG! Winning does not remove your entries, so one wallet can win multiple prizes each week. Good luck, you will need it.'
         },
         {
           question: 'If inflation is bad, is deflation good? How is Alchemon deflationary?',
