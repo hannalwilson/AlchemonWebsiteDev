@@ -1,6 +1,6 @@
 <template>
   <div class="background">
-    <h1>GOVERNANCE</h1>
+    <h1 class="spreadText">GOVERNANCE</h1>
   </div>
   <div class="voteSection">
     <div>
