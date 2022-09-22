@@ -14,9 +14,11 @@
       </p>
     </div>
     <p class="orangeHeader spreadText">QUESTION</p>
+    <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/sadmiya.png">
     <div class="buttonContainer">
-      <button class="boxShadow voteButton" @click="castVote('A')">VOTE A</button>
-      <button class="boxShadow voteButton" @click="castVote('B')">VOTE B</button>
+      <p>Is Sad Miya the best Alchemon?</p>
+      <button class="boxShadow voteButton" @click="castVote('A')">A. YES</button>
+      <button class="boxShadow voteButton" @click="castVote('B')">B. DEFINITELY YES</button>
     </div>
   </div>
   <popup-window v-if="popupTriggers.signTransaction">
@@ -52,9 +54,14 @@
 </template>
 
 <style lang="scss" scoped>
+  img {
+    width: 50vw;
+    margin: 0;
+  }
 .voteButton {
   padding: 0 3%;
   margin: 3%;
+  width: 25vw;
 }
 .container {
   background-color: #D8D8D8;
@@ -71,6 +78,9 @@
 }
 .buttonContainer {
   margin: 5%;
+  p {
+    text-align: center;
+  }
 }
 h1 {
   font-size: 10vw;
@@ -86,6 +96,13 @@ h1 {
   background-size: cover;
   padding: 5% 0% 2%;
 
+}
+
+.questionContainer {
+  text-align: center;
+  p {
+    text-align: center;
+  }
 }
 </style>
 
@@ -130,97 +147,101 @@ export default {
   },
   methods: {
     async castVote (userVote) {
-      const userWallet = localStorage.userWallet
-
-      const myAlgoConnect = new MyAlgoConnect()
-      const walletConnector = new WalletConnect(
-        {
-          bridge: 'https://bridge.walletconnect.org', // Required
-          qrcodeModal: QRCodeModal
-        }
-      )
-
-      const sender = localStorage.userAddress
-      let signedTxn
-      let voteResponse
-      try {
-        voteResponse = await axios.post(`${apiURL}/castVote`, {
-          userAddress: sender,
-          userVote: userVote
-        })
-      } catch {
-        this.TogglePopup('errorOccured')
-      }
-
-      if (voteResponse.status === 250) {
-        this.TogglePopup('alreadyVoted')
+      if (!localStorage.userAddress) {
+        window.alert('Please connect you wallet to vote')
       } else {
-        if (userWallet === 'walletconnect') {
-          this.TogglePopup('signTransaction')
-        }
-        let signedTxns
-        switch (userWallet) {
-          case 'myalgo':
-            signedTxns = await myAlgoConnect.signTransaction(voteResponse)
-            if (Array.isArray(signedTxns)) {
-              signedTxn = signedTxns.map((txn) => (Buffer.from(txn.blob).toString('base64')))
-            } else {
-              signedTxn = Buffer.from(signedTxns.blob).toString('base64')
-            }
-            break
-          case 'walletconnect':
-          // eslint-disable-next-line no-case-declarations
-            const voteTxns = voteResponse.data.txns
-            // eslint-disable-next-line no-case-declarations
-            const txnsToSign = voteTxns.map(txn => {
-              const encodedTxn = txn
-              return {
-                txn: encodedTxn
-              }
-            })
-            // eslint-disable-next-line no-case-declarations
-            const requestParams = [txnsToSign]
-            // eslint-disable-next-line no-case-declarations
-            const request = formatJsonRpcRequest('algo_signTxn', requestParams)
-            try {
-              signedTxn = await walletConnector.sendCustomRequest(request)
-            } catch (error) {
-              errorMessage = error.message
-              this.TogglePopup('transactionFailed')
-              this.TogglePopup('signTransaction')
-            }
-            break
+        const userWallet = localStorage.userWallet
+
+        const myAlgoConnect = new MyAlgoConnect()
+        const walletConnector = new WalletConnect(
+          {
+            bridge: 'https://bridge.walletconnect.org', // Required
+            qrcodeModal: QRCodeModal
+          }
+        )
+
+        const sender = localStorage.userAddress
+        let signedTxn
+        let voteResponse
+        try {
+          voteResponse = await axios.post(`${apiURL}/castVote`, {
+            userAddress: sender,
+            userVote: userVote
+          })
+        } catch {
+          this.TogglePopup('errorOccured')
         }
 
-        if (signedTxn) {
-          this.TogglePopup('signTransaction')
-          this.TogglePopup('processingTransaction')
-          try {
-            const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
-              txn: signedTxn
-            })
-            if (sendTxnResponse.status === 200) {
-              if (sendTxnResponse.data.txnId) {
-                this.TogglePopup('transactionSuccessful')
-                try {
-                  voteResponse = await axios.post(`${apiURL}/recordVote`, {
-                    userAddress: sender,
-                    userVote: userVote
-                  })
-                } catch {
-                  this.TogglePopup('errorOccured')
+        if (voteResponse.status === 250) {
+          this.TogglePopup('alreadyVoted')
+        } else {
+          if (userWallet === 'walletconnect') {
+            this.TogglePopup('signTransaction')
+          }
+          let signedTxns
+          switch (userWallet) {
+            case 'myalgo':
+              signedTxns = await myAlgoConnect.signTransaction(voteResponse)
+              if (Array.isArray(signedTxns)) {
+                signedTxn = signedTxns.map((txn) => (Buffer.from(txn.blob).toString('base64')))
+              } else {
+                signedTxn = Buffer.from(signedTxns.blob).toString('base64')
+              }
+              break
+            case 'walletconnect':
+              // eslint-disable-next-line no-case-declarations
+              const voteTxns = voteResponse.data.txns
+              // eslint-disable-next-line no-case-declarations
+              const txnsToSign = voteTxns.map(txn => {
+                const encodedTxn = txn
+                return {
+                  txn: encodedTxn
                 }
-              } else if (sendTxnResponse.data.message) {
-                errorMessage = sendTxnResponse.data.message
+              })
+              // eslint-disable-next-line no-case-declarations
+              const requestParams = [txnsToSign]
+              // eslint-disable-next-line no-case-declarations
+              const request = formatJsonRpcRequest('algo_signTxn', requestParams)
+              try {
+                signedTxn = await walletConnector.sendCustomRequest(request)
+              } catch (error) {
+                errorMessage = error.message
                 this.TogglePopup('transactionFailed')
                 this.TogglePopup('signTransaction')
               }
-            }
-          } catch (error) {
-            this.TogglePopup('errorOccured')
-            this.TogglePopup('signTransaction')
+              break
           }
-          this.TogglePopup('processingTransaction')
+
+          if (signedTxn) {
+            this.TogglePopup('signTransaction')
+            this.TogglePopup('processingTransaction')
+            try {
+              const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
+                txn: signedTxn
+              })
+              if (sendTxnResponse.status === 200) {
+                if (sendTxnResponse.data.txnId) {
+                  this.TogglePopup('transactionSuccessful')
+                  try {
+                    voteResponse = await axios.post(`${apiURL}/recordVote`, {
+                      userAddress: sender,
+                      userVote: userVote
+                    })
+                  } catch {
+                    this.TogglePopup('errorOccured')
+                  }
+                } else if (sendTxnResponse.data.message) {
+                  errorMessage = sendTxnResponse.data.message
+                  this.TogglePopup('transactionFailed')
+                  this.TogglePopup('signTransaction')
+                }
+              }
+            } catch (error) {
+              this.TogglePopup('errorOccured')
+              this.TogglePopup('signTransaction')
+            }
+            this.TogglePopup('processingTransaction')
+          }
         }
       }
     },
