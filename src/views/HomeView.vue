@@ -20,6 +20,7 @@
   </div>
   <div class="blueBackground">
     <p class="yellowHeader spreadText">QUICKLINKS</p>
+    <router-link to="/governance" class="whiteText" ><b>NEW! Governance Voting</b></router-link>
     <a href="https://www.randgallery.com/algo-collection/?address=310014962%2C320570576" target="__blank">
       <p class="whiteText">Add
         AlcheCoin and Alchemon Stake Flag NFTs</p>
@@ -235,6 +236,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  p {
+    text-align: center;
+  }
 .homePopup {
   overflow-y: scroll;
 }
@@ -310,6 +314,7 @@ li {
   a {
     text-decoration: none;
   }
+
   p:hover, a:hover {
     color: orange;
     cursor: pointer;

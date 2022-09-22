@@ -153,7 +153,6 @@ export default {
       localStorage.userAddress = this.address
       localStorage.userWallet = this.wallet
       this.foundAddress = true
-      this.getUserAlgoAndAlchAmounts()
     },
     disconnectWallet () {
       if (localStorage.userWallet === 'walletconnect') {
