@@ -178,10 +178,11 @@ export default {
           if (userWallet === 'walletconnect') {
             this.TogglePopup('signTransaction')
           }
+          const voteTxns = voteResponse.data.txns
           let signedTxns
           switch (userWallet) {
             case 'myalgo':
-              signedTxns = await myAlgoConnect.signTransaction(voteResponse)
+              signedTxns = await myAlgoConnect.signTransaction(voteTxns)
               if (Array.isArray(signedTxns)) {
                 signedTxn = signedTxns.map((txn) => (Buffer.from(txn.blob).toString('base64')))
               } else {
@@ -189,8 +190,6 @@ export default {
               }
               break
             case 'walletconnect':
-              // eslint-disable-next-line no-case-declarations
-              const voteTxns = voteResponse.data.txns
               // eslint-disable-next-line no-case-declarations
               const txnsToSign = voteTxns.map(txn => {
                 const encodedTxn = txn
@@ -213,7 +212,9 @@ export default {
           }
 
           if (signedTxn) {
-            this.TogglePopup('signTransaction')
+            if (userWallet === 'walletconnect') {
+              this.TogglePopup('signTransaction')
+            }
             this.TogglePopup('processingTransaction')
             try {
               const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
