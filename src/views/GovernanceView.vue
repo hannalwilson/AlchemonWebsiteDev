@@ -90,19 +90,13 @@ h1 {
 </style>
 
 <script>
-import { reactive, ref } from 'vue'
-import algosdk from 'algosdk'
+import { ref } from 'vue'
 import MyAlgoConnect from '@randlabs/myalgo-connect'
 import WalletConnect from '@walletconnect/client'
 import QRCodeModal from 'algorand-walletconnect-qrcode-modal'
 import { formatJsonRpcRequest } from '@json-rpc-tools/utils'
 import axios from 'axios'
 import PopupWindow from '../components/PopupWindow.vue'
-
-const token = ''
-const server = 'https://mainnet-api.algonode.cloud'
-const port = ''
-const client = new algosdk.Algodv2(token, server, port)
 
 const apiURL = 'https://avk5m0z0nc.execute-api.us-east-1.amazonaws.com'
 
@@ -114,8 +108,6 @@ const popupTriggers = ref({
   errorOccurred: false,
   alreadyVoted: false
 })
-
-const userBalances = reactive({})
 
 let errorMessage
 
@@ -133,36 +125,10 @@ export default {
       return errorMessage
     }
   },
+  mounted () {
+    window.scrollTo(0, 0)
+  },
   methods: {
-    async getAlchecoinWallets () {
-      let nexttoken = ''
-      let numtx = 1;
-      // loop until there are no more transactions in the response
-      // for the limit(max limit is 1000  per request)
-      (async () => {
-        const minAmount = 1
-        const limit = 1000
-        while (numtx > 0) {
-          // execute code as long as condition is true
-          const nextPage = nexttoken
-          const response = await client.lookupAssetBalances(310014962)
-            .limit(limit)
-            .currencyGreaterThan(minAmount)
-            .nextToken(nextPage).do()
-          const transactions = response.balances
-          numtx = transactions.length
-          if (numtx > 0) {
-            nexttoken = response['next-token']
-            for (const key of transactions) {
-              userBalances[key.address] = key.amount
-            }
-          }
-        }
-      })().catch(e => {
-        console.log(e)
-        console.trace()
-      })
-    },
     async castVote (userVote) {
       const userWallet = localStorage.userWallet
 
