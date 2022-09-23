@@ -3,7 +3,7 @@
     <img class="bolt" src="https://alchemon-website-assets.s3.amazonaws.com/assets/10_bolt_back.gif" alt="Bolt">
     <div>
       <a class="footerLink" href="https://t.me/joinchat/WbyxkfAyJDZmMzE5" target="_blank">Telegram</a> //
-      <a class="footerLink" href="https://discord.gg/TmMJRjHH" target="_blank">Discord</a> //
+      <a class="footerLink" href="https://discord.gg/zr5PTxFTSk" target="_blank">Discord</a> //
       <a class="footerLink" href="https://twitter.com/AlchemonNFT" target="_blank">Twitter</a>
     </div>
     <ul>
