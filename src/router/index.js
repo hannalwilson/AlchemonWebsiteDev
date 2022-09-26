@@ -16,6 +16,8 @@ import InstructionsView from '../views/InstructionsView.vue'
 import HowToPlayView from '../views/HowToPlayView.vue'
 import BattleGameView from '../views/BattleGame.vue'
 import GovernanceView from '../views/GovernanceView.vue'
+import AirdropView from '../views/AirdropView.vue'
+import AirdropSuccess from '../views/AirdropSuccess.vue'
 
 const routes = [
   {
@@ -102,6 +104,16 @@ const routes = [
     path: '/governance',
     name: 'governance',
     component: GovernanceView
+  },
+  {
+    path: '/freealchegold',
+    name: 'freealchegold',
+    component: AirdropView
+  },
+  {
+    path: '/alchegoldsuccess',
+    name: 'alchegoldsuccess',
+    component: AirdropSuccess
   }
 ]
 

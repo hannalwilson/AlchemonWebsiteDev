@@ -34,7 +34,6 @@
       </div>
     </div>
   </nav>
-  <router-link to="/beta" class="navlinks"><button class="downloadButton boxShadow">DOWNLOAD GAME</button></router-link>
   <popup-window v-if="popupTriggers.chooseWallet">
     <h3>Connect Your Wallet</h3>
     <button class="boxShadow" @click="connectWallet('myalgo')">
@@ -48,7 +47,6 @@
   <popup-window v-if="popupTriggers.disconnectWallet">
     <h3>Wallet Information</h3>
     <p>Address: {{ this.address }}</p>
-
     <button class="boxShadow" @click="disconnectWallet">
       Disconnect
     </button>
@@ -56,6 +54,7 @@
       Close
     </button>
   </popup-window>
+  <router-link to="/beta"><button class="downloadButton boxShadow">DOWNLOAD GAME</button></router-link>
 </template>
 
 <script>
