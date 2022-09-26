@@ -9,15 +9,15 @@
         <form action="https://formspree.io/f/xgeqkngb" method="POST">
             <label>
                 Name:
-                <input type="text" name="name">
+                <input type="text" name="name" required>
             </label><br><br>
             <label>
                 Wallet Address:
-                <input type="text" name="walletaddress">
+                <input type="text" name="walletaddress" required>
             </label><br><br>
             <label>
                 Email:
-                <input type="email" name="email">
+                <input type="email" name="email" required>
             </label><br><br>
             <!-- your other form fields go here -->
             <button type="submit">Submit</button>
