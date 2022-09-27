@@ -13,7 +13,7 @@
             </label><br><br>
             <label>
                 Wallet Address:
-                <input type="text" name="walletaddress" required>
+                <input type="text" name="walletaddress">
             </label><br><br>
             <label>
                 Email:

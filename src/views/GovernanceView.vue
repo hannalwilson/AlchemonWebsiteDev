@@ -17,9 +17,25 @@
     <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/sadmiya.png">
     <div class="buttonContainer">
       <p>Is Sad Miya the best Alchemon?</p>
-      <button class="boxShadow voteButton" @click="castVote('A')">A. YES</button>
-      <button class="boxShadow voteButton" @click="castVote('B')">B. DEFINITELY YES</button>
+      <!-- <button class="boxShadow voteButton" @click="castVote('A')" disabled>A. YES</button>
+      <button class="boxShadow voteButton" @click="castVote('B')" disabled>B. DEFINITELY YES</button> -->
+      <h2>VOTING IS CLOSED</h2>
     </div>
+    <p class="orangeHeader spreadText">RESULTS</p>
+    <table class="center">
+      <tr>
+        <th>VOTE</th>
+        <th>PERCENT</th>
+      </tr>
+      <tr>
+        <td>A - Yes</td>
+        <td>1.3%</td>
+      </tr>
+      <tr>
+      <td>B - Definitely Yes</td>
+      <td>98.7%</td>
+    </tr>
+    </table>
   </div>
   <popup-window v-if="popupTriggers.signTransaction">
     <h2>Please open your wallet app to sign the transaction!</h2>
@@ -54,7 +70,7 @@
 </template>
 
 <style lang="scss" scoped>
-  img {
+img {
     width: 50vw;
     margin: 0;
   }
@@ -103,6 +119,23 @@ h1 {
   p {
     text-align: center;
   }
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+td {
+  text-align: left;
+  padding: 2%;
+}
+table,
+th,
+td {
+  border: 1px solid orange;
+}
+table {
+  border-collapse: collapse;
 }
 </style>
 
