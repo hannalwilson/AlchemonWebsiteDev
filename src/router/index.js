@@ -18,6 +18,13 @@ import BattleGameView from '../views/BattleGame.vue'
 import GovernanceView from '../views/GovernanceView.vue'
 import AirdropView from '../views/AirdropView.vue'
 import AirdropSuccess from '../views/AirdropSuccess.vue'
+import AirdropDiscord from '../views/AirdropDiscord.vue'
+import AirdropWallet from '../views/AirdropWallet.vue'
+import AirdropOptin from '../views/AirdropOptin.vue'
+import AirdropTwitter from '../views/AirdropTwitter.vue'
+import AirdropTelegram from '../views/AirdropTelegram.vue'
+import AirdropEmail from '../views/AirdropEmail.vue'
+import AirdropEnd from '../views/AirdropEnd.vue'
 
 const routes = [
   {
@@ -114,6 +121,41 @@ const routes = [
     path: '/alchegoldsuccess',
     name: 'alchegoldsuccess',
     component: AirdropSuccess
+  },
+  {
+    path: '/alchegolddiscord',
+    name: 'alchegolddiscord',
+    component: AirdropDiscord
+  },
+  {
+    path: '/alchegoldwallet',
+    name: 'alchegoldwallet',
+    component: AirdropWallet
+  },
+  {
+    path: '/alchegoldoptin',
+    name: 'alchegoldoptin',
+    component: AirdropOptin
+  },
+  {
+    path: '/alchegoldtwitter',
+    name: 'alchegoldtwitter',
+    component: AirdropTwitter
+  },
+  {
+    path: '/alchegoldtelegram',
+    name: 'alchegoldtelegram',
+    component: AirdropTelegram
+  },
+  {
+    path: '/alchegoldemail',
+    name: 'alchegoldemail',
+    component: AirdropEmail
+  },
+  {
+    path: '/alchegoldend',
+    name: 'alchegoldend',
+    component: AirdropEnd
   }
 ]
 

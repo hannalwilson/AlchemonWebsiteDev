@@ -12,10 +12,6 @@
                 <input type="text" name="name" required>
             </label><br><br>
             <label>
-                Wallet Address:
-                <input type="text" name="walletaddress">
-            </label><br><br>
-            <label>
                 Email:
                 <input type="email" name="email" required>
             </label><br><br>
