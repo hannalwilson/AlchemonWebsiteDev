@@ -17,25 +17,35 @@
     <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/sadmiya.png">
     <div class="buttonContainer">
       <p>Is Sad Miya the best Alchemon?</p>
+      <p>A: Yes&nbsp;&nbsp;&nbsp;&nbsp;B: Definitely Yes</p>
       <!-- <button class="boxShadow voteButton" @click="castVote('A')" disabled>A. YES</button>
       <button class="boxShadow voteButton" @click="castVote('B')" disabled>B. DEFINITELY YES</button> -->
       <h2>VOTING IS CLOSED</h2>
     </div>
     <p class="orangeHeader spreadText">RESULTS</p>
-    <table class="center">
+    <table>
       <tr>
         <th>VOTE</th>
         <th>PERCENT</th>
       </tr>
-      <tr>
-        <td>A - Yes</td>
-        <td>1.3%</td>
+      <tr v-for="( percent, vote ) in currentVotesPercents" :key="vote">
+        <td>{{ vote }}</td>
+        <td>{{ percent }}%</td>
       </tr>
-      <tr>
-      <td>B - Definitely Yes</td>
-      <td>98.7%</td>
-    </tr>
     </table>
+    <div>
+    <p class="orangeHeader spreadText">VOTE BREAKDOWN</p>
+        <table>
+          <tr>
+            <th>ADDRESS</th>
+            <th>VOTE</th>
+          </tr>
+          <tr v-for="entry in currentVoteBreakdown" :key="entry">
+            <td>{{ entry['wallet_address'] }}</td>
+            <td>{{ entry['alchecoin_amount']}}&nbsp;-&nbsp;{{entry.vote }}</td>
+          </tr>
+        </table>
+    </div>
   </div>
   <popup-window v-if="popupTriggers.signTransaction">
     <h2>Please open your wallet app to sign the transaction!</h2>
@@ -93,7 +103,6 @@ img {
   text-align: center;
 }
 .buttonContainer {
-  margin: 5%;
   p {
     text-align: center;
   }
@@ -120,27 +129,30 @@ h1 {
     text-align: center;
   }
 }
-.center {
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
 td {
   text-align: left;
-  padding: 2%;
+  padding: 1vw 2vw;
+  word-wrap: break-word;
+  max-width: 60vw;
+}
+th {
+  padding: 10px 20px;
 }
 table,
 th,
 td {
   border: 1px solid orange;
+  width: auto !important;
 }
 table {
+  margin: auto;
   border-collapse: collapse;
+  display: inline-block;
 }
 </style>
 
 <script>
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import MyAlgoConnect from '@randlabs/myalgo-connect'
 import WalletConnect from '@walletconnect/client'
 import QRCodeModal from 'algorand-walletconnect-qrcode-modal'
@@ -161,6 +173,12 @@ const popupTriggers = ref({
 
 let errorMessage
 
+const currentVotesTotals = reactive({})
+const currentVotesPercents = reactive({})
+const currentVoteBreakdown = reactive({})
+
+let totalVotes
+
 export default {
   components: { PopupWindow },
   data () {
@@ -177,6 +195,28 @@ export default {
   },
   mounted () {
     window.scrollTo(0, 0)
+  },
+  setup () {
+    totalVotes = 0
+    axios.get('https://rkv7rfg9rb.execute-api.us-east-1.amazonaws.com/getGovernanceVotingResults').then(response => {
+      for (const key in response.data) {
+        currentVotesTotals[key] = response.data[key]
+        totalVotes += response.data[key]
+      }
+      for (const key in currentVotesTotals) {
+        const percentVote = currentVotesTotals[key] / totalVotes * 100
+        currentVotesPercents[key] = percentVote.toFixed(1)
+      }
+    })
+
+    axios.get('https://rkv7rfg9rb.execute-api.us-east-1.amazonaws.com/getUsersGovernanceVotes').then(response => {
+      for (const entry in response.data) {
+        currentVoteBreakdown[entry] = response.data[entry]
+      }
+      console.log(currentVoteBreakdown)
+    })
+
+    return { currentVotesTotals, currentVotesPercents, currentVoteBreakdown, totalVotes }
   },
   methods: {
     async castVote (userVote) {
