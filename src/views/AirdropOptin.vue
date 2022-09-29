@@ -5,7 +5,8 @@
         <p><strong>877703456</strong></p>
         <p><strong>Once you have added the AlcheGold asset to your wallet, click the NEXT button</strong></p>
     </div>
-    <div class="video"><p>Here is a video showing how to add an asset:</p>
+    <p>Here is a video showing how to add an asset:</p>
+    <div class="video">
     <iframe src="https://www.youtube.com/embed/U-v61k6lPto" title="YouTube video player"
         frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen></iframe>
@@ -17,10 +18,13 @@
 </template>
 
 <style lang="scss" scoped>
-
-    p{
-        text-align: center;
-    }
+iframe {
+            width: 50vw;
+            height: calc(50vw * .5625);
+        }
+p{
+    text-align: center;
+}
 
 h1 {
     margin-top: 6%;

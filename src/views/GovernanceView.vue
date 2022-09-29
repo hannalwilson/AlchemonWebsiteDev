@@ -30,11 +30,10 @@
     <p class="centerText">A: Yes, a player can only win 1 prize per week.<br>
     B: No, a player can win multiple prizes in the same week.
     </p>
-    <div class="buttonContainer">
+    <!-- <div class="buttonContainer">
       <button class="boxShadow voteButton" @click="castVote('A')" disabled>VOTE A</button>
       <button class="boxShadow voteButton" @click="castVote('B')" disabled>VOTE B</button>
-    </div>
-    </div>
+    </div> -->
     <p class="orangeHeader spreadText">RESULTS</p>
     <table>
       <tr>
@@ -47,16 +46,17 @@
       </tr>
     </table>
     <p class="orangeHeader spreadText">VOTE BREAKDOWN</p>
-        <table>
-          <tr>
-            <th>ADDRESS</th>
-            <th>VOTE</th>
-          </tr>
-          <tr v-for="entry in currentVoteBreakdown" :key="entry">
-            <td>{{ entry['wallet_address'] }}</td>
-            <td>{{ entry['alchecoin_amount']}}&nbsp;-&nbsp;{{entry.vote }}</td>
-          </tr>
-        </table>
+    <table>
+      <tr>
+        <th>ADDRESS</th>
+        <th>VOTE</th>
+      </tr>
+      <tr v-for="entry in currentVoteBreakdown" :key="entry">
+        <td>{{ entry['wallet_address'] }}</td>
+        <td>{{ entry['alchecoin_amount']}}&nbsp;-&nbsp;{{entry.vote }}</td>
+      </tr>
+    </table>
+  </div>
   <popup-window v-if="popupTriggers.signTransaction">
     <h2>Please open your wallet app to sign the transaction!</h2>
   </popup-window>
