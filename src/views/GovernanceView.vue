@@ -3,7 +3,6 @@
     <h1 class="spreadText">GOVERNANCE</h1>
   </div>
   <div class="voteSection">
-    <div>
       <p class="orangeHeader spreadText">HOW IT WORKS</p>
       <p>AlcheCoin is Alchemon's Governance Token. It gives holders the right to vote on the
         development and operations of Alchemon, i.e., it gives our community decision making power.
@@ -12,30 +11,29 @@
         the snapshot is how many times your vote counts. For example, if you had 5400 AlcheCoin and voted for
         option A, that would count as 5400 'A' votes.
       </p>
-    </div>
+    <p class="orangeHeader spreadText">DURATION</p>
+    <p class="centerText">1 Week</p>
     <p class="orangeHeader spreadText">QUESTION</p>
-    <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/sadmiya.png">
+    <p class="centerText">Should Alchemon limit Hunting Grounds rewards to 1 win per wallet per week?</p>
+    <p class="orangeHeader spreadText">INFO</p>
+    <p>Back in the old Hunting Grounds days a staked Alchemon could win more than one prize per week, but each wallet only had
+    a maximum of 3 entries. We automatically carried that over from the old Hunting Grounds to the new. We did not take into
+    consideration the difference in the amount of entries this would cause. 6 of the 8 weeks of in-game Hunting Grounds have
+    had duplicate winners.<br><br>
+    Winners are always picked from highest valued prize to lowest, so an individual winner will get the best reward
+    possible, but they will not be able to win a second prize if passed.<br><br>
+    In the future we plan to add another way to win in Hunting Grounds where each wallet is entered equally as long as they
+    win at least one game in a week. This will be in addition to the existing HG rewards.<br><br>
+    Alchemon Inc will not be voting on this, but recommends “A” (one win per week) to allow for more individual winners and
+    an intended better experience by the average player.</p>
+    <p class="orangeHeader spreadText">VOTE</p>
+    <p class="centerText">A: Yes, a player can only win 1 prize per week.<br>
+    B: No, a player can win multiple prizes in the same week.
+</p>
     <div class="buttonContainer">
-      <p>Is Sad Miya the best Alchemon?</p>
-      <!-- <button class="boxShadow voteButton" @click="castVote('A')" disabled>A. YES</button>
-      <button class="boxShadow voteButton" @click="castVote('B')" disabled>B. DEFINITELY YES</button> -->
-      <h2>VOTING IS CLOSED</h2>
+      <button class="boxShadow voteButton" @click="castVote('A')" disabled>VOTE A</button>
+      <button class="boxShadow voteButton" @click="castVote('B')" disabled>VOTE B</button>
     </div>
-    <p class="orangeHeader spreadText">RESULTS</p>
-    <table class="center">
-      <tr>
-        <th>VOTE</th>
-        <th>PERCENT</th>
-      </tr>
-      <tr>
-        <td>A - Yes</td>
-        <td>1.3%</td>
-      </tr>
-      <tr>
-      <td>B - Definitely Yes</td>
-      <td>98.7%</td>
-    </tr>
-    </table>
   </div>
   <popup-window v-if="popupTriggers.signTransaction">
     <h2>Please open your wallet app to sign the transaction!</h2>
@@ -70,9 +68,8 @@
 </template>
 
 <style lang="scss" scoped>
-img {
-    width: 50vw;
-    margin: 0;
+  .centerText {
+    text-align: center;
   }
 .voteButton {
   padding: 0 3%;
@@ -114,12 +111,6 @@ h1 {
 
 }
 
-.questionContainer {
-  text-align: center;
-  p {
-    text-align: center;
-  }
-}
 .center {
   margin-left: auto;
   margin-right: auto;
