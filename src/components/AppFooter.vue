@@ -1,5 +1,6 @@
 <template>
   <footer id="contact">
+  <router-link to="/beta"><button class="downloadButton boxShadow">DOWNLOAD GAME</button></router-link>
     <img class="bolt" src="https://alchemon-website-assets.s3.amazonaws.com/assets/10_bolt_back.gif" alt="Bolt">
     <div>
       <a class="footerLink" href="https://t.me/joinchat/WbyxkfAyJDZmMzE5" target="_blank">Telegram</a> //
@@ -29,12 +30,11 @@
 </template>
 
 <style lang="scss" scoped>
-  footer {
+footer {
       background-color: #00003f;
       color:white;
       width: 100%;
       padding-bottom: 2%;
-      bottom: 0;
       position: relative;
     ul {
       list-style: none;
@@ -67,4 +67,31 @@
   .footerLink {
     font-weight: bold;
   }
+    .downloadButton {
+      color: #000080;
+      /* Sets the color of the button text to black */
+      border: solid #000080;
+      /* This makes a solid black border around the button */
+      border-radius: 2vw;
+      font-weight: bold;
+      padding: 1% 3%;
+      letter-spacing: 5px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      z-index: 100;
+    }
+
+    .downloadButton:hover {
+      background-color: darkblue;
+      border: 2px solid orange;
+      color: orange;
+    }
+
+    @media only screen and (max-width: 798px) {
+      .downloadButton {
+        width: 98vw;
+        bottom: 5px;
+      }
+    }
 </style>

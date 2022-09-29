@@ -1,11 +1,12 @@
 <template>
-    <h1>That’s it for now! We will email you once we are ready to send out your free AlcheGold!</h1>
+    <h1>THAT'S IT!</h1>
+    <p>That’s it for now! We will email you once we are ready to send out your free AlcheGold!</p>
     <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/alchegold.png" class="alchegold" />
 </template>
 
 <style lang="scss" scoped>
 h1 {
-    margin: 10%;
+    margin-top: 6%;
 }
 
 p {
@@ -14,6 +15,7 @@ p {
 
 img {
     width: 250px;
+    align-self: center;
 }
 
 button {
@@ -21,3 +23,11 @@ button {
     margin-top: 5%;
 }
 </style>
+
+<script>
+export default {
+  mounted () {
+    window.scrollTo(0, 0)
+  }
+}
+</script>

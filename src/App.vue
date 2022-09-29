@@ -2,8 +2,8 @@
     <app-header/>
 <div class="website">
     <router-view/>
-    <app-footer/>
-    </div>
+  </div>
+  <app-footer/>
 </template>
 
 <script>
@@ -26,7 +26,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 #app {
@@ -45,6 +44,9 @@ export default {
 }
 .website {
   max-width: 100vw;
+  display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 p{
   text-align: justify;
@@ -147,6 +149,17 @@ button:hover {
   background-color:darkblue;
   border: 2px solid orange;
   color: orange;
+}
+.backButton {
+  background-color: darkblue;
+  border: 2px solid darkblue;
+  color: white;
+}
+
+.backButton:hover {
+  background-color: orange;
+  border: 2px solid darkblue;
+  color: darkblue;
 }
 /* width */
 ::-webkit-scrollbar {

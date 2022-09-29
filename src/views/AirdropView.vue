@@ -34,9 +34,17 @@ img{
 }
 
 .header {
-    margin-top: 5%;
+    margin-top: 6%;
 }
 .description {
     margin: 2%;
 }
 </style>
+
+<script>
+export default {
+  mounted () {
+    window.scrollTo(0, 0)
+  }
+}
+</script>

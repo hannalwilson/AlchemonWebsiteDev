@@ -2,26 +2,28 @@
     <h1>ALGORAND WALLET</h1>
     <p>If you don’t already have an Algorand wallet, download Pera Algo Wallet now:
     </p>
-    <a href="https://perawallet.app/">
+    <a href="https://perawallet.app/" target="_blank">
         <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/peralogo.svg" class="PeraLogo" /></a>
     <p>If clicking on this logo doesn’t work, click on this link:<br><br>
-        <a href="https://perawallet.app/">https://perawallet.app/</a>
+        <a href="https://perawallet.app/" target="_blank">https://perawallet.app/</a>
     </p><br>
     <p>
-        Once the app is installed, set up your Alogorand wallet.<br><br>
+        <strong>Once the app is installed, set up your Alogorand wallet and then click the NEXT button below.</strong>><br><br>
         If you need help downloading, installing or setting up your wallet, here is an article:
         <br><br>
         <a
-            href="https://support.perawallet.app/en/article/create-a-new-algorand-account-on-pera-wallet-1ehbj11/">https://support.perawallet.app/en/article/create-a-new-algorand-account-on-pera-wallet-1ehbj11/</a>
+            href="https://support.perawallet.app/en/article/create-a-new-algorand-account-on-pera-wallet-1ehbj11/" target="_blank">https://support.perawallet.app/en/article/create-a-new-algorand-account-on-pera-wallet-1ehbj11/</a>
     </p>
-    <router-link to="/alchegolddiscord"><button>BACK</button></router-link>
-    <router-link to="/alchegoldoptin"><button>NEXT</button></router-link>
+    <div>
+        <router-link to="/alchegolddiscord"><button class="backButton">BACK</button></router-link>
+        <router-link to="/alchegoldoptin"><button>NEXT</button></router-link>
+    </div>
 
 </template>
 
 <style lang="scss" scoped>
 h1 {
-    margin: 10%;
+    margin-top: 6%;
 }
 
 p {
@@ -32,9 +34,16 @@ img {
     width: 250px;
     margin: 0;
 }
-
 button {
-    margin-bottom: 5%;
-    margin-top: 5%;
+    margin-bottom: 3%;
+    margin-top: 2%;
 }
 </style>
+
+<script>
+export default {
+  mounted () {
+    window.scrollTo(0, 0)
+  }
+}
+</script>
