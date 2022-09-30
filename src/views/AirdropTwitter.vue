@@ -2,7 +2,7 @@
         <div class="header">
             <h1>FOLLOW US ON TWITTER</h1>
         </div>
-    <p>Stay up to date on Alchemon and all announcements by following us on Twitter!:
+    <p><strong>Stay up to date on Alchemon and all announcements by following us on Twitter!:</strong>
     </p>
     <a href="https://twitter.com/AlchemonNFT" target="_blank">
         <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/twitterlogo.svg" class="Twitter Logo" /></a>
@@ -18,12 +18,6 @@
 </template>
 
 <style lang="scss" scoped>
-@media (max-width: 800px) {
-            button {
-                min-width: 25vw;
-            }
-        }
-
 .header {
     margin-top: 6%;
 }
@@ -38,13 +32,18 @@ img {
 button {
     margin-bottom: 3%;
     margin-top: 2%;
-    min-width: 10vw;
+    min-width: 20vw;
 }
 
 .buttonContainer {
     display: flex;
     justify-content: space-between;
     margin: 3%;
+}
+@media (max-width: 800px) {
+    button {
+        min-width: 35vw;
+    }
 }
 </style>
 

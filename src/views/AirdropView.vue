@@ -24,7 +24,7 @@
 <style lang="scss" scoped>
 @media (max-width: 800px) {
             button {
-                min-width: 25vw;
+                min-width: 35vw;
             }
         }
 form {

@@ -16,11 +16,6 @@
 </template>
 
 <style lang="scss" scoped>
-@media (max-width: 800px) {
-    button {
-        min-width: 25vw;
-    }
-}
 .header {
     margin-top: 6%;
 }
@@ -37,13 +32,18 @@ img {
 button {
     margin-bottom: 3%;
     margin-top: 2%;
-    min-width: 10vw;
+    min-width: 20vw;
 }
 
 .buttonContainer {
     display: flex;
     justify-content: space-between;
     margin: 3%;
+}
+@media (max-width: 800px) {
+    button {
+        min-width: 35vw;
+    }
 }
 </style>
 

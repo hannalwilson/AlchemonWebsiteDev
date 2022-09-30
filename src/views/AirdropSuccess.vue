@@ -26,7 +26,7 @@ img {
 button {
     margin-bottom: 3%;
     margin-top: 2%;
-    min-width: 10vw;
+    min-width: 20vw;
 }
 
 .buttonContainer {
@@ -36,7 +36,7 @@ button {
 }
 @media (max-width: 800px) {
     button {
-        min-width: 25vw;
+        min-width: 35vw;
     }
 }
 </style>

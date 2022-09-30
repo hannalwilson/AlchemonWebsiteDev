@@ -2,11 +2,11 @@
         <div class="header">
             <h1>ALGORAND WALLET</h1>
         </div>
-    <p>If you don’t already have an Algorand wallet, download Pera Algo Wallet now:
+    <p><strong>If you don’t already have an Algorand wallet, download Pera Algo Wallet now:</strong>
     </p>
     <a href="https://perawallet.app/" target="_blank">
         <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/peralogo.svg" class="PeraLogo" /></a>
-    <p>If clicking on this logo doesn’t work, click on this link:<br>
+    <p>If clicking on this logo doesn’t work, click on this link:<br><br>
         <a href="https://perawallet.app/" target="_blank">https://perawallet.app/</a>
     <br><br>
         If you need help downloading, installing or setting up your wallet, here is an article:
@@ -23,11 +23,6 @@
 </template>
 
 <style lang="scss" scoped>
-@media (max-width: 800px) {
-            button {
-                min-width: 25vw;
-            }
-        }
 .header {
     margin-top: 6%;
 }
@@ -43,13 +38,18 @@ img {
 button {
     margin-bottom: 3%;
     margin-top: 2%;
-    min-width: 10vw;
+    min-width: 20vw;
 }
 
 .buttonContainer {
     display: flex;
     justify-content: space-between;
     margin: 3%;
+}
+@media (max-width: 800px) {
+    button {
+        min-width: 35vw;
+    }
 }
 </style>
 

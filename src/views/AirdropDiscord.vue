@@ -2,15 +2,15 @@
     <div class="header">
         <h1>JOIN OUR DISCORD</h1>
     </div>
-    <p>Click on the discord logo below to join Alchemon’s Discord server!:
+    <p class="bold">Click on the discord logo below to join Alchemon’s Discord server!:
     </p>
     <a href="https://discord.com/invite/zr5PTxFTSk " target="_blank">
     <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/discordlogo.svg" class="Discord Logo"/></a>
     <p>If clicking on this logo doesn’t work, click on this link:<br><br>
         <a href="https://discord.com/invite/zr5PTxFTSk "  target="_blank">https://discord.com/invite/zr5PTxFTSk</a>
     </p>
-    <p>
-        <strong>Once you have joined Alchemon's Discord server, please click the NEXT button.</strong>
+    <p class="bold">
+        Once you have joined Alchemon's Discord server, please click the NEXT button.
     </p>
 <div class="buttonContainer">
     <router-link to="/alchegoldsuccess"><button class="backButton">BACK</button></router-link>
@@ -34,7 +34,7 @@ img {
 button {
     margin-bottom: 3%;
     margin-top: 2%;
-    min-width: 10vw;
+    min-width: 20vw;
 }
 .buttonContainer {
     display: flex;
@@ -44,8 +44,11 @@ button {
 @media (max-width: 800px) {
 
     button {
-            min-width: 25vw;
+            min-width: 35vw;
         }
+}
+.bold {
+    font-weight: 800;
 }
 </style>
 
