@@ -1,5 +1,7 @@
 <template>
-    <h1>JOIN OUR DISCORD</h1>
+    <div class="header">
+        <h1>JOIN OUR DISCORD</h1>
+    </div>
     <p>Click on the discord logo below to join Alchemon’s Discord server!:
     </p>
     <a href="https://discord.com/invite/zr5PTxFTSk " target="_blank">
@@ -8,16 +10,16 @@
         <a href="https://discord.com/invite/zr5PTxFTSk "  target="_blank">https://discord.com/invite/zr5PTxFTSk</a>
     </p>
     <p>
-        <strong>Once you have joined Alchemon's Discord server, please click the NEXT button below.</strong>
+        <strong>Once you have joined Alchemon's Discord server, please click the NEXT button.</strong>
     </p>
-<div>
+<div class="buttonContainer">
     <router-link to="/alchegoldsuccess"><button class="backButton">BACK</button></router-link>
     <router-link to="/alchegoldwallet"><button>NEXT</button></router-link>
 </div>
 </template>
 
 <style lang="scss" scoped>
-h1 {
+.header {
     margin-top: 6%;
 }
 
@@ -32,6 +34,18 @@ img {
 button {
     margin-bottom: 3%;
     margin-top: 2%;
+    min-width: 10vw;
+}
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 3%;
+}
+@media (max-width: 800px) {
+
+    button {
+            min-width: 25vw;
+        }
 }
 </style>
 

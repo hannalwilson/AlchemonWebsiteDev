@@ -1,5 +1,7 @@
 <template>
-    <h1>PROVIDE YOUR WALLET ADDRESS</h1>
+    <div class="header">
+        <h1>PROVIDE YOUR WALLET ADDRESS</h1>
+    </div>
     <p><strong>Email your Algorand wallet address to the email address below:<br><br>
     info@alchemon.net</strong><br><br>
     We need your wallet address in order to send you your AlcheGold.<br><br>
@@ -7,14 +9,19 @@
         <a href="https://support.perawallet.app/en/article/finding-your-algorand-address-on-pera-wallet-iqfro9/"  target="_blank">https://support.perawallet.app/en/article/finding-your-algorand-address-on-pera-wallet-iqfro9/</a>
     </p>
     <p><strong>Once you have emailed your wallet address to info@alchemon.net, please click the NEXT button.</strong></p>
-    <div>
+    <div class="buttonContainer">
         <router-link to="/alchegoldtelegram"><button class="backButton">BACK</button></router-link>
     <router-link to="/alchegoldend"><button>NEXT</button></router-link>
     </div>
 </template>
 
 <style lang="scss" scoped>
-h1 {
+@media (max-width: 800px) {
+    button {
+        min-width: 25vw;
+    }
+}
+.header {
     margin-top: 6%;
 }
 
@@ -30,6 +37,13 @@ img {
 button {
     margin-bottom: 3%;
     margin-top: 2%;
+    min-width: 10vw;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 3%;
 }
 </style>
 

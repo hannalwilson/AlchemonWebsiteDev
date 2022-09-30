@@ -1,11 +1,19 @@
 <template>
-    <h1>THAT'S IT!</h1>
+        <div class="header">
+            <h1>THAT'S IT!</h1>
+        </div>
     <p>That’s it for now! We will email you once we are ready to send out your free AlcheGold!</p>
-    <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/alchegold.png" class="alchegold" />
+    <p>In the meantime, check out the NFTs for sale in our store!</p>
+    <router-link to="/store"><button>ALCHESHOP</button></router-link>
 </template>
 
 <style lang="scss" scoped>
-h1 {
+@media (max-width: 800px) {
+    button {
+        min-width: 40vw;
+    }
+}
+.header {
     margin-top: 6%;
 }
 
@@ -16,11 +24,6 @@ p {
 img {
     width: 250px;
     align-self: center;
-}
-
-button {
-    margin-bottom: 5%;
-    margin-top: 5%;
 }
 </style>
 

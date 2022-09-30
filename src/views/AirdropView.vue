@@ -22,6 +22,11 @@
 </template>
 
 <style lang="scss" scoped>
+@media (max-width: 800px) {
+            button {
+                min-width: 25vw;
+            }
+        }
 form {
     margin: 2%;
     text-align: right;

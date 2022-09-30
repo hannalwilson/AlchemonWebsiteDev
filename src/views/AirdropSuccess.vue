@@ -1,14 +1,18 @@
 <template>
-    <h1>SUCCESS!</h1>
+        <div class="header">
+            <h1>SUCCESS!</h1>
+        </div>
     <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/alchegold.png" alt="alchegold" />
     <p>Thank you for requesting AlcheGold!<br><br>
-    In order to receive your tokens, please complete the following quick steps (click the NEXT button).
+    <strong>In order to receive your tokens, please complete the following quick steps (click the NEXT button).</strong>
 </p>
-<router-link to="/alchegolddiscord"><button>NEXT</button></router-link>
+<div class="buttonContainer">
+    <router-link to="/alchegolddiscord"><button>NEXT</button></router-link>
+</div>
 </template>
 
 <style lang="scss" scoped>
-h1 {
+.header {
     margin-top: 6%;
 }
 p {
@@ -22,6 +26,18 @@ img {
 button {
     margin-bottom: 3%;
     margin-top: 2%;
+    min-width: 10vw;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: right;
+    margin: 3%;
+}
+@media (max-width: 800px) {
+    button {
+        min-width: 25vw;
+    }
 }
 </style>
 
