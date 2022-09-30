@@ -2,7 +2,7 @@
         <div class="header">
             <h1>JOIN OUR TELEGRAM</h1>
         </div>
-    <p>Click on the Telegram logo below to join Alchemon’s Telegram community!:
+    <p><strong>Click on the Telegram logo below to join Alchemon’s Telegram community!:</strong>
     </p>
     <a href="https://t.me/joinchat/WbyxkfAyJDZmMzE5" target="_blank">
         <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/telegramlogo.svg" class="Telegram Logo" /></a>
