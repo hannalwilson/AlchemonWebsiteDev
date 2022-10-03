@@ -30,10 +30,10 @@
     <p class="centerText">A: Yes, a player can only win 1 prize per week.<br>
     B: No, a player can win multiple prizes in the same week.
     </p>
-    <!-- <div class="buttonContainer">
-      <button class="boxShadow voteButton" @click="castVote('A')" disabled>VOTE A</button>
-      <button class="boxShadow voteButton" @click="castVote('B')" disabled>VOTE B</button>
-    </div> -->
+    <div class="buttonContainer">
+      <button class="boxShadow voteButton" @click="castVote('A')">VOTE A</button>
+      <button class="boxShadow voteButton" @click="castVote('B')">VOTE B</button>
+    </div>
     <p class="orangeHeader spreadText">RESULTS</p>
     <table>
       <tr>

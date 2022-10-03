@@ -25,6 +25,16 @@ import AirdropTwitter from '../views/AirdropTwitter.vue'
 import AirdropTelegram from '../views/AirdropTelegram.vue'
 import AirdropEmail from '../views/AirdropEmail.vue'
 import AirdropEnd from '../views/AirdropEnd.vue'
+import GettingStartedOne from '../views/GettingStartedOne.vue'
+import GettingStartedTwo from '../views/GettingStartedTwo.vue'
+import GettingStartedThree from '../views/GettingStartedThree.vue'
+import GettingStartedFour from '../views/GettingStartedFour.vue'
+import GettingStartedFive from '../views/GettingStartedFive.vue'
+import GettingStartedSix from '../views/GettingStartedSix.vue'
+import GettingStartedSeven from '../views/GettingStartedSeven.vue'
+import GettingStartedEight from '../views/GettingStartedEight.vue'
+import GettingStartedNine from '../views/GettingStartedNine.vue'
+import GettingStartedTen from '../views/GettingStartedTen.vue'
 
 const routes = [
   {
@@ -156,6 +166,56 @@ const routes = [
     path: '/alchegoldend',
     name: 'alchegoldend',
     component: AirdropEnd
+  },
+  {
+    path: '/getting-started-step-1',
+    name: 'getting-started-step-1',
+    component: GettingStartedOne
+  },
+  {
+    path: '/getting-started-step-2',
+    name: 'getting-started-step-2',
+    component: GettingStartedTwo
+  },
+  {
+    path: '/getting-started-step-3',
+    name: 'getting-started-step-3',
+    component: GettingStartedThree
+  },
+  {
+    path: '/getting-started-step-4',
+    name: 'getting-started-step-4',
+    component: GettingStartedFour
+  },
+  {
+    path: '/getting-started-step-5',
+    name: 'getting-started-step-5',
+    component: GettingStartedFive
+  },
+  {
+    path: '/getting-started-step-6',
+    name: 'getting-started-step-6',
+    component: GettingStartedSix
+  },
+  {
+    path: '/getting-started-step-7',
+    name: 'getting-started-step-7',
+    component: GettingStartedSeven
+  },
+  {
+    path: '/getting-started-step-8',
+    name: 'getting-started-step-8',
+    component: GettingStartedEight
+  },
+  {
+    path: '/getting-started-step-9',
+    name: 'getting-started-step-9',
+    component: GettingStartedNine
+  },
+  {
+    path: '/getting-started-step-10',
+    name: 'getting-started-step-10',
+    component: GettingStartedTen
   }
 ]
 
