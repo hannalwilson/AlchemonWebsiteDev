@@ -1,6 +1,7 @@
 <template>
     <header>
         <h1>WHY ALGORAND?</h1>
+        <h3>STEP 2</h3>
     </header>
     <p>
         <i>Alchemon</i> is a combination of the words “<u>Al</u>gorand” + “Al<u>ch</u>emy” + “<u>Mon</u>ster.”
@@ -17,8 +18,8 @@
         Please click NEXT.
     </p>
     <div class="buttonContainer">
-        <router-link to="/getting-started-step-1"><button class="backButton">BACK</button></router-link>
-        <router-link to="/getting-started-step-3"><button>NEXT</button></router-link>
+        <router-link to="/getting-started-step-1"><button class="backButton directionButton">BACK</button></router-link>
+        <router-link to="/getting-started-step-3"><button class="directionButton">NEXT</button></router-link>
     </div>
 </template>
 
@@ -28,7 +29,6 @@ header {
 }
 
 p {
-    text-align: center;
     margin: inherit 5%;
 }
 

@@ -1,7 +1,7 @@
 <template>
         <div class="header">
             <h1>JOIN OUR TELEGRAM</h1>
-        </div>
+        <h3>STEP 9</h3></div>
     <p><strong>Click on the Telegram logo below to join Alchemon’s Telegram community!:</strong>
     </p>
     <a href="https://t.me/joinchat/WbyxkfAyJDZmMzE5" target="_blank">
@@ -11,8 +11,8 @@
     </p>
     <p><strong>Once you have joined the Alchemon community on Telegram, please click the NEXT button.</strong></p>
     <div class="buttonContainer">
-        <router-link to="/getting-started-step-8"><button class="backButton">BACK</button></router-link>
-        <router-link to="/getting-started-step-10"><button>NEXT</button></router-link>
+        <router-link to="/getting-started-step-8"><button class="backButton directionButton">BACK</button></router-link>
+        <router-link to="/getting-started-step-10"><button class="directionButton">NEXT</button></router-link>
     </div>
 
 </template>
@@ -20,10 +20,6 @@
 <style lang="scss" scoped>
 .header {
     margin-top: 6%;
-}
-
-p {
-    text-align: center;
 }
 
 img {

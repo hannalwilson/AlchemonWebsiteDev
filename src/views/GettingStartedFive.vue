@@ -1,7 +1,7 @@
 <template>
     <header>
         <h1>PURCHASE NFTs</h1>
-    </header>
+        <h3>STEP 5</h3></header>
     <p>
         Now you will purchase three NFTs from our website.
         <br><br>
@@ -25,18 +25,14 @@
         <span class="fixBold">Once you have <strong>3 different</strong> Alchemon NFTs in your wallet, click NEXT.</span>
     </p>
     <div class="buttonContainer">
-        <router-link to="/getting-started-step-4"><button class="backButton">BACK</button></router-link>
-        <router-link to="/getting-started-step-6"><button>NEXT</button></router-link>
+        <router-link to="/getting-started-step-4"><button class="backButton directionButton">BACK</button></router-link>
+        <router-link to="/getting-started-step-6"><button class="directionButton">NEXT</button></router-link>
     </div>
 </template>
 
 <style lang="scss" scoped>
 header {
     margin-top: 6%;
-}
-
-p {
-    text-align: center;
 }
 
 img {

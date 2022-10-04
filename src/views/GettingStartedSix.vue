@@ -1,14 +1,15 @@
 <template>
     <header>
         <h1>ACCEPT TOKENS</h1>
+        <h3>STEP 6</h3>
     </header>
     <p>
         Alchemon has two tokens:
         <br>
-        <ol>
+        <ul>
             <li>AlcheCoin.</li>
             <li>AlcheGold.</li>
-        </ol>
+        </ul>
         You can earn these tokens simply by holding Alchemon NFTs in your wallet and playing our video game! You need to opt-in
         for (accept) these tokens.
         <br><br>
@@ -24,23 +25,23 @@
             <strong><li>
                 Add the following assets:
                 <br><br>
-                <ol>
-                    <li>310014962 (AlcheCoin)</li>
+                <ul>
+                    <li>310014962 (AlcheCoin)</li><br>
                     <li>877703456 (AlcheGold)</li>
-                </ol>
+                </ul>
             </li></strong>
         </ol>
         If you run into any difficulty with this, here is a video that shows how to navigate the wallet and how to add assets:
         <br><br>
-        <iframe src="https://www.youtube.com/embed/z-rFSehvI60" title="YouTube video player"
+        <span class="center"><iframe src="https://www.youtube.com/embed/z-rFSehvI60" title="YouTube video player"
             frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
+            allowfullscreen></iframe></span>
             <br><br>
             Once you have opted-in to AlcheCoin and AlcheGold, click NEXT.
     </p>
     <div class="buttonContainer">
-        <router-link to="/getting-started-step-5"><button class="backButton">BACK</button></router-link>
-        <router-link to="/getting-started-step-7"><button>NEXT</button></router-link>
+        <router-link to="/getting-started-step-5"><button class="backButton directionButton">BACK</button></router-link>
+        <router-link to="/getting-started-step-7"><button class="directionButton">NEXT</button></router-link>
     </div>
 </template>
 
@@ -51,6 +52,9 @@ iframe {
 }
 header {
     margin-top: 6%;
+}
+.center{
+    margin: 0 auto;
 }
 
 img {

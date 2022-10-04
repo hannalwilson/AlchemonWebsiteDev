@@ -1,6 +1,7 @@
 <template>
     <header>
         <h1>ALGORAND WALLET</h1>
+        <h3>STEP 3</h3>
     </header>
     <p>
         <strong>As the first step, you need to download and install the app <a href="https://perawallet.app/" target="_blank">Pera Algo Wallet</a> on your phone.</strong>
@@ -16,18 +17,14 @@
         Once you have set up your Pera Algo Wallet account, click NEXT.
     </p>
     <div class="buttonContainer">
-        <router-link to="/getting-started-step-2"><button class="backButton">BACK</button></router-link>
-        <router-link to="/getting-started-step-4"><button>NEXT</button></router-link>
+        <router-link to="/getting-started-step-2"><button class="backButton directionButton">BACK</button></router-link>
+        <router-link to="/getting-started-step-4"><button class="directionButton">NEXT</button></router-link>
     </div>
 </template>
 
 <style lang="scss" scoped>
 header {
     margin-top: 6%;
-}
-
-p {
-    text-align: center;
 }
 
 img {

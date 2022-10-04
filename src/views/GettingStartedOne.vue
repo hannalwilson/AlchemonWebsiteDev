@@ -1,14 +1,14 @@
 <template>
     <header>
         <h1>GETTING STARTED WITH ALCHEMON</h1>
-    </header>
+        <h3>STEP 1</h3></header>
     <p>
-        This series of ten steps will fully set you up to play Alchemon!
+        This series of 10 steps will fully set you up to play Alchemon!
         <br><br>
         To start, if you are new to this whole thing, here is a great article that explains cryptocurrency, blockchain and NFTs
         for beginners:
         <br><br>
-        <a href="alchemon.net/cryptoblockchainandnfts" target="_blank">Cryptocurrency, Blockchain and NFTs Simply Defined</a>
+        <router-link to="/cryptoblockchainandnfts" target="_blank">Cryptocurrency, Blockchain and NFTs Simply Defined</router-link>
         <br><br>
         There are many steps to this process but at the end you will own Alchemon NFTs, battle them within our video game and
         earn tokens!
@@ -16,18 +16,13 @@
         Please click NEXT.
     </p>
     <div class="buttonContainer">
-        <router-link to="/getting-started-step-2"><button>NEXT</button></router-link>
+        <router-link to="/getting-started-step-2"><button class="directionButton directionButton">NEXT</button></router-link>
     </div>
 </template>
 
 <style lang="scss" scoped>
 header {
     margin-top: 6%;
-}
-
-p {
-    text-align: center;
-    margin: inherit 5%;
 }
 
 img {

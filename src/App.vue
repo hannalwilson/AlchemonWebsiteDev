@@ -95,22 +95,29 @@ img {
 }
 /*Responsive body text size*/
 @media (min-width: 1px) {
-body, button, input { font-size: 5vw; }}
+body, button, input { font-size: 5vw; }
+.directionButton { font-size: 10vw;}}
 @media (min-width: 300px) {
-body, button, input { font-size: 4vw; }}
+body, button, input { font-size: 4vw; }
+.directionButton { font-size: 8vw;}}
 @media (min-width: 350px) {
-body, button, input { font-size: 3.5vw; }}
+body, button, input { font-size: 3.5vw; }
+.directionButton { font-size: 7vw;}}
 @media (min-width: 500px) {
-body, button, input { font-size: 3vw; }}
+body, button, input { font-size: 3vw; }
+.directionButton { font-size: 6vw;}}
 @media (min-width: 650px) {
-body, button, input { font-size: 2.5vw; }}
+body, button, input { font-size: 2.5vw; }
+.directionButton { font-size: 5vw;}}
 @media (min-width: 800px) {
-body, button, input { font-size: 2vw; }}
+body, button, input { font-size: 2vw; }
+.directionButton { font-size: 4vw;}}
 @media (min-width: 1100px) {
-body, button, input { font-size: 1.5vw; }}
+body, button, input { font-size: 1.5vw; }
+.directionButton { font-size: 3vw;}}
 @media (min-width: 1800px) {
 body, button, input { font-size: 1.25vw; }
-}
+.directionButton { font-size: 2.5vw;}}
 
 // @media (max-width: 650px) {
 // #app { margin-right: -5vw; }}

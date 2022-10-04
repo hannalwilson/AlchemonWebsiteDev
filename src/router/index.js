@@ -35,6 +35,7 @@ import GettingStartedSeven from '../views/GettingStartedSeven.vue'
 import GettingStartedEight from '../views/GettingStartedEight.vue'
 import GettingStartedNine from '../views/GettingStartedNine.vue'
 import GettingStartedTen from '../views/GettingStartedTen.vue'
+import WhatIsCrypto from '../views/WhatIsCrypto.vue'
 
 const routes = [
   {
@@ -216,6 +217,11 @@ const routes = [
     path: '/getting-started-step-10',
     name: 'getting-started-step-10',
     component: GettingStartedTen
+  },
+  {
+    path: '/cryptoblockchainandnfts',
+    name: 'cryptoblockchainandnfts',
+    component: WhatIsCrypto
   }
 ]
 
