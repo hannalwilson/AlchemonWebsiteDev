@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <h1>FOLLOW US ON TWITTER</h1>
-        <h3>STEP 8</h3></div>
+        <h3>STEP 8 of 10</h3></div>
     <p><strong>Stay up to date on Alchemon and all announcements by following us on Twitter!:</strong>
     </p>
     <a href="https://twitter.com/AlchemonNFT" target="_blank">

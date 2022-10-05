@@ -1,8 +1,8 @@
 <template>
     <header>
         <h1>PURCHASE NFTs</h1>
-        <h3>STEP 5</h3></header>
-    <p>
+        <h3>STEP 5 of 10</h3></header>
+    <div class="content">
         Now you will purchase three NFTs from our website.
         <br><br>
         <strong>Complete the following steps:</strong>
@@ -23,7 +23,7 @@
             </li></strong>
         </ol>
         <span class="fixBold">Once you have <strong>3 different</strong> Alchemon NFTs in your wallet, click NEXT.</span>
-    </p>
+    </div>
     <div class="buttonContainer">
         <router-link to="/getting-started-step-4"><button class="backButton directionButton">BACK</button></router-link>
         <router-link to="/getting-started-step-6"><button class="directionButton">NEXT</button></router-link>
@@ -62,6 +62,10 @@ button {
     }
 }
 ol {
+    padding: 1% 5%;
+}
+.content {
+    text-align: justify;
     padding: 0 5%;
 }
 </style>

@@ -171,52 +171,82 @@ const routes = [
   {
     path: '/getting-started-step-1',
     name: 'getting-started-step-1',
-    component: GettingStartedOne
+    component: GettingStartedOne,
+    meta: {
+      hideNavbar: true
+    }
   },
   {
     path: '/getting-started-step-2',
     name: 'getting-started-step-2',
-    component: GettingStartedTwo
+    component: GettingStartedTwo,
+    meta: {
+      hideNavbar: true
+    }
   },
   {
     path: '/getting-started-step-3',
     name: 'getting-started-step-3',
-    component: GettingStartedThree
+    component: GettingStartedThree,
+    meta: {
+      hideNavbar: true
+    }
   },
   {
     path: '/getting-started-step-4',
     name: 'getting-started-step-4',
-    component: GettingStartedFour
+    component: GettingStartedFour,
+    meta: {
+      hideNavbar: true
+    }
   },
   {
     path: '/getting-started-step-5',
     name: 'getting-started-step-5',
-    component: GettingStartedFive
+    component: GettingStartedFive,
+    meta: {
+      hideNavbar: true
+    }
   },
   {
     path: '/getting-started-step-6',
     name: 'getting-started-step-6',
-    component: GettingStartedSix
+    component: GettingStartedSix,
+    meta: {
+      hideNavbar: true
+    }
   },
   {
     path: '/getting-started-step-7',
     name: 'getting-started-step-7',
-    component: GettingStartedSeven
+    component: GettingStartedSeven,
+    meta: {
+      hideNavbar: true
+    }
   },
   {
     path: '/getting-started-step-8',
     name: 'getting-started-step-8',
-    component: GettingStartedEight
+    component: GettingStartedEight,
+    meta: {
+      hideNavbar: true
+    }
   },
   {
     path: '/getting-started-step-9',
     name: 'getting-started-step-9',
-    component: GettingStartedNine
+    component: GettingStartedNine,
+    meta: {
+      hideNavbar: true
+    }
   },
   {
     path: '/getting-started-step-10',
     name: 'getting-started-step-10',
-    component: GettingStartedTen
+    component: GettingStartedTen,
+    meta: {
+      hideNavbar: true
+    }
   },
   {
     path: '/cryptoblockchainandnfts',

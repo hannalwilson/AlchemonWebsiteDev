@@ -1,10 +1,10 @@
 <template>
     <header>
         <h1>ALGORAND WALLET</h1>
-        <h3>STEP 3</h3>
+        <h3>STEP 3 of 10</h3>
     </header>
     <p>
-        <strong>As the first step, you need to download and install the app <a href="https://perawallet.app/" target="_blank">Pera Algo Wallet</a> on your phone.</strong>
+        <strong>As the first action, you need to download and install the app <a href="https://perawallet.app/" target="_blank">Pera Algo Wallet</a> on your phone.</strong>
         <br><br>
         Here is an article on how to set up your Pera Algo Wallet:
         <br><br>

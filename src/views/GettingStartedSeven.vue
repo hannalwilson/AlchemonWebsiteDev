@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <h1>JOIN OUR DISCORD</h1>
-        <h3>STEP 7</h3></div>
+        <h3>STEP 7 of 10</h3></div>
     <p class="bold">Click on the discord logo below to join Alchemon’s Discord server!:
     </p>
     <a href="https://discord.com/invite/zr5PTxFTSk " target="_blank">

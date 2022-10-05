@@ -1,7 +1,7 @@
 <template>
     <header>
         <h1>PURCHASE ALGO</h1>
-        <h3>STEP 4</h3></header>
+        <h3>STEP 4 of 10</h3></header>
     <p>
         In order to play the Alchemon video game, you must own at least three (3) unique Alchemon NFTs. Our NFTs are much more
         affordable than other projects.
@@ -34,11 +34,11 @@
                 Here are articles on how to send crypto from Coinbase to your Pera Algo wallet:<br><br>
                 <ol>
                     <li><a href="https://help.coinbase.com/en/wallet/sending-and-receiving/how-do-i-send-and-receive-crypto-through-wallet" target="_blank">https://help.coinbase.com/en/wallet/sending-and-receiving/how-do-i-send-and-receive-crypto-through-wallet</a></li><br>
-                    <li><a href="https://support.perawallet.app/en/article/transferring-algo-from-an-exchange-platform-to-the-pera-algo-wallet-1jmgz96/" target="_blank">https://support.perawallet.app/en/article/transferring-algo-from-an-exchange-platform-to-the-pera-algo-wallet-1jmgz96/</a></li><br>
+                    <li><a href="https://support.perawallet.app/en/article/transferring-algo-from-an-exchange-platform-to-the-pera-algo-wallet-1jmgz96/" target="_blank">https://support.perawallet.app/en/article/transferring-algo-from-an-exchange-platform-to-the-pera-algo-wallet-1jmgz96/</a></li>
                 </ol>
             </li>
         </ol>
-        Once you have enough ALGO in your Pera Algorand wallet, click NEXT.
+        Once you have enough ALGO in your Pera Algorand wallet to purchase Alchemon NFTs, click NEXT.
     </p>
     <div class="buttonContainer">
         <router-link to="/getting-started-step-3"><button class="backButton directionButton">BACK</button></router-link>
@@ -74,12 +74,13 @@ button {
     }
 }
 ol {
-    padding: 0 5%;
+    padding: 1% 5%;
     li::marker {
         font-weight: 800;
     }
     ol {
         list-style-type: upper-alpha;
+        padding: 0;
     }
 }
 </style>

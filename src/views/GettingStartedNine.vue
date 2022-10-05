@@ -1,7 +1,7 @@
 <template>
         <div class="header">
             <h1>JOIN OUR TELEGRAM</h1>
-        <h3>STEP 9</h3></div>
+        <h3>STEP 9 of 10</h3></div>
     <p><strong>Click on the Telegram logo below to join Alchemon’s Telegram community!:</strong>
     </p>
     <a href="https://t.me/joinchat/WbyxkfAyJDZmMzE5" target="_blank">

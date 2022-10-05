@@ -1,7 +1,7 @@
 <template>
     <header>
         <h1>GETTING STARTED WITH ALCHEMON</h1>
-        <h3>STEP 1</h3></header>
+        <h3>STEP 1 of 10</h3></header>
     <p>
         This series of 10 steps will fully set you up to play Alchemon!
         <br><br>

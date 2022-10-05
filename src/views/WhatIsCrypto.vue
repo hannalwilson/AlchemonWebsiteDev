@@ -1,7 +1,7 @@
 <template>
     <header>
         <h1>CRYPTOCURRENCY, BLOCKCHAIN AND NFTs SIMPLY DEFINED</h1>
-        <p><i>Excerpted from The Tech Academy’s book:<br>
+        <p><i>Excerpted from <a href="https://www.learncodinganywhere.com/" target="_blank">The Tech Academy</a>’s book:<br>
         <a href="https://www.amazon.com/You-Are-Not-Stupid-Technology/dp/0997326492/ref=sr_1_4?m=A22DV6WDUDZOWI&marketplaceID=ATVPDKIKX0DER&qid=1664423087&s=merchant-items&sr=1-4" target="_blank">
             You Are Not Stupid: Computers and Tech Simplified</a></i></p>
     </header>
@@ -78,7 +78,7 @@
         “cryptocurrency.” Basically, it is money, tracked entirely online using computers and software. The technology behind it
         involves keeping a continuous record of every piece of this digital currency, and what has happened to it, on multiple
         computers simultaneously. That way the accuracy of the currency and its history can be verified at any time, so people
-        can trust its use. It also allows people to remain anonymous.
+        can trust its use. It also allows people to remain anonymous.<br><br>
     </p>
 </template>
 

@@ -1,15 +1,15 @@
 <template>
     <header>
         <h1>ACCEPT TOKENS</h1>
-        <h3>STEP 6</h3>
+        <h3>STEP 6 of 10</h3>
     </header>
-    <p>
+    <div class="pageContent">
         Alchemon has two tokens:
         <br>
-        <ul>
-            <li>AlcheCoin.</li>
+        <ol>
+            <li>AlcheCoin.</li><br>
             <li>AlcheGold.</li>
-        </ul>
+        </ol>
         You can earn these tokens simply by holding Alchemon NFTs in your wallet and playing our video game! You need to opt-in
         for (accept) these tokens.
         <br><br>
@@ -33,12 +33,12 @@
         </ol>
         If you run into any difficulty with this, here is a video that shows how to navigate the wallet and how to add assets:
         <br><br>
-        <span class="center"><iframe src="https://www.youtube.com/embed/z-rFSehvI60" title="YouTube video player"
+        <div class="center"><iframe src="https://www.youtube.com/embed/z-rFSehvI60" title="YouTube video player"
             frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe></span>
-            <br><br>
+            allowfullscreen></iframe></div>
+            <br>
             Once you have opted-in to AlcheCoin and AlcheGold, click NEXT.
-    </p>
+        </div>
     <div class="buttonContainer">
         <router-link to="/getting-started-step-5"><button class="backButton directionButton">BACK</button></router-link>
         <router-link to="/getting-started-step-7"><button class="directionButton">NEXT</button></router-link>
@@ -53,8 +53,12 @@ iframe {
 header {
     margin-top: 6%;
 }
-.center{
-    margin: 0 auto;
+.pageContent {
+    padding: 0 5%;
+    text-align: justify;
+}
+.center {
+    text-align: center;
 }
 
 img {
@@ -81,6 +85,9 @@ button {
     button {
         min-width: 35vw;
     }
+}
+ol, ul {
+    padding: 1% 5%;
 }
 </style>
 

@@ -1,9 +1,9 @@
 <template>
     <header>
         <h1>WHY ALGORAND?</h1>
-        <h3>STEP 2</h3>
+        <h3>STEP 2 of 10</h3>
     </header>
-    <p>
+    <div class="content">
         <i>Alchemon</i> is a combination of the words “<u>Al</u>gorand” + “Al<u>ch</u>emy” + “<u>Mon</u>ster.”
         <br><br>
         Algorand is one of the most-used blockchains in the world and its cryptocurrency (ALGO) is growing in popularity every
@@ -14,9 +14,9 @@
             <li>Algorand is a green blockchain – meaning, it’s carbon-negative (Algorand actually removes carbon dioxide from the
             atmosphere rather than adding it).<br><br></li>
             <li>Algorand is one of the most secure blockchains. Keeping our users safe is one of our top priorities!</li>
-        </ol><br>
+        </ol>
         Please click NEXT.
-    </p>
+    </div>
     <div class="buttonContainer">
         <router-link to="/getting-started-step-1"><button class="backButton directionButton">BACK</button></router-link>
         <router-link to="/getting-started-step-3"><button class="directionButton">NEXT</button></router-link>
@@ -26,15 +26,6 @@
 <style lang="scss" scoped>
 header {
     margin-top: 6%;
-}
-
-p {
-    margin: inherit 5%;
-}
-
-img {
-    width: 200px;
-    margin: 0;
 }
 
 button {
@@ -56,8 +47,11 @@ button {
 }
 
 ol {
+    padding: 1% 5%;
+}
+.content {
+    text-align: justify;
     padding: 0 5%;
-    list-style-type: upper-alpha;
 }
 </style>
 
