@@ -11,8 +11,8 @@
     </p>
     <p>Once you have joined the Alchemon community on Telegram, please click the NEXT button.</p>
     <div class="buttonContainer">
-        <router-link to="/getting-started-step-8"><button class="backButton directionButton">BACK</button></router-link>
-        <router-link to="/getting-started-step-10"><button class="directionButton">NEXT</button></router-link>
+        <router-link to="/free-nft-step-8"><button class="backButton directionButton">BACK</button></router-link>
+        <router-link to="/free-nft-step-10"><button class="directionButton">NEXT</button></router-link>
     </div>
 
 </template>

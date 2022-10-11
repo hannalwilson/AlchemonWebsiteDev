@@ -36,6 +36,17 @@ import GettingStartedEight from '../views/GettingStartedEight.vue'
 import GettingStartedNine from '../views/GettingStartedNine.vue'
 import GettingStartedTen from '../views/GettingStartedTen.vue'
 import WhatIsCrypto from '../views/WhatIsCrypto.vue'
+import FreeNFTOne from '../views/FreeNFTOne.vue'
+import FreeNFTTwo from '../views/FreeNFTTwo.vue'
+import FreeNFTThree from '../views/FreeNFTThree.vue'
+import FreeNFTFour from '../views/FreeNFTFour.vue'
+import FreeNFTFive from '../views/FreeNFTFive.vue'
+import FreeNFTSix from '../views/FreeNFTSix.vue'
+import FreeNFTSeven from '../views/FreeNFTSeven.vue'
+import FreeNFTEight from '../views/FreeNFTEight.vue'
+import FreeNFTNine from '../views/FreeNFTNine.vue'
+import FreeNFTTen from '../views/FreeNFTTen.vue'
+import FreeNFTGame from '../views/FreeNFTGame.vue'
 
 const routes = [
   {
@@ -252,6 +263,94 @@ const routes = [
     path: '/cryptoblockchainandnfts',
     name: 'cryptoblockchainandnfts',
     component: WhatIsCrypto
+  },
+  {
+    path: '/free-nft-step-1',
+    name: 'free-nft-step-1',
+    component: FreeNFTOne,
+    meta: {
+      hideNavbar: true
+    }
+  },
+  {
+    path: '/free-nft-step-2',
+    name: 'free-nft-step-2',
+    component: FreeNFTTwo,
+    meta: {
+      hideNavbar: true
+    }
+  },
+  {
+    path: '/free-nft-step-3',
+    name: 'free-nft-step-3',
+    component: FreeNFTThree,
+    meta: {
+      hideNavbar: true
+    }
+  },
+  {
+    path: '/free-nft-step-4',
+    name: 'free-nft-step-4',
+    component: FreeNFTFour,
+    meta: {
+      hideNavbar: true
+    }
+  },
+  {
+    path: '/free-nft-step-5',
+    name: 'free-nft-step-5',
+    component: FreeNFTFive,
+    meta: {
+      hideNavbar: true
+    }
+  },
+  {
+    path: '/free-nft-step-6',
+    name: 'free-nft-step-6',
+    component: FreeNFTSix,
+    meta: {
+      hideNavbar: true
+    }
+  },
+  {
+    path: '/free-nft-step-7',
+    name: 'free-nft-step-7',
+    component: FreeNFTSeven,
+    meta: {
+      hideNavbar: true
+    }
+  },
+  {
+    path: '/free-nft-step-8',
+    name: 'free-nft-step-8',
+    component: FreeNFTEight,
+    meta: {
+      hideNavbar: true
+    }
+  },
+  {
+    path: '/free-nft-step-9',
+    name: 'free-nft-step-9',
+    component: FreeNFTNine,
+    meta: {
+      hideNavbar: true
+    }
+  },
+  {
+    path: '/free-nft-step-10',
+    name: 'free-nft-step-10',
+    component: FreeNFTTen,
+    meta: {
+      hideNavbar: true
+    }
+  },
+  {
+    path: '/free-nft-download-game',
+    name: 'free-nft-download-game',
+    component: FreeNFTGame,
+    meta: {
+      hideNavbar: true
+    }
   }
 ]
 

@@ -6,33 +6,27 @@
         <strong>Claim your free AlcheGold by filling out the form below!</strong>
     </div>
     <div class="formContainer">
-        <form action="https://formspree.io/f/xgeqkngb" method="POST">
-            <label>
-                Name:
-                <input type="text" name="name" required>
-            </label><br><br>
-            <label>
-                Email:
-                <input type="email" name="email" required>
-            </label><br><br>
-            <!-- your other form fields go here -->
-            <button type="submit">Submit</button>
-        </form>
+        <iframe src="https://www.cognitoforms.com/f/BL6suH4zoki-7T6n2s5KQQ/2" style="border:0;width:100%;"></iframe>
     </div>
 </template>
 
 <style lang="scss" scoped>
 @media (max-width: 800px) {
-            button {
-                min-width: 35vw;
-            }
-        }
-form {
-    margin: 2%;
-    text-align: right;
-    display: inline-block;
+    button {
+        min-width: 35vw;
+    }
+}
+@media (max-width: 950px) {
+    iframe {
+        min-height: 400px;
+    }
 }
 
+@media (min-width: 950px) {
+    iframe {
+        max-height: 400px;
+    }
+}
 img{
     max-width: 3vw;
     margin: 0;

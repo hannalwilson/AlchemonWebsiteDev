@@ -2,7 +2,7 @@
 import { routeLocationKey } from 'vue-router';
 <template>
   <footer id="contact">
-  <router-link to="/beta"><button v-if="!$route.meta.hideNavbar" class="downloadButton boxShadow">DOWNLOAD GAME</button></router-link>
+  <router-link to="/getting-started-step-1"><button v-if="!$route.meta.hideNavbar" class="downloadButton boxShadow">GET STARTED</button></router-link>
     <img class="bolt" src="https://alchemon-website-assets.s3.amazonaws.com/assets/10_bolt_back.gif" alt="Bolt">
     <div>
       <a class="footerLink" href="https://t.me/joinchat/WbyxkfAyJDZmMzE5" target="_blank">Telegram</a> //

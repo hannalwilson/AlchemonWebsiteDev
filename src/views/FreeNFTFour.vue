@@ -1,14 +1,15 @@
 <template>
     <header>
         <h1>PURCHASE ALGO</h1>
-        <h3>STEP 4 of 10</h3></header>
-    <p>
-        In order to play the Alchemon video game, you must own at least three (3) unique Alchemon NFTs. Our NFTs are much more
-        affordable than other projects.
+    <h3>STEP 4 of 10</h3></header>
+    <div class="content">
+        Transactions on the Algorand blockchain cost .001 ALGOs. This means that you must own some ALGO before receiving your
+        free NFT.
         <br><br>
-        You can see the prices of our NFTs and which ones are for sale here: <router-link to="/store" target="_blank">https://alchemon.net/store</router-link>
+        <i>If you already have at least one ALGO in your wallet, you can skip this step.</i>
         <br><br>
-        If you do not own any ALGO, you will need to set up a Coinbase account and purchase some.
+        Again, if you do not have at least one ALGO in your wallet, you cannot send or receive NFTs. If you do not own any ALGO,
+        you will need to set up a Coinbase account and purchase some.
         <br><br>
         <strong>Complete the following steps:</strong>
         <ol>
@@ -20,13 +21,11 @@
                 target="_blank">https://help.coinbase.com/en/coinbase/getting-started/getting-started-with-coinbase/create-a-coinbase-account</a><br><br>
             </li>
             <li>
-                <strong>Once your Coinbase account is set up, purchase enough ALGO to buy three Alchemon NFTs.</strong>
+                <strong>Once your Coinbase account is set up, purchase at least one ALGO.</strong>
                 <br><br>
                 Here is an article on how to purchase ALGO on Coinbase:
                 <a href="https://www.coinbase.com/how-to-buy/algorand" target="_blank">https://www.coinbase.com/how-to-buy/algorand</a>
                 <br><br>
-                As a reminder, you can see current prices for Alchemon NFTs here:
-                <router-link to="/store" target="_blank">https://alchemon.net/store</router-link><br><br>
             </li>
             <li>
                 <strong>Send the ALGO from your Coinbase wallet to your Pera Algo wallet.</strong>
@@ -38,11 +37,11 @@
                 </ol>
             </li>
         </ol>
-        Once you have enough ALGO in your Pera Algo wallet to purchase Alchemon NFTs, click NEXT.
-    </p>
+        Once you have at least one ALGO in your Pera Algorand wallet, click NEXT.
+    </div>
     <div class="buttonContainer">
-        <router-link to="/getting-started-step-3"><button class="backButton directionButton">BACK</button></router-link>
-        <router-link to="/getting-started-step-5"><button class="directionButton">NEXT</button></router-link>
+        <router-link to="/free-nft-step-3"><button class="backButton directionButton">BACK</button></router-link>
+        <router-link to="/free-nft-step-5"><button class="directionButton">NEXT</button></router-link>
     </div>
 </template>
 
@@ -74,13 +73,17 @@ button {
     }
 }
 ol {
-    padding: 1% 5%;
+    padding: 0 5%;
     li::marker {
         font-weight: 800;
     }
     ol {
         list-style-type: upper-alpha;
     }
+}
+.content {
+    text-align: justify;
+    padding: 0 5%;
 }
 </style>
 

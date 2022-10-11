@@ -31,8 +31,9 @@
     B: No, a player can win multiple prizes in the same week.
     </p>
     <div class="buttonContainer">
-      <button class="boxShadow voteButton" @click="castVote('A')">VOTE A</button>
-      <button class="boxShadow voteButton" @click="castVote('B')">VOTE B</button>
+      <h3>VOTING IS CLOSED</h3>
+      <!-- <button class="boxShadow voteButton" @click="castVote('A')">VOTE A</button>
+      <button class="boxShadow voteButton" @click="castVote('B')">VOTE B</button> -->
     </div>
     <p class="orangeHeader spreadText">RESULTS</p>
     <table>

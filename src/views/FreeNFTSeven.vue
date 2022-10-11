@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <h1>JOIN OUR DISCORD</h1>
-        <h3>STEP 7 of 10</h3></div>
+    <h3>STEP 7 of 10</h3></div>
     <p class="bold">Click on the discord logo below to join Alchemon’s Discord server!:
     </p>
     <a href="https://discord.com/invite/zr5PTxFTSk " target="_blank">
@@ -13,8 +13,8 @@
         Once you have joined Alchemon's Discord server, please click the NEXT button.
     </p>
     <div class="buttonContainer">
-        <router-link to="/getting-started-step-6"><button class="backButton directionButton">BACK</button></router-link>
-        <router-link to="/getting-started-step-8"><button class="directionButton">NEXT</button></router-link>
+        <router-link to="/free-NFT-step-6"><button class="backButton directionButton">BACK</button></router-link>
+        <router-link to="/free-NFT-step-8"><button class="directionButton">NEXT</button></router-link>
     </div>
 </template>
 

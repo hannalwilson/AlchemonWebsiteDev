@@ -1,7 +1,8 @@
 <template>
-    <header><h1>DOWNLOAD VIDEO GAME</h1>
-        <h3>STEP 10 of 10</h3></header>
-    <p><i>Please read these instructions in full to ensure you can download and install the game
+    <header><h1>DOWNLOAD VIDEO GAME</h1></header>
+    <p>SUCCESS! You have successfully submitted your request for a free Alchemon NFT. We would send it over soon. In the
+    meantime, download and install the Alchemon video game!
+        <i>Please read these instructions in full to ensure you can download and install the game
       properly.</i> <br><br>
       Requirements to play:
       <ol>
@@ -46,9 +47,6 @@
       <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/mac.png" alt="Mac download">
     </a>
     <h1><strong>ENJOY!</strong></h1><br>
-    <div class="buttonContainer">
-        <router-link to="/getting-started-step-9"><button class="backButton directionButton">BACK</button></router-link>
-    </div>
 </template>
 
 <script>

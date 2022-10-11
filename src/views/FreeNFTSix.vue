@@ -10,9 +10,9 @@
             <li>AlcheCoin.</li><br>
             <li>AlcheGold.</li>
         </ol>
-        You can earn these tokens simply by holding Alchemon NFTs in your wallet and playing our video game! You need to opt-in
-        for (accept) these tokens.
+        You can earn these tokens simply by holding Alchemon NFTs in your wallet and playing our video game!
         <br><br>
+        Just like opting-in to NFTs, you need to opt-in for these tokens.<br><br>
         <strong>Complete the following steps:</strong>
         <br>
         <ol>
@@ -40,8 +40,8 @@
             Once you have opted-in to AlcheCoin and AlcheGold, click NEXT.
         </div>
     <div class="buttonContainer">
-        <router-link to="/getting-started-step-5"><button class="backButton directionButton">BACK</button></router-link>
-        <router-link to="/getting-started-step-7"><button class="directionButton">NEXT</button></router-link>
+        <router-link to="/free-nft-step-5"><button class="backButton directionButton">BACK</button></router-link>
+        <router-link to="/free-nft-step-7"><button class="directionButton">NEXT</button></router-link>
     </div>
 </template>
 

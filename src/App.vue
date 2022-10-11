@@ -187,4 +187,8 @@ button:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: #ffa6007e;
 }
+
+#freeNFTForm .cog-cognito {
+  font-family: 'Poppins', sans-serif;
+}
 </style>
