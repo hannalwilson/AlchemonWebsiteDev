@@ -18,6 +18,8 @@ export default {
 .cardContainer {
   width: 27vw;
   height: calc(27vw * 1.8);
+  max-width: 350px;
+  max-height: 730px;
   background-color: white;
   display: inline-block;
   margin: 2%;
@@ -40,17 +42,20 @@ export default {
   }
       @media (max-width: 350px) {
   .cardContainer {
-    height: calc(27vw * 3.5) }
+    height: calc(27vw * 3.4) }
   }
         @media (max-width: 300px) {
   .cardContainer {
-    height: calc(27vw * 4) }
+    height: calc(30vw * 3.9) ;
+    width: 30vw;
+  }
   }
 .cardText {
     font-weight: bold;
     color: #136af8;
     text-align: center;
     line-height: 175%;
+    margin: 0;
 }
 .cardImage {
   width: 100%;
