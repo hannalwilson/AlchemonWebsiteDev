@@ -118,6 +118,21 @@ body, button, input { font-size: 1.5vw; }
 @media (min-width: 1800px) {
 body, button, input { font-size: 1.25vw; }
 .directionButton { font-size: 2.5vw;}}
+@media (min-width:2500px) {
+body, button, input { font-size: 1vw; }
+.directionButton { font-size: 2vw;}}
+@media (min-width:3400px) {
+body, button, input { font-size: .9vw; }
+.directionButton { font-size: 2vw;}}
+@media (min-width:4000px) {
+body, button, input { font-size: .8vw; }
+.directionButton { font-size: 2vw;}}
+@media (min-width:4200px) {
+body, button, input { font-size: .7vw; }
+.directionButton { font-size: 2vw;}}
+@media (min-width:4900px) {
+body, button, input { font-size: .65vw; }
+.directionButton { font-size: 2vw;}}
 
 // @media (max-width: 650px) {
 // #app { margin-right: -5vw; }}
@@ -150,7 +165,6 @@ button {
   cursor: pointer;
   border-radius: 8px;
   margin: 1%;
-  padding: .5%;
 }
 button:hover {
   background-color:darkblue;

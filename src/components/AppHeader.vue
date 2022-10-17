@@ -37,10 +37,10 @@
   <popup-window v-if="popupTriggers.chooseWallet">
     <h3>Connect Your Wallet</h3>
     <button class="boxShadow" @click="connectWallet('myalgo')">
-      MyAlgo
-    </button><br>
+      MyAlgo Wallet
+    </button>
     <button class="boxShadow" @click="connectWallet('walletconnect')">
-      WalletConnect
+      Pera Wallet
     </button><br>
     <button class="boxShadow" @click="TogglePopup('chooseWallet')">Cancel</button>
   </popup-window>
@@ -202,7 +202,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+button {
+  margin: 5% inherit;
+}
 nav {
   background-color: rgba(0, 0, 140, 0.5);
   position: fixed;
