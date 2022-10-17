@@ -19,13 +19,15 @@
       <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
         v-if="type === 'alchemon' && amount > 0">{{ cost }}
         ALGO</button>
-      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton" v-if="type === 'art' && amount > 0">{{
+      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
+       v-if="type === 'art' && amount > 0">{{
         cost }}
         ALCH</button>
       <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
         v-if="type === 'alchebilities' && amount > 0">{{ cost
         }} ALCH</button>
-      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton" v-if="type === 'egg' && amount > 0">{{
+      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
+       v-if="type === 'egg' && amount > 0">{{
         cost
         }} ALGO</button>
     </div>
@@ -150,11 +152,6 @@ button {
 
 }
 
-// @media (max-width: 1100px) {
-//   .nftContainer {
-//     height: 485px;
-//   }
-// }
 </style>
 
 <script>

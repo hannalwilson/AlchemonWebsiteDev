@@ -47,6 +47,7 @@ import FreeNFTEight from '../views/FreeNFTEight.vue'
 import FreeNFTNine from '../views/FreeNFTNine.vue'
 import FreeNFTTen from '../views/FreeNFTTen.vue'
 import FreeNFTGame from '../views/FreeNFTGame.vue'
+import PacksView from '../views/PacksView.vue'
 
 const routes = [
   {
@@ -348,6 +349,14 @@ const routes = [
     path: '/free-nft-download-game',
     name: 'free-nft-download-game',
     component: FreeNFTGame,
+    meta: {
+      hideNavbar: true
+    }
+  },
+  {
+    path: '/testingpacks',
+    name: 'testingpacls',
+    component: PacksView,
     meta: {
       hideNavbar: true
     }
