@@ -13,6 +13,8 @@
       <div class="line3"></div>
     </div>
     <div class="nav-links">
+      <router-link to="/getting-started-step-10">DOWNLOAD&nbsp;GAME</router-link>
+
       <router-link to="/news">NEWS</router-link>
 
       <router-link to="/faq">FAQ</router-link>
@@ -147,7 +149,7 @@ export default {
       }
     },
     saveUserInformation () {
-      // window.location.reload()
+      window.location.reload()
       localStorage.userAddress = this.address
       localStorage.userWallet = this.wallet
       this.foundAddress = true
