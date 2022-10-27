@@ -40,9 +40,9 @@
       <strong>Click on the download button for your operating system</strong> (note: for Windows and Mac, you may also get notifications like “This download may not be safe,” which will require you
     to click “Keep” or “Download anyways”):
     </p>
-    <a href="https://alch-executables.s3.amazonaws.com/AlchemonBetaSetup.exe" download>
+    <a href="https://alch-executables.s3.amazonaws.com/AlchemonDesktopLauncher-v1.0.exe" download>
       <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/pc.png" alt="Windows download"></a><br>
-    <a href="https://alch-executables.s3.amazonaws.com/AlchemonBeta.zip" download>
+    <a href="https://d2m0gpw5wl8vl6.cloudfront.net/patch/distributions/current/AlchemonOSXInstallerV1.0.2.dmg" download>
       <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/mac.png" alt="Mac download">
     </a>
     <h1><strong>ENJOY!</strong></h1><br>
@@ -52,6 +52,7 @@
 </template>
 
 <script>
+
 export default {
   mounted () {
     window.scrollTo(0, 0)
