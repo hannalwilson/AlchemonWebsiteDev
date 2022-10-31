@@ -1,10 +1,5 @@
 <template>
-  <div class="videoContainer">
-    <video autoplay muted loop playsinline id="backgroundVideo">
-      <source src="https://alchemon-website-assets.s3.amazonaws.com/assets/game_video.mp4" type="video/mp4">Your browser
-      does not support HTML5 videos.
-    </video>
-  </div>
+    <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/banner.png" class="banner">
   <div id="about" class="whiteGrayBackground">
     <img class="centerImage venoreaper"
       src="https://alchemon-website-assets.s3.amazonaws.com/assets/45_venoreaper_back.gif" alt="Venoreaper">
@@ -236,6 +231,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.banner {
+  margin: 50px 0 0 0;
+}
+@media (max-width: 990px) {
+.banner {
+    margin-top: 40px;
+  }
+}
   p {
     text-align: center;
   }
@@ -280,7 +283,10 @@ tr {
   width: 100%;
 }
 .videoContainer {
-  margin-bottom: -10%;
+  img {
+    width: 100vw;
+    margin: 0;
+  }
 }
 
 /* Hover effect for contact and submit buttons */

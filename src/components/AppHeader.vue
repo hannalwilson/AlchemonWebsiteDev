@@ -210,7 +210,7 @@ button {
   margin: 5% inherit;
 }
 nav {
-  background-color: rgba(0, 0, 140, 0.5);
+  background-color: darkblue;
   position: fixed;
   width: 100%;
   z-index: 100;

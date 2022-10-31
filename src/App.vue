@@ -41,6 +41,7 @@ export default {
     margin: 0;
     display: grid;
     grid-template-rows: 1fr auto;
+    overflow-x: hidden;
 }
 .website {
   max-width: 100vw;
