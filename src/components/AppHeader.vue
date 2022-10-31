@@ -13,16 +13,18 @@
       <div class="line3"></div>
     </div>
     <div class="nav-links">
+          <router-link to="/free-nft-step-1">FREE&nbsp;NFT</router-link>
+
+          <div class="dropdown-link">
+            <p class="navp" @click="window.location.reload()">ABOUT&nbsp;▼</p>
+            <div class="dropdown-menu">
+              <router-link to="/news">NEWS</router-link>
+              <router-link to="/faq">FAQ</router-link>
+              <router-link to="/howtoplay">HOW TO PLAY</router-link>
+              <router-link to="/token">TOKEN</router-link>
+            </div>
+          </div>
       <router-link to="/getting-started-step-10">DOWNLOAD&nbsp;GAME</router-link>
-
-      <router-link to="/news">NEWS</router-link>
-
-      <router-link to="/faq">FAQ</router-link>
-
-      <router-link to="/howtoplay">HOW&nbsp;TO&nbsp;PLAY</router-link>
-
-      <router-link to="/token">TOKEN</router-link>
-
       <router-link to="/alchedex">ALCHEDEX</router-link>
       <div class="dropdown-link">
         <p class="navp" @click="window.location.reload()">STORE&nbsp;▼</p>
