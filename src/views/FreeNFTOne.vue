@@ -19,7 +19,7 @@
 
     </p>
 <div class="buttonContainer">
-    <router-link to="/free-NFT-step-2"><button>NEXT</button></router-link>
+    <router-link to="/free-NFT-step-2"><button class="directionButton">NEXT</button></router-link>
 </div>
 </template>
 
