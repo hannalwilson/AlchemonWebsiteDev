@@ -38,10 +38,11 @@ export default {
   left:0;
   width: 100%;
   min-height: 100vh;
-    margin: 0;
-    display: grid;
-    grid-template-rows: 1fr auto;
+  margin: 0;
+  display: grid;
+  grid-template-rows: 1fr auto;
     overflow-x: hidden;
+    overflow-wrap: break-word;
 }
 .website {
   max-width: 100vw;

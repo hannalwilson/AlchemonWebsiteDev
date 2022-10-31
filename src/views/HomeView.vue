@@ -6,7 +6,7 @@
     <img class="centerImage araknadevil"
       src="https://alchemon-website-assets.s3.amazonaws.com/assets/75_araknadevil.gif" alt="Araknadevil">
     <p class="orangeHeader spreadText">ALCHEMON = ALGO+ALCHEMY+MONSTER<br><br>
-      <span class="darkBlueHeader spreadText">STAKE! TRADE! EVOLVE! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CRAFT! COLLECT!
+      <span class="darkBlueHeader spreadText">STAKE! TRADE! EVOLVE! &nbsp;&nbsp;CRAFT! COLLECT!
         EARN!</span>
     </p>
     <p class="darkGrayText_1 marginFix_2">Alchemon is the first monster-collecting NFT staking, crafting and trading
@@ -15,7 +15,7 @@
   </div>
   <div class="blueBackground">
     <p class="yellowHeader spreadText">QUICKLINKS</p>
-    <router-link to="/governance" class="whiteText" ><b>NEW! Governance Voting</b></router-link>
+    <router-link to="/governance" class="whiteText" ><p>NEW! Governance Voting</p></router-link>
     <a href="https://www.randgallery.com/algo-collection/?address=310014962%2C320570576" target="__blank">
       <p class="whiteText">Add
         AlcheCoin and Alchemon Stake Flag NFTs</p>
@@ -49,6 +49,10 @@
         This is not an investment or security.</li>
     </ol>
     </p>
+  </div>
+  <div class="blueBackground">
+    <p class="yellowHeader spreadText">CRAFT & EVOLVE</p>
+    <router-link to="/craftandevolve"><p class="whiteText">Craft and evolve your Alchemon here</p></router-link>
   </div>
   <popup-window v-if="popupTriggers.huntingGrounds" class="homePopup">
       <button class="boxShadow" @click="TogglePopup('huntingGrounds')">Close</button><br><br>
@@ -239,9 +243,6 @@ export default {
     margin-top: 40px;
   }
 }
-  p {
-    text-align: center;
-  }
 .homePopup {
   overflow-y: scroll;
 }
@@ -317,8 +318,8 @@ li {
 .blueBackground {
   background-color: #136af8;
   padding-bottom: 2%;
-  a {
-    text-decoration: none;
+  .whiteText {
+    text-decoration: underline;
   }
 
   p:hover, a:hover {

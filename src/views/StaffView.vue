@@ -67,7 +67,8 @@ p {
     display: inline-block;
     background-color: white;
     margin: 3%;
-    width: 25%;
+    width: 30%;
+    height: 20%;
     padding-bottom: 1%;
 }
 .investors {
