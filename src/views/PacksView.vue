@@ -1,6 +1,7 @@
 <template>
     <div class="content">
-        <button @click="openPack()">Initiate Transactions</button>
+      <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/pack.png"><br>
+        <button @click="openPack()">Open Pack</button>
     </div>
     <popup-window v-if="popupTriggers.signTransaction">
         <h2>Please open your wallet app to sign the transaction!</h2>
@@ -15,18 +16,22 @@
     <popup-window v-if="popupTriggers.transactionFailed">
         <h2>Failed. Please try again.</h2>
         <p style="text-align: left"> {{ getErrorMessage }}</p>
-        <button class="boxShadow" @click="TogglePopup('transactionFailed')">Close</button>
+        <button class="boxShadow" @click="TogglePopup('transactionFailed'); ReloadWindow()">Close</button>
     </popup-window>
     <popup-window v-if="popupTriggers.errorOccured">
         <h2>Unknown Server Error. Please try again.</h2>
         <p style="text-align: left">If this error continues, please contact support.</p>
-        <button class="boxShadow" @click="TogglePopup('errorOccured')">Close</button>
+        <button class="boxShadow" @click="TogglePopup('errorOccured'); ReloadWindow()">Close</button>
     </popup-window>
 </template>
 
 <style lang="scss" scoped>
 .content {
     margin: 5%;
+}
+img {
+  max-width: 250px;
+
 }
 </style>
 
@@ -117,7 +122,6 @@ export default {
           }
           break
         case 'walletconnect':
-          this.TogglePopup('signTransaction')
           // eslint-disable-next-line no-case-declarations
           const txnsToSign = serializedTxns.map(txn => {
             const encodedTxn = txn
@@ -130,8 +134,8 @@ export default {
           // eslint-disable-next-line no-case-declarations
           const request = formatJsonRpcRequest('algo_signTxn', requestParams)
           try {
-            console.log('here')
             signedTxn = await walletConnector.sendCustomRequest(request)
+            this.TogglePopup('signTransaction')
           } catch (error) {
             console.log(error)
             errorMessage = error.message
@@ -142,28 +146,23 @@ export default {
           break
       }
 
-      // const finalSignedTxn = signedTxn.concat(cards)
-
       if (signedTxn) {
-        if (userWallet === 'walletconnect') {
-          this.TogglePopup('signTransaction')
-        }
         this.TogglePopup('processingTransaction')
         try {
-          const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
-            txn: signedTxn
+          const sendTxnResponse = await axios.post(`${apiURL}/signPackTradeIn`, {
+            unsignedCustodialTxns: cards,
+            serializedSignedUserTxns: signedTxn
           })
+          console.log(sendTxnResponse.data)
           if (sendTxnResponse.status === 200) {
-            if (sendTxnResponse.data.txnId) {
-              this.TogglePopup('transactionSuccessful')
-            } else if (sendTxnResponse.data.message) {
-              errorMessage = sendTxnResponse.data.message
-              this.TogglePopup('transactionFailed')
-            }
+            this.TogglePopup('transactionSuccessful')
+          } else {
+            errorMessage = sendTxnResponse.data
+            this.TogglePopup('transactionFailed')
           }
         } catch (error) {
-          console.log(error)
-          this.TogglePopup('errorOccured')
+          errorMessage = error
+          this.TogglePopup('transactionFailed')
         }
         this.TogglePopup('processingTransaction')
       }
