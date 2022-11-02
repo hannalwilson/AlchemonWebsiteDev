@@ -4,7 +4,7 @@
         <h3>STEP 1 of 10</h3>
     </div>
     <p>
-        Complete these 10 steps to get a free Alchemon NFT! (Only one NFT allowed per person.)
+        <strong>Complete these 10 steps to get a free Alchemon NFT!</strong> (Only one NFT allowed per person.)
         <br><br>
         To start, if you are new to this whole thing, here is a great article that defines cryptocurrency, blockchain and NFTs
         for beginners:
