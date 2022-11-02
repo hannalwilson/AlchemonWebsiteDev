@@ -5,7 +5,7 @@
     <div class="connectWallet">
       <div v-if="!foundAddress" class="navp" @click="TogglePopup('chooseWallet')"><strong>CONNECT</strong></div>
       <div v-if="foundAddress" class="navp" @click="TogglePopup('disconnectWallet')"><strong>{{ displayAddress
-          }}...</strong></div>
+      }}...</strong></div>
     </div>
     <div v-on:click="openMobileNav()" id="burger">
       <div class="line1"></div>
@@ -13,26 +13,26 @@
       <div class="line3"></div>
     </div>
     <div class="nav-links">
-          <router-link to="/free-nft-step-1">FREE&nbsp;NFT</router-link>
+          <router-link to="/free-nft-step-1" @click="openMobileNav()">FREE&nbsp;NFT</router-link>
 
           <div class="dropdown-link">
             <p class="navp" @click="window.location.reload()">ABOUT&nbsp;▼</p>
             <div class="dropdown-menu">
-              <router-link to="/news">NEWS</router-link>
-              <router-link to="/faq">FAQ</router-link>
-              <router-link to="/howtoplay">HOW TO PLAY</router-link>
-              <router-link to="/token">TOKEN</router-link>
+              <router-link to="/news" @click="openMobileNav()">NEWS</router-link>
+              <router-link to="/faq" @click="openMobileNav()">FAQ</router-link>
+              <router-link to="/howtoplay" @click="openMobileNav()">HOW TO PLAY</router-link>
+              <router-link to="/token" @click="openMobileNav()">TOKEN</router-link>
             </div>
           </div>
-      <router-link to="/getting-started-step-10">DOWNLOAD&nbsp;GAME</router-link>
-      <router-link to="/alchedex">ALCHEDEX</router-link>
+      <router-link to="/getting-started-step-10" @click="openMobileNav()">DOWNLOAD&nbsp;GAME</router-link>
+      <router-link to="/alchedex" @click="openMobileNav()">ALCHEDEX</router-link>
       <div class="dropdown-link">
         <p class="navp" @click="window.location.reload()">STORE&nbsp;▼</p>
         <div class="dropdown-menu">
-          <router-link to="/store">ALCHESHOP</router-link>
-          <router-link to="/craftandevolve">CRAFT & EVOLVE</router-link>
+          <router-link to="/store" @click="openMobileNav()">ALCHESHOP</router-link>
+          <router-link to="/craftandevolve" @click="openMobileNav()">CRAFT & EVOLVE</router-link>
           <a href="https://www.randgallery.com/algo-collection/?address=ALCHY5SJXOXZXADZPD73KO6CYNZXDUWFYANTSXU6RIO3EZACIIXUCS3YDM"
-            target="_blank">RANDGALLERY</a>
+            target="_blank" @click="openMobileNav()">RANDGALLERY</a>
           <a href="https://shop.alchemon.net" target="_blank">MERCH</a>
         </div>
       </div>
@@ -168,7 +168,6 @@ export default {
     },
     openMobileNav () {
       const nav = document.querySelector('.nav-links')
-      // const navLinks = document.querySelectorAll('.nav-links li')
 
       // Toggle navigation on mobile
       nav.classList.toggle('nav-active')

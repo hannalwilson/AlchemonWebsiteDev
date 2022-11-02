@@ -22,7 +22,6 @@
 </template>
 
 <style lang="scss" scoped>
-
 .playrules {
     width: 100%;
     margin: 0%;
@@ -37,18 +36,18 @@
 
 select {
   font-family: poppins;
-  text-align: left;
-  background-color: orange;
-  border: 2px solid orange;
-  color: white;
-  cursor: pointer;
-  border-radius: 8px;
-  margin: 1%;
-  font-size: inherit;
-  padding: .5%;
+    text-align: center;
+    background-color: orange;
+    border: 2px solid orange;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    margin: 1%;
+    text-transform: capitalize;
 
   &:hover {
-    background-color: darkblue;
+  background-color: darkblue;
+    border: 2px solid orange;
     color: orange;
   }
 }
@@ -92,6 +91,9 @@ export default {
       WalletStakingView,
       viewingPage: 'gettingstarted'
     }
+  },
+  mounted () {
+    window.scrollTo(0, 0)
   }
 }
 </script>

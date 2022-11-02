@@ -167,6 +167,8 @@ button {
   cursor: pointer;
   border-radius: 8px;
   margin: 1%;
+  text-transform: capitalize;
+  font-weight: bold;
 }
 button:hover {
   background-color:darkblue;

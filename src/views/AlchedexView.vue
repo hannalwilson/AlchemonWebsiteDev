@@ -1,4 +1,4 @@
- <template>
+<template>
   <div>
     <div class="whiteGrayBackground">
       <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/alchedex.png" class="alchedex" />
@@ -298,7 +298,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .alchedex {
   width: 35%;
   margin-bottom: 0%;
@@ -360,5 +359,9 @@ a {
 .missing {
   filter: grayscale(1);
 }
-
+@media (max-width: 990px) {
+  .whiteGrayBackground {
+    margin-top: 40px;
+  }
+}
 </style>

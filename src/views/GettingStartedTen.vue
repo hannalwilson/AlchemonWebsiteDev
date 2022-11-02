@@ -67,6 +67,7 @@ header {
 
  img {
     margin: 0;
+    max-width: 90vw;
  }
 button {
     margin-bottom: 3%;

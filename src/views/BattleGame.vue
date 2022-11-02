@@ -1,5 +1,9 @@
 <template>
     <div class="battleGame">
+        <p class="yellowHeader spreadText">PLAY THE VIDEO GAME</p>
+        <p>Download the Alchemon Game here!:
+        </p>
+        <router-link to="/getting-started-step-10"><button>DOWNLOAD GAME</button></router-link>
         <p class="yellowHeader spreadText">OVERVIEW</p>
         <p>The Alchemon Card Game is a 3v3 battle style game against a CPU. Players need three unqiue Alchemon to play. The game currently includes
             passives, potent and weak attacks, potions, and much more. PvP and more battle modes are coming soon!
@@ -83,6 +87,9 @@
 <script>
 
 export default {
+  mounted () {
+    window.scrollTo(0, 0)
+  }
 }
 </script>
 

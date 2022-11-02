@@ -21,6 +21,9 @@
 </template>
 
 <style lang="scss" scoped>
+html .cog-cognito * {
+    font-family: 'Poppins', sans-serif !important;
+}
 @media (max-width: 800px) {
     button {
         min-width: 40vw;

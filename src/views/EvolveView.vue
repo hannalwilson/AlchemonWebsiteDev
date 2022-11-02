@@ -145,6 +145,9 @@ export default {
       cards: alchemons,
       viewSet: 'View All'
     }
+  },
+  mounted () {
+    window.scrollTo(0, 0)
   }
 }
 </script>

@@ -48,12 +48,13 @@
 }
 .staff {
     background-image: linear-gradient(to right, #007bff, #00bbff, #8ad1ff);
+    display: inline-flex;
+    flex-wrap: wrap;
 }
 .staffholder {
-    display: inline-block;
     background-color: white;
-    margin: 3%;
-    width: 30%;
+    margin: 3% auto;
+    width: 40%;
     padding-bottom: 1%;
 }
 img {
@@ -66,16 +67,9 @@ p {
 .investorholder {
     display: inline-block;
     background-color: white;
-    margin: 3%;
+    margin: 3% auto;
     width: 30%;
-    height: 20%;
     padding-bottom: 1%;
-}
-.investors {
-    width: 2vw;
-    position: absolute;
-    top: 43.5%;
-    right: 42%;
 }
 @media only screen and (max-width: 798px) {
   .investors {
