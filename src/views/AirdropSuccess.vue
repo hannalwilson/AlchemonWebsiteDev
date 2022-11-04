@@ -7,7 +7,7 @@
     <strong>In order to receive your tokens, please complete the following quick steps (click the NEXT button).</strong>
 </p>
 <div class="buttonContainer">
-    <router-link to="/alchegolddiscord"><button>NEXT</button></router-link>
+    <router-link to="/alchegolddiscord"><button class="directionButton">NEXT</button></router-link>
 </div>
 </template>
 

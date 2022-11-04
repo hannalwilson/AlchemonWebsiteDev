@@ -16,8 +16,8 @@
         <strong>Once the app is installed, set up your Alogorand wallet and then click the NEXT button.</strong>
     </p>
     <div class="buttonContainer">
-        <router-link to="/alchegolddiscord"><button class="backButton">BACK</button></router-link>
-        <router-link to="/alchegoldoptin"><button>NEXT</button></router-link>
+        <router-link to="/alchegolddiscord"><button class="backButton directionButton">BACK</button></router-link>
+        <router-link to="/alchegoldoptin"><button class="directionButton">NEXT</button></router-link>
     </div>
 
 </template>

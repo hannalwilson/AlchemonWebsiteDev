@@ -16,7 +16,7 @@
           <router-link to="/free-nft-step-1" @click="openMobileNav()">FREE&nbsp;NFT</router-link>
 
           <div class="dropdown-link">
-            <p class="navp" @click="window.location.reload()">ABOUT&nbsp;▼</p>
+            <p class="navp">ABOUT&nbsp;&#11107;</p>
             <div class="dropdown-menu">
               <router-link to="/news" @click="openMobileNav()">NEWS</router-link>
               <router-link to="/faq" @click="openMobileNav()">FAQ</router-link>
@@ -27,12 +27,12 @@
       <router-link to="/getting-started-step-10" @click="openMobileNav()">DOWNLOAD&nbsp;GAME</router-link>
       <router-link to="/alchedex" @click="openMobileNav()">ALCHEDEX</router-link>
       <div class="dropdown-link">
-        <p class="navp" @click="window.location.reload()">STORE&nbsp;▼</p>
+        <p class="navp">STORE&nbsp;&#11107;</p>
         <div class="dropdown-menu">
           <router-link to="/store" @click="openMobileNav()">ALCHESHOP</router-link>
           <router-link to="/craftandevolve" @click="openMobileNav()">CRAFT & EVOLVE</router-link>
           <a href="https://www.randgallery.com/algo-collection/?address=ALCHY5SJXOXZXADZPD73KO6CYNZXDUWFYANTSXU6RIO3EZACIIXUCS3YDM"
-            target="_blank" @click="openMobileNav()">RANDGALLERY</a>
+            target="_blank" @click="openMobileNav()">RAND</a>
           <a href="https://shop.alchemon.net" target="_blank">MERCH</a>
         </div>
       </div>
@@ -209,7 +209,7 @@ button {
   margin: 5% inherit;
 }
 nav {
-  background-color: darkblue;
+  background-color: #00003f;
   position: fixed;
   width: 100%;
   z-index: 100;
@@ -223,7 +223,7 @@ p{
 
 a:hover, .navp:hover,  div.nav-links a:hover{
     background-color: orange;
-    color: #00006f;
+    color: #00003f;
     transition: 0.3s;
     color: white;
     cursor: pointer;
@@ -293,7 +293,7 @@ div.dropdown-menu {
 
 div.dropdown-menu a {
   margin: 0%;
-  background-color: rgb(0, 0, 80);
+  background-color: #00003f;
   padding: 0%;
 }
 
@@ -322,7 +322,7 @@ div.dropdown-menu a {
     padding: 0%;
     position: absolute;
     top: 100%;
-    background-color: rgba(0, 0, 140, 0.5);
+    background-color:#00003f80;
     text-align: center;
     width: 100vw;
     left: 0;

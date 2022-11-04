@@ -2,7 +2,7 @@
   <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/card-game.png" class="playrules">
   <div class="selectPage whiteText">
     Learn More About:
-    <select v-model="viewingPage">
+    <select v-model="viewingPage" class="boxShadow">
       <option value='gettingstarted'>Getting
         Started</option>
       <option value='traininggrounds'>Training
@@ -32,24 +32,6 @@
 .rulesImage {
     background-image: linear-gradient(to right, #ffa500, #ffb327, #ffffff);
     padding: 0%;
-}
-
-select {
-  font-family: poppins;
-    text-align: center;
-    background-color: orange;
-    border: 2px solid orange;
-    color: white;
-    cursor: pointer;
-    border-radius: 8px;
-    margin: 1%;
-    text-transform: capitalize;
-
-  &:hover {
-  background-color: darkblue;
-    border: 2px solid orange;
-    color: orange;
-  }
 }
 
 .selectPage {

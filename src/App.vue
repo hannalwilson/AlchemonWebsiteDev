@@ -97,43 +97,56 @@ img {
 }
 /*Responsive body text size*/
 @media (min-width: 1px) {
-body, button, input { font-size: 5vw; }
+body, button, input, select { font-size: 5vw; }
 .directionButton { font-size: 10vw;}}
 @media (min-width: 300px) {
-body, button, input { font-size: 4vw; }
+body, button, input,
+  select { font-size: 4vw; }
 .directionButton { font-size: 8vw;}}
 @media (min-width: 350px) {
-body, button, input { font-size: 3.5vw; }
+body, button, input,
+  select { font-size: 3.5vw; }
 .directionButton { font-size: 7vw;}}
 @media (min-width: 500px) {
-body, button, input { font-size: 3vw; }
+body, button, input,
+  select { font-size: 3vw; }
 .directionButton { font-size: 6vw;}}
 @media (min-width: 650px) {
-body, button, input { font-size: 2.5vw; }
+body, button, input,
+  select { font-size: 2.5vw; }
 .directionButton { font-size: 5vw;}}
 @media (min-width: 800px) {
-body, button, input { font-size: 2vw; }
+body, button, input,
+  select { font-size: 2vw; }
 .directionButton { font-size: 4vw;}}
 @media (min-width: 1100px) {
-body, button, input { font-size: 1.5vw; }
+body, button, input,
+  select { font-size: 1.5vw; }
 .directionButton { font-size: 3vw;}}
 @media (min-width: 1800px) {
-body, button, input { font-size: 1.25vw; }
-.directionButton { font-size: 2.5vw;}}
+body, button, input,
+  select { font-size: 1.25vw; }
+.directionButton,
+select { font-size: 2.5vw;}}
 @media (min-width:2500px) {
-body, button, input { font-size: 1vw; }
+body, button, input,
+  select { font-size: 1vw; }
 .directionButton { font-size: 2vw;}}
 @media (min-width:3400px) {
-body, button, input { font-size: .9vw; }
+body, button, input,
+  select { font-size: .9vw; }
 .directionButton { font-size: 2vw;}}
 @media (min-width:4000px) {
-body, button, input { font-size: .8vw; }
+body, button, input,
+  select { font-size: .8vw; }
 .directionButton { font-size: 2vw;}}
 @media (min-width:4200px) {
-body, button, input { font-size: .7vw; }
+body, button, input,
+  select { font-size: .7vw; }
 .directionButton { font-size: 2vw;}}
 @media (min-width:4900px) {
-body, button, input { font-size: .65vw; }
+body, button, input,
+  select { font-size: .65vw; }
 .directionButton { font-size: 2vw;}}
 
 // @media (max-width: 650px) {
@@ -158,7 +171,7 @@ body, button, input { font-size: .65vw; }
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
-button {
+button, select {
   font-family: poppins;
   text-align: center;
   background-color: orange;
@@ -167,10 +180,10 @@ button {
   cursor: pointer;
   border-radius: 8px;
   margin: 1%;
-  text-transform: capitalize;
+  text-transform: uppercase;
   font-weight: bold;
 }
-button:hover {
+button:hover, select:hover {
   background-color:darkblue;
   border: 2px solid orange;
   color: orange;

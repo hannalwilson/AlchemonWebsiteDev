@@ -12,8 +12,8 @@
         <p><strong>Once you have added the AlcheGold asset to your wallet, click the NEXT button.</strong></p>
     </div>
     <div class="buttonContainer">
-        <router-link to="/alchegoldwallet"><button class="backButton">BACK</button></router-link>
-        <router-link to="/alchegoldtwitter"><button>NEXT</button></router-link>
+        <router-link to="/alchegoldwallet"><button class="backButton directionButton">BACK</button></router-link>
+        <router-link to="/alchegoldtwitter"><button class="directionButton">NEXT</button></router-link>
     </div>
 </template>
 
@@ -43,6 +43,10 @@ button {
 @media (max-width: 800px) {
     button {
         min-width: 35vw;
+    }
+    iframe {
+    width: 90vw;
+    height: calc(90vw * .5625);
     }
 }
 </style>

@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="background">
       <h1 class="spreadText">CRAFT & EVOLVE</h1>
       <div class="searchBar">
@@ -18,10 +17,17 @@
       <craft-evolve-card v-for="card in filteredCards" :key="card.name" :name="card.name" :tradedCardOne="card.tradedCardOneName"
         :tradedCardTwo="card.tradedCardTwoName" :available="card.available" :set="card.set" :rarity="card.rarity"></craft-evolve-card>
     </div>
-  </div>
 </template>
 
 <style lang="scss" scoped>
+#select {
+  text-align: left;
+}
+@media (max-width: 990px) {
+  .background {
+    margin-top: 40px;
+  }
+}
 .background {
   background-image: url("../assets/alcheshop_coin.png") ,linear-gradient(to right, #007bff, #2A78F8, #4287F9, #89B4FB);
   background-position: center;
@@ -48,27 +54,7 @@ h1 {
   -webkit-text-stroke:1px rgb(22, 22, 54);
 }
 
-#select {
-  font-family: poppins;
-  text-align: left;
-  background-color: #e6ad10;
-  border: 2px solid #e6ad10;
-  color: white;
-  cursor: pointer;
-  border-radius: 8px;
-  font-size: inherit;
-  padding: .5%;
-  width: 50vw;
-  margin-left: 1%;
-
-  &:hover {
-    background-color: darkblue;
-    color: orange;
-  }
-}
-
 .searchBar {
-  text-align: left;
   padding: 2%;
   background-color: #ffffff88;
 }
@@ -116,24 +102,28 @@ export default {
   },
   computed: {
     filteredCards () {
-      let tempCards = this.cards
+      let tempCards = this.cards.filter((item) => {
+        return item.available > 0
+      })
 
       if (this.viewSet === 'viewAll') {
-        tempCards = this.cards
+        tempCards = this.cards.filter((item) => {
+          return item.available > 0
+        })
       }
       if (this.viewSet === '4') {
         tempCards = tempCards.filter((item) => {
-          return item.set === 4
+          return item.set === 4 && item.available > 0
         })
       }
       if (this.viewSet === '5') {
         tempCards = tempCards.filter((item) => {
-          return item.set === 5
+          return item.set === 5 && item.available > 0
         })
       }
       if (this.viewSet === 'Community') {
         tempCards = tempCards.filter((item) => {
-          return item.set === 'Community'
+          return item.set === 'Community' && item.available > 0
         })
       }
 

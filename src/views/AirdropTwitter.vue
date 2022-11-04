@@ -11,8 +11,8 @@
     </p>
     <p><strong>Once you have followed Alchemon on Twitter, please click the NEXT button.</strong></p>
     <div class="buttonContainer">
-        <router-link to="/alchegoldoptin"><button class="backButton">BACK</button></router-link>
-        <router-link to="/alchegoldtelegram"><button>NEXT</button></router-link>
+        <router-link to="/alchegoldoptin"><button class="backButton directionButton">BACK</button></router-link>
+        <router-link to="/alchegoldtelegram"><button class="directionButton">NEXT</button></router-link>
     </div>
 
 </template>

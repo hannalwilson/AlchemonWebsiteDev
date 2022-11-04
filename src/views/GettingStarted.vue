@@ -1,5 +1,7 @@
 <template>
     <div class="rules">
+              <p class="whiteText">Want to get started playing Alchemon? Click on the button below and complete all the steps!</p>
+              <router-link to="/getting-started-step-10"><button class="boxShadow">PLAY ALCHEMON</button></router-link>
         <p class="orangeHeader spreadText">BASICS</p>
         <p class="whiteText">Alchemon are released in sets that comprise of 15 unique cards: 4 Common, 4 Uncommon,
             4 Rare, 2 Epic, and 1 Legendary. Lower level cards (Common and Uncommon) can
@@ -8,7 +10,7 @@
             store. Epic and Legendary Alchemon can be crafted here, as well, by trading in the correct lower rarity
             cards
             with a small evolving fee.</p>
-        <div class="distributionButton"><button @click="TogglePopup('setDistribution')">View Distribution
+        <div class="distributionButton"><button @click="TogglePopup('setDistribution')" class="boxShadow">View Distribution
                 Charts</button></div>
         <p class="whiteText">Alchemon is a Deflationary NFT Collecting Card Game. All Staking
             Evolutions, Trading Evolutions and Crafting Swaps have the Alchemon come back home to be redistributed to
@@ -50,9 +52,6 @@
 </template>
 
 <style lang="scss" scoped>
-.distributionbutton {
-margin: 0 auto;
-}
 .distribution {
     width: 100px;
     position: absolute;

@@ -85,6 +85,10 @@ button {
     button {
         min-width: 35vw;
     }
+    iframe {
+    width: 90vw;
+    height: calc(90vw * .5625);
+    }
 }
 ol {
     padding: 1% 5%;

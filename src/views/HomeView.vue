@@ -16,6 +16,9 @@
   <div class="blueBackground">
     <p class="yellowHeader spreadText">QUICKLINKS</p>
     <router-link to="/governance" class="whiteText" ><p>NEW! Governance Voting</p></router-link>
+    <router-link to="/craftandevolve">
+      <p class="whiteText">Craft & Evolve</p>
+    </router-link>
     <a href="https://www.randgallery.com/algo-collection/?address=310014962%2C320570576" target="__blank">
       <p class="whiteText">Add
         AlcheCoin and Alchemon Stake Flag NFTs</p>
@@ -49,10 +52,6 @@
         This is not an investment or security.</li>
     </ol>
     </p>
-  </div>
-  <div class="blueBackground">
-    <p class="yellowHeader spreadText">CRAFT & EVOLVE</p>
-    <router-link to="/craftandevolve"><p class="whiteText">Craft and evolve your Alchemon here</p></router-link>
   </div>
   <popup-window v-if="popupTriggers.huntingGrounds" class="homePopup">
       <button class="boxShadow" @click="TogglePopup('huntingGrounds')">Close</button><br><br>

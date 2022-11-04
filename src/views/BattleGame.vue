@@ -1,14 +1,14 @@
 <template>
     <div class="battleGame">
-        <p class="yellowHeader spreadText">PLAY THE VIDEO GAME</p>
+        <p class="orangeHeader spreadText">PLAY THE VIDEO GAME</p>
         <p>Download the Alchemon Game here!:
         </p>
         <router-link to="/getting-started-step-10"><button>DOWNLOAD GAME</button></router-link>
-        <p class="yellowHeader spreadText">OVERVIEW</p>
+        <p class="orangeHeader spreadText">OVERVIEW</p>
         <p>The Alchemon Card Game is a 3v3 battle style game against a CPU. Players need three unqiue Alchemon to play. The game currently includes
             passives, potent and weak attacks, potions, and much more. PvP and more battle modes are coming soon!
         </p>
-        <p class="yellowHeader spreadText">RELEASE NOTES - BETA 2.0.2</p>
+        <p class="orangeHeader spreadText">RELEASE NOTES - BETA 2.0.2</p>
         <p>WHATS NEW<br><br>
         <ul>
             <li>Leveling system: boost your Alchemon's power by leveling them up! Knock out enemies and win battles to
@@ -34,7 +34,7 @@
             <li>Various typos fixed.</li>
         </ul>
         </p>
-        <p class="yellowHeader spreadText">STATS</p>
+        <p class="orangeHeader spreadText">STATS</p>
         <p>Each Alchemon has its own stats. These stats include:
         <ul>
             <li>Health - how much damage a card can take</li>
@@ -52,18 +52,18 @@
                 re-fill enough stamina to attack (each Alchemon gains 1 stamina at the end of every turn).</li>
         </ol>
         </p>
-        <p class="yellowHeader spreadText">TYPES</p>
+        <p class="orangeHeader spreadText">TYPES</p>
         <p>
             Some types are more effective against other types, meaning their attack will damage certain types more than
             others. Attacks going in the opposite direction of the arrow will have reduced damage.
         </p>
         <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/typesWheel.png">
-        <p class="yellowHeader spreadText">PASSIVES</p>
+        <p class="orangeHeader spreadText">PASSIVES</p>
         <p>Passive abilities are effects that may or may not be applied to an Alchemon after an
             attack. Each type has a unique passive ability. The higher the level of your Alchemon, the more likely a
             passive ability effect will occur. For example, Legendary Alchemon attacks are more likely to result in a
             passive ability effect than a Common.</p>
-        <p class="yellowHeader spreadText">ITEMS</p>
+        <p class="orangeHeader spreadText">ITEMS</p>
         <p>
             In the Alchemon Shop, there are 5 different potions available for purchase.
         <ul>

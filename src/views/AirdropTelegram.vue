@@ -11,8 +11,8 @@
     </p>
     <p><strong>Once you have joined the Alchemon community on Telegram, please click the NEXT button.</strong></p>
     <div class="buttonContainer">
-        <router-link to="/alchegoldtwitter"><button class="backButton">BACK</button></router-link>
-        <router-link to="/alchegoldemail"><button>NEXT</button></router-link>
+        <router-link to="/alchegoldtwitter"><button class="backButton directionButton">BACK</button></router-link>
+        <router-link to="/alchegoldemail"><button class="directionButton">NEXT</button></router-link>
     </div>
 
 </template>
