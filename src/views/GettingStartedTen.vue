@@ -42,7 +42,7 @@
     </p>
     <a href="https://alch-executables.s3.amazonaws.com/AlchemonDesktopLauncher-v1.0.exe" download>
       <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/pc.png" alt="Windows download"></a><br>
-    <a href="https://d2m0gpw5wl8vl6.cloudfront.net/patch/distributions/current/AlchemonOSXInstallerV1.0.2.dmg" download>
+    <a href="https://d2m0gpw5wl8vl6.cloudfront.net/patch/distributions/current/AlchemonOSXInstallerV1.0.4.dmg" download>
       <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/mac.png" alt="Mac download">
     </a>
     <h1><strong>ENJOY!</strong></h1><br>
@@ -67,6 +67,7 @@ header {
 
  img {
     margin: 0;
+    max-width: 90vw;
  }
 button {
     margin-bottom: 3%;
@@ -83,6 +84,10 @@ button {
 @media (max-width: 800px) {
     button {
         min-width: 35vw;
+    }
+    iframe {
+    width: 90vw;
+    height: calc(90vw * .5625);
     }
 }
 ol {

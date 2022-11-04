@@ -20,15 +20,15 @@ export default {
       items: [
         {
           question: 'Chain of blocks? Blocked chains? Oh… Blockchain?',
-          answer: '<iframe src="https://www.youtube.com/embed/kHybf1aC-jE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+          answer: 'To learn about blockchains and to get started with Alchemon, complete this series of steps:<br><a href="https://www.alchemon.net/getting-started-step-1" target="_blank">https://www.alchemon.net/getting-started-step-1</a><br><iframe src="https://www.youtube.com/embed/kHybf1aC-jE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
         },
         {
           question: 'What is Algorand anyways?',
-          answer: '<iframe src="https://www.youtube.com/embed/YpSLvq4CIOA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+          answer: 'To learn about Algorand and cryptocurrency, and to get started with Alchemon, complete this series of steps:<br><a href="https://www.alchemon.net/getting-started-step-1" target="_blank">https://www.alchemon.net/getting-started-step-1</a><iframe src="https://www.youtube.com/embed/YpSLvq4CIOA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
         },
         {
           question: 'How do I buy me some Algorand?',
-          answer: 'You can get it from most exchanges, including <a href="https://www.coinbase.com/" target="_blank">Coinbase</a>, <a href="https://www.binance.com/en" target="_blank">Bianace</a>, and many more!'
+          answer: 'You can get it from most exchanges, including <a href="https://www.coinbase.com/" target="_blank">Coinbase</a>, <a href="https://www.binance.com/en" target="_blank">Binance</a>, and many more!<br><br>To learn about NFTs and to get started with Alchemon, complete this series of steps:<br><a href="https://www.alchemon.net/getting-started-step-1" target="_blank">https://www.alchemon.net/getting-started-step-1</a>'
         },
         {
           question: 'What’s a dumb contract? I mean, a smart contract?',
@@ -36,19 +36,19 @@ export default {
         },
         {
           question: 'NFT? I don’t get it.',
-          answer: '<iframe src="https://www.youtube.com/embed/4dkl5O9LOKg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+          answer: 'To learn about NFTs and to get started with Alchemon, complete this series of steps:<br><a href="https://www.alchemon.net/getting-started-step-1" target="_blank">https://www.alchemon.net/getting-started-step-1</a><iframe src="https://www.youtube.com/embed/4dkl5O9LOKg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
         },
         {
           question: 'What is Alch-ee-mon? Or is it Alch-a-mon?',
-          answer: 'Alchemon is pronounced “Alk-uh-mon.” And it’s amazing…<br><br> Alchemon (<u>Alch</u>emy + <u>mon</u>ster) is the first monster-collecting NFT staking, crafting and trading card game only on the Algorand Blockchain! Get your Alchemon, evolve them and then craft Epic and Legendary Alchemon that will never be for sale (in the official store)!<br><br>It consists of NFT Cards (actual pieces you will use in the game) and other NFTs. You can play how you want, just collect some, earn AlcheCoin, evolve them, craft a legendary, collect them all, etc.'
+          answer: 'Alchemon is pronounced “Alk-uh-mon.” And it’s amazing…<br><br> Alchemon (<u>Alch</u>emy + <u>mon</u>ster) is the first monster-collecting NFT staking, crafting and trading card game only on the Algorand Blockchain! Get your Alchemon, evolve them and then craft Epic and Legendary Alchemon that will never be for sale (in the official store)!<br><br>It consists of NFT Cards (actual pieces you will use in the game) and other NFTs. You can play how you want, just collect some, earn AlcheCoin, evolve them, craft a legendary, collect them all, etc.<br><br>Learn more about Alchemon and get started at this link!:<br><a href="https://www.alchemon.net/getting-started-step-1" target="_blank">https://www.alchemon.net/getting-started-step-1</a>'
         },
         {
           question: 'What is an NFT Card?',
-          answer: 'In Alchemon, there are lots of assets and NFTs to collect, but there are official game cards to be used once the game is released. These are representations of the Alchemon as creatures to be used in the game. They are the collectables as well. So the official term we are calling the game cards is NFT Card. Any other Alchemon-related asset that is not an NFT Card is not able to be used in staking or the game.'
+          answer: 'In Alchemon, there are lots of assets and NFTs to collect, but there are official game cards to be used once the game is released. These are representations of the Alchemon as creatures to be used in the game. They are the collectables as well. So the official term we are calling the game cards is NFT Card. Any other Alchemon-related asset that is not an NFT Card is not able to be used in staking or the game.<br><br>To learn more about Alchemon NFT cards, and to get started, visit this link!:<br><a href="https://www.alchemon.net/getting-started-step-1" target="_blank">https://www.alchemon.net/getting-started-step-1</a>'
         },
         {
           question: 'How/where/why can I buy Alchemon?',
-          answer: 'The official Alchemon store is here: <a href="https://www.alchemon.net/store" target="_blank">Alchemon NFT Store</a><br><br>You can also see all sales info on the project here: <a href="https://www.nftexplorer.app/collection/alchemon" target="_blank">NFT Explorer (Sales)</a> <br><br>And aftermarket sellers here: <a href="https://www.nftexplorer.app/sellers?collection=alchemon" target="_blank">NFT Explorer (Aftermarket Sellers)</a> <br><br>'
+          answer: 'The official Alchemon store is here: <a href="https://www.alchemon.net/store" target="_blank">Alchemon NFT Store</a><br><br>You can also see all sales info on the project here: <a href="https://www.nftexplorer.app/collection/alchemon" target="_blank">NFT Explorer (Sales)</a> <br><br>And aftermarket sellers here: <a href="https://www.nftexplorer.app/sellers?collection=alchemon" target="_blank">NFT Explorer (Aftermarket Sellers)</a> <br><br>You can find out more at this series of steps:<br><a href="https://www.alchemon.net/getting-started-step-1" target="_blank">https://www.alchemon.net/getting-started-step-1</a>'
         },
         {
           question: 'AlcheCoin? Will it make me rich?',
@@ -108,5 +108,6 @@ export default {
 iframe{
   width: 72vw;
   height:calc(72vw * .5625);
+  margin-top: 2%;
   }
 </style>

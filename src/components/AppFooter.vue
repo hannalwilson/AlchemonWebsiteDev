@@ -71,9 +71,7 @@ footer {
   }
     .downloadButton {
       color: #000080;
-      /* Sets the color of the button text to black */
       border: solid #000080;
-      /* This makes a solid black border around the button */
       border-radius: 2vw;
       font-weight: bold;
       padding: 1% 3%;

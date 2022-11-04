@@ -1,17 +1,12 @@
 <template>
-  <div class="videoContainer">
-    <video autoplay muted loop playsinline id="backgroundVideo">
-      <source src="https://alchemon-website-assets.s3.amazonaws.com/assets/game_video.mp4" type="video/mp4">Your browser
-      does not support HTML5 videos.
-    </video>
-  </div>
+    <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/banner.png" class="banner">
   <div id="about" class="whiteGrayBackground">
     <img class="centerImage venoreaper"
       src="https://alchemon-website-assets.s3.amazonaws.com/assets/45_venoreaper_back.gif" alt="Venoreaper">
     <img class="centerImage araknadevil"
       src="https://alchemon-website-assets.s3.amazonaws.com/assets/75_araknadevil.gif" alt="Araknadevil">
     <p class="orangeHeader spreadText">ALCHEMON = ALGO+ALCHEMY+MONSTER<br><br>
-      <span class="darkBlueHeader spreadText">STAKE! TRADE! EVOLVE! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CRAFT! COLLECT!
+      <span class="darkBlueHeader spreadText">STAKE! TRADE! EVOLVE! &nbsp;&nbsp;CRAFT! COLLECT!
         EARN!</span>
     </p>
     <p class="darkGrayText_1 marginFix_2">Alchemon is the first monster-collecting NFT staking, crafting and trading
@@ -20,7 +15,10 @@
   </div>
   <div class="blueBackground">
     <p class="yellowHeader spreadText">QUICKLINKS</p>
-    <router-link to="/governance" class="whiteText" ><b>NEW! Governance Voting</b></router-link>
+    <router-link to="/governance" class="whiteText" ><p>NEW! Governance Voting</p></router-link>
+    <router-link to="/craftandevolve">
+      <p class="whiteText">Craft & Evolve</p>
+    </router-link>
     <a href="https://www.randgallery.com/algo-collection/?address=310014962%2C320570576" target="__blank">
       <p class="whiteText">Add
         AlcheCoin and Alchemon Stake Flag NFTs</p>
@@ -236,9 +234,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  p {
-    text-align: center;
+.banner {
+  margin: 50px 0 0 0;
+}
+@media (max-width: 990px) {
+.banner {
+    margin-top: 40px;
   }
+}
 .homePopup {
   overflow-y: scroll;
 }
@@ -280,7 +283,10 @@ tr {
   width: 100%;
 }
 .videoContainer {
-  margin-bottom: -10%;
+  img {
+    width: 100vw;
+    margin: 0;
+  }
 }
 
 /* Hover effect for contact and submit buttons */
@@ -311,8 +317,8 @@ li {
 .blueBackground {
   background-color: #136af8;
   padding-bottom: 2%;
-  a {
-    text-decoration: none;
+  .whiteText {
+    text-decoration: underline;
   }
 
   p:hover, a:hover {

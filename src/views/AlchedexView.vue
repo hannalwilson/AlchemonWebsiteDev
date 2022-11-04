@@ -1,4 +1,4 @@
- <template>
+<template>
   <div>
     <div class="whiteGrayBackground">
       <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/alchedex.png" class="alchedex" />
@@ -16,42 +16,19 @@
         ref="address" />
       <button class="submitButton boxShadow" id="btn" @click="getUserAlchemon">Submit</button>
       <p class="whiteText">
-        Add Alchemon NFT Card Assets to your wallet via Rand Gallery. Click the
-        button then click "Add ASAs" in Rand Gallery & sign the transaction with
-        MyAlgoWallet.
-        <a href="https://www.randgallery.com/algo-collection/?address=306180273%2C306181364%2C306729637%2C306183859%2C306184765%2C306186552%2C306187531%2C+306188337%2C306189097"
-          target="_blank" role="button">#01-09</a>
-        <a href="https://www.randgallery.com/algo-collection/?address=306190133%2C306190826%2C306191511%2C313419037%2C313421275%2C315166675%2C332014800%2C337225085%2C337226686"
-          target="_blank" role="button">#10-18</a>
-        <a href="https://www.randgallery.com/algo-collection/?address=332016564%2C337228921%2C337230496%2C332017894%2C337231891%2C+337233127%2C332018856%2C337238291%2C337239113"
-          target="_blank" role="button">#19-27</a>
-        <a href="https://www.randgallery.com/algo-collection/?address=337243065%2C337244072%2C337245090%2C395700430%2C400877134%2C400878709%2C395706101%2C400883933%2C400885791"
-          target="_blank" role="button">#28-36</a>
-        <a href="https://www.randgallery.com/algo-collection/?address=395702497%2C400887826%2C400889657%2C395703386%2C400891886%2C400894271%2C400920947%2C400924498%2C400926043"
-          target="_blank" role="button">#37-45</a>
-        <a href="https://www.randgallery.com/algo-collection/?address=490139078%2C509842608%2C527475282%2C490141855%2C509844088%2C527477069%2C493271743%2C509848775%2C527479654"
-          target="_blank" role="button">#46-54</a>
-        <a href="https://www.randgallery.com/algo-collection/?address=490146814%2C509850827%2C527481591%2C527483715%2C527485015%2C527486409%2C744527019%2C744527932%2C744528583"
-          target="_blank" role="button">#55-63</a>
-        <a href="https://www.randgallery.com/algo-collection/?address=744551347%2C744530060%2C744530969%2C744531764%2C744532520%2C744533302%2C744534630%2C744535776%2C744536686"
-          target="_blank" role="button">#64-72</a>
-        <a href="https://www.randgallery.com/algo-collection/?address=744538073%2C744539419%2C744540333" target="_blank"
-          role="button">#73-75</a>
+        Opt-in to Alchemon NFT Card Assets:<br>
+        <button @click="optInToSets(1)">Set 1</button>
+        <button @click="optInToSets(2)">Set 2</button>
+        <button @click="optInToSets(3)">Set 3</button>
+        <button @click="optInToSets(4)">Set 4</button>
+        <button @click="optInToSets(5)">Set 5</button>
+        <button @click="optInToSets('Community')">Community Set</button>
       </p>
       <p class="whiteText marginFix_2">
         Here are all released Alchemon NFT cards!:
       </p>
       <div class="cards">
         <div class="searchBar">
-          <select name="viewSet" id="select" v-model="viewSet" class="boxShadow">
-            <option value="View All">View All Sets</option>
-            <option value='1'>Set 1</option>
-            <option value='2'>Set 2</option>
-            <option value='3'>Set 3</option>
-            <option value='4'>Set 4</option>
-            <option value='5'>Set 5</option>
-            <option value='Community'>Community Set</option>
-          </select>
           <select name="filterBy" id="select" v-model="filterBy" class="boxShadow">
             <option value="Filter By">Filter By:</option>
             <option value="name">Name</option>
@@ -61,6 +38,15 @@
           <i class="fa fa-search"></i>
         </div>
         <div id="sort-bar">
+          <select name="viewSet" id="select" v-model="viewSet" class="boxShadow">
+            <option value="View All">View All Sets</option>
+            <option value='1'>Set 1</option>
+            <option value='2'>Set 2</option>
+            <option value='3'>Set 3</option>
+            <option value='4'>Set 4</option>
+            <option value='5'>Set 5</option>
+            <option value='Community'>Community Set</option>
+          </select>
           <select name="sortBy" id="select" v-model="sortBy" class="boxShadow">
             <option value="Sort By">Sort By:</option>
             <option value="alphabetically">Name</option>
@@ -89,6 +75,36 @@
     <button @click="openWebpage('nft', this.id)" class="boxShadow">NFT EXPLORER</button><br><br>
     <button @click="TogglePopup('viewAlchemon')" class="boxShadow">Close</button>
   </popup-window>
+  <popup-window v-if="popupTriggers.makePurchase">
+    <h2>Confirm Purchase</h2>
+    <button class="boxShadow" @click="buyWithAlgo">Buy NFT</button>
+    <button class="boxShadow" @click="TogglePopup('makePurchase')">Cancel</button>
+  </popup-window>
+  <popup-window v-if="popupTriggers.signTransaction">
+    <h2>Please open your wallet app to sign the transaction!</h2>
+  </popup-window>
+  <popup-window v-if="popupTriggers.processingTransaction">
+    <h2>Transaction processing...</h2>
+  </popup-window>
+  <popup-window v-if="popupTriggers.transactionSuccessful">
+    <h2>Transaction successful!</h2>
+    <button class="boxShadow" @click="ReloadWindow()">Close</button>
+  </popup-window>
+  <popup-window v-if="popupTriggers.transactionFailed">
+    <h2>Failed. Please try again.</h2>
+    <p style="text-align: left"> {{ getErrorMessage }}</p>
+    <button class="boxShadow" @click="TogglePopup('transactionFailed')">Close</button>
+  </popup-window>
+  <popup-window v-if="popupTriggers.errorOccured">
+    <h2>Unknown Server Error. Please try again.</h2>
+    <p style="text-align: left">If this error continues, please contact support.</p>
+    <button class="boxShadow" @click="TogglePopup('errorOccured')">Close</button>
+  </popup-window>
+    <popup-window v-if="popupTriggers.alreadyOptedIn">
+      <h2>Already Opted In</h2>
+      <p style="text-align: left">{{ userAddress }} is already opted in to these assets.</p>
+      <button class="boxShadow" @click="TogglePopup('alreadyOptedIn')">Close</button>
+    </popup-window>
 </template>
 
 <script>
@@ -96,14 +112,46 @@ import AlchemonCards from '../components/AlchemonCards.vue'
 import alchemons from '../data/alchemon.json'
 import { reactive, ref } from 'vue'
 import PopupWindow from '@/components/PopupWindow.vue'
+import MyAlgoConnect from '@randlabs/myalgo-connect'
+import WalletConnect from '@walletconnect/client'
+import QRCodeModal from 'algorand-walletconnect-qrcode-modal'
+import axios from 'axios'
+import { formatJsonRpcRequest } from '@json-rpc-tools/utils'
+
+const myAlgoConnect = new MyAlgoConnect()
+const walletConnector = new WalletConnect(
+  {
+    bridge: 'https://bridge.walletconnect.org', // Required
+    qrcodeModal: QRCodeModal
+  }
+)
+
+const algosdk = require('algosdk')
+const token = ''
+const server = 'https://mainnet-api.algonode.cloud'
+const port = ''
+const client = new algosdk.Algodv2(token, server, port)
+
+const apiURL = 'https://avk5m0z0nc.execute-api.us-east-1.amazonaws.com'
 
 const userAlchemon = reactive([])
 
 const popupTriggers = ref({
-  viewAlchemon: false
+  viewAlchemon: false,
+  makePurchase: false,
+  signTransaction: false,
+  transactionSuccessful: false,
+  transactionFailed: false,
+  processingTransaction: false,
+  errorOccured: false,
+  alreadyOptedIn: false
 })
 
+const userAddress = localStorage.userAddress
+
 let alchemonId
+let errorMessage
+let optInSet
 
 export default {
   mounted () {
@@ -126,7 +174,10 @@ export default {
       gotUserAlchemon: false,
       showAll: 'all',
       popupTriggers,
-      PopupWindow
+      PopupWindow,
+      errorMessage,
+      userAddress,
+      optInSet
     }
   },
   methods: {
@@ -151,11 +202,6 @@ export default {
     },
     getUserAlchemon () {
       this.gotUserAlchemon = false
-      const algosdk = require('algosdk')
-      const token = ''
-      const server = 'https://mainnet-api.algonode.cloud'
-      const port = ''
-      const client = new algosdk.Algodv2(token, server, port)
 
       // eslint-disable-next-line vue/no-async-in-computed-properties
       client.accountInformation(this.$refs.address.value).do().then(response => {
@@ -168,9 +214,125 @@ export default {
         }
         this.gotUserAlchemon = true
       })
+    },
+    ReloadWindow () {
+      window.location.reload()
+    },
+    async blankSigner () {
+      return [new Uint8Array()]
+    },
+    async optInToSets (set) {
+      const suggestedParams = await client.getTransactionParams().do()
+      const optInGroup = new algosdk.AtomicTransactionComposer()
+      const userWallet = localStorage.userWallet
+      for (const card of alchemons) {
+        if (card.set === set) {
+          const id = Number(card.id)
+          try {
+            const assetInfoResponse = await client.accountAssetInformation(userAddress, id).do()
+            console.log('RESPONSE', assetInfoResponse)
+            if (assetInfoResponse['asset-holding']) {
+              console.log('Pass')
+            } else {
+              optInGroup.addTransaction({
+                txn: algosdk.makeAssetTransferTxnWithSuggestedParamsFromObject({
+                  suggestedParams,
+                  from: userAddress,
+                  to: userAddress,
+                  assetIndex: id,
+                  amount: 0
+                }),
+                signer: this.blankSigner()
+              })
+            }
+          } catch (error) {
+            console.log(error)
+            optInGroup.addTransaction({
+              txn: algosdk.makeAssetTransferTxnWithSuggestedParamsFromObject({
+                suggestedParams,
+                from: userAddress,
+                to: userAddress,
+                assetIndex: id,
+                amount: 0
+              }),
+              signer: this.blankSigner()
+            })
+          }
+        }
+      }
+      let signedTxns
+      let signedTxn
+      if (optInGroup.transactions.length === 0) {
+        this.TogglePopup('alreadyOptedIn')
+      } else {
+        console.log(optInGroup)
+        const finalOptInGroup = optInGroup.buildGroup()
+        const serializedTxns = finalOptInGroup.map(txnObj => {
+          const txn = algosdk.encodeUnsignedTransaction(txnObj.txn)
+          return Buffer.from(txn).toString('base64')
+        })
+
+        switch (userWallet) {
+          case 'myalgo':
+            signedTxns = await myAlgoConnect.signTransaction(serializedTxns)
+            if (Array.isArray(signedTxns)) {
+              signedTxn = signedTxns.map((txn) => (Buffer.from(txn.blob).toString('base64')))
+            } else {
+              signedTxn = Buffer.from(signedTxns.blob).toString('base64')
+            }
+            break
+          case 'walletconnect':
+            this.TogglePopup('signTransaction')
+
+            console.log('here')
+            // eslint-disable-next-line no-case-declarations
+            const txnsToSign = serializedTxns.map(txn => {
+              const encodedTxn = txn
+              return {
+                txn: encodedTxn
+              }
+            })
+            // eslint-disable-next-line no-case-declarations
+            const requestParams = [txnsToSign]
+            // eslint-disable-next-line no-case-declarations
+            const request = formatJsonRpcRequest('algo_signTxn', requestParams)
+            try {
+              signedTxn = await walletConnector.sendCustomRequest(request)
+            } catch (error) {
+              errorMessage = error.message
+              this.TogglePopup('transactionFailed')
+              this.TogglePopup('signTransaction')
+            }
+            this.TogglePopup('signTransaction')
+            break
+        }
+
+        if (signedTxn) {
+          this.TogglePopup('processingTransaction')
+          try {
+            const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
+              txn: signedTxn
+            })
+            if (sendTxnResponse.status === 200) {
+              if (sendTxnResponse.data.txnId) {
+                this.TogglePopup('transactionSuccessful')
+              } else if (sendTxnResponse.data.message) {
+                errorMessage = sendTxnResponse.data.message
+                this.TogglePopup('transactionFailed')
+              }
+            }
+          } catch (error) {
+            this.TogglePopup('errorOccured')
+          }
+          this.TogglePopup('processingTransaction')
+        }
+      }
     }
   },
   computed: {
+    getErrorMessage () {
+      return errorMessage
+    },
     filteredCards () {
       let tempCards = this.cards
 
@@ -298,7 +460,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .alchedex {
   width: 35%;
   margin-bottom: 0%;
@@ -355,10 +516,13 @@ a {
   border: none;
   padding: 1%;
   font-weight: bold;
-  margin-left: 2%;
 }
 .missing {
   filter: grayscale(1);
 }
-
+@media (max-width: 990px) {
+  .whiteGrayBackground {
+    margin-top: 40px;
+  }
+}
 </style>

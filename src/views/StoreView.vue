@@ -167,6 +167,9 @@ export default {
       }
       return tempItems
     }
+  },
+  mounted () {
+    window.scrollTo(0, 0)
   }
 }
 </script>

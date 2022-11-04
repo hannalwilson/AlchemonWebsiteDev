@@ -54,7 +54,7 @@ Alchemon Inc. email: info@alchemon.net <br> Portland, Oregon United States</p>
 
 <style lang="scss" scoped>
 div {
-  margin: 5% auto;
+  margin: 75px auto;
 }
 </style>
 

@@ -13,8 +13,8 @@
         Once you have joined Alchemon's Discord server, please click the NEXT button.
     </p>
 <div class="buttonContainer">
-    <router-link to="/alchegoldsuccess"><button class="backButton">BACK</button></router-link>
-    <router-link to="/alchegoldwallet"><button>NEXT</button></router-link>
+    <router-link to="/alchegoldsuccess"><button class="backButton directionButton">BACK</button></router-link>
+    <router-link to="/alchegoldwallet"><button class="directionButton">NEXT</button></router-link>
 </div>
 </template>
 

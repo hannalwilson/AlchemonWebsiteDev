@@ -96,3 +96,11 @@ h3 {
     text-decoration: underline;
 }
 </style>
+
+<script>
+export default {
+  mounted () {
+    window.scrollTo(0, 0)
+  }
+}
+</script>

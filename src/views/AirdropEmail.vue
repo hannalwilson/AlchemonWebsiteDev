@@ -10,8 +10,8 @@
     </p>
     <p><strong>Once you have emailed your wallet address to info@alchemon.net, please click the NEXT button.</strong></p>
     <div class="buttonContainer">
-        <router-link to="/alchegoldtelegram"><button class="backButton">BACK</button></router-link>
-    <router-link to="/alchegoldend"><button>NEXT</button></router-link>
+        <router-link to="/alchegoldtelegram"><button class="backButton directionButton">BACK</button></router-link>
+    <router-link to="/alchegoldend"><button class="directionButton">NEXT</button></router-link>
     </div>
 </template>
 
