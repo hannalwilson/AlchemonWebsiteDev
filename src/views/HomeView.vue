@@ -1,6 +1,6 @@
 <template>
-    <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/banner.png" class="banner">
   <div id="about" class="whiteGrayBackground">
+    <img src="../assets/banner.png" class="banner">
     <img class="centerImage venoreaper"
       src="https://alchemon-website-assets.s3.amazonaws.com/assets/45_venoreaper_back.gif" alt="Venoreaper">
     <img class="centerImage araknadevil"
@@ -236,6 +236,7 @@ export default {
 <style lang="scss" scoped>
 .banner {
   margin: 50px 0 0 0;
+  width: 100vw;
 }
 @media (max-width: 990px) {
 .banner {
