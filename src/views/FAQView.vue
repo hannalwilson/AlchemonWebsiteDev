@@ -4,11 +4,9 @@
     <p class="yellowHeader spreadText">FREQUENTLY ASKED QUESTIONS</p>
     <accordion>
       <accordion-item>
-        <!-- This slot will handle the title/header of the accordion and is the part you click on -->
         <template v-slot:accordion-trigger>
           <h3>Chain of blocks? Blocked chains? Oh… Blockchain?</h3>
         </template>
-        <!-- This slot will handle all the content that is passed to the accordion -->
         <template v-slot:accordion-content>
           <span>To learn about blockchains and to get started with Alchemon, complete this series of steps:<br><a
             href="https://www.alchemon.net/getting-started-step-1"
@@ -20,11 +18,9 @@
       </accordion-item>
 
       <accordion-item>
-        <!-- This slot will handle the title/header of the accordion and is the part you click on -->
         <template v-slot:accordion-trigger>
           <h3>What is Algorand anyways?</h3>
         </template>
-        <!-- This slot will handle all the content that is passed to the accordion -->
         <template v-slot:accordion-content>
           <span>To learn about Algorand and cryptocurrency, and to get started with Alchemon, complete this series of steps:<br><a
             href="https://www.alchemon.net/getting-started-step-1"
@@ -36,11 +32,9 @@
       </accordion-item>
 
       <accordion-item>
-        <!-- This slot will handle the title/header of the accordion and is the part you click on -->
         <template v-slot:accordion-trigger>
           <h3>How do I buy me some Algorand?</h3>
         </template>
-        <!-- This slot will handle all the content that is passed to the accordion -->
         <template v-slot:accordion-content>
           <span>You can get it from most exchanges, including <a href="https://www.coinbase.com/" target="_blank">Coinbase</a>, <a
             href="https://www.binance.com/en" target="_blank">Binance</a>, and many more!<br><br>To learn about NFTs and to get
@@ -50,11 +44,9 @@
       </accordion-item>
 
       <accordion-item>
-        <!-- This slot will handle the title/header of the accordion and is the part you click on -->
         <template v-slot:accordion-trigger>
           <h3>What’s a dumb contract? I mean, a smart contract?</h3>
         </template>
-        <!-- This slot will handle all the content that is passed to the accordion -->
         <template v-slot:accordion-content>
           <span><iframe src="https://www.youtube.com/embed/pyaIppMhuic" title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -63,11 +55,9 @@
       </accordion-item>
 
       <accordion-item>
-        <!-- This slot will handle the title/header of the accordion and is the part you click on -->
         <template v-slot:accordion-trigger>
           <h3>NFT? I don’t get it.</h3>
         </template>
-        <!-- This slot will handle all the content that is passed to the accordion -->
         <template v-slot:accordion-content>
           <span>To learn about NFTs and to get started with Alchemon, complete this series of steps:<br><a
             href="https://www.alchemon.net/getting-started-step-1"
@@ -79,11 +69,9 @@
       </accordion-item>
 
       <accordion-item>
-        <!-- This slot will handle the title/header of the accordion and is the part you click on -->
         <template v-slot:accordion-trigger>
           <h3>What is Alch-ee-mon? Or is it Alch-a-mon?</h3>
         </template>
-        <!-- This slot will handle all the content that is passed to the accordion -->
         <template v-slot:accordion-content>
           <span>Alchemon is pronounced “Alk-uh-mon.” And it’s amazing…<br><br> Alchemon (<u>Alch</u>emy + <u>mon</u>ster) is the first
           monster-collecting NFT staking, crafting and trading card game only on the Algorand Blockchain! Get your Alchemon,
@@ -96,11 +84,9 @@
       </accordion-item>
 
       <accordion-item>
-        <!-- This slot will handle the title/header of the accordion and is the part you click on -->
         <template v-slot:accordion-trigger>
           <h3>What is an NFT Card?</h3>
         </template>
-        <!-- This slot will handle all the content that is passed to the accordion -->
         <template v-slot:accordion-content>
           <span>In Alchemon, there are lots of assets and NFTs to collect, but there are official game cards to be used once the game is
           released. These are representations of the Alchemon as creatures to be used in the game. They are the collectables as
@@ -112,11 +98,9 @@
       </accordion-item>
 
       <accordion-item>
-        <!-- This slot will handle the title/header of the accordion and is the part you click on -->
         <template v-slot:accordion-trigger>
           <h3>How/where/why can I buy Alchemon?</h3>
         </template>
-        <!-- This slot will handle all the content that is passed to the accordion -->
         <template v-slot:accordion-content>
           <span>The official Alchemon store is here: <a href="https://www.alchemon.net/store" target="_blank">Alchemon NFT
             Store</a><br><br>You can also see all sales info on the project here: <a
@@ -129,11 +113,9 @@
       </accordion-item>
 
       <accordion-item>
-        <!-- This slot will handle the title/header of the accordion and is the part you click on -->
         <template v-slot:accordion-trigger>
           <h3>AlcheCoin? Will it make me rich?</h3>
         </template>
-        <!-- This slot will handle all the content that is passed to the accordion -->
         <template v-slot:accordion-content>
           <span>First off, AlcheChoin is technically a token. So, to start, check out this video: <br><iframe
             src="https://www.youtube.com/embed/422HORNUfkU" title="YouTube video player" frameborder="0"
@@ -145,11 +127,9 @@
       </accordion-item>
 
       <accordion-item>
-        <!-- This slot will handle the title/header of the accordion and is the part you click on -->
         <template v-slot:accordion-trigger>
           <h3>Staking? Huh?</h3>
         </template>
-        <!-- This slot will handle all the content that is passed to the accordion -->
         <template v-slot:accordion-content>
           <span>Let’s start with this video:<br><iframe width="560" height="315" src="https://www.youtube.com/embed/vZ2UZdB07fo"
             title="YouTube video player" frameborder="0"
@@ -165,11 +145,9 @@
       </accordion-item>
 
       <accordion-item>
-        <!-- This slot will handle the title/header of the accordion and is the part you click on -->
         <template v-slot:accordion-trigger>
           <h3>What is a “set” in Alchemon?</h3>
         </template>
-        <!-- This slot will handle all the content that is passed to the accordion -->
         <template v-slot:accordion-content>
           <span>A set is a group of 15 Alchemon characters (released together) that has 4 Alchemon evolution lines that evolve from
           Common to Uncommon to Rare. Rares can then be crafted into 2 different Epic Alchemon that craft into a Legendary. All 15
@@ -180,11 +158,9 @@
       </accordion-item>
 
       <accordion-item>
-        <!-- This slot will handle the title/header of the accordion and is the part you click on -->
         <template v-slot:accordion-trigger>
           <h3>Please… How do I evolve my cards?</h3>
         </template>
-        <!-- This slot will handle all the content that is passed to the accordion -->
         <template v-slot:accordion-content>
           <span>There are two ways to evolve currently:<br>
           <ol>
@@ -198,11 +174,9 @@
       </accordion-item>
 
       <accordion-item>
-        <!-- This slot will handle the title/header of the accordion and is the part you click on -->
         <template v-slot:accordion-trigger>
           <h3>Wah! How come I can’t evolve my cards from earlier sets?</h3>
         </template>
-        <!-- This slot will handle all the content that is passed to the accordion -->
         <template v-slot:accordion-content>
           <span>Because those rewards have already been distributed to the players in the past. There is a finite amount of evolutions
           available for each set. You will have to get older Alchemon from the aftermarket <a
@@ -211,11 +185,9 @@
       </accordion-item>
 
       <accordion-item>
-        <!-- This slot will handle the title/header of the accordion and is the part you click on -->
         <template v-slot:accordion-trigger>
           <h3>Crafting and Alchemon. What’s it all about?</h3>
         </template>
-        <!-- This slot will handle all the content that is passed to the accordion -->
         <template v-slot:accordion-content>
           <span>To make an Epic or Legendary Alchemon you must use some alchemy! The only way to craft a Legendary is to have both Epics
           and combine them (trade them in). The NFT Cards you use get sent to the store or staking pools for other players to take
@@ -226,11 +198,9 @@
       </accordion-item>
 
       <accordion-item>
-        <!-- This slot will handle the title/header of the accordion and is the part you click on -->
         <template v-slot:accordion-trigger>
           <h3>What is wallet staking?</h3>
         </template>
-        <!-- This slot will handle all the content that is passed to the accordion -->
         <template v-slot:accordion-content>
           <span>Welcome to wallet staking! Wallet staking is something we created to reward players for holding Alchemon in their own
           wallet! You get AlcheCoin for each NFT Card in your wallet as long as you have approved the AlcheCoin and Stake Flag
@@ -242,11 +212,9 @@
       </accordion-item>
 
       <accordion-item>
-        <!-- This slot will handle the title/header of the accordion and is the part you click on -->
         <template v-slot:accordion-trigger>
           <h3>Training grounds? Is that like a gym or something?</h3>
         </template>
-        <!-- This slot will handle all the content that is passed to the accordion -->
         <template v-slot:accordion-content>
           <span>Training Grounds is where you can stake your Alchemon for a week to evolve it for free. Just send your Alchemon to
           5Q2PRQDMH7JNT76EYFXBB4UBFVBL6WI37GTJC7HELNPZ4EL5BE6WKQXP4Y and make sure you have added the asset of the evolved
@@ -261,11 +229,9 @@
       </accordion-item>
 
       <accordion-item>
-        <!-- This slot will handle the title/header of the accordion and is the part you click on -->
         <template v-slot:accordion-trigger>
           <h3>Hunting grounds? But I’m a vegan!</h3>
         </template>
-        <!-- This slot will handle all the content that is passed to the accordion -->
         <template v-slot:accordion-content>
           <span>The Hunting Grounds is evolving! Players no longer need to stake one of their Alchemon for a whole week to earn entries
           in the Hunting Grounds raffle. Entries will now be earned through battling your Alchemon in our <a
@@ -277,11 +243,9 @@
       </accordion-item>
 
       <accordion-item>
-        <!-- This slot will handle the title/header of the accordion and is the part you click on -->
         <template v-slot:accordion-trigger>
           <h3>If inflation is bad, is deflation good? How is Alchemon deflationary?</h3>
         </template>
-        <!-- This slot will handle all the content that is passed to the accordion -->
         <template v-slot:accordion-content>
           <span>Alchemon is a <i>deflationary</i> NFT Collecting Card Game. All Staking Evolutions, Trading Evolutions and Crafting
           Swaps have the Alchemon come back home to be redistributed to other players that want to do the same. 100% of all
@@ -293,11 +257,9 @@
       </accordion-item>
 
       <accordion-item>
-        <!-- This slot will handle the title/header of the accordion and is the part you click on -->
         <template v-slot:accordion-trigger>
           <h3>Why eggs? Do all Alchemon come from eggs?</h3>
         </template>
-        <!-- This slot will handle all the content that is passed to the accordion -->
         <template v-slot:accordion-content>
           <span>Eggs are just early access for new Alchemon. They are guaranteed worth one of the newest Commons. Sometimes there are
           competitions where you can earn something better.</span>
@@ -305,11 +267,9 @@
       </accordion-item>
 
       <accordion-item>
-        <!-- This slot will handle the title/header of the accordion and is the part you click on -->
         <template v-slot:accordion-trigger>
           <h3>Why do cards have different colors? Do the colors have any special meaning?</h3>
         </template>
-        <!-- This slot will handle all the content that is passed to the accordion -->
         <template v-slot:accordion-content>
           <span>Nope, just flavor for the cards. We wanted simple, but not just a white background.
           </span>

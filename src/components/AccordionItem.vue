@@ -2,7 +2,6 @@
   <li class="accordion__item">
     <div class="accordion__trigger" :class="{ 'accordion__trigger_active': visible }" @click="open">
 
-      <!-- This slot will handle the title/header of the accordion and is the part you click on -->
       <slot name="accordion-trigger"></slot>
     </div>
 
@@ -10,7 +9,6 @@
 
       <div class="accordion__content" v-show="visible">
         <ul>
-          <!-- This slot will handle all the content that is passed to the accordion -->
           <slot name="accordion-content"></slot>
         </ul>
       </div>
