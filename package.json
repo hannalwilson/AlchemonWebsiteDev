@@ -7,9 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "staging": "vue-cli-service serve --mode staging",
-    "deploy": "aws --region us-west-2 --profile websiteAdmin s3 sync ./dist s3://alchemon.net --delete",
-    "invalidate": "aws cloudfront create-invalidation --distribution-id EGLR6IFF7KTUI --paths /*",
-    "launch": "npm run build && npm run deploy && npm run invalidate"
+    "deploy": "aws --region us-west-2 --profile websiteAdmin s3 sync ./dist s3://alchemon.net --delete"
   },
   "dependencies": {
     "@json-rpc-tools/utils": "^1.7.6",
