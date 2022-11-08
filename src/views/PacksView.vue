@@ -1,9 +1,8 @@
 <template>
     <div class="content">
       <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/pack.png"><br>
-      <p>Packs: {{ numberOfPacks }}</p>
-        <button @click="openPack()">Open Pack</button>
-        <button @click="TogglePopup('transactionSuccessful')">Success</button>
+      <button @click="openPack()">Open Pack</button>
+      <br>Total Number of Packs: {{ numberOfPacks }}
     </div>
     <popup-window v-if="popupTriggers.signTransaction">
         <h2>Please open your wallet app to sign the transaction!</h2>
@@ -12,10 +11,12 @@
         <h2>Transaction processing...</h2>
     </popup-window>
     <popup-window v-if="popupTriggers.transactionSuccessful" class="cardPopup">
-      <ConfettiExplosion :particleCount="250" class="confetti"/>
+      <div class="confettiContainer">
+        <ConfettiExplosion :particleCount="250" class="confetti"/>
+        <ConfettiExplosion :particleCount="250" class="confetti" />
+      </div>
       <h2>Congratulations!</h2>
       <h4>Here are your new cards:</h4>
-      <ConfettiExplosion :particleCount="250" class="confetti" />
       <div class="packContents">
         <img v-for="image in images" v-bind:key="image" :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/alchemon/${image}.png`">
       </div><br>
@@ -51,8 +52,9 @@ img {
 .cardPopup {
   overflow-y: scroll;
 }
-.confetti {
-  align-self: center;
+.confettiContainer {
+  display: flex;
+  justify-content: space-between;
 }
 </style>
 
