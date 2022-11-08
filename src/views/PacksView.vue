@@ -1,7 +1,9 @@
 <template>
     <div class="content">
       <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/pack.png"><br>
+      <p>Packs: {{ numberOfPacks }}</p>
         <button @click="openPack()">Open Pack</button>
+        <button @click="TogglePopup('transactionSuccessful')">Success</button>
     </div>
     <popup-window v-if="popupTriggers.signTransaction">
         <h2>Please open your wallet app to sign the transaction!</h2>
@@ -9,8 +11,14 @@
     <popup-window v-if="popupTriggers.processingTransaction">
         <h2>Transaction processing...</h2>
     </popup-window>
-    <popup-window v-if="popupTriggers.transactionSuccessful">
-        <h2>Transaction successful!</h2>
+    <popup-window v-if="popupTriggers.transactionSuccessful" class="cardPopup">
+      <ConfettiExplosion :particleCount="250" class="confetti"/>
+      <h2>Congratulations!</h2>
+      <h4>Here are your new cards:</h4>
+      <ConfettiExplosion :particleCount="250" class="confetti" />
+      <div class="packContents">
+        <img v-for="image in images" v-bind:key="image" :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/alchemon/${image}.png`">
+      </div><br>
         <button class="boxShadow" @click="ReloadWindow()">Close</button>
     </popup-window>
     <popup-window v-if="popupTriggers.transactionFailed">
@@ -33,6 +41,19 @@ img {
   max-width: 250px;
 
 }
+.packContents {
+  display: contents;
+  img {
+    padding: 1px;
+    max-width: 200px;
+  }
+}
+.cardPopup {
+  overflow-y: scroll;
+}
+.confetti {
+  align-self: center;
+}
 </style>
 
 <script>
@@ -43,10 +64,13 @@ import QRCodeModal from 'algorand-walletconnect-qrcode-modal'
 import PopupWindow from '../components/PopupWindow'
 import { ref } from 'vue'
 import axios from 'axios'
+import ConfettiExplosion from 'vue-confetti-explosion'
 
 const apiURL = 'https://7fod8a9he1.execute-api.us-east-1.amazonaws.com'
 
 let errorMessage
+let numberOfPacks
+const images = []
 
 const popupTriggers = ref({
   makePurchase: false,
@@ -68,12 +92,28 @@ const walletConnector = new WalletConnect(
 let signedTxn
 
 export default {
-  components: { PopupWindow },
+  created () {
+    const algosdk = require('algosdk')
+    const token = ''
+    const server = 'https://mainnet-api.algonode.cloud'
+    const port = ''
+    const client = new algosdk.Algodv2(token, server, port)
+    client.accountInformation(localStorage.userAddress).do().then(response => {
+      for (const userAsset of response.assets) {
+        if (userAsset['asset-id'] === 318280942) {
+          this.numberOfPacks = userAsset.amount
+        }
+      }
+    })
+  },
+  components: { PopupWindow, ConfettiExplosion },
   data () {
     return {
       PopupWindow,
       popupTriggers,
-      errorMessage
+      errorMessage,
+      numberOfPacks,
+      images
     }
   },
   computed: {
@@ -81,6 +121,10 @@ export default {
       return errorMessage
     }
   },
+  mounted () {
+    window.scrollTo(0, 0)
+  },
+
   methods: {
     TogglePopup (trigger) {
       popupTriggers.value[trigger] = !popupTriggers.value[trigger]
@@ -105,11 +149,12 @@ export default {
         userAddress: userAddress
       })
 
-      console.log(packTradeInResponse)
       const serializedTxns = packTradeInResponse.data.txns
       const cards = packTradeInResponse.data.cards
 
-      console.log(cards)
+      for (const index in packTradeInResponse.data.contents) {
+        images.push(packTradeInResponse.data.contents[index])
+      }
 
       let signedTxns
       switch (userWallet) {

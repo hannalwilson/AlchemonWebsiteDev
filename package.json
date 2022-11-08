@@ -23,6 +23,7 @@
     "node-polyfill-webpack-plugin": "^1.1.4",
     "path-browserify": "^1.0.1",
     "vue": "^3.2.13",
+    "vue-confetti-explosion": "^1.0.1",
     "vue-p5": "^0.8.4",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
