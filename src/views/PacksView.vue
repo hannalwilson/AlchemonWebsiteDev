@@ -1,6 +1,6 @@
 <template>
     <div class="content">
-      <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/pack.png"><br>
+      <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/pack.png" class="pack boxShadow"><br>
       <button @click="openPack()">Open Pack</button>
       <br>Total Number of Packs: {{ numberOfPacks }}
     </div>
@@ -56,6 +56,9 @@ img {
   display: flex;
   justify-content: space-between;
 }
+.pack {
+  border: 5px solid black;
+}
 </style>
 
 <script>
@@ -102,7 +105,7 @@ export default {
     const client = new algosdk.Algodv2(token, server, port)
     client.accountInformation(localStorage.userAddress).do().then(response => {
       for (const userAsset of response.assets) {
-        if (userAsset['asset-id'] === 318280942) {
+        if (userAsset['asset-id'] === 936555917) {
           this.numberOfPacks = userAsset.amount
         }
       }
