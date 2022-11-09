@@ -51,6 +51,7 @@ img {
 }
 .cardPopup {
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 .confettiContainer {
   display: flex;
@@ -71,7 +72,7 @@ import { ref } from 'vue'
 import axios from 'axios'
 import ConfettiExplosion from 'vue-confetti-explosion'
 
-const apiURL = 'https://7fod8a9he1.execute-api.us-east-1.amazonaws.com'
+const apiURL = 'https://avk5m0z0nc.execute-api.us-east-1.amazonaws.com'
 
 let errorMessage
 let numberOfPacks
@@ -107,6 +108,8 @@ export default {
       for (const userAsset of response.assets) {
         if (userAsset['asset-id'] === 936555917) {
           this.numberOfPacks = userAsset.amount
+        } else {
+          this.numberOfPacks = 0
         }
       }
     })

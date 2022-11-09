@@ -26,7 +26,7 @@
     z-index: 100;
     padding: 1vw 5vw 2vw;
     position: absolute;
-    top: 25%;
+    top: 15%;
     max-width: 90vw;
     word-wrap: break-word;
 }
