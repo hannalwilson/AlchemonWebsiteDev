@@ -23,18 +23,18 @@
         ALGO</button>
       <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
        v-if="type === 'art' && amount > 0">{{
-        cost }}
+       cost }}
         ALCH</button>
       <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
         v-if="type === 'alchebilities' && amount > 0">{{ cost
         }} ALCH</button>
       <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
        v-if="type === 'egg' && amount > 0">{{
-        cost
-        }} ALGO</button>
-      <button @click="setAlchemonId(id, cost, type, 'algo')" class="boxShadow nftButton" v-if="type === 'pack'">30 ALGO</button>
+       cost
+       }} ALGO</button>
+      <button @click="setAlchemonId(id, cost, type, 'algo')" class="boxShadow nftButton" v-if="type === 'pack' && amount > 0 && algoAvailable">30 ALGO</button>
       <button @click="setAlchemonId(id, cost, type, 'alch')" class="boxShadow nftButton"
-        v-if="type === 'pack'">7000 ALCH</button>
+        v-if="type === 'pack' && amount > 0 && alchAvailable">7000 ALCH</button>
     </div>
   </div>
   <popup-window v-if="popupTriggers.makePurchase">

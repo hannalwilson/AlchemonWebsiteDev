@@ -151,7 +151,9 @@ export default {
   },
   computed: {
     filteredItems () {
-      let tempItems = storeItems
+      let tempItems = storeItems.filter(item => {
+        return item.amount > 0
+      })
 
       if (this.viewOnly === 'alchemon') {
         tempItems = tempItems.filter(item => {
@@ -169,7 +171,9 @@ export default {
         })
       }
       if (this.viewOnly === 'all') {
-        tempItems = storeItems
+        tempItems = storeItems.filter(item => {
+          return item.amount > 0
+        })
       }
       return tempItems
     }

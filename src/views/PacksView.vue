@@ -1,7 +1,7 @@
 <template>
     <div class="content">
       <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/Pack.png" class="pack boxShadow"><br>
-      <button id="submitbutton" @click="openPack()" v-bind:disabled="!clicked">Open Pack</button>
+      <button id="submitbutton" @click="openPack()" v-bind:disabled="!clicked" v-show="numberOfPacks > 0">Open Pack</button>
       <br>Total Number of Packs: {{ numberOfPacks }}
     </div>
     <popup-window v-if="popupTriggers.signTransaction">
@@ -108,6 +108,7 @@ export default {
       for (const userAsset of response.assets) {
         if (userAsset['asset-id'] === 936555917) {
           this.numberOfPacks = userAsset.amount
+          break
         } else {
           this.numberOfPacks = 0
         }
