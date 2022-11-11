@@ -1,5 +1,13 @@
 [
 {
+    "name": "Pack",
+    "id": 936555917,
+    "type": "pack",
+    "amount": 0,
+    "cost": 0,
+    "description": "Yieldly Community Set Pack"
+},
+{
     "name": "Ash",
     "id": 798983583,
     "type": "alchemon",

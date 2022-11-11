@@ -1,7 +1,7 @@
 <template>
     <div class="content">
-      <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/pack.png" class="pack boxShadow"><br>
-      <button @click="openPack()">Open Pack</button>
+      <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/Pack.png" class="pack boxShadow"><br>
+      <button id="submitbutton" @click="openPack()" v-bind:disabled="!clicked">Open Pack</button>
       <br>Total Number of Packs: {{ numberOfPacks }}
     </div>
     <popup-window v-if="popupTriggers.signTransaction">
@@ -121,7 +121,8 @@ export default {
       popupTriggers,
       errorMessage,
       numberOfPacks,
-      images
+      images,
+      clicked: true
     }
   },
   computed: {
@@ -152,6 +153,7 @@ export default {
       if (userWallet === 'walletconnect') {
         this.TogglePopup('signTransaction')
       }
+      this.clicked = false
 
       const packTradeInResponse = await axios.post(`${apiURL}/packTradeIn`, {
         userAddress: userAddress

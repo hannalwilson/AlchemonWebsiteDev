@@ -354,8 +354,8 @@ const routes = [
     }
   },
   {
-    path: '/testingpacks',
-    name: 'testingpacls',
+    path: '/openpacks',
+    name: 'openpacks',
     component: PacksView,
     meta: {
       hideNavbar: true

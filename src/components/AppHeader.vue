@@ -31,6 +31,7 @@
         <div class="dropdown-menu">
           <router-link to="/store" @click="openMobileNav()">ALCHESHOP</router-link>
           <router-link to="/craftandevolve" @click="openMobileNav()">CRAFT & EVOLVE</router-link>
+          <router-link to="/openpacks" @click="openMobileNav()">OPEN PACKS</router-link>
           <a href="https://www.randgallery.com/algo-collection/?address=ALCHY5SJXOXZXADZPD73KO6CYNZXDUWFYANTSXU6RIO3EZACIIXUCS3YDM"
             target="_blank" @click="openMobileNav()">RAND</a>
           <a href="https://shop.alchemon.net" target="_blank">MERCH</a>
@@ -292,18 +293,14 @@ div.dropdown-menu {
 }
 
 div.dropdown-menu a {
+  border-top: 1px white solid;
   margin: 0%;
   background-color: #00003f;
-  padding: 0%;
-}
-
-div.dropdown-menu a {
+  padding: 1%;
   line-height: 8vh;
   line-height: 50px;
   text-align: center;
-  padding: 5% ;
 }
-
 .nav-active {
   visibility: visible !important;
   transition: 0.4s;

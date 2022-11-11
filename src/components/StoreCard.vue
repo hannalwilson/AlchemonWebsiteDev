@@ -11,6 +11,8 @@
         v-if="type === 'alchebilities'" class="nftImage">
       <video :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/art/${name}.mp4`" v-if="type === 'art'"
         class="nftImage" muted loop playsinline autoplay></video>
+        <img :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/${name}.png`" v-if="type === 'pack'"
+          class="nftImage">
     </div>
     <div class="buttonContainer">
       <p> {{ name }}</p>
@@ -30,6 +32,9 @@
        v-if="type === 'egg' && amount > 0">{{
         cost
         }} ALGO</button>
+      <button @click="setAlchemonId(id, cost, type, 'algo')" class="boxShadow nftButton" v-if="type === 'pack'">30 ALGO</button>
+      <button @click="setAlchemonId(id, cost, type, 'alch')" class="boxShadow nftButton"
+        v-if="type === 'pack'">7000 ALCH</button>
     </div>
   </div>
   <popup-window v-if="popupTriggers.makePurchase">
@@ -101,7 +106,7 @@ button {
 
 @media (max-width: 800px) {
   .buttonContainer {
-    height: 25vw;
+    height: 35vw;
     width: 35vw;
   }
     .nftImage {
@@ -114,7 +119,7 @@ button {
 
 @media (max-width: 650px) {
   .buttonContainer {
-    height: 30vw;
+    height: 40vw;
     width: 45vw;
   }
     .nftImage {
@@ -124,7 +129,7 @@ button {
 
 @media (max-width: 500px) {
   .buttonContainer {
-    height: 35vw;
+    height: 45vw;
     width: 70vw;
   }
     .nftImage {
@@ -137,7 +142,7 @@ button {
 
 @media (max-width: 350px) {
   .buttonContainer {
-      height: 40vw;
+      height: 50vw;
       width: 90vw;
     }
     .nftImage {
@@ -147,7 +152,7 @@ button {
 
 @media (max-width: 350px) {
   .buttonContainer {
-      height: 50vw;
+      height: 60vw;
     }
 
 }
@@ -175,6 +180,9 @@ let payWithAlgoResponse
 let userAddress
 let userWallet
 let errorMessage
+let packCurrency
+let alchAvailable
+let algoAvailable
 const myAlgoConnect = new MyAlgoConnect()
 const walletConnector = new WalletConnect(
   {
@@ -231,6 +239,35 @@ const popupTriggers = ref({
   errorOccured: false
 })
 export default {
+  created () {
+    const algosdk = require('algosdk')
+    const token = ''
+    const server = 'https://mainnet-api.algonode.cloud'
+    const port = ''
+    const client = new algosdk.Algodv2(token, server, port)
+    client.accountInformation('N6B3V2B7NKWZ7VB4HH2UL467E2EC2BAXG2AH4BIOL4276X24PQGJXUCYH4').do().then(response => {
+      for (const userAsset of response.assets) {
+        if (userAsset['asset-id'] === 936555917 && userAsset.amount > 0) {
+          this.alchAvailable = true
+          break
+        } else if (userAsset['asset-id'] === 936555917 && userAsset.amount < 0) {
+          this.alchAvailable = false
+          break
+        }
+      }
+    })
+    client.accountInformation('BSJWMKLAJ5SPEO4XKOMN6NRMWCJ3RP43RYVXWPDNPCPT6GN63SHUY3FJFU').do().then(response => {
+      for (const userAsset of response.assets) {
+        if (userAsset['asset-id'] === 936555917 && userAsset.amount > 0) {
+          this.algoAvailable = true
+          break
+        } else if (userAsset['asset-id'] === 936555917 && userAsset.amount < 0) {
+          this.algoAvailable = false
+          break
+        }
+      }
+    })
+  },
   components: { PopupWindow },
   props: ['name', 'id', 'amount', 'type', 'cost', 'description'],
   data () {
@@ -238,7 +275,9 @@ export default {
       PopupWindow,
       popupTriggers,
       errorMessage,
-      hover: false
+      hover: false,
+      alchAvailable,
+      algoAvailable
     }
   },
   computed: {
@@ -247,12 +286,18 @@ export default {
     }
   },
   methods: {
-    setAlchemonId (id, cost, type) {
+    setAlchemonId (id, cost, type, currency) {
       alchemonId = id
       alchemonCost = cost
       alchemonType = type
       userAddress = localStorage.userAddress
       userWallet = localStorage.userWallet
+      packCurrency = currency
+      if (type === 'pack') {
+        if (packCurrency === 'algo') {
+          alchemonType = 'algopack'
+        }
+      }
       this.TogglePopup('makePurchase')
     },
     TogglePopup (trigger) {
@@ -289,6 +334,25 @@ export default {
             forSale: parseInt(alchemonId),
             requestedAmount: 1,
             paymentTokenAmount: alchemonCost
+          })
+          break
+        case 'pack':
+          payWithAlgoResponse = await axios.post(`${apiURL}/payWithToken`, {
+            customerAddress: userAddress,
+            itemShopAppId: 940594074,
+            paymentToken: 310014962,
+            forSale: parseInt(alchemonId),
+            requestedAmount: 1,
+            paymentTokenAmount: 7000
+          })
+          break
+        case 'algopack':
+          payWithAlgoResponse = await axios.post(`${apiURL}/payWithAlgo`, {
+            customerAddress: userAddress,
+            itemShopAppId: 940594172,
+            forSale: parseInt(alchemonId),
+            requestedAmount: 1,
+            microalgoAmount: (1000000 * 30)
           })
           break
       }

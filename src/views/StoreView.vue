@@ -94,7 +94,9 @@ const addresses = [
   'SOAAA47UPOFB2N3ZS5SMF6BFYMCWFH2S3K5MJDOEPE6U5YKRBOF7UEI73M',
   'MRRIT7LBP3I6QIMGVST2IUPW7OOEPUBGTVPRWUTZMA5ZJZSBEI53T4QLWQ',
   'M5VTGXSX2DK3HXWF4YZI537PYQGSPCD4SCZUKTZCLVBWFJU5IHDICDIXE4',
-  'JLNJOJTMDMYHCUFNYM2HLX4WFOQ4VWG6QJUJRAJ5KNHFMVWU6IO43VFTZI'
+  'JLNJOJTMDMYHCUFNYM2HLX4WFOQ4VWG6QJUJRAJ5KNHFMVWU6IO43VFTZI',
+  'N6B3V2B7NKWZ7VB4HH2UL467E2EC2BAXG2AH4BIOL4276X24PQGJXUCYH4',
+  'BSJWMKLAJ5SPEO4XKOMN6NRMWCJ3RP43RYVXWPDNPCPT6GN63SHUY3FJFU'
 ]
 
 let address
@@ -126,7 +128,11 @@ export default {
         for (const asset of response.assets) {
           storeItems.forEach(item => {
             if (item.id === asset['asset-id']) {
-              item.amount = asset.amount
+              if (item.id === 936555917) {
+                item.amount += asset.amount
+              } else {
+                item.amount = asset.amount
+              }
             }
           })
         }
