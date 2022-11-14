@@ -1,8 +1,7 @@
 <template>
     <header><h1>DOWNLOAD VIDEO GAME</h1></header>
-    <p>SUCCESS! You have successfully submitted your request for a free Alchemon NFT. We would send it over soon. In the
-    meantime, download and install the Alchemon video game!
-        <i>Please read these instructions in full to ensure you can download and install the game
+    <slot></slot>
+    <p><i>Please read these instructions in full to ensure you can download and install the game
       properly.</i> <br><br>
       Requirements to play:
       <ol>
@@ -50,6 +49,7 @@
 </template>
 
 <script>
+
 export default {
   mounted () {
     window.scrollTo(0, 0)
@@ -64,24 +64,9 @@ header {
 
  img {
     margin: 0;
+    max-width: 90vw;
  }
-button {
-    margin-bottom: 3%;
-    margin-top: 2%;
-    min-width: 20vw;
-}
 
-.buttonContainer {
-    display: flex;
-    justify-content: left;
-    margin: 3%;
-}
-
-@media (max-width: 800px) {
-    button {
-        min-width: 35vw;
-    }
-}
 ol {
     padding: 1% 5%;
 }

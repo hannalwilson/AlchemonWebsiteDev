@@ -10,11 +10,6 @@
         <a href="https://t.me/joinchat/WbyxkfAyJDZmMzE5 " target="_blank">https://t.me/joinchat/WbyxkfAyJDZmMzE5</a>
     </p>
     <p>Once you have joined the Alchemon community on Telegram, please click the NEXT button.</p>
-    <div class="buttonContainer">
-        <router-link to="/getting-started-step-8"><button class="backButton directionButton">BACK</button></router-link>
-        <router-link to="/getting-started-step-10"><button class="directionButton">NEXT</button></router-link>
-    </div>
-
 </template>
 
 <style lang="scss" scoped>
@@ -27,22 +22,6 @@ img {
     margin: 0;
 }
 
-button {
-    margin-bottom: 3%;
-    margin-top: 2%;
-    min-width: 20vw;
-}
-
-.buttonContainer {
-    display: flex;
-    justify-content: space-between;
-    margin: 3%;
-}
-@media (max-width: 800px) {
-    button {
-        min-width: 35vw;
-    }
-}
 </style>
 
 <script>

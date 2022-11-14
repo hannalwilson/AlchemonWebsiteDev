@@ -16,10 +16,6 @@
         <br><br>
         Once you have set up your Pera Algo Wallet account, click NEXT.
     </p>
-    <div class="buttonContainer">
-        <router-link to="/free-NFT-step-2"><button class="backButton directionButton">BACK</button></router-link>
-        <router-link to="/free-NFT-step-4"><button class="directionButton">NEXT</button></router-link>
-    </div>
 </template>
 
 <style lang="scss" scoped>
@@ -27,28 +23,6 @@ header {
     margin-top: 6%;
 }
 
-img {
-    width: 200px;
-    margin: 0;
-}
-
-button {
-    margin-bottom: 3%;
-    margin-top: 2%;
-    min-width: 20vw;
-}
-
-.buttonContainer {
-    display: flex;
-    justify-content: space-between;
-    margin: 3%;
-}
-
-@media (max-width: 800px) {
-    button {
-        min-width: 35vw;
-    }
-}
 </style>
 
 <script>

@@ -24,10 +24,7 @@
         </ol>
         <span class="fixBold">Once you have <strong>3 different</strong> Alchemon NFTs in your wallet, click NEXT.</span>
     </div>
-    <div class="buttonContainer">
-        <router-link to="/getting-started-step-4"><button class="backButton directionButton">BACK</button></router-link>
-        <router-link to="/getting-started-step-6"><button class="directionButton">NEXT</button></router-link>
-    </div>
+    <navigate-buttons :backURL="'/getting-started-step-4'" :nextURL="'/getting-started-step-6'"></navigate-buttons>
 </template>
 
 <style lang="scss" scoped>
@@ -44,23 +41,6 @@ img {
     display: inline;
 }
 
-button {
-    margin-bottom: 3%;
-    margin-top: 2%;
-    min-width: 20vw;
-}
-
-.buttonContainer {
-    display: flex;
-    justify-content: space-between;
-    margin: 3%;
-}
-
-@media (max-width: 800px) {
-    button {
-        min-width: 35vw;
-    }
-}
 ol {
     padding: 1% 5%;
 }
@@ -71,7 +51,9 @@ ol {
 </style>
 
 <script>
+import NavigateButtons from '@/components/steps/NavigateButtons.vue'
 export default {
+  components: { NavigateButtons },
   mounted () {
     window.scrollTo(0, 0)
   }

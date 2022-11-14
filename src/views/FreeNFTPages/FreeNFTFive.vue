@@ -32,10 +32,7 @@
         </a><br><br>
         Once you have opted-in to the above four listed NFTs, click NEXT.
         </div>
-    <div class="buttonContainer">
-        <router-link to="/free-nft-step-4"><button class="backButton directionButton">BACK</button></router-link>
-        <router-link to="/free-nft-step-6"><button class="directionButton">NEXT</button></router-link>
-    </div>
+            <navigate-buttons :backURL="'/free-NFT-step-4'" :nextURL="'/free-NFT-step-6'"></navigate-buttons>
 </template>
 
 <style lang="scss" scoped>
@@ -62,23 +59,6 @@ img {
     text-align: center;
 }
 
-button {
-    margin-bottom: 3%;
-    margin-top: 2%;
-    min-width: 20vw;
-}
-
-.buttonContainer {
-    display: flex;
-    justify-content: space-between;
-    margin: 3%;
-}
-
-@media (max-width: 800px) {
-    button {
-        min-width: 35vw;
-    }
-}
 ol, ul {
     padding: 1% 5%;
     ol {
@@ -88,9 +68,14 @@ ol, ul {
 </style>
 
 <script>
+import NavigateButtons from '@/components/steps/NavigateButtons.vue'
 export default {
+  components: {
+    NavigateButtons
+  },
   mounted () {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0
+    )
   }
 }
 </script>
