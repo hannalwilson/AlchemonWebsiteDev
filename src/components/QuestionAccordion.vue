@@ -97,6 +97,10 @@ export default {
         {
           question: 'Why do cards have different colors? Do the colors have any special meaning?',
           answer: 'Nope, just flavor for the cards. We wanted simple, but not just a white background.'
+        },
+        {
+          question: 'What are Others Saying?',
+          answer: '<a href="https://algonaut.space/alchemon/" target="_blank">https://algonaut.space/alchemon/</a><br><br><a href="https://theprimer.medium.com/alchemon-version-1-activated-502fa3e37149" target="_blank">https://theprimer.medium.com/alchemon-version-1-activated-502fa3e37149</a>'
         }
       ]
     }

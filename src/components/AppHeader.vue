@@ -32,8 +32,6 @@
           <router-link to="/store" @click="openMobileNav()">ALCHESHOP</router-link>
           <router-link to="/craftandevolve" @click="openMobileNav()">CRAFT & EVOLVE</router-link>
           <router-link to="/openpacks" @click="openMobileNav()">OPEN PACKS</router-link>
-          <a href="https://www.randgallery.com/algo-collection/?address=ALCHY5SJXOXZXADZPD73KO6CYNZXDUWFYANTSXU6RIO3EZACIIXUCS3YDM"
-            target="_blank" @click="openMobileNav()">RAND</a>
           <a href="https://shop.alchemon.net" target="_blank">MERCH</a>
         </div>
       </div>
