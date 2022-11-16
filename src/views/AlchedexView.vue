@@ -222,18 +222,34 @@ export default {
       return [new Uint8Array()]
     },
     async optInToSets (set) {
-      const suggestedParams = await client.getTransactionParams().do()
-      const optInGroup = new algosdk.AtomicTransactionComposer()
-      const userWallet = localStorage.userWallet
-      for (const card of alchemons) {
-        if (card.set === set) {
-          const id = Number(card.id)
-          try {
-            const assetInfoResponse = await client.accountAssetInformation(userAddress, id).do()
-            console.log('RESPONSE', assetInfoResponse)
-            if (assetInfoResponse['asset-holding']) {
-              console.log('Pass')
-            } else {
+      if (!userAddress) {
+        window.alert('Error: No wallet connected. Please connect your wallet to continue.')
+      } else {
+        const suggestedParams = await client.getTransactionParams().do()
+        const optInGroup = new algosdk.AtomicTransactionComposer()
+        const userWallet = localStorage.userWallet
+        for (const card of alchemons) {
+          if (card.set === set) {
+            const id = Number(card.id)
+            try {
+              const assetInfoResponse = await client.accountAssetInformation(userAddress, id).do()
+              console.log('RESPONSE', assetInfoResponse)
+              if (assetInfoResponse['asset-holding']) {
+                console.log('Pass')
+              } else {
+                optInGroup.addTransaction({
+                  txn: algosdk.makeAssetTransferTxnWithSuggestedParamsFromObject({
+                    suggestedParams,
+                    from: userAddress,
+                    to: userAddress,
+                    assetIndex: id,
+                    amount: 0
+                  }),
+                  signer: this.blankSigner()
+                })
+              }
+            } catch (error) {
+              console.log(error)
               optInGroup.addTransaction({
                 txn: algosdk.makeAssetTransferTxnWithSuggestedParamsFromObject({
                   suggestedParams,
@@ -245,86 +261,74 @@ export default {
                 signer: this.blankSigner()
               })
             }
-          } catch (error) {
-            console.log(error)
-            optInGroup.addTransaction({
-              txn: algosdk.makeAssetTransferTxnWithSuggestedParamsFromObject({
-                suggestedParams,
-                from: userAddress,
-                to: userAddress,
-                assetIndex: id,
-                amount: 0
-              }),
-              signer: this.blankSigner()
-            })
           }
         }
-      }
-      let signedTxns
-      let signedTxn
-      if (optInGroup.transactions.length === 0) {
-        this.TogglePopup('alreadyOptedIn')
-      } else {
-        console.log(optInGroup)
-        const finalOptInGroup = optInGroup.buildGroup()
-        const serializedTxns = finalOptInGroup.map(txnObj => {
-          const txn = algosdk.encodeUnsignedTransaction(txnObj.txn)
-          return Buffer.from(txn).toString('base64')
-        })
+        let signedTxns
+        let signedTxn
+        if (optInGroup.transactions.length === 0) {
+          this.TogglePopup('alreadyOptedIn')
+        } else {
+          console.log(optInGroup)
+          const finalOptInGroup = optInGroup.buildGroup()
+          const serializedTxns = finalOptInGroup.map(txnObj => {
+            const txn = algosdk.encodeUnsignedTransaction(txnObj.txn)
+            return Buffer.from(txn).toString('base64')
+          })
 
-        switch (userWallet) {
-          case 'myalgo':
-            signedTxns = await myAlgoConnect.signTransaction(serializedTxns)
-            if (Array.isArray(signedTxns)) {
-              signedTxn = signedTxns.map((txn) => (Buffer.from(txn.blob).toString('base64')))
-            } else {
-              signedTxn = Buffer.from(signedTxns.blob).toString('base64')
-            }
-            break
-          case 'walletconnect':
-            this.TogglePopup('signTransaction')
-
-            console.log('here')
-            // eslint-disable-next-line no-case-declarations
-            const txnsToSign = serializedTxns.map(txn => {
-              const encodedTxn = txn
-              return {
-                txn: encodedTxn
+          switch (userWallet) {
+            case 'myalgo':
+              signedTxns = await myAlgoConnect.signTransaction(serializedTxns)
+              if (Array.isArray(signedTxns)) {
+                signedTxn = signedTxns.map((txn) => (Buffer.from(txn.blob).toString('base64')))
+              } else {
+                signedTxn = Buffer.from(signedTxns.blob).toString('base64')
               }
-            })
-            // eslint-disable-next-line no-case-declarations
-            const requestParams = [txnsToSign]
-            // eslint-disable-next-line no-case-declarations
-            const request = formatJsonRpcRequest('algo_signTxn', requestParams)
-            try {
-              signedTxn = await walletConnector.sendCustomRequest(request)
-            } catch (error) {
-              errorMessage = error.message
-              this.TogglePopup('transactionFailed')
+              break
+            case 'walletconnect':
               this.TogglePopup('signTransaction')
-            }
-            this.TogglePopup('signTransaction')
-            break
-        }
 
-        if (signedTxn) {
-          this.TogglePopup('processingTransaction')
-          try {
-            const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
-              txn: signedTxn
-            })
-            if (sendTxnResponse.status === 200) {
-              if (sendTxnResponse.data.txnId) {
-                this.TogglePopup('transactionSuccessful')
-              } else if (sendTxnResponse.data.message) {
-                errorMessage = sendTxnResponse.data.message
+              console.log('here')
+              // eslint-disable-next-line no-case-declarations
+              const txnsToSign = serializedTxns.map(txn => {
+                const encodedTxn = txn
+                return {
+                  txn: encodedTxn
+                }
+              })
+              // eslint-disable-next-line no-case-declarations
+              const requestParams = [txnsToSign]
+              // eslint-disable-next-line no-case-declarations
+              const request = formatJsonRpcRequest('algo_signTxn', requestParams)
+              try {
+                signedTxn = await walletConnector.sendCustomRequest(request)
+              } catch (error) {
+                errorMessage = error.message
                 this.TogglePopup('transactionFailed')
+                this.TogglePopup('signTransaction')
               }
-            }
-          } catch (error) {
-            this.TogglePopup('errorOccured')
+              this.TogglePopup('signTransaction')
+              break
           }
-          this.TogglePopup('processingTransaction')
+
+          if (signedTxn) {
+            this.TogglePopup('processingTransaction')
+            try {
+              const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
+                txn: signedTxn
+              })
+              if (sendTxnResponse.status === 200) {
+                if (sendTxnResponse.data.txnId) {
+                  this.TogglePopup('transactionSuccessful')
+                } else if (sendTxnResponse.data.message) {
+                  errorMessage = sendTxnResponse.data.message
+                  this.TogglePopup('transactionFailed')
+                }
+              }
+            } catch (error) {
+              this.TogglePopup('errorOccured')
+            }
+            this.TogglePopup('processingTransaction')
+          }
         }
       }
     }
