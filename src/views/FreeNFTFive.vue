@@ -17,10 +17,10 @@
             <strong><li>
                 Select your wallet, then search for each of the ASA ID numbers below and approve each one:<br><br>
                 <ol class="orderedList">
-                    <li>395700430 (Vena)</li><br>
-                    <li>395706101 (Sable)</li><br>
-                    <li>395702497 (Manti)</li><br>
-                    <li>395703386 (Demo)</li>
+                    <li>490139078 (Zip)</li><br>
+                    <li>490141855 (Puff)</li><br>
+                    <li>490146814 (Lika)</li><br>
+                    <li>493271743 (Dagz)</li>
                 </ol>
             </li></strong>
         </ol>

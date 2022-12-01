@@ -12,28 +12,29 @@
         option A, that would count as 5400 'A' votes.
       </p>
     <p class="orangeHeader spreadText">DURATION</p>
-    <p class="centerText">1 Week</p>
+    <p class="centerText">6 Days. Friday Nov 25 - Thursday Dec 1, 2022.</p>
     <p class="orangeHeader spreadText">QUESTION</p>
-    <p class="centerText">Should Alchemon limit Hunting Grounds rewards to 1 win per wallet per week?</p>
+    <p class="centerText">Which single Dex should we use for reward farming for the next 1–2 month period?</p>
     <p class="orangeHeader spreadText">INFO</p>
-    <p>Back in the old Hunting Grounds days a staked Alchemon could win more than one prize per week, but each wallet only had
-    a maximum of 3 entries. We automatically carried that over from the old Hunting Grounds to the new. We did not take into
-    consideration the difference in the amount of entries this would cause. 6 of the 8 weeks of in-game Hunting Grounds have
-    had duplicate winners.<br><br>
-    Winners are always picked from highest valued prize to lowest, so an individual winner will get the best reward
-    possible, but they will not be able to win a second prize if passed.<br><br>
-    In the future we plan to add another way to win in Hunting Grounds where each wallet is entered equally as long as they
-    win at least one game in a week. This will be in addition to the existing HG rewards.<br><br>
-    Alchemon Inc will not be voting on this, but recommends “A” (one win per week) to allow for more individual winners and
-    an intended better experience by the average player.</p>
+    <p>Next week we will adding AlcheGold(AGOLD) Farming rewards for players providing liquidity for ALGO/ALCH. This is a way
+    for users who can’t grind the game but still want to stack some AGOLD while supporting Alchemon.
+    <br><br>
+    We will be using Cometa to give us flexibility and ability to reward any Dex. We will just start with support on 1 Dex
+    to lower any issues of spreading too thin or weird arb issues that may come with supporting multiple. Right now players
+    have provided a bit of liquidity in Tinyman and Humble with other platforms close to 0. For the first month or so of
+    rewards we will be supporting 1 LP token that we will let the community vote on.
+    <br><br>
+    Once one-sided LP is workable on Algo a lot of things can change with how we are going about liquidity, but we will keep
+    our original plan in place and do new votes at that time so players can choose the future of liquidity for Alchemon.
+  <br><br>
+</p>
     <p class="orangeHeader spreadText">VOTE</p>
-    <p class="centerText">A: Yes, a player can only win 1 prize per week.<br>
-    B: No, a player can win multiple prizes in the same week.
+    <p class="centerText">A: Support Tinyman LP tokens for AGOLD farming.<br>
+    B: Support Humble LP tokens for AGOLD farming.
     </p>
     <div class="buttonContainer">
-      <h3>VOTING IS CLOSED</h3>
-      <!-- <button class="boxShadow voteButton" @click="castVote('A')">VOTE A</button>
-      <button class="boxShadow voteButton" @click="castVote('B')">VOTE B</button> -->
+      <button class="boxShadow voteButton" @click="castVote('A')">VOTE A</button>
+      <button class="boxShadow voteButton" @click="castVote('B')">VOTE B</button>
     </div>
     <p class="orangeHeader spreadText">RESULTS</p>
     <table>
