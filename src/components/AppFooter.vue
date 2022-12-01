@@ -94,4 +94,11 @@ footer {
         bottom: 5px;
       }
     }
+
+    @media only screen and (min-width: 2500px) {
+      .slug, .bolt {
+        height: 15vw;
+        margin-bottom: 0;
+      }
+    }
 </style>
