@@ -32,10 +32,11 @@
     <p class="centerText">A: Support Tinyman LP tokens for AGOLD farming.<br>
     B: Support Humble LP tokens for AGOLD farming.
     </p>
-    <div class="buttonContainer">
+    <h3>VOTING IS CLOSED</h3>
+    <!-- <div class="buttonContainer">
       <button class="boxShadow voteButton" @click="castVote('A')">VOTE A</button>
       <button class="boxShadow voteButton" @click="castVote('B')">VOTE B</button>
-    </div>
+    </div> -->
     <p class="orangeHeader spreadText">RESULTS</p>
     <table>
       <tr>
