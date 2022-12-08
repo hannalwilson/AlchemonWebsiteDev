@@ -1,11 +1,11 @@
 [
 {
-    "name": "Pack",
-    "id": 936555917,
-    "type": "pack",
+    "name": "Egg",
+    "id": 318280942,
+    "type": "egg",
     "amount": 0,
-    "cost": 0,
-    "description": "Yieldly Community Set Pack"
+    "cost": 10,
+    "description": "Alchemon Egg"
 },
 {
     "name": "Ash",
