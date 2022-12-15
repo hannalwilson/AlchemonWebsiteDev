@@ -32,9 +32,7 @@
        v-if="type === 'egg' && amount > 0">{{
        cost
        }} ALGO</button>
-      <button @click="setAlchemonId(id, cost, type, 'algo')" class="boxShadow nftButton" v-if="type === 'pack' && amount > 0 && algoAvailable">30 ALGO</button>
-      <button @click="setAlchemonId(id, cost, type, 'alch')" class="boxShadow nftButton"
-        v-if="type === 'pack' && amount > 0 && alchAvailable">7000 ALCH</button>
+      <button @click="setAlchemonId(id, cost, type, 'algo')" class="boxShadow nftButton" v-if="type === 'pack' && amount > 0">40 ALGO</button>
     </div>
   </div>
   <popup-window v-if="popupTriggers.makePurchase">
@@ -228,7 +226,11 @@ const itemIds = {
   798976821: 852295895,
   798978892: 852295986,
   798981060: 852296118,
-  798983583: 852296213
+  798983583: 852296213,
+  976584825: 977443234,
+  976590048: 977443297,
+  976595331: 977443352,
+  976599867: 977443424
 }
 const popupTriggers = ref({
   makePurchase: false,

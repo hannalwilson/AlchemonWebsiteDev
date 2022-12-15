@@ -1,4 +1,44 @@
 [
+    {
+        "name": "Set 6 Pack",
+        "id": 1,
+        "type": "pack",
+        "amount": 0,
+        "cost": 40,
+        "description": "Set 6 Pack. Contains 6 Alchemon (guaranteed 1 Rare + 5 random)"
+    },
+    {
+        "name": "Skorp",
+        "id": 976599867,
+        "type": "alchemon",
+        "amount": 0,
+        "cost": 10,
+        "description": "Set 6 Common"
+    },
+    {
+        "name": "Eela",
+        "id": 976595331,
+        "type": "alchemon",
+        "amount": 0,
+        "cost": 10,
+        "description": "Set 6 Common"
+    },
+    {
+        "name": "Ber",
+        "id": 976590048,
+        "type": "alchemon",
+        "amount": 0,
+        "cost": 10,
+        "description": "Set 6 Common"
+    },
+    {
+        "name": "Blitz",
+        "id": 976584825,
+        "type": "alchemon",
+        "amount": 0,
+        "cost": 10,
+        "description": "Set 6 Common"
+    },
 {
     "name": "Egg",
     "id": 318280942,

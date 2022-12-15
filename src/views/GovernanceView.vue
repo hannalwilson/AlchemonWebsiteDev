@@ -225,7 +225,6 @@ export default {
       for (const entry in response.data) {
         currentVoteBreakdown[entry] = response.data[entry]
       }
-      console.log(currentVoteBreakdown)
     })
 
     return { currentVotesTotals, currentVotesPercents, currentVoteBreakdown, totalVotes }

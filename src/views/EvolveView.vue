@@ -8,6 +8,7 @@
           <option value="View All">All Sets</option>
           <option value='4'>Only Set 4</option>
           <option value='5'>Only Set 5</option>
+          <option value='6'>Only Set 6</option>
           <option value='Community'>Only Community Set</option>
         </select>
         </div>
@@ -119,6 +120,11 @@ export default {
       if (this.viewSet === '5') {
         tempCards = tempCards.filter((item) => {
           return item.set === 5 && item.available > 0
+        })
+      }
+      if (this.viewSet === '6') {
+        tempCards = tempCards.filter((item) => {
+          return item.set === 6 && item.available > 0
         })
       }
       if (this.viewSet === 'Community') {

@@ -25,28 +25,18 @@
             <ul v-show="rarity === 2">
                 <li>2 {{ tradedCardOne }}</li>
                 <li>2 {{ tradedCardTwo }}</li>
-                <li> 3750 YLDY</li>
+                <li>250 ALCH</li>
             </ul>
             <ul v-show="rarity == 1">
                 <li>1 {{ tradedCardOne }}</li>
                 <li>1 {{ tradedCardTwo }}</li>
-                <li> 3750 YLDY</li>
+                <li>250 ALCH</li>
             </ul>
             </p>
             <p>Available: {{ available }}</p>
-            <button v-show="available > 0" @click="setAlchemon(`${name}`)" class="boxShadow nftButton">3750 YLDY</button>
+            <button v-show="available > 0" @click="setAlchemon(`${name}`)" class="boxShadow nftButton">250 ALCH</button>
         </div>
     </div>
-    <popup-window v-show="popupTriggers.chooseWallet">
-        <h2>Connect Your Wallet</h2>
-        <button class="boxShadow" @click="connectWallet('myalgo')">
-            MyAlgo
-        </button><br>
-        <button class="boxShadow" @click="connectWallet('walletconnect')">
-            WalletConnect
-        </button><br>
-        <button class="boxShadow" @click="TogglePopup('chooseWallet')">Cancel</button>
-    </popup-window>
     <popup-window v-show="popupTriggers.signTransaction">
         <h2>Please open your wallet app to sign the transaction!</h2>
         <button class="boxShadow" @click="TogglePopup('signTransaction')">Close</button>
@@ -187,7 +177,6 @@ const walletConnector = new WalletConnect(
 )
 
 const popupTriggers = ref({
-  chooseWallet: false,
   makePurchase: false,
   signTransaction: false,
   transactionSuccessful: false,
@@ -319,8 +308,8 @@ export default {
             tradeInAlchemonOneAmount: 1,
             tradeInAlchemonAssetIDTwo: tradedCardTwo,
             tradeInAlchemonTwoAmount: 1,
-            alchecoinAssetID: 226701642,
-            requiredAmountOfAlch: 3750000000
+            alchecoinAssetID: token,
+            requiredAmountOfAlch: cost
           })
           serializedTxns = quickEvolveResponse.data.txns
           break
@@ -368,6 +357,7 @@ export default {
             if (sendTxnResponse.data.txnId) {
               this.TogglePopup('transactionSuccessful')
             } else if (sendTxnResponse.data.message) {
+              console.log(sendTxnResponse.data.message)
               errorMessage = sendTxnResponse.data.message
               this.TogglePopup('transactionFailed')
             }

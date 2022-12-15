@@ -22,6 +22,7 @@
         <button @click="optInToSets(3)">Set 3</button>
         <button @click="optInToSets(4)">Set 4</button>
         <button @click="optInToSets(5)">Set 5</button>
+        <button @click="optInToSets(6)">Set 6</button>
         <button @click="optInToSets('Community')">Community Set</button>
       </p>
       <p class="whiteText marginFix_2">
@@ -45,6 +46,7 @@
             <option value='3'>Set 3</option>
             <option value='4'>Set 4</option>
             <option value='5'>Set 5</option>
+            <option value='6'>Set 6</option>
             <option value='Community'>Community Set</option>
           </select>
           <select name="sortBy" id="select" v-model="sortBy" class="boxShadow">
@@ -384,6 +386,11 @@ export default {
       if (this.viewSet === '5') {
         tempCards = tempCards.filter((item) => {
           return item.set === 5
+        })
+      }
+      if (this.viewSet === '6') {
+        tempCards = tempCards.filter((item) => {
+          return item.set === 6
         })
       }
       if (this.viewSet === 'Community') {
