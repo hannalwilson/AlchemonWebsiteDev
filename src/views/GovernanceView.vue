@@ -12,31 +12,32 @@
         option A, that would count as 5400 'A' votes.
       </p>
     <p class="orangeHeader spreadText">DURATION</p>
-    <p class="centerText">6 Days. Friday Nov 25 - Thursday Dec 1, 2022.</p>
+    <p class="centerText">3 Days. Thursday Dec 15 —Sunday Dec 18, 2022.</p>
     <p class="orangeHeader spreadText">QUESTION</p>
-    <p class="centerText">Which single Dex should we use for reward farming for the next 1–2 month period?</p>
+    <p class="centerText">Should we “pause” Training Grounds staking for Set 6?</p>
     <p class="orangeHeader spreadText">INFO</p>
-    <p>Next week we will adding AlcheGold(AGOLD) Farming rewards for players providing liquidity for ALGO/ALCH. This is a way
-    for users who can’t grind the game but still want to stack some AGOLD while supporting Alchemon.
+    <p>There are concerns of Training Grounds farmers doing more harm to Alchemon than the free staking evolutions offered to
+    the players of Alchemon.
     <br><br>
-    We will be using Cometa to give us flexibility and ability to reward any Dex. We will just start with support on 1 Dex
-    to lower any issues of spreading too thin or weird arb issues that may come with supporting multiple. Right now players
-    have provided a bit of liquidity in Tinyman and Humble with other platforms close to 0. For the first month or so of
-    rewards we will be supporting 1 LP token that we will let the community vote on.
+    We assumed that having the existing TG for Set 6 was the right decision until the game is live on mobile, but we could
+    be wrong about that and know it is a major concern for players. So we will let the holders decide!
     <br><br>
-    Once one-sided LP is workable on Algo a lot of things can change with how we are going about liquidity, but we will keep
-    our original plan in place and do new votes at that time so players can choose the future of liquidity for Alchemon.
+    We will be setting aside these Alchemon, they will still exist in a pool to be used for evolutions in the future. I
+    think we can come up with a decent way to have only registered users stake in-game, making the barrier to entry much
+    higher. Or players with at least 4 Alchemon in game (so they could continue to play the game while one is staked) to
+    quadruple the amount one would need to get a free staking evolution. Worst case scenario is they can just be added to
+    the in-game evolutions pool as free evolutions.
   <br><br>
 </p>
     <p class="orangeHeader spreadText">VOTE</p>
-    <p class="centerText">A: Support Tinyman LP tokens for AGOLD farming.<br>
-    B: Support Humble LP tokens for AGOLD farming.
+    <p class="centerText">A: Continue Training Grounds like previous sets.<br>
+    B: “Pause” Training Grounds until a more secure, different approach can be launched.
     </p>
-    <h3>VOTING IS CLOSED</h3>
-    <!-- <div class="buttonContainer">
+    <!-- <h3>VOTING IS CLOSED</h3> -->
+    <div class="buttonContainer">
       <button class="boxShadow voteButton" @click="castVote('A')">VOTE A</button>
       <button class="boxShadow voteButton" @click="castVote('B')">VOTE B</button>
-    </div> -->
+    </div>
     <p class="orangeHeader spreadText">RESULTS</p>
     <table>
       <tr>
