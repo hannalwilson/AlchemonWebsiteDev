@@ -33,11 +33,11 @@
     <p class="centerText">A: Continue Training Grounds like previous sets.<br>
     B: “Pause” Training Grounds until a more secure, different approach can be launched.
     </p>
-    <!-- <h3>VOTING IS CLOSED</h3> -->
-    <div class="buttonContainer">
+    <h3>VOTING IS CLOSED</h3>
+    <!-- <div class="buttonContainer">
       <button class="boxShadow voteButton" @click="castVote('A')">VOTE A</button>
       <button class="boxShadow voteButton" @click="castVote('B')">VOTE B</button>
-    </div>
+    </div> -->
     <p class="orangeHeader spreadText">RESULTS</p>
     <table>
       <tr>
