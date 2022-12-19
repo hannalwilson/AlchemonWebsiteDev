@@ -106,7 +106,7 @@ export default {
     const client = new algosdk.Algodv2(token, server, port)
     client.accountInformation(localStorage.userAddress).do().then(response => {
       for (const userAsset of response.assets) {
-        if (userAsset['asset-id'] === 936555917) {
+        if (userAsset['asset-id'] === 978883931) {
           this.numberOfPacks = userAsset.amount
           break
         } else {
