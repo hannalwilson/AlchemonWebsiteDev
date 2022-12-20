@@ -11,8 +11,8 @@
         v-if="type === 'alchebilities'" class="nftImage">
       <video :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/art/${name}.mp4`" v-if="type === 'art'"
         class="nftImage" muted loop playsinline autoplay></video>
-        <img :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/${name}.png`" v-if="type === 'pack'"
-          class="nftImage">
+        <video :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/set6pack.mp4`" v-if="type === 'pack'"
+          class="nftImage" muted loop playsinline autoplay></video>
     </div>
     <div class="buttonContainer">
       <p> {{ name }}</p>
@@ -32,7 +32,7 @@
        v-if="type === 'egg' && amount > 0">{{
        cost
        }} ALGO</button>
-      <button @click="setAlchemonId(id, cost, type, 'algo')" class="boxShadow nftButton" v-if="type === 'pack' && amount > 0">40 ALGO</button>
+      <button @click="setAlchemonId(id, cost, type,)" class="boxShadow nftButton" v-if="type === 'pack' && amount > 0">40 ALGO</button>
     </div>
   </div>
   <popup-window v-if="popupTriggers.makePurchase">
@@ -178,7 +178,6 @@ let payWithAlgoResponse
 let userAddress
 let userWallet
 let errorMessage
-let packCurrency
 let alchAvailable
 let algoAvailable
 const myAlgoConnect = new MyAlgoConnect()
@@ -288,18 +287,12 @@ export default {
     }
   },
   methods: {
-    setAlchemonId (id, cost, type, currency) {
+    setAlchemonId (id, cost, type) {
       alchemonId = id
       alchemonCost = cost
       alchemonType = type
       userAddress = localStorage.userAddress
       userWallet = localStorage.userWallet
-      packCurrency = currency
-      if (type === 'pack') {
-        if (packCurrency === 'algo') {
-          alchemonType = 'algopack'
-        }
-      }
       this.TogglePopup('makePurchase')
     },
     TogglePopup (trigger) {
@@ -339,22 +332,12 @@ export default {
           })
           break
         case 'pack':
-          payWithAlgoResponse = await axios.post(`${apiURL}/payWithToken`, {
-            customerAddress: userAddress,
-            itemShopAppId: 940594074,
-            paymentToken: 310014962,
-            forSale: parseInt(alchemonId),
-            requestedAmount: 1,
-            paymentTokenAmount: 7000
-          })
-          break
-        case 'algopack':
           payWithAlgoResponse = await axios.post(`${apiURL}/payWithAlgo`, {
             customerAddress: userAddress,
-            itemShopAppId: 940594172,
+            itemShopAppId: 981652000,
             forSale: parseInt(alchemonId),
             requestedAmount: 1,
-            microalgoAmount: (1000000 * 30)
+            microalgoAmount: (1000000 * 40)
           })
           break
       }

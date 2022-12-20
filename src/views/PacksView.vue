@@ -1,6 +1,6 @@
 <template>
     <div class="content">
-      <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/Pack.png" class="pack boxShadow"><br>
+      <video src="https://alchemon-website-assets.s3.amazonaws.com/assets/set6pack.mp4" class="pack boxShadow" muted loop playsinline autoplay></video><br>
       <button id="submitbutton" @click="openPack()" v-bind:disabled="!clicked" v-show="numberOfPacks > 0">Open Pack</button>
       <br>Total Number of Packs: {{ numberOfPacks }}
     </div>
@@ -58,7 +58,7 @@ img {
   justify-content: space-between;
 }
 .pack {
-  border: 5px solid black;
+  width: 75vw;
 }
 </style>
 

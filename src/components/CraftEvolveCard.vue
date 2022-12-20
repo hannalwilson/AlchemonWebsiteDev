@@ -221,7 +221,6 @@ export default {
     setAlchemon (name) {
       for (const item in alchemons) {
         if (alchemons[item].name === name) {
-          console.log(alchemons[item])
           id = alchemons[item].appID
           evolved = alchemons[item].id
           tradedCardOne = alchemons[item].tradedCardOne
@@ -357,7 +356,6 @@ export default {
             if (sendTxnResponse.data.txnId) {
               this.TogglePopup('transactionSuccessful')
             } else if (sendTxnResponse.data.message) {
-              console.log(sendTxnResponse.data.message)
               errorMessage = sendTxnResponse.data.message
               this.TogglePopup('transactionFailed')
             }
