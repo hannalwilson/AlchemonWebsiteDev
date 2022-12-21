@@ -209,12 +209,14 @@ export default {
             unsignedCustodialTxns: cards,
             serializedSignedUserTxns: signedTxn
           })
-          console.log(sendTxnResponse.data)
+          console.log(sendTxnResponse)
           if (sendTxnResponse.status === 200) {
-            this.TogglePopup('transactionSuccessful')
-          } else {
-            errorMessage = sendTxnResponse.data
-            this.TogglePopup('transactionFailed')
+            if (sendTxnResponse.data.txnId) {
+              this.TogglePopup('transactionSuccessful')
+            } else if (sendTxnResponse.data.message) {
+              errorMessage = sendTxnResponse.data.message
+              this.TogglePopup('transactionFailed')
+            }
           }
         } catch (error) {
           errorMessage = error
