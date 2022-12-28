@@ -223,7 +223,9 @@
             "tradeInTwoStoreAddress": "SGY72XB4KTLRDXAAO4LLWLNHPBUJSEP3O37S37RRIEQNUPVWY2R2ACRPAA",
             "appID": 855632129,
             "contractAddress": "5WFOC5MC7H4M5UR3QSY7NPPKWTSD42LSD5ONPVAHNBODV6AIOYIMYVRAOU",
-            "available": 0
+            "available": 0,
+    "alchecoinAssetID": 226701642,
+    "requiredAmountOfAlchecoin": 3750000000
         },
         { 
             "name": "Torchwondo",

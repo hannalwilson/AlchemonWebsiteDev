@@ -19,7 +19,7 @@
             <button v-if="set !=='Community'" v-show="available > 0" @click="setAlchemon(`${name}`)" class="boxShadow nftButton">100 ALCH</button>
             <button v-else v-show="available > 0" @click="setAlchemon(`${name}`)" class="boxShadow nftButton">1500 YLDY</button>
         </div>
-        <div class="buttonContainer" v-show="rarity < 3">
+        <div class="buttonContainer" v-show="rarity < 3" v-if="set !== 'Community'">
             <p> Craft {{ name }}</p>
             <p>You need: <br>
             <ul v-show="rarity === 2">
@@ -36,6 +36,23 @@
             <p>Available: {{ available }}</p>
             <button v-show="available > 0" @click="setAlchemon(`${name}`)" class="boxShadow nftButton">250 ALCH</button>
         </div>
+        <div class="buttonContainer" v-show="rarity < 3" v-else>
+          <p> Craft {{ name }}</p>
+          <p>You need: <br>
+          <ul v-show="rarity === 2">
+              <li>2 {{ tradedCardOne }}</li>
+              <li>2 {{ tradedCardTwo }}</li>
+              <li>3750 YLDY</li>
+          </ul>
+          <ul v-show="rarity == 1">
+              <li>1 {{ tradedCardOne }}</li>
+              <li>1 {{ tradedCardTwo }}</li>
+              <li>3750 YLDY</li>
+          </ul>
+          </p>
+          <p>Available: {{ available }}</p>
+          <button v-show="available > 0" @click="setAlchemon(`${name}`)" class="boxShadow nftButton">250 ALCH</button>
+      </div>
     </div>
     <popup-window v-show="popupTriggers.signTransaction">
         <h2>Please open your wallet app to sign the transaction!</h2>
@@ -204,7 +221,8 @@ export default {
   data () {
     return {
       PopupWindow,
-      popupTriggers
+      popupTriggers,
+      errorMessage
     }
   },
   computed: {
