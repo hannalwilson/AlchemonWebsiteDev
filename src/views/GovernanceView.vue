@@ -12,26 +12,27 @@
         option A, that would count as 5400 'A' votes.
       </p>
     <p class="orangeHeader spreadText">DURATION</p>
-    <p class="centerText">3 Days. Thursday Dec 15 —Sunday Dec 18, 2022.</p>
+    <p class="centerText">1 week. Thursday Dec 29th 2022-Thursday Jan 4th 2023</p>
     <p class="orangeHeader spreadText">QUESTION</p>
-    <p class="centerText">Should we “pause” Training Grounds staking for Set 6?</p>
+    <p class="centerText">Should Alchemon build a way to purchase Hunting Grounds Entries with ALCH?</p>
     <p class="orangeHeader spreadText">INFO</p>
-    <p>There are concerns of Training Grounds farmers doing more harm to Alchemon than the free staking evolutions offered to
-    the players of Alchemon.
+    <p>We have seen the idea of Hunting Grounds entries being purchased for AlcheCoin, for those who cannot grind, as a way for
+    others to participate in the weekly contest.
     <br><br>
-    We assumed that having the existing TG for Set 6 was the right decision until the game is live on mobile, but we could
-    be wrong about that and know it is a major concern for players. So we will let the holders decide!
+    We determined this is possible and would be something we would be happy to build as long as users would take advantage
+    of it.
     <br><br>
-    We will be setting aside these Alchemon, they will still exist in a pool to be used for evolutions in the future. I
-    think we can come up with a decent way to have only registered users stake in-game, making the barrier to entry much
-    higher. Or players with at least 4 Alchemon in game (so they could continue to play the game while one is staked) to
-    quadruple the amount one would need to get a free staking evolution. Worst case scenario is they can just be added to
-    the in-game evolutions pool as free evolutions.
+    There are definitely some pros and cons to this. A new utility for ALCH is always good as well as another avenue for
+    Alchemon to earn it back. Diluting those entries to the players that are grinding is a notable con. Also, building this
+    and having no one use it would be a waste of developer resources.
+  <br><br>
+  If this vote passes we will build and test this with entries at 5 ALCH each. We may increase or decrease the price until
+  we find a sweet spot. Timeline to launch this would be 2–3 weeks if the vote passes.
   <br><br>
 </p>
     <p class="orangeHeader spreadText">VOTE</p>
-    <p class="centerText">A: Continue Training Grounds like previous sets.<br>
-    B: “Pause” Training Grounds until a more secure, different approach can be launched.
+    <p class="centerText">A: No. Continue Hunting Grounds as is. Only in-game wins(for now).<br>
+    B: Yes. Build a way for entries in Hunting Grounds to be purchased for ALCH.
     </p>
     <h3>VOTING IS CLOSED</h3>
     <!-- <div class="buttonContainer">

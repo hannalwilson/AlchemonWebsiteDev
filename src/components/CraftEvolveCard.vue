@@ -51,7 +51,7 @@
           </ul>
           </p>
           <p>Available: {{ available }}</p>
-          <button v-show="available > 0" @click="setAlchemon(`${name}`)" class="boxShadow nftButton">250 ALCH</button>
+          <button v-show="available > 0" @click="setAlchemon(`${name}`)" class="boxShadow nftButton">3750 YLDY</button>
       </div>
     </div>
     <popup-window v-show="popupTriggers.signTransaction">
