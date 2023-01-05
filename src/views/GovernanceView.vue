@@ -34,11 +34,11 @@
     <p class="centerText">A: No. Continue Hunting Grounds as is. Only in-game wins(for now).<br>
     B: Yes. Build a way for entries in Hunting Grounds to be purchased for ALCH.
     </p>
-    <h3>VOTING IS CLOSED</h3>
-    <!-- <div class="buttonContainer">
+    <!-- <h3>VOTING IS CLOSED</h3> -->
+    <div class="buttonContainer">
       <button class="boxShadow voteButton" @click="castVote('A')">VOTE A</button>
       <button class="boxShadow voteButton" @click="castVote('B')">VOTE B</button>
-    </div> -->
+    </div>
     <p class="orangeHeader spreadText">RESULTS</p>
     <table>
       <tr>
