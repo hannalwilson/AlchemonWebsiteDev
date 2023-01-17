@@ -18,7 +18,7 @@
             <p class="darkBlueHeader">President</p>
         </div>
         <div class="holder boxShadow">
-            <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/Emily.jpg" alt="Borderless Capital">
+            <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/Emily.jpg" alt="Emily Stanley">
             <p class="darkBlueHeader">Emily Stanley</p>
             <p class="darkBlueHeader">Chief Financial Officer</p>
         </div>
@@ -30,11 +30,11 @@
             <p class="darkBlueHeader">Borderless Capital</p>
         </a>
         <a href="https://yieldly.finance/" target="blank" class="holder boxShadow">
-            <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/yieldly.png" alt="Borderless Capital">
+            <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/yieldly.png" alt="Yieldly">
             <p class="darkBlueHeader">Yieldly</p>
         </a>
         <a href="https://www.pillar.vc/" target="blank" class="holder boxShadow">
-            <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/pillar.png" alt="Borderless Capital">
+            <img src="https://alchemon-website-assets.s3.amazonaws.com/assets/pillar.png" alt="Pillar">
             <p class="darkBlueHeader">Pillar</p>
         </a>
     </div>

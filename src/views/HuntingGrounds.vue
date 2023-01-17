@@ -96,7 +96,7 @@ let totalEntries = 0
 
 export default {
   setup () {
-    axios.get('https://mj7nw0yoxf.execute-api.us-east-1.amazonaws.com/getEntries').then(response => {
+    axios.get('https://mj7nw0yoxf.execute-api.us-east-1.amazonaws.com/getEntries').then(response => { // calls lambda to get all HG entries
       for (const key in response.data) {
         allEntries[key] = response.data[key]
       }
@@ -109,7 +109,7 @@ export default {
     TogglePopup (trigger) {
       popupTriggers.value[trigger] = !popupTriggers.value[trigger]
     },
-    calculateEntries () {
+    calculateEntries () { // takes users address (only if their wallet is connected) and returns # of HG entries they have
       this.totalEntries = 0
       for (const key in allEntries) {
         this.totalEntries += allEntries[key]

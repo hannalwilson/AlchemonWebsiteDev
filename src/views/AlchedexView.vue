@@ -187,7 +187,7 @@ export default {
       popupTriggers.value[trigger] = !popupTriggers.value[trigger]
       alchemonId = id
     },
-    openWebpage (site) {
+    openWebpage (site) { // function to open alchemon on selected site from pop up
       switch (site) {
         case 'rand':
           window.open(`https://www.randgallery.com/algo-collection/?address=${alchemonId}`)
@@ -204,8 +204,7 @@ export default {
     },
     getUserAlchemon () {
       this.gotUserAlchemon = false
-
-      // eslint-disable-next-line vue/no-async-in-computed-properties
+      // query to search users wallet for the alchemon they own
       client.accountInformation(this.$refs.address.value).do().then(response => {
         for (const userAsset of response.assets) {
           for (const alchemon of alchemons) {
@@ -221,24 +220,24 @@ export default {
       window.location.reload()
     },
     async blankSigner () {
-      return [new Uint8Array()]
+      return [new Uint8Array()] // blank signer needed for opt-in transactions
     },
     async optInToSets (set) {
-      if (!userAddress) {
+      if (!userAddress) { // checks if users wallet is connected to site
         window.alert('Error: No wallet connected. Please connect your wallet to continue.')
       } else {
         const suggestedParams = await client.getTransactionParams().do()
         const optInGroup = new algosdk.AtomicTransactionComposer()
         const userWallet = localStorage.userWallet
         for (const card of alchemons) {
-          if (card.set === set) {
+          if (card.set === set) { // filters out cards for picked set
             const id = Number(card.id)
             try {
-              const assetInfoResponse = await client.accountAssetInformation(userAddress, id).do()
+              const assetInfoResponse = await client.accountAssetInformation(userAddress, id).do() // checks users wallet to see if they are already opted into asset
               console.log('RESPONSE', assetInfoResponse)
-              if (assetInfoResponse['asset-holding']) {
+              if (assetInfoResponse['asset-holding']) { // if user is opted in, logs pass
                 console.log('Pass')
-              } else {
+              } else { // if user isn't opted in, creates optin transaction
                 optInGroup.addTransaction({
                   txn: algosdk.makeAssetTransferTxnWithSuggestedParamsFromObject({
                     suggestedParams,
@@ -267,11 +266,10 @@ export default {
         }
         let signedTxns
         let signedTxn
-        if (optInGroup.transactions.length === 0) {
-          this.TogglePopup('alreadyOptedIn')
+        if (optInGroup.transactions.length === 0) { // checks if transaction group is emtpy
+          this.TogglePopup('alreadyOptedIn') // if empty, alerts user that they are already opted into entire site
         } else {
-          console.log(optInGroup)
-          const finalOptInGroup = optInGroup.buildGroup()
+          const finalOptInGroup = optInGroup.buildGroup() // if at leasst 1 txn in group, builds group and encodes
           const serializedTxns = finalOptInGroup.map(txnObj => {
             const txn = algosdk.encodeUnsignedTransaction(txnObj.txn)
             return Buffer.from(txn).toString('base64')
@@ -342,6 +340,7 @@ export default {
     filteredCards () {
       let tempCards = this.cards
 
+      // toggles showing all cards or only users cards
       if (this.gotUserAlchemon && this.showAll === 'all') {
         tempCards = tempCards.filter((item) => {
           if (userAlchemon.includes(item.id)) {
@@ -360,6 +359,7 @@ export default {
         })
       }
 
+      // changes displayed cards based on set
       if (this.viewSet === 'viewAll') {
         tempCards = this.cards
       }
@@ -398,8 +398,9 @@ export default {
           return item.set === 'Community'
         })
       }
+
+      // filters cards based on value in searc bar
       if (this.searchValue !== '' && this.searchValue) {
-        // Processset selected
         // Process search input
         if (this.filterBy === 'name') {
           tempCards = tempCards.filter((item) => {
@@ -529,7 +530,7 @@ a {
   font-weight: bold;
 }
 .missing {
-  filter: grayscale(1);
+  filter: grayscale(1); // grays out cards the user doesn't own
 }
 @media (max-width: 990px) {
   .whiteGrayBackground {

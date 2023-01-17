@@ -107,14 +107,7 @@ img {
 .justifyText {
   text-align: justify;
 }
-/* Hover effect for contact and submit buttons */
-button:hover {
-    color: orange; /* This makes the text in the buttons white when hovered over */
-    background-color: #000080; /* The background of the button changes to black when hovered over */
-    transition-duration: 1s; /* This makes the transition last 1 second */
-    -webkit-transition-duration: 1s; /* For Safari 4.0-8.0 */
-    border-color: orange; /* The border turns silver when the button is hovered over */
-}
+
 .battleGame {
     background-color: #007bff;
     color: white;

@@ -14,13 +14,6 @@ export default {
   components: {
     AppFooter,
     AppHeader
-  },
-  mounted () {
-    const mainPanelDiv = document.querySelector('.website')
-    const navbar = document.querySelector('.nav-links')
-    mainPanelDiv.addEventListener('click', function (event) {
-      navbar.classList.remove('nav-active')
-    })
   }
 }
 </script>
@@ -34,10 +27,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   position: absolute;
-  top:0;
-  left:0;
+  top:0; //withremoves white space at top of website
+  left:0; //withremoves white space at left of website
   width: 100%;
-  min-height: 100vh;
+  min-height: 100vh; //ensures webpage takes up full view height so footer sticks to bottom view
   margin: 0;
   display: grid;
   grid-template-rows: 1fr auto;
@@ -60,7 +53,7 @@ li {
 img {
   margin: 3% 0;
 }
-.spreadText{
+.spreadText{ //for header text
   font-weight: bold;
   text-align: center;
   padding: 3%;
@@ -75,7 +68,7 @@ img {
 .grayHeader {
   color: #838383;
 }
-.spreadText:hover {
+.spreadText:hover { //spread animation for header text
   letter-spacing: .5vw;
   transition: letter-spacing 1s;
 }
@@ -149,9 +142,6 @@ body, button, input,
   select { font-size: .65vw; }
 .directionButton { font-size: 2vw;}}
 
-// @media (max-width: 650px) {
-// #app { margin-right: -5vw; }}
-
 @keyframes move9 {
     0%   {left:65%; top:0;opacity:0;}
     10%  {left:55%; top:0;opacity:1;}
@@ -188,7 +178,7 @@ button:hover, select:hover {
   border: 2px solid orange;
   color: orange;
 }
-.backButton {
+.backButton { //navigation buttons for getting started/free nft/alchegold airdrop pages
   background-color: darkblue;
   border: 2px solid darkblue;
   color: white;
@@ -199,6 +189,9 @@ button:hover, select:hover {
   border: 2px solid darkblue;
   color: darkblue;
 }
+
+//scroll bar styling below
+
 /* width */
 ::-webkit-scrollbar {
   width: 15px;
@@ -217,9 +210,5 @@ button:hover, select:hover {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #ffa6007e;
-}
-
-#freeNFTForm .cog-cognito {
-  font-family: 'Poppins', sans-serif;
 }
 </style>

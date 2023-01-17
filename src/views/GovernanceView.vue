@@ -12,7 +12,7 @@
         option A, that would count as 5400 'A' votes.
       </p>
     <p class="orangeHeader spreadText">DURATION</p>
-    <p class="centerText">1 week. Thursday Dec 29th 2022-Thursday Jan 4th 2023</p>
+    <p class="centerText">1 week. Thursday Dec 29th 2022-Thursday Jan 5th 2023</p>
     <p class="orangeHeader spreadText">QUESTION</p>
     <p class="centerText">Should Alchemon build a way to purchase Hunting Grounds Entries with ALCH?</p>
     <p class="orangeHeader spreadText">INFO</p>
@@ -34,11 +34,13 @@
     <p class="centerText">A: No. Continue Hunting Grounds as is. Only in-game wins(for now).<br>
     B: Yes. Build a way for entries in Hunting Grounds to be purchased for ALCH.
     </p>
-    <!-- <h3>VOTING IS CLOSED</h3> -->
-    <div class="buttonContainer">
+    <!-- Comment out header when voting is live -->
+    <h3>VOTING IS CLOSED</h3>
+    <!-- Uncomment buttonContainer div when voting is live -->
+    <!-- <div class="buttonContainer">
       <button class="boxShadow voteButton" @click="castVote('A')">VOTE A</button>
       <button class="boxShadow voteButton" @click="castVote('B')">VOTE B</button>
-    </div>
+    </div> -->
     <p class="orangeHeader spreadText">RESULTS</p>
     <table>
       <tr>
@@ -232,7 +234,7 @@ export default {
   },
   methods: {
     async castVote (userVote) {
-      if (!localStorage.userAddress) {
+      if (!localStorage.userAddress) { // checks if user has connected their wallet and alerts them to, if they haven't
         window.alert('Please connect you wallet to vote')
       } else {
         const userWallet = localStorage.userWallet
@@ -257,7 +259,7 @@ export default {
           this.TogglePopup('errorOccured')
         }
 
-        if (voteResponse.status === 250) {
+        if (voteResponse.status === 250) { // api gateway return 250 if the db has a vote for the connected wallet address already
           this.TogglePopup('alreadyVoted')
         } else {
           if (userWallet === 'walletconnect') {
@@ -302,14 +304,14 @@ export default {
             }
             this.TogglePopup('processingTransaction')
             try {
-              const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, {
+              const sendTxnResponse = await axios.post(`${apiURL}/sendTxn`, { // sends transaction
                 txn: signedTxn
               })
               if (sendTxnResponse.status === 200) {
                 if (sendTxnResponse.data.txnId) {
                   this.TogglePopup('transactionSuccessful')
                   try {
-                    voteResponse = await axios.post(`${apiURL}/recordVote`, {
+                    voteResponse = await axios.post(`${apiURL}/recordVote`, { // if transaction is successful, inserts vote into db
                       userAddress: sender,
                       userVote: userVote
                     })

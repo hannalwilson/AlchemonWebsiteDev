@@ -82,16 +82,16 @@ export default {
     const port = ''
     const client = new algosdk.Algodv2(token, server, port)
 
-    for (const item in alchemon) {
+    for (const item in alchemon) { // creates array of alchemon objects
       alchemons[item] = alchemon[item]
     }
 
     for (const item in alchemons) {
-      client.accountInformation(alchemons[item].contractAddress).do().then(response => {
+      client.accountInformation(alchemons[item].contractAddress).do().then(response => { // queries each cards evolve or craft smart contract for amount available
         for (const asset of response.assets) {
           for (const item in alchemons) {
             if (alchemons[item].id === asset['asset-id']) {
-              alchemons[item].available = asset.amount
+              alchemons[item].available = asset.amount // updates each alchemon's available # with the amount of alchemon in it's respective smart contract
             }
           }
         }
@@ -104,9 +104,10 @@ export default {
   computed: {
     filteredCards () {
       let tempCards = this.cards.filter((item) => {
-        return item.available > 0
+        return item.available > 0 // filters out evolutions that aren't available so they don't display on webpage
       })
 
+      // filters displayed cards based on set selected
       if (this.viewSet === 'viewAll') {
         tempCards = this.cards.filter((item) => {
           return item.available > 0

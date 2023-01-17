@@ -61,7 +61,7 @@ export default {
   },
   computed: {
     viewPage () {
-      return this.viewingPage
+      return this.viewingPage // returns page selected from dropdown menu
     }
   },
   data () {

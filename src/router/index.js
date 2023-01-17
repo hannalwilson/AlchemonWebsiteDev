@@ -10,7 +10,6 @@ import LitepaperView from '../views/LitepaperView.vue'
 import PrivacyPolicyView from '../views/PrivacyPolicyView.vue'
 import StaffView from '../views/StaffView.vue'
 import TermsAndConditionsView from '../views/TermsAndConditionsView.vue'
-import BetaView from '../views/BetaView.vue'
 import EvolveView from '../views/EvolveView.vue'
 import InstructionsView from '../views/InstructionsView.vue'
 import HowToPlayView from '../views/HowToPlayView.vue'
@@ -104,11 +103,6 @@ const routes = [
     path: '/staff',
     name: 'staff',
     component: StaffView
-  },
-  {
-    path: '/beta',
-    name: 'beta',
-    component: BetaView
   },
   {
     path: '/craftandevolve',

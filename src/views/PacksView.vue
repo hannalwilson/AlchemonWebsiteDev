@@ -104,7 +104,7 @@ export default {
     const server = 'https://mainnet-api.algonode.cloud'
     const port = ''
     const client = new algosdk.Algodv2(token, server, port)
-    client.accountInformation(localStorage.userAddress).do().then(response => {
+    client.accountInformation(localStorage.userAddress).do().then(response => { // checks connected wallet for set 6 pack
       for (const userAsset of response.assets) {
         if (userAsset['asset-id'] === 978883931) {
           this.numberOfPacks = userAsset.amount
@@ -142,9 +142,6 @@ export default {
     ReloadWindow () {
       window.location.reload()
     },
-    async blankSigner () {
-      return [new Uint8Array()]
-    },
     async openPack () {
       const userWallet = localStorage.userWallet
       const userAddress = localStorage.userAddress
@@ -163,7 +160,7 @@ export default {
       const serializedTxns = packTradeInResponse.data.txns
       const cards = packTradeInResponse.data.cards
 
-      for (const index in packTradeInResponse.data.contents) {
+      for (const index in packTradeInResponse.data.contents) { // receives names of alchemon that were in pack and adds to list that is displayed on popup window
         images.push(packTradeInResponse.data.contents[index])
       }
 

@@ -1,5 +1,125 @@
 [
     {
+        "name": "TOYZ-Arch",
+        "id": 996650672,
+        "type": "art",
+        "amount": 0,
+        "cost": 2000,
+        "description": "Set 2 Alchemon TOYZ art collaboration"
+    },
+    {
+        "name": "TOYZ-Archicut",
+        "id": 996657446,
+        "type": "art",
+        "amount": 0,
+        "cost": 3000,
+        "description": "Set 2 Alchemon TOYZ art collaboration"
+    },
+    {
+        "name": "TOYZ-Archislash",
+        "id": 996660170,
+        "type": "art",
+        "amount": 0,
+        "cost": 4000,
+        "description": "Set 2 Alchemon TOYZ art collaboration"
+    },
+    {
+        "name": "TOYZ-Slug",
+        "id": 996661329,
+        "type": "art",
+        "amount": 0,
+        "cost": 2000,
+        "description": "Set 2 Alchemon TOYZ art collaboration"
+    },
+    {
+        "name": "TOYZ-Slugger",
+        "id": 996663905,
+        "type": "art",
+        "amount": 0,
+        "cost": 3000,
+        "description": "Set 2 Alchemon TOYZ art collaboration"
+    },
+    {
+        "name": "TOYZ-Sluggernaut",
+        "id": 996664802,
+        "type": "art",
+        "amount": 0,
+        "cost": 4000,
+        "description": "Set 2 Alchemon TOYZ art collaboration"
+    },
+    {
+        "name": "TOYZ-Drath",
+        "id": 996665753,
+        "type": "art",
+        "amount": 0,
+        "cost": 2000,
+        "description": "Set 2 Alchemon TOYZ art collaboration"
+    },
+    {
+        "name": "TOYZ-Drathula",
+        "id": 996666836,
+        "type": "art",
+        "amount": 0,
+        "cost": 3000,
+        "description": "Set 2 Alchemon TOYZ art collaboration"
+    },
+    {
+        "name": "TOYZ-Drathslayer",
+        "id": 996667613,
+        "type": "art",
+        "amount": 0,
+        "cost": 4000,
+        "description": "Set 2 Alchemon TOYZ art collaboration"
+    },
+    {
+        "name": "TOYZ-Iggy",
+        "id": 996669617,
+        "type": "art",
+        "amount": 0,
+        "cost": 2000,
+        "description": "Set 2 Alchemon TOYZ art collaboration"
+    },
+    {
+        "name": "TOYZ-Igniter",
+        "id": 996670232,
+        "type": "art",
+        "amount": 0,
+        "cost": 3000,
+        "description": "Set 2 Alchemon TOYZ art collaboration"
+    },
+    {
+        "name": "TOYZ-Lavatrix",
+        "id": 996670945,
+        "type": "art",
+        "amount": 0,
+        "cost": 4000,
+        "description": "Set 2 Alchemon TOYZ art collaboration"
+    },
+    {
+        "name": "TOYZ-Slugginslash",
+        "id": 996671773,
+        "type": "art",
+        "amount": 0,
+        "cost": 7500,
+        "description": "Set 2 Alchemon TOYZ art collaboration"
+    },
+    {
+        "name": "TOYZ-Lavaslayer",
+        "id": 996672864,
+        "type": "art",
+        "amount": 0,
+        "cost": 7500,
+        "description": "Set 2 Alchemon TOYZ art collaboration"
+    },
+    {
+        "name": "TOYZ-Shred-X",
+        "id": 996673789,
+        "type": "art",
+        "amount": 0,
+        "cost": 10000,
+        "description": "Set 2 Alchemon TOYZ art collaboration"
+    },
+    {
         "name": "Set 6 Pack",
         "id": 978883931,
         "type": "pack",
@@ -142,126 +262,6 @@
     "amount": 0,
     "cost": 5,
     "description": "Set 5 Common"
-},
-{
-    "name": "TOYZ-Arch",
-    "id": 996650672,
-    "type": "art",
-    "amount": 0,
-    "cost": 2000,
-    "description": "Set 2 Alchemon TOYZ art collaboration"
-},
-{
-    "name": "TOYZ-Archicut",
-    "id": 996657446,
-    "type": "art",
-    "amount": 0,
-    "cost": 3000,
-    "description": "Set 2 Alchemon TOYZ art collaboration"
-},
-{
-    "name": "TOYZ-Archislash",
-    "id": 996660170,
-    "type": "art",
-    "amount": 0,
-    "cost": 4000,
-    "description": "Set 2 Alchemon TOYZ art collaboration"
-},
-{
-    "name": "TOYZ-Slug",
-    "id": 996661329,
-    "type": "art",
-    "amount": 0,
-    "cost": 2000,
-    "description": "Set 2 Alchemon TOYZ art collaboration"
-},
-{
-    "name": "TOYZ-Slugger",
-    "id": 996663905,
-    "type": "art",
-    "amount": 0,
-    "cost": 3000,
-    "description": "Set 2 Alchemon TOYZ art collaboration"
-},
-{
-    "name": "TOYZ-Sluggernaut",
-    "id": 996664802,
-    "type": "art",
-    "amount": 0,
-    "cost": 4000,
-    "description": "Set 2 Alchemon TOYZ art collaboration"
-},
-{
-    "name": "TOYZ-Drath",
-    "id": 996665753,
-    "type": "art",
-    "amount": 0,
-    "cost": 2000,
-    "description": "Set 2 Alchemon TOYZ art collaboration"
-},
-{
-    "name": "TOYZ-Drathula",
-    "id": 996666836,
-    "type": "art",
-    "amount": 0,
-    "cost": 3000,
-    "description": "Set 2 Alchemon TOYZ art collaboration"
-},
-{
-    "name": "TOYZ-Drathslayer",
-    "id": 996667613,
-    "type": "art",
-    "amount": 0,
-    "cost": 4000,
-    "description": "Set 2 Alchemon TOYZ art collaboration"
-},
-{
-    "name": "TOYZ-Iggy",
-    "id": 996669617,
-    "type": "art",
-    "amount": 0,
-    "cost": 2000,
-    "description": "Set 2 Alchemon TOYZ art collaboration"
-},
-{
-    "name": "TOYZ-Igniter",
-    "id": 996670232,
-    "type": "art",
-    "amount": 0,
-    "cost": 3000,
-    "description": "Set 2 Alchemon TOYZ art collaboration"
-},
-{
-    "name": "TOYZ-Lavatrix",
-    "id": 996670945,
-    "type": "art",
-    "amount": 0,
-    "cost": 4000,
-    "description": "Set 2 Alchemon TOYZ art collaboration"
-},
-{
-    "name": "TOYZ-Slugginslash",
-    "id": 996671773,
-    "type": "art",
-    "amount": 0,
-    "cost": 7500,
-    "description": "Set 2 Alchemon TOYZ art collaboration"
-},
-{
-    "name": "TOYZ-Lavaslayer",
-    "id": 996672864,
-    "type": "art",
-    "amount": 0,
-    "cost": 7500,
-    "description": "Set 2 Alchemon TOYZ art collaboration"
-},
-{
-    "name": "TOYZ-Shred-X",
-    "id": 996673789,
-    "type": "art",
-    "amount": 0,
-    "cost": 10000,
-    "description": "Set 2 Alchemon TOYZ art collaboration"
 },
 {
     "name": "TOYZ-Gheist",

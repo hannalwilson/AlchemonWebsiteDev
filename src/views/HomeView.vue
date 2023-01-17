@@ -132,6 +132,7 @@ const alchemonName = {
 }
 export default {
   setup () {
+    // gets tops 15 wallets for HG entries
     let n = 0
 
     axios.get('https://mj7nw0yoxf.execute-api.us-east-1.amazonaws.com/getEntries').then(response => {
@@ -180,6 +181,7 @@ export default {
       490139078: '509842608', // zip to zipadol
       509842608: '527475282' // zipadol to zipacute
     }
+    // gets evolutions available in the training grounds
 
     client.accountInformation(alchemonAddress).do().then(response => {
       for (const a of response.assets) {
@@ -244,9 +246,9 @@ export default {
   }
 }
 .homePopup {
-  overflow-y: scroll;
+  overflow-y: scroll; // adds scroll bar to pop up windows in they are longer than view height
 }
-table {
+table { // styling for tables on pop up windows
   margin: auto;
   background: orange;
   border: 2px white solid;
@@ -286,11 +288,11 @@ tr {
 
 /* Hover effect for contact and submit buttons */
 button:hover {
-    color: orange; /* This makes the text in the buttons white when hovered over */
-    background-color: #000080; /* The background of the button changes to black when hovered over */
+    color: orange; /* This makes the text in the buttons orange when hovered over */
+    background-color: #000080; /* The background of the button changes to blue when hovered over */
     transition-duration: 1s; /* This makes the transition last 1 second */
     -webkit-transition-duration: 1s; /* For Safari 4.0-8.0 */
-    border-color: orange; /* The border turns silver when the button is hovered over */
+    border-color: orange; /* The border turns orange when the button is hovered over */
 }
 #about{
   padding-bottom: 5%;
