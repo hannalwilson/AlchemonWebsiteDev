@@ -28,7 +28,8 @@
     "vue-confetti-explosion": "^1.0.1",
     "vue-p5": "^0.8.4",
     "vue-router": "^4.0.3",
-    "vuex": "^4.0.0"
+    "vuex": "^4.0.0",
+    "web3.storage": "^4.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
