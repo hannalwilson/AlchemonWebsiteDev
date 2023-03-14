@@ -9,7 +9,7 @@
       evolved, so if you send in a card that's evolution isn't available, that card will be sent back to your wallet.
     </p><p class="whiteText center"><strong>MAKE SURE YOU ADD THE ASSET OF THE EVOLVED VERSION YOU ARE TO RECEIVE.</strong></p>
     <img class="wallet_1" src="https://alchemon-website-assets.s3.amazonaws.com/assets/wallet_1.jpg" alt="Wallet"
-      width="25%"><br>
+      width="25%">
     <p class="whiteHeader center">Wallet address: <b>5Q2PRQDMH7JNT76EYFXBB4UBFVBL6WI37GTJC7HELNPZ4EL5BE6WKQXP4Y</b></p>
     <p class="orangeHeader spreadText">
       CHECK WHICH ALCHEMON YOU ARE STAKING

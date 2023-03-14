@@ -4,15 +4,14 @@
     <div class="imgContainer" @mouseover="hover = true" @mouseleave="hover = false">
       <img :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/alchemon/${name}.png`"
         v-if="type === 'alchemon'" class="nftImage">
-      <img :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/${name}.png`"
-        v-if="type === 'egg'" class="nftImage">
-      <img
-        :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/alchebilities/${name.replace(/\s+/g, '')}.png`"
+      <img :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/${name}.png`" v-if="type === 'egg'"
+        class="nftImage">
+      <img :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/alchebilities/${name.replace(/\s+/g, '')}.png`"
         v-if="type === 'alchebilities'" class="nftImage">
       <video :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/art/${name}.mp4`" v-if="type === 'art'"
-        class="nftImage" muted loop playsinline autoplay></video>
-        <video :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/set6pack.mp4`" v-if="type === 'pack'"
-          class="nftImage" muted loop playsinline autoplay></video>
+        class="nftImage" muted loop playsinline></video>
+      <video :src="`https://alchemon-website-assets.s3.amazonaws.com/assets/set6pack.mp4`" v-if="type === 'pack'"
+        class="nftImage" muted loop playsinline></video>
     </div>
     <div class="buttonContainer">
       <p> {{ name }}</p>
@@ -21,18 +20,17 @@
       <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
         v-if="type === 'alchemon' && amount > 0">{{ cost }}
         ALGO</button>
-      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
-       v-if="type === 'art' && amount > 0">{{
-       cost }}
+      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton" v-if="type === 'art' && amount > 0">{{
+        cost }}
         ALCH</button>
       <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
         v-if="type === 'alchebilities' && amount > 0">{{ cost
         }} ALCH</button>
-      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton"
-       v-if="type === 'egg' && amount > 0">{{
-       cost
-       }} ALGO</button>
-      <button @click="setAlchemonId(id, cost, type,)" class="boxShadow nftButton" v-if="type === 'pack' && amount > 0">40 ALGO</button>
+      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton" v-if="type === 'egg' && amount > 0">{{
+        cost
+      }} ALGO</button>
+      <button @click="setAlchemonId(id, cost, type)" class="boxShadow nftButton" v-if="type === 'pack' && amount > 0">40
+        ALGO</button>
     </div>
   </div>
   <popup-window v-if="popupTriggers.makePurchase">
@@ -63,13 +61,12 @@
 </template>
 
 <style lang="scss" scoped>
-
 .nftContainer {
-    border-radius: 1%;
-    display: inline-block;
-    background-color: lightgray;
-    margin: 2%;
-    vertical-align: top;
+  border-radius: 1%;
+  display: inline-block;
+  background-color: lightgray;
+  margin: 2%;
+  vertical-align: top;
 }
 
 .itemDescription {
@@ -82,24 +79,28 @@
 }
 
 .nftImage {
-    width: 20vw;
-    margin: 0%;
+  width: 20vw;
+  margin: 0%;
 }
+
 button {
   padding: 1% 5%;
 }
+
 .buttonContainer {
-    margin-top: 3%;
-    margin-bottom: 5%;
-    width: 20vw;
+  margin-top: 3%;
+  margin-bottom: 5%;
+  width: 20vw;
 }
+
 @media (max-width: 1100px) {
   .buttonContainer {
     width: 25vw
   }
+
   .nftImage {
-      width: 25vw;
-    }
+    width: 25vw;
+  }
 }
 
 @media (max-width: 800px) {
@@ -107,12 +108,14 @@ button {
     height: 35vw;
     width: 35vw;
   }
-    .nftImage {
-      width: 35vw;
-    }
-    button {
-      padding: 2% 20%;
-    }
+
+  .nftImage {
+    width: 35vw;
+  }
+
+  button {
+    padding: 2% 20%;
+  }
 }
 
 @media (max-width: 650px) {
@@ -120,9 +123,10 @@ button {
     height: 40vw;
     width: 45vw;
   }
-    .nftImage {
-      width: 45vw;
-    }
+
+  .nftImage {
+    width: 45vw;
+  }
 }
 
 @media (max-width: 500px) {
@@ -130,31 +134,33 @@ button {
     height: 45vw;
     width: 70vw;
   }
-    .nftImage {
-      width: 70vw;
-    }
-        button {
-          padding: 2% 30%;
-        }
+
+  .nftImage {
+    width: 70vw;
+  }
+
+  button {
+    padding: 2% 30%;
+  }
 }
 
 @media (max-width: 350px) {
   .buttonContainer {
-      height: 50vw;
-      width: 90vw;
-    }
-    .nftImage {
-      width: 90vw;
-    }
+    height: 50vw;
+    width: 90vw;
+  }
+
+  .nftImage {
+    width: 90vw;
+  }
 }
 
 @media (max-width: 350px) {
   .buttonContainer {
-      height: 60vw;
-    }
+    height: 60vw;
+  }
 
 }
-
 </style>
 
 <script>
@@ -255,35 +261,6 @@ const popupTriggers = ref({
   errorOccured: false
 })
 export default {
-  created () {
-    const algosdk = require('algosdk')
-    const token = ''
-    const server = 'https://mainnet-api.algonode.cloud'
-    const port = ''
-    const client = new algosdk.Algodv2(token, server, port)
-    client.accountInformation('N6B3V2B7NKWZ7VB4HH2UL467E2EC2BAXG2AH4BIOL4276X24PQGJXUCYH4').do().then(response => {
-      for (const userAsset of response.assets) {
-        if (userAsset['asset-id'] === 936555917 && userAsset.amount > 0) {
-          this.alchAvailable = true
-          break
-        } else if (userAsset['asset-id'] === 936555917 && userAsset.amount < 0) {
-          this.alchAvailable = false
-          break
-        }
-      }
-    })
-    client.accountInformation('BSJWMKLAJ5SPEO4XKOMN6NRMWCJ3RP43RYVXWPDNPCPT6GN63SHUY3FJFU').do().then(response => {
-      for (const userAsset of response.assets) {
-        if (userAsset['asset-id'] === 936555917 && userAsset.amount > 0) {
-          this.algoAvailable = true
-          break
-        } else if (userAsset['asset-id'] === 936555917 && userAsset.amount < 0) {
-          this.algoAvailable = false
-          break
-        }
-      }
-    })
-  },
   components: { PopupWindow },
   props: ['name', 'id', 'amount', 'type', 'cost', 'description'],
   data () {
@@ -318,7 +295,7 @@ export default {
     },
     async buyWithAlgo () {
       this.TogglePopup('makePurchase')
-      if (!userWallet) {
+      if (!userAddress) {
         window.alert('Error: No wallet connected.')
       }
       if (userWallet === 'walletconnect') {

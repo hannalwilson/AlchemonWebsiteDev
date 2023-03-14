@@ -5,10 +5,11 @@
     </div>
     <div class="forSale">
       <div>
+        <label>SHOP FOR:</label>
         <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'alchemon'">Alchemon</button>
         <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'alchebilities'">Alchebilities</button>
         <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'art'">TOYZ</button>
-        <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'all'">View All</button>
+        <button class="submitButton boxShadow" id="btn" @click="viewOnly = 'pack'">Pack</button>
       </div>
       <div>
         <store-card v-for="item in filteredItems" :key="item.id" :type="item.type" :cost="item.cost" :name="item.displayName" :id="item.id" :amount="item.amount" :description="item.description">
@@ -17,7 +18,6 @@
     </div>
   </div>
 </template>
-
 <style lang="scss" scoped>
 
 h1 {
@@ -122,7 +122,6 @@ const addresses = [
 
 let address
 let foundAddress
-let viewOnly
 
 export default {
   setup () {
@@ -162,7 +161,7 @@ export default {
   },
   data () {
     return {
-      viewOnly,
+      viewOnly: 'all',
       foundAddress,
       address
     }
@@ -188,9 +187,14 @@ export default {
           return item.type.includes('alchebilities')
         })
       }
+      if (this.viewOnly === 'pack') {
+        tempItems = tempItems.filter(item => {
+          return item.type.includes('pack')
+        })
+      }
       if (this.viewOnly === 'all') {
         tempItems = storeItems.filter(item => {
-          return item.amount > 0
+          return item.type.includes('none')
         })
       }
       return tempItems

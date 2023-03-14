@@ -1,5 +1,13 @@
 [
     {
+        "name": "Set 6 Pack",
+        "id": 978883931,
+        "type": "pack",
+        "amount": 0,
+        "cost": 40,
+        "description": "Set 6 Pack. Contains 6 Alchemon (guaranteed 1 Rare + 5 random)"
+    },
+    {
         "name": "TOYZ-Arch",
         "id": 996650672,
         "type": "art",
@@ -118,14 +126,6 @@
         "amount": 0,
         "cost": 10000,
         "description": "Set 2 Alchemon TOYZ art collaboration"
-    },
-    {
-        "name": "Set 6 Pack",
-        "id": 978883931,
-        "type": "pack",
-        "amount": 0,
-        "cost": 40,
-        "description": "Set 6 Pack. Contains 6 Alchemon (guaranteed 1 Rare + 5 random)"
     },
     {
         "name": "Skorp",

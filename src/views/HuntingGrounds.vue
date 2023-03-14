@@ -18,7 +18,7 @@
 
     <p class="orangeHeader spreadText">
 CALCULATE HUNTING GROUNDS ENTRIES</p>
-    <input type="number" id="text" class="darkGrayText_1 boxShadow" placeholder="  Enter wallet address" ref="address" />
+    <input type="text" id="text" class="darkGrayText_1 boxShadow" placeholder="  Enter wallet address" ref="address" />
     <button class="boxShadow" id="btn" @click="calculateEntries">Submit</button>
     <p class="orangeHeader spreadText">WEEKLY ENTRIES</p>
     <table class="boxShadow">

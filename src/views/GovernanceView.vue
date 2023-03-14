@@ -196,6 +196,9 @@ let totalVotes
 
 export default {
   components: { PopupWindow },
+  mounted () {
+    window.scrollTo(0, 0)
+  },
   data () {
     return {
       PopupWindow,
@@ -207,9 +210,6 @@ export default {
     getErrorMessage () {
       return errorMessage
     }
-  },
-  mounted () {
-    window.scrollTo(0, 0)
   },
   setup () {
     totalVotes = 0
